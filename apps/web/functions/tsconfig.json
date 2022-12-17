@@ -1,4 +1,0 @@
-{
-    "extends": "@wycey/tsconfig/cf-workers.json",
-    "include": ["./*.ts"]
-}
