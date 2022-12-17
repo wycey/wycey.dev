@@ -8,6 +8,6 @@
         }
     },
     "files": [".eslintrc.cjs", "vite.config.ts"],
-    "include": ["src"],
+    "include": ["src", "adaptors"],
     "exclude": ["functions"]
 }
