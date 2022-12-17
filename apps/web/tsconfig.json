@@ -1,0 +1,13 @@
+{
+    "extends": "@wycey/tsconfig/jsx.json",
+    "compilerOptions": {
+        "jsxImportSource": "@builder.io/qwik",
+        "paths": {
+            "@/*": ["./src/*"],
+            "@ui/*": ["./node_modules/@wycey/ui-qwik/src/*"]
+        }
+    },
+    "files": [".eslintrc.cjs", "vite.config.ts"],
+    "include": ["src"],
+    "exclude": ["functions"]
+}
