@@ -1,0 +1,309 @@
+/**
+ * WHAT IS THIS FILE?
+ *
+ * Globally applied styles. No matter which components are in the page or matching route,
+ * the styles in here will be applied to the Document, without any sort of CSS scoping.
+ *
+ */
+
+@import "@radix-ui/colors/mauve.css";
+@import "@radix-ui/colors/mauveDark.css";
+@import "@radix-ui/colors/green.css";
+@import "@radix-ui/colors/greenDark.css";
+@import "@radix-ui/colors/indigo.css";
+@import "@radix-ui/colors/indigoDark.css";
+
+:root {
+    --font-family-mono: "Operator Mono", menlo, monospace;
+    --font-family-normal: apple-system, sans-serif;
+
+    --heading-font-weight: 600;
+    --heading-margin: 1.5rem;
+
+    --text-font-weight: 500;
+    --text-line-height: 1.5;
+    --text-margin: 0.75rem;
+
+    --qwik-dark-blue: #006ce9;
+    --qwik-light-blue: #18b6f6;
+    --qwik-light-purple: #ac7ff4;
+    --qwik-dark-purple: #713fc2;
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes fade-out {
+        from {
+            opacity: 1;
+        }
+
+        to {
+            opacity: 0;
+        }
+    }
+}
+
+*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) {
+    all: unset;
+    display: revert;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::selection {
+    background-color: var(--indigo5);
+}
+
+:where(html) {
+    -webkit-text-size-adjust: none;
+    font-size: clamp(16px, calc(1rem + ((1vw - 7.68px) * 0.5747)), 24px);
+    min-height: 0vw;
+
+    &:focus-within {
+        @media (prefers-reduced-motion: no-preference) {
+            scroll-behavior: smooth;
+        }
+    }
+}
+
+:where(body) {
+    min-height: 100vh;
+    width: 100vw;
+
+    block-size: 100%;
+    block-size: 100dvb;
+    font-family: var(--font-family-normal);
+    letter-spacing: 0.05rem;
+    line-height: var(--text-line-height);
+    margin: 0;
+    text-rendering: optimizeSpeed;
+}
+
+.theme-provider {
+    --background: var(--indigo1);
+    --card-background: var(--indigo2);
+    --text-color: var(--indigo12);
+    --text-low-contrast: var(--indigo11);
+    --primary: var(--indigo10);
+
+    display: flex;
+    flex-flow: column;
+
+    min-height: 100vh;
+    width: 100vw;
+
+    color: var(--text-color);
+
+    &::before {
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        content: "";
+        background: var(--background);
+
+        min-height: 100vh;
+        min-width: 100vw;
+        z-index: -2;
+    }
+}
+
+main {
+    padding: 0 2rem;
+
+    flex: 1;
+
+    @media only screen and (min-width: 768px) {
+        padding: 0 12.5vw;
+    }
+
+    img:not(:has(a)) a,
+    a:not(.no-style) {
+        position: relative;
+        display: inline-block;
+        color: var(--primary);
+        font-weight: var(--heading-font-weight);
+
+        &::after {
+            animation-name: fade-out;
+            animation-timing-function: ease;
+            animation-fill-mode: forwards;
+            animation-duration: 100ms;
+
+            position: absolute;
+            bottom: 0;
+            opacity: 0;
+            left: 0;
+            content: "";
+            width: 100%;
+            height: 1px;
+            background-color: var(--primary);
+        }
+
+        &:hover::after {
+            animation-name: fade-in;
+            animation-timing-function: ease;
+            animation-fill-mode: forwards;
+            animation-duration: 300ms;
+        }
+    }
+
+    img {
+        border-radius: 4;
+    }
+
+    li::marker {
+        color: var(--primary);
+    }
+
+    ul,
+    ol {
+        margin-top: 2px;
+        margin-left: 1rem;
+    }
+
+    ul {
+        list-style: revert;
+    }
+
+    ol {
+        counter-reset: index;
+
+        li::before {
+            display: inline-block;
+            counter-increment: index;
+            content: counters(index, ".", decimal) " ";
+            color: var(--primary);
+            margin-left: -1.3rem;
+            margin-right: 0.3rem;
+            width: 1rem;
+            text-align: right;
+            direction: rtl;
+        }
+    }
+}
+
+:where(p, h1, h2, h3, h4, h5, h6) {
+    overflow-wrap: break-word;
+}
+
+:where(p) {
+    margin-top: var(--text-margin);
+}
+
+:where(h1, h2, h3, h4, h5, h6) {
+    font-weight: var(--heading-font-weight);
+}
+
+:where(h1, h2, h3) {
+    line-height: calc(1em + 0.5rem);
+}
+
+:where(h2, h3, h4, h5, h6) {
+    margin-top: var(--heading-margin);
+}
+
+:where(h4, h5, h6) {
+    line-height: var(--text-line-height);
+}
+
+:where(h1) {
+    font-size: 2.4rem;
+}
+
+:where(h2) {
+    font-size: 1.8rem;
+}
+
+:where(h3, h4) {
+    font-size: 1.4rem;
+}
+
+:where(a, button) {
+    cursor: revert;
+}
+
+:where(a) {
+    color: inherit;
+    text-decoration: none;
+}
+
+:where(code) {
+    display: inline-block;
+    background: var(--indigo3);
+    border: 1px solid var(--indigo7);
+    font-family: var(--font-family-mono);
+    font-size: 0.9rem;
+    padding: 2px 4px;
+    border-radius: 6px;
+}
+
+:where(img, svg, video, canvas, audio, iframe, embed, object) {
+    display: block;
+}
+
+:where(img, picture, svg) {
+    max-inline-size: 100%;
+    block-size: auto;
+}
+
+:where(ul, ol) {
+    list-style: none;
+}
+
+:where(input, textarea) {
+    -webkit-user-select: auto;
+}
+
+:where(textarea) {
+    white-space: revert;
+}
+
+::placeholder {
+    color: unset;
+}
+
+:where([hidden]) {
+    display: none;
+}
+
+:where(:focus-visible) {
+    outline: 2px solid var(--indigo7);
+    outline-offset: 2px;
+}
+
+:where([contenteditable]:not([contenteditable="false"])) {
+    -moz-user-modify: read-write;
+    -webkit-user-modify: read-write;
+    overflow-wrap: break-word;
+    -webkit-line-break: after-white-space;
+    -webkit-user-select: auto;
+}
+
+:where([draggable="true"]) {
+    -webkit-user-drag: element;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
