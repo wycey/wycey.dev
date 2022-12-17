@@ -1,9 +1,8 @@
 import { styled } from "styled-vanilla-extract/qwik";
 
 export const Logo = styled.h1`
-    display: inline;
+    display: block;
     position: relative;
-    font-size: 1.5rem;
     padding: 4px;
     padding-bottom: 0;
     margin: 0;
@@ -30,6 +29,13 @@ export const Logo = styled.h1`
         transform-origin: bottom left;
         transform: scaleX(1);
     }
+`;
+
+export const LogoImage = styled.img`
+    width: 8.5rem;
+    height: 100%;
+
+    padding-block: 4px;
 `;
 
 export const NavigationArea = styled.nav`
