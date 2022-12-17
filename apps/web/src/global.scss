@@ -69,7 +69,7 @@
 
 :where(html) {
     -webkit-text-size-adjust: none;
-    font-size: clamp(16px, calc(1rem + ((1vw - 7.68px) * 0.5747)), 24px);
+    font-size: clamp(1rem, calc(1rem + ((1vw - 0.48rem) * 0.3448)), 1.3rem);
     min-height: 0vw;
 
     &:focus-within {
