@@ -21,8 +21,8 @@
         "preview.build": "qwik build preview",
         "preview": "vite preview --open",
         "start": "vite --open --mode ssr",
-        "lint": "eslint --cache --cache-location node_modules/.cache/eslint/ \"src/**/*.{ts,js,cjs}*\"  \"functions/**/*.{ts,js}\"",
-        "lint.fix": "eslint --fix --cache --cache-location node_modules/.cache/eslint/ \"src/**/*.{ts,js,cjs}*\"  \"functions/**/*.{ts,js}\"",
+        "lint": "eslint --cache --cache-location node_modules/.cache/eslint/ \"src/**/*.{ts,tsx,js,cjs}\"",
+        "lint.fix": "eslint --fix --cache --cache-location node_modules/.cache/eslint/ \"src/**/*.{ts,tsx,js,cjs}\"",
         "qwik": "qwik"
     },
     "dependencies": {

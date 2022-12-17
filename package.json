@@ -14,7 +14,7 @@
         "preinstall": "npx only-allow pnpm",
         "prepare": "run-s setup:*",
         "setup:git": "simple-git-hooks",
-        "build": "turbo run build",
+        "build": "dotenv -- turbo run build",
         "deploy": "turbo run deploy",
         "dev": "turbo run dev",
         "dev.debug": "turbo run dev.debug",
@@ -55,5 +55,8 @@
     },
     "simple-git-hooks": {
         "pre-commit": "pnpm exec lint-staged --concurrent false"
+    },
+    "devDependencies": {
+        "dotenv-cli": "^6.0.0"
     }
 }

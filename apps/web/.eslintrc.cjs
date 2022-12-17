@@ -2,7 +2,7 @@ module.exports = {
     root: true,
     extends: ["wycey", "plugin:qwik/recommended"],
     parserOptions: {
-        project: ["./tsconfig.json", "./functions/tsconfig.json"],
+        project: ["./tsconfig.json"],
         tsconfigRootDir: __dirname,
     },
     rules: {
