@@ -10,8 +10,14 @@ const Footer = component$(() => {
             <p>&copy; 2022 Wycey</p>
             <div />
             <p>
-                Powered by <FooterLink href="https://qwik.builder.io">Qwik</FooterLink> and{" "}
-                <FooterLink href="https://pages.cloudflare.com">Cloudflare Pages</FooterLink>
+                Powered by{" "}
+                <FooterLink href="https://qwik.builder.io" target="_blank">
+                    Qwik
+                </FooterLink>{" "}
+                and{" "}
+                <FooterLink href="https://pages.cloudflare.com" target="_blank">
+                    Cloudflare Pages
+                </FooterLink>
             </p>
         </FooterBase>
     );
