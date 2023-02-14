@@ -5,6 +5,10 @@
             "dependsOn": ["^build"],
             "outputs": ["dist/**", "server/**"]
         },
+        "build.cf-pages": {
+            "dependsOn": ["^build.cf-pages"],
+            "outputs": ["dist/**", "server/**"]
+        },
         "preview.build": {
             "dependsOn": ["^preview.build"],
             "outputs": ["dist/**", "server/**"]
