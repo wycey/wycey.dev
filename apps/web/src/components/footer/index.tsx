@@ -7,7 +7,7 @@ const Footer = component$(() => {
 
     return (
         <FooterBase>
-            <p>&copy; 2022 Wycey</p>
+            <p>&copy; 2023 Wycey</p>
             <div />
             <p>
                 Powered by{" "}
