@@ -9,6 +9,11 @@ This is a bunch of repos of wycey.dev.
 - Link: [`wycey.dev`](https://wycey.dev)  
   Official homepage of wycey.dev.
 
+## [`@wycey/blog`](apps/blog)
+
+- Link: _(Inaccessible)_ [`blog.wycey.dev`](https://blog.wycey.dev)  
+  Official blog of wycey.dev, under construction.
+
 ## Packages
 
 ### [`@wycey/eslint-config`](packages/eslint-config)
