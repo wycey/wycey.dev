@@ -140,7 +140,7 @@ jobs:
               id: project-name
               run: |
                   echo "name=$(sed s/\@wycey.// <<<${{ matrix.package.name }})" > $GITHUB_OUTPUT
-                  echo "dir=$(realpath --relative-to="$(pwd)" "${{ matrix.package.path }}")"
+                  echo "dir=$(realpath --relative-to="$(pwd)" "${{ matrix.package.path }}")" > $GITHUB_OUTPUT
 
             - name: Publish to Cloudflare Pages
               uses: cloudflare/pages-action@main
