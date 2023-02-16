@@ -2,7 +2,7 @@ import { component$, useStyles$ } from "@builder.io/qwik";
 
 import { Badge } from "@/components/badge";
 
-import _styles, { HeaderBase, Logo, LogoImage, NavigationArea, NavigationList } from "./header.css";
+import _styles, { HeaderBase, Logo, NavigationArea, NavigationList } from "./header.css";
 
 export default component$(() => {
     useStyles$(_styles);
@@ -11,7 +11,7 @@ export default component$(() => {
         <HeaderBase>
             <Logo>
                 <a href="/">
-                    <LogoImage src="https://wycey.dev/images/wycey-full-dark.svg" alt="Logo" />
+                    <img class="w-34 h-full py-1" src="https://wycey.dev/images/wycey-full-dark.svg" alt="Logo" />
                 </a>
             </Logo>
             <NavigationArea>
