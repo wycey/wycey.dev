@@ -113,7 +113,7 @@ jobs:
         strategy:
             matrix:
                 package: ${{ fromJson(needs.get-changed-apps.outputs.packages) }}
-        if: ${{ !fromJson(needs.generate_matrix.outputs.empty) }} || needs.get-changed-files.outputs.only-changed != 'true'
+        if: ${{ !fromJson(needs.get-changed-apps.outputs.empty) }} || needs.get-changed-files.outputs.only-changed != 'true'
 
         steps:
             - name: Checkout
