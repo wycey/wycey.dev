@@ -85,16 +85,17 @@ jobs:
             - name: Lint
               env:
                   TURBO_TOKEN: ${{ secrets.TURBOREPO_TOKEN }}
-              run: pnpm lint.ci
+              # run: pnpm lint.ci
+              run: pnpm lint
 
-            - name: Merge all SARIF files into results.sarif
-              run: pnpx @microsoft/sarif-multitool merge *.sarif --recurse --output-directory=. --output-file=results.sarif
+            # - name: Merge all SARIF files into results.sarif
+            #   run: pnpx @microsoft/sarif-multitool merge *.sarif --recurse --output-directory=. --output-file=results.sarif
 
-            - name: Upload results.sarif
-              uses: github/codeql-action/upload-sarif@v2
-              with:
-                  sarif_file: results.sarif
-                  category: eslint
+            # - name: Upload results.sarif
+            #   uses: github/codeql-action/upload-sarif@v2
+            #   with:
+            #       sarif_file: results.sarif
+            #       category: eslint
 
             - name: Check formatting
               run: pnpm fmt.check
