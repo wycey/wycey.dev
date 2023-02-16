@@ -7,6 +7,6 @@
             "@ui/*": ["./node_modules/@wycey/ui-qwik/src/*"]
         }
     },
-    "files": [".eslintrc.cjs", "vite.config.ts"],
+    "files": [".eslintrc.cjs", "vite.config.ts", "postcss.config.js", "tailwind.config.js"],
     "include": ["src", "adaptors", "functions"]
 }
