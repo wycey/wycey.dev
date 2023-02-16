@@ -139,8 +139,8 @@ jobs:
             - name: Generate project information
               id: project-name
               run: |
-                  echo "name=$(sed s/\@wycey.// <<<${{ matrix.package.name }})" > $GITHUB_OUTPUT
-                  echo "dir=$(realpath --relative-to="$(pwd)" "${{ matrix.package.path }}")" > $GITHUB_OUTPUT
+                  echo "name=$(sed s/\@wycey.// <<<${{ matrix.package.name }})" >> $GITHUB_OUTPUT
+                  echo "dir=$(realpath --relative-to="$(pwd)" "${{ matrix.package.path }}")" >> $GITHUB_OUTPUT
 
             - name: Publish to Cloudflare Pages
               uses: cloudflare/pages-action@main
@@ -148,5 +148,5 @@ jobs:
                   apiToken: ${{ secrets.CF_PAGES_API_TOKEN }}
                   accountId: ${{ secrets.CF_ACCOUNT_ID }}
                   projectName: ${{ steps.project-name.outputs.name }}
-                  directory: /dist
+                  directory: dist
                   workingDirectory: ${{ steps.project-name.outputs.dir }}
