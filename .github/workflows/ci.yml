@@ -58,6 +58,10 @@ jobs:
     lint:
         name: Lint
         runs-on: ubuntu-latest
+        permissions:
+            security-events: write
+            actions: read
+            contents: read
         needs:
             - get-changed-files
         if: needs.get-changed-files.outputs.only-changed != 'true'
@@ -99,8 +103,6 @@ jobs:
         name: Deploy ${{ matrix.package.name }}
         runs-on: ubuntu-latest
         permissions:
-            security-events: write
-            actions: read
             contents: read
             deployments: write
         needs:
