@@ -31,13 +31,6 @@ export const Logo = styled.h1`
     }
 `;
 
-export const LogoImage = styled.img`
-    width: 8.5rem;
-    height: 100%;
-
-    padding-block: 4px;
-`;
-
 export const NavigationArea = styled.nav`
     display: grid;
     grid-template-columns: auto 1fr auto;
