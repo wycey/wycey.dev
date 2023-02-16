@@ -3,3 +3,4 @@ printWidth = 120
 quoteProps = "as-needed"
 semi = true
 trailingComma = "all"
+plugins = ["prettier-plugin-tailwindcss"]
