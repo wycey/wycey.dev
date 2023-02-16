@@ -5,6 +5,7 @@ importers:
   .:
     specifiers:
       '@cloudflare/workers-types': ^4.20230115.0
+      '@microsoft/eslint-formatter-sarif': ^3.0.0
       '@prettier/plugin-xml': ^2.2.0
       '@types/node': ^18.13.0
       dotenv-cli: ^7.0.0
@@ -20,6 +21,7 @@ importers:
       vite-tsconfig-paths: ^4.0.5
     dependencies:
       '@cloudflare/workers-types': 4.20230115.0
+      '@microsoft/eslint-formatter-sarif': 3.0.0
       '@prettier/plugin-xml': 2.2.0
       '@types/node': 18.13.0
       dotenv-cli: 7.0.0
@@ -885,6 +887,18 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@microsoft/eslint-formatter-sarif/3.0.0:
+    resolution: {integrity: sha512-KIKkT44hEqCzqxODYwFMUvYEK0CrdHx/Ll9xiOWgFbBSRuzbxmVy4d/tzfgoucGz72HJZNOMjuyzFTBKntRK5Q==}
+    engines: {node: '>= 14'}
+    dependencies:
+      eslint: 8.34.0
+      jschardet: 3.0.0
+      lodash: 4.17.21
+      utf8: 3.0.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
 
   /@miniflare/cache/2.11.0:
     resolution: {integrity: sha512-L/kc9AzidPwFuk2fwHpAEePi0kNBk6FWUq3ln+9beRCDrPEpfVrDRFpNleF1NFZz5//oeVMuo8F0IVUQGzR7+Q==}
@@ -3034,6 +3048,11 @@ packages:
       argparse: 2.0.1
     dev: false
 
+  /jschardet/3.0.0:
+    resolution: {integrity: sha512-lJH6tJ77V8Nzd5QWRkFYCLc13a3vADkh3r/Fi8HupZGWk2OVVDfnZP8V/VgQgZ+lzW0kG2UGb5hFgt3V3ndotQ==}
+    engines: {node: '>=0.1.90'}
+    dev: false
+
   /jsdoctypeparser/9.0.0:
     resolution: {integrity: sha512-jrTA2jJIL6/DAEILBEh2/w9QxCuwmvNXIry39Ay/HVfhE3o2yVV0U44blYkqdHA/OKloJEqvJy0xU+GSdE2SIw==}
     engines: {node: '>=10'}
@@ -4918,6 +4937,10 @@ packages:
   /urlpattern-polyfill/4.0.3:
     resolution: {integrity: sha512-DOE84vZT2fEcl9gqCUTcnAw5ZY5Id55ikUcziSUntuEFL3pRvavg5kwDmTEUJkeCHInTlV/HexFomgYnzO5kdQ==}
     dev: true
+
+  /utf8/3.0.0:
+    resolution: {integrity: sha512-E8VjFIQ/TyQgp+TZfS6l8yp/xWppSAHzidGiRrqe4bK4XP9pTRyKFgGJpO3SN7zdX4DeomTrwaseCHovfpFcqQ==}
+    dev: false
 
   /uvu/0.5.6:
     resolution: {integrity: sha512-+g8ENReyr8YsOc6fv/NVJs2vFdHBnBNdfE49rshrTzDWOlUx4Gq7KOS2GD8eqhy2j+Ejq29+SbKH8yjkAqXqoA==}
