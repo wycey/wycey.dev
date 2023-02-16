@@ -136,9 +136,11 @@ jobs:
                   TURBO_TOKEN: ${{ secrets.TURBOREPO_TOKEN }}
               run: pnpm build --filter="${{ matrix.package.name }}"
 
-            - name: Generate project name
+            - name: Generate project information
               id: project-name
-              run: echo "name=$(sed s/\@wycey.// <<<${{ matrix.package.name }})" > $GITHUB_OUTPUT
+              run: |
+                  echo "name=$(sed s/\@wycey.// <<<${{ matrix.package.name }})" > $GITHUB_OUTPUT
+                  echo "dir=$(realpath --relative-to="$(pwd)" "${{ matrix.package.path }}")"
 
             - name: Publish to Cloudflare Pages
               uses: cloudflare/pages-action@main
@@ -147,4 +149,4 @@ jobs:
                   accountId: ${{ secrets.CF_ACCOUNT_ID }}
                   projectName: ${{ steps.project-name.outputs.name }}
                   directory: /dist
-                  workingDirectory: ${{ matrix.package.path }}
+                  workingDirectory: ${{ steps.project-name.outputs.dir }}
