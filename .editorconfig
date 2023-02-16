@@ -10,5 +10,5 @@ insert_final_newline = true
 [*.json]
 insert_final_newline = false
 
-[*.md]
+[*.md{x,}]
 indent_size = 2
