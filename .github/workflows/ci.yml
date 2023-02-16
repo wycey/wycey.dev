@@ -99,6 +99,7 @@ jobs:
         name: Deploy ${{ matrix.package.name }}
         runs-on: ubuntu-latest
         permissions:
+            actions: write
             contents: read
             deployments: write
         needs:
