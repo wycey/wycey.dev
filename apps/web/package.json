@@ -11,7 +11,7 @@
     "main": "./server/entry.ssr.js",
     "scripts": {
         "build": "dotenv -- qwik build",
-        "build.cf-pages": "dotenv -- qwik build && cp -r functions ../../functions",
+        "build.cf-pages": "dotenv -- qwik build",
         "build.client": "vite build",
         "build.preview": "vite build --ssr src/entry.preview.tsx",
         "build.server": "vite build -c adaptors/cloudflare-pages/vite.config.ts",
@@ -23,6 +23,7 @@
         "preview": "vite preview --open",
         "start": "vite --open --mode ssr",
         "lint": "eslint --cache --cache-location node_modules/.cache/eslint/ \"src/**/*.{ts,tsx,js,cjs}\"",
+        "lint.ci": "eslint -f @microsoft/eslint-formatter-sarif -o ../../web.sarif --cache --cache-location node_modules/.cache/eslint/ \"*.{js,cjs}\"",
         "lint.fix": "eslint --fix --cache --cache-location node_modules/.cache/eslint/ \"src/**/*.{ts,tsx,js,cjs}\"",
         "qwik": "qwik"
     },

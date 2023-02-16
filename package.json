@@ -1,7 +1,7 @@
 {
     "name": "@wycey/wycey-monorepo",
     "version": "0.0.0",
-    "packageManager": "pnpm@7.18.2",
+    "packageManager": "pnpm@7.27.0",
     "engines": {
         "node": ">=16",
         "npm": "please-use-pnpm",
@@ -22,6 +22,7 @@
         "fmt": "prettier --cache --write .",
         "fmt.check": "prettier --cache --check .",
         "lint": "turbo run lint",
+        "lint.ci": "turbo run lint.ci",
         "lint.fix": "turbo run lint.fix",
         "lint.force": "eslint --cache --cache-location node_modules/.cache/eslint/ \"{packages,apps}/*/src/**/*.{ts,js,cjs}*\"",
         "lint.fix.force": "eslint --fix --cache --cache-location node_modules/.cache/eslint/ \"{packages,apps}/*/src/**/*.{ts,js,cjs}*\"",
@@ -31,6 +32,7 @@
     },
     "dependencies": {
         "@cloudflare/workers-types": "^4.20230115.0",
+        "@microsoft/eslint-formatter-sarif": "^3.0.0",
         "@prettier/plugin-xml": "^2.2.0",
         "@types/node": "^18.13.0",
         "dotenv-cli": "^7.0.0",

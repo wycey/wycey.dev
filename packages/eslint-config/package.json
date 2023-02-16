@@ -10,6 +10,7 @@
     "main": "index.cjs",
     "scripts": {
         "lint": "eslint --cache --cache-location node_modules/.cache/eslint/ \"*.{js,cjs}\"",
+        "lint.ci": "eslint -f @microsoft/eslint-formatter-sarif -o ../../eslint-config.sarif --cache --cache-location node_modules/.cache/eslint/ \"*.{js,cjs}\"",
         "lint.fix": "eslint --fix --cache --cache-location node_modules/.cache/eslint/ \"*.{js,cjs}\""
     },
     "dependencies": {
