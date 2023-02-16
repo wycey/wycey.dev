@@ -269,6 +269,7 @@ main {
 }
 
 :where(input, textarea) {
+    user-select: auto;
     -webkit-user-select: auto;
 }
 
@@ -293,7 +294,9 @@ main {
     -moz-user-modify: read-write;
     -webkit-user-modify: read-write;
     overflow-wrap: break-word;
+    line-break: unset;
     -webkit-line-break: after-white-space;
+    user-select: auto;
     -webkit-user-select: auto;
 }
 
