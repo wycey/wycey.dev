@@ -15,7 +15,6 @@
         "prepare": "run-s setup:*",
         "setup:git": "simple-git-hooks",
         "build": "dotenv -- turbo run build",
-        "build.cf-pages": "dotenv -- turbo run build.cf-pages",
         "deploy": "turbo run deploy",
         "dev": "turbo run dev",
         "dev.debug": "turbo run dev.debug",

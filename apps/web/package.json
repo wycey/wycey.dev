@@ -11,7 +11,6 @@
     "main": "./server/entry.ssr.js",
     "scripts": {
         "build": "dotenv -- qwik build",
-        "build.cf-pages": "dotenv -- qwik build",
         "build.client": "vite build",
         "build.preview": "vite build --ssr src/entry.preview.tsx",
         "build.server": "vite build -c adaptors/cloudflare-pages/vite.config.ts",
