@@ -10,7 +10,6 @@ bazel-qwik
 bazel-testlogs
 dist
 dist-dev
-lib
 lib-types
 etc
 external
@@ -26,6 +25,7 @@ build
 .vscode
 .rollup.cache
 dist
+generated
 tsconfig.tsbuildinfo
 *.spec.tsx
 *.spec.ts
