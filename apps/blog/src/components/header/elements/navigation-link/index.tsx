@@ -14,7 +14,11 @@ const NavigationLink = component$(({ href }: NavigationLinkProps) => {
     const isActive = useActiveLocation(href);
 
     return (
-        <NavigationLinkAnchor href={href} data-active={isActive ? true : undefined}>
+        <NavigationLinkAnchor
+            class="m-0 my-2 inline-block select-none rounded-md px-2 py-3 transition"
+            href={href}
+            data-active={isActive ? true : undefined}
+        >
             <Slot />
         </NavigationLinkAnchor>
     );

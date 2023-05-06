@@ -1,13 +1,17 @@
-import { component$ } from "@builder.io/qwik";
+import { $, component$, Resource } from "@builder.io/qwik";
+import { useQuery } from "qwik-urql";
+
+import { AllArticlesDocument } from "../generated/graphql";
 
 import type { DocumentHead } from "@builder.io/qwik-city";
 
-export default component$(() => (
-    <>
-        <h1>わいしぃのブログ</h1>
-        <p>建設中</p>
-    </>
-));
+export const Query = $(() => AllArticlesDocument);
+
+export default component$(() => {
+    const query = useQuery(Query, {});
+
+    return <Resource value={query} onResolved={query => <>{JSON.stringify(query.data)}</>} />;
+});
 
 export const head: DocumentHead = {
     title: "わいしぃ uwu",

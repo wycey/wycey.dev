@@ -40,7 +40,7 @@ module.exports = defineConfig({
         "@typescript-eslint/explicit-member-accessibility": [
             "error",
             {
-                accessibility: "explicit",
+                accessibility: "no-public",
             },
         ],
         "@typescript-eslint/lines-between-class-members": "error",

@@ -1,8 +1,10 @@
-import { component$, useStyles$ } from "@builder.io/qwik";
+import { $, component$, useStyles$ } from "@builder.io/qwik";
 import { QwikCityProvider, RouterOutlet, ServiceWorkerRegister } from "@builder.io/qwik-city";
+import { UrqlProvider } from "qwik-urql";
 
 import { RouterHead } from "./components/router-head";
 import globalStyles from "./global.scss?inline";
+import { clientFactory } from "./lib/cms/client";
 
 export default component$(() => {
     /**
@@ -14,17 +16,19 @@ export default component$(() => {
     useStyles$(globalStyles);
 
     return (
-        <QwikCityProvider>
-            <head>
-                <meta charSet="utf-8" />
-                <RouterHead />
-            </head>
-            <body>
-                <div class="theme-provider dark-theme">
-                    <RouterOutlet />
-                </div>
-                <ServiceWorkerRegister />
-            </body>
-        </QwikCityProvider>
+        <UrqlProvider client={$(clientFactory)}>
+            <QwikCityProvider>
+                <head>
+                    <meta charSet="utf-8" />
+                    <RouterHead />
+                </head>
+                <body>
+                    <div class="theme-provider dark-theme">
+                        <RouterOutlet />
+                    </div>
+                    <ServiceWorkerRegister />
+                </body>
+            </QwikCityProvider>
+        </UrqlProvider>
     );
 });

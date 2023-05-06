@@ -20,13 +20,4 @@ export const BadgeBase = styled.a`
     }
 `;
 
-export const BadgeIcon = styled.img`
-    display: inline-block;
-    border-radius: 50%;
-    width: 2rem;
-    height: 2rem;
-    margin-block: 3px;
-    margin-right: 6px;
-`;
-
 export default "";

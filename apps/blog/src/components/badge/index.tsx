@@ -1,6 +1,6 @@
 import { component$, Slot, useStyles$ } from "@builder.io/qwik";
 
-import _styles, { BadgeBase, BadgeIcon } from "./badge.css";
+import _styles, { BadgeBase } from "./badge.css";
 
 import type { Component, QwikIntrinsicElements } from "@builder.io/qwik";
 
@@ -9,7 +9,7 @@ export interface BadgeProps {
 }
 
 type Badge = Component<BadgeProps & QwikIntrinsicElements["a"]> & {
-    Icon: typeof BadgeIcon;
+    Icon: Component<QwikIntrinsicElements["img"]>;
 };
 
 export const Badge = component$(({ accent, children: _children, ...props }) => {
@@ -31,6 +31,6 @@ export const Badge = component$(({ accent, children: _children, ...props }) => {
     );
 }) as Badge;
 
-Badge.Icon = BadgeIcon;
+Badge.Icon = props => <img class="my-1 mr-1 inline-block h-8 w-8 rounded-full" {...props} />;
 
 export default Badge;
