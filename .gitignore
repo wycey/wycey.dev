@@ -1,7 +1,7 @@
 # Build
 dist
-/lib
-/lib-types
+lib-types
+generated
 server
 
 # Development

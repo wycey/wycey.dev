@@ -15,6 +15,7 @@
         "build.preview": "vite build --ssr src/entry.preview.tsx",
         "build.server": "vite build -c adaptors/cloudflare-pages/vite.config.ts",
         "build.types": "tsc --incremental --noEmit",
+        "codegen": "graphql-codegen --config codegen.ts",
         "deploy": "wrangler pages dev ./dist",
         "dev": "vite --mode ssr",
         "dev.debug": "node --inspect-brk ./node_modules/vite/bin/vite.js --mode ssr --force",
@@ -26,11 +27,21 @@
         "qwik": "qwik"
     },
     "dependencies": {
-        "@radix-ui/colors": "^0.1.8"
+        "@radix-ui/colors": "^0.1.8",
+        "@urql/core": "^3.1.1",
+        "@urql/exchange-graphcache": "^5.0.9",
+        "graphql": "^16.6.0",
+        "graphql-tag": "^2.12.6",
+        "urql": "^3.0.3"
     },
     "devDependencies": {
         "@builder.io/qwik": "^0.20.1",
         "@builder.io/qwik-city": "^0.5.2",
+        "@graphql-codegen/cli": "3.2.1",
+        "@graphql-codegen/typescript": "3.0.1",
+        "@graphql-codegen/typescript-operations": "^3.0.1",
+        "@graphql-codegen/typescript-urql": "^3.7.3",
+        "@graphql-codegen/urql-introspection": "^2.2.1",
         "@vanilla-extract/css": "^1.9.5",
         "@wycey/tsconfig": "workspace:*",
         "autoprefixer": "10.4.13",
@@ -38,6 +49,7 @@
         "eslint-plugin-qwik": "^0.20.1",
         "node-fetch": "^3.3.0",
         "postcss": "^8.4.21",
+        "qwik-urql": "^0.4.2",
         "sass": "^1.58.3",
         "styled-vanilla-extract": "^0.5.4",
         "tailwindcss": "^3.2.7",
