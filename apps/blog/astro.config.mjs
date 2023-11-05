@@ -1,11 +1,14 @@
-import { defineConfig } from "astro/config";
 import cloudflare from "@astrojs/cloudflare";
-import pandacss from "@pandacss/astro";
-import { vritePlugin } from "@vrite/sdk/astro";
-import { loadEnv } from "vite";
 import partytown from "@astrojs/partytown";
 import prefetch from "@astrojs/prefetch";
 import sitemap from "@astrojs/sitemap";
+import solidJs from "@astrojs/solid-js";
+import pandacss from "@pandacss/astro";
+import { vritePlugin } from "@vrite/sdk/astro";
+import { defineConfig } from "astro/config";
+import { loadEnv } from "vite";
+import solidLables from "vite-plugin-solid-labels";
+
 const { VRITE_ACCESS_TOKEN, VRITE_CONTENT_GROUP_ID } = loadEnv(import.meta.env.MODE, process.cwd(), "");
 
 // https://astro.build/config
@@ -28,5 +31,13 @@ export default defineConfig({
     sitemap({
       filter: page => !page.startsWith("https://blog.wycey.dev/private"),
     }),
+    solidJs(),
   ],
+  vite: {
+    plugins: [solidLables({
+      filter: {
+        include: "src/components/**/*.{ts,js,tsx,jsx}"
+      },
+    })],
+  },
 });

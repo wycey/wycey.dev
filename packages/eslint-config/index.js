@@ -146,7 +146,6 @@ const tsRules = {
   "@typescript-eslint/method-signature-style": ["error", "method"],
   "@typescript-eslint/no-array-constructor": "error",
   "@typescript-eslint/no-confusing-non-null-assertion": "error",
-  "@typescript-eslint/no-confusing-void-expression": "error",
   "@typescript-eslint/no-invalid-this": "error",
   "@typescript-eslint/no-meaningless-void-operator": "error",
   "@typescript-eslint/no-misused-promises": [

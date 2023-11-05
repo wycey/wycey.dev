@@ -1,18 +1,21 @@
 ---
-import { getContentPieces } from "virtual:vrite";
+import { Counter } from "@/components/Counter.tsx";
 
-const posts = await getContentPieces({ limit: "all" });
+// const posts = await getContentPieces({ limit: "all" });
 ---
+
 <html lang="ja">
   <head>
     <!-- Google tag (gtag.js) -->
     <script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-SWKQ6261R9"></script>
     <script type="text/partytown">
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-      gtag('config', 'G-SWKQ6261R9');
+      gtag("config", "G-SWKQ6261R9");
     </script>
 
     <meta charset="utf-8" />
@@ -25,15 +28,9 @@ const posts = await getContentPieces({ limit: "all" });
   <body>
     <main>
       <section>
+        <Counter client:idle />
         <ul>
-          {
-            posts.map((post) => (
-              <li>
-                {post.date && new Date(post.date).toISOString()}
-                <a href={`/blog/${post.slug}/`}>{post.title}</a>
-              </li>
-            ))
-          }
+          <li>hoge</li>
         </ul>
       </section>
     </main>
