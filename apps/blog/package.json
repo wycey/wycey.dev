@@ -22,8 +22,10 @@
     "@astrojs/partytown": "^2.0.2",
     "@astrojs/prefetch": "^0.4.1",
     "@astrojs/sitemap": "^3.0.3",
+    "@astrojs/solid-js": "^3.0.2",
     "@vrite/sdk": "^0.3.0",
-    "astro": "^3.4.3"
+    "astro": "^3.4.3",
+    "solid-js": "^1.4.3"
   },
   "devDependencies": {
     "@astrojs/check": "^0.3.1",
@@ -33,6 +35,8 @@
     "@pandacss/dev": "^0.17.5",
     "eslint-plugin-astro": "^0.29.1",
     "eslint-plugin-jsx-a11y": "^6.8.0",
-    "typescript": "^5.2.2"
+    "solid-labels": "^0.16.0",
+    "typescript": "^5.2.2",
+    "vite-plugin-solid-labels": "^0.16.1"
   }
 }

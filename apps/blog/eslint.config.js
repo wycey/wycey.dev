@@ -41,7 +41,7 @@ export default [
     },
   },
   {
-    files: ["src/components/**/*.{j,t}s{,x}"],
+    files: ["src/components/**/*.{j,t}s{,x}", "src/layouts/**/*.astro"],
     plugins: {
       unicorn,
     },
