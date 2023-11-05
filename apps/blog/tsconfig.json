@@ -1,12 +1,3 @@
 {
-    "extends": "@wycey/tsconfig/jsx.json",
-    "compilerOptions": {
-        "jsxImportSource": "@builder.io/qwik",
-        "paths": {
-            "@/*": ["./src/*"],
-            "@ui/*": ["./node_modules/@wycey/ui-qwik/src/*"]
-        }
-    },
-    "files": [".eslintrc.cjs", "codegen.ts", "vite.config.ts", "postcss.config.js", "tailwind.config.js"],
-    "include": ["src", "adaptors", "functions"]
+  "extends": "astro/tsconfigs/strict"
 }
