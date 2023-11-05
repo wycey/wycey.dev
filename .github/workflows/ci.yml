@@ -1,153 +1,153 @@
 name: CI
 
 on:
-    push:
-        branches:
-            - main
-            - develop
-    pull_request:
-        branches:
-            - main
-        types:
-            - opened
-            - synchronize
-    workflow_dispatch:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+  workflow_dispatch:
 
 concurrency:
-    group: ${{ github.workflow }}-${{ github.ref }}
-    cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-    get-changed-apps:
-        name: Get changed apps
-        runs-on: ubuntu-latest
-        outputs:
-            packages: ${{ steps.changed-apps.outputs.packages }}
-            empty: ${{ steps.changed-apps.outputs.empty }}
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v3
+  get-changed-apps:
+    name: Get changed apps
+    runs-on: ubuntu-latest
+    outputs:
+      packages: ${{ steps.changed-apps.outputs.packages }}
+      empty: ${{ steps.changed-apps.outputs.empty }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-            - name: Find changed workspaces
-              uses: AlexShukel/get-changed-workspaces-action@v2.0.0
-              id: changed-apps
-              with:
-                  workspaces: |
-                      apps/*
-                  filter: "@wycey/*"
+      - name: Find changed workspaces
+        uses: AlexShukel/get-changed-workspaces-action@v2.0.0
+        id: changed-apps
+        with:
+          workspaces: |
+            apps/*
+          filter: "@wycey/*"
 
-    get-changed-files:
-        name: Get changed files
-        runs-on: ubuntu-latest
-        outputs:
-            only-changed: ${{ steps.changed-files.outputs.only_changed }}
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v3
+  get-changed-files:
+    name: Get changed files
+    runs-on: ubuntu-latest
+    outputs:
+      only-changed: ${{ steps.changed-files.outputs.only_changed }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-            - name: Find changed files
-              uses: tj-actions/changed-files@v35
-              id: changed-files
-              with:
-                  files: |
-                      docs/**
-                      .github/**
-                      !.github/workflow/ci.yml
-                      **.md
+      - name: Find changed files
+        uses: tj-actions/changed-files@v35
+        id: changed-files
+        with:
+          files: |
+            docs/**
+            .github/**
+            !.github/workflow/ci.yml
+            **.md
 
-    lint:
-        name: Lint
-        runs-on: ubuntu-latest
-        permissions:
-            security-events: write
-            actions: read
-            contents: read
-        needs:
-            - get-changed-files
-        if: needs.get-changed-files.outputs.only-changed != 'true'
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+      actions: read
+      contents: read
+    needs:
+      - get-changed-files
+    if: needs.get-changed-files.outputs.only-changed != 'true'
 
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v3
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-            - name: Setup pnpm
-              uses: pnpm/action-setup@v2
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
 
-            - name: Setup Node.js 18
-              uses: actions/setup-node@v3
-              with:
-                  node-version: 18
-                  cache: pnpm
+      - name: Setup Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: pnpm
 
-            - name: Install dependencies
-              run: pnpm install --frozen-lockfile
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
-            - name: Lint
-              env:
-                  TURBO_TOKEN: ${{ secrets.TURBOREPO_TOKEN }}
-              # run: pnpm lint.ci
-              run: pnpm lint
+      - name: Lint
+        env:
+          TURBO_TOKEN: ${{ secrets.TURBOREPO_TOKEN }}
+        # run: pnpm lint.ci
+        run: pnpm lint
 
-            # - name: Merge all SARIF files into results.sarif
-            #   run: pnpx @microsoft/sarif-multitool merge *.sarif --recurse --output-directory=. --output-file=results.sarif
+      # - name: Merge all SARIF files into results.sarif
+      #   run: pnpx @microsoft/sarif-multitool merge *.sarif --recurse --output-directory=. --output-file=results.sarif
 
-            # - name: Upload results.sarif
-            #   uses: github/codeql-action/upload-sarif@v2
-            #   with:
-            #       sarif_file: results.sarif
-            #       category: eslint
+      # - name: Upload results.sarif
+      #   uses: github/codeql-action/upload-sarif@v2
+      #   with:
+      #       sarif_file: results.sarif
+      #       category: eslint
 
-            - name: Check formatting
-              run: pnpm fmt.check
+      - name: Check formatting
+        run: pnpm fmt.check
 
-    deploy:
-        name: Deploy ${{ matrix.package.name }}
-        runs-on: ubuntu-latest
-        permissions:
-            contents: read
-            deployments: write
-        needs:
-            - get-changed-apps
-            - get-changed-files
-            - lint
-        strategy:
-            matrix:
-                package: ${{ fromJson(needs.get-changed-apps.outputs.packages) }}
-        if: ${{ !fromJson(needs.get-changed-apps.outputs.empty) }} || needs.get-changed-files.outputs.only-changed != 'true'
+  deploy:
+    name: Deploy ${{ matrix.package.name }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    needs:
+      - get-changed-apps
+      - get-changed-files
+      - lint
+    strategy:
+      matrix:
+        package: ${{ fromJson(needs.get-changed-apps.outputs.packages) }}
+    if: ${{ !fromJson(needs.get-changed-apps.outputs.empty) }} || needs.get-changed-files.outputs.only-changed != 'true'
 
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v3
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-            - name: Setup pnpm
-              uses: pnpm/action-setup@v2
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
 
-            - name: Setup Node.js 18
-              uses: actions/setup-node@v3
-              with:
-                  node-version: 18
-                  cache: pnpm
+      - name: Setup Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: pnpm
 
-            - name: Install dependencies
-              run: pnpm install --frozen-lockfile
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
-            - name: Build ${{ matrix.package.name }}
-              env:
-                  TURBO_TOKEN: ${{ secrets.TURBOREPO_TOKEN }}
-              run: pnpm build --filter="${{ matrix.package.name }}"
+      - name: Build ${{ matrix.package.name }}
+        env:
+          TURBO_TOKEN: ${{ secrets.TURBOREPO_TOKEN }}
+        run: pnpm build --filter="${{ matrix.package.name }}"
 
-            - name: Generate project information
-              id: project-name
-              run: |
-                  echo "name=$(sed s/\@wycey.// <<<${{ matrix.package.name }})" >> $GITHUB_OUTPUT
-                  echo "dir=$(realpath --relative-to="$(pwd)" "${{ matrix.package.path }}")" >> $GITHUB_OUTPUT
+      - name: Generate project information
+        id: project-name
+        run: |
+          echo "name=$(sed s/\@wycey.// <<<${{ matrix.package.name }})" >> $GITHUB_OUTPUT
+          echo "dir=$(realpath --relative-to="$(pwd)" "${{ matrix.package.path }}")" >> $GITHUB_OUTPUT
 
-            - name: Publish to Cloudflare Pages
-              uses: cloudflare/pages-action@main
-              with:
-                  apiToken: ${{ secrets.CF_PAGES_API_TOKEN }}
-                  accountId: ${{ secrets.CF_ACCOUNT_ID }}
-                  projectName: ${{ steps.project-name.outputs.name }}
-                  directory: dist
-                  workingDirectory: ${{ steps.project-name.outputs.dir }}
-                  githubToken: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@main
+        with:
+          apiToken: ${{ secrets.CF_PAGES_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          projectName: ${{ steps.project-name.outputs.name }}
+          directory: dist
+          workingDirectory: ${{ steps.project-name.outputs.dir }}
+          githubToken: ${{ secrets.GITHUB_TOKEN }}

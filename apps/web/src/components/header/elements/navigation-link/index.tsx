@@ -5,19 +5,19 @@ import { useActiveLocation } from "@/lib/location";
 import _styles, { NavigationLinkAnchor } from "./navigation-link.css";
 
 export interface NavigationLinkProps {
-    href: string;
+  href: string;
 }
 
 const NavigationLink = component$(({ href }: NavigationLinkProps) => {
-    useStyles$(_styles);
+  useStyles$(_styles);
 
-    const isActive = useActiveLocation(href);
+  const isActive = useActiveLocation(href);
 
-    return (
-        <NavigationLinkAnchor href={href} data-active={isActive ? true : undefined}>
-            <Slot />
-        </NavigationLinkAnchor>
-    );
+  return (
+    <NavigationLinkAnchor href={href} data-active={isActive ? true : undefined}>
+      <Slot />
+    </NavigationLinkAnchor>
+  );
 });
 
 export default NavigationLink;

@@ -16,5 +16,5 @@ import Root from "./root";
 import type { RenderOptions } from "@builder.io/qwik";
 
 export default async function (opts: RenderOptions) {
-    return render(document, <Root />, opts);
+  return render(document, <Root />, opts);
 }
