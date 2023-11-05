@@ -1,15 +1,31 @@
 {
-  "name": "blog",
+  "name": "@wycey/blog",
   "type": "module",
   "version": "0.0.1",
+  "private": true,
+  "author": {
+    "name": "Mido",
+    "email": "mido@wycey.dev",
+    "url": "https://mido.wycey.dev"
+  },
+  "homepage": "https://blog.wycey.dev",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
+    "lint": "eslint --cache --cache-location node_modules/.cache/eslint/ .",
+    "lint.ci": "eslint -f @microsoft/eslint-formatter-sarif -o ../../blog.sarif --cache --cache-location node_modules/.cache/eslint/ .",
+    "lint.fix": "eslint --fix --cache --cache-location node_modules/.cache/eslint/ .",
     "astro": "astro"
   },
   "dependencies": {
     "astro": "^3.4.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.3.1",
+    "eslint-plugin-astro": "^0.29.1",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "typescript": "^5.2.2"
   }
 }
