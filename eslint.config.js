@@ -8,7 +8,7 @@ const __dirname = dirname(__filename);
 
 const ignores = ["**/node_modules/*", "dist", "apps/*/functions/**/*.js", "apps/web/server", "apps/blog/.astro"];
 
-const project = ["./apps/*/tsconfig.json", "./packages/*/tsconfig.json", "./tsconfig.eslint.json"];
+const project = [];
 
 const exists = async path => {
   try {
@@ -21,7 +21,16 @@ const exists = async path => {
 };
 
 if (await exists(resolve("./tsconfig.json"))) {
-  project.unshift(resolve("./tsconfig.json"));
+  project.push(resolve("./tsconfig.json"));
+}
+
+if (await exists(resolve("./tsconfig.eslint.json"))) {
+  project.push(resolve("./tsconfig.eslint.json"));
+}
+
+// Why I have to add that a weird trick...
+if (await exists(resolve("../../tsconfig.eslint.json"))) {
+  project.push(resolve("../../tsconfig.eslint.json"));
 }
 
 export default [

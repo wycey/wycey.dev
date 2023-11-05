@@ -1,26 +1,30 @@
 {
   "name": "@wycey/wycey-monorepo",
   "version": "0.0.0",
-  "packageManager": "pnpm@8.10.2",
   "type": "module",
   "engines": {
-    "node": ">=20",
-    "npm": "please-use-pnpm",
-    "yarn": "please-use-pnpm",
-    "pnpm": ">=8"
+    "node": "please-use-bun",
+    "npm": "please-use-bun",
+    "yarn": "please-use-bun",
+    "pnpm": "please-use-bun",
+    "bun": ">=1"
   },
   "private": true,
   "homepage": "https://wycey.dev",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
+    "preinstall": "bunx only-allow bun",
     "prepare": "run-s setup:*",
     "setup:git": "simple-git-hooks",
     "build": "dotenv -- turbo run build",
     "deploy": "turbo run deploy",
     "dev": "turbo run dev",
     "dev.debug": "turbo run dev.debug",
-    "fmt": "prettier --cache --write .",
-    "fmt.check": "prettier --cache --check .",
+    "fmt": "prettier --cache --write . --plugin=prettier-plugin-astro",
+    "fmt.check": "prettier --cache --check . --plugin=prettier-plugin-astro",
     "lint": "turbo run lint",
     "lint.ci": "turbo run lint.ci",
     "lint.fix": "turbo run lint.fix",
@@ -40,6 +44,7 @@
     "lint-staged": "^15.0.2",
     "npm-run-all": "^4.1.5",
     "prettier": "^3.0.3",
+    "prettier-plugin-astro": "^0.12.1",
     "simple-git-hooks": "^2.9.0",
     "tslib": "^2.6.2",
     "turbo": "^1.10.16",
@@ -59,6 +64,6 @@
     ]
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm exec lint-staged --concurrent false"
+    "pre-commit": "bun run lint-staged --concurrent false"
   }
 }
