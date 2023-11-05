@@ -1,5 +1,12 @@
 # Astro Starter Kit: Minimal
 
+## TODO
+
+- [ ] Setup GitHub Actions workflow
+- [ ] Setup `Link` component with [prefetch](https://docs.astro.build/ja/guides/integrations-guide/prefetch/)
+- [ ] Setup Vrite [content](https://vrite.io/blog/start-programming-blog-in-minutes-with-astro-and-vrite/)
+- [ ] Consider using Cloudflare Images
+
 ```sh
 npm create astro@latest -- --template minimal
 ```
