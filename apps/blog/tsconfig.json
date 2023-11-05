@@ -1,11 +1,18 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@pub/*": ["public/*"]
+    },
     "plugins": [
       {
         "name": "@astrojs/ts-plugin"
       }
-    ]
+    ],
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js"
   },
   "exclude": ["dist"]
 }

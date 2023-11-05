@@ -52,17 +52,6 @@
     "vite": "^4.5.0",
     "vite-tsconfig-paths": "^4.2.1"
   },
-  "lint-staged": {
-    "*": [
-      "prettier --write --cache --ignore-unknown"
-    ],
-    "apps/*/{src,types}/**/*.ts*": [
-      "eslint --cache --cache-location node_modules/.cache/eslint/ --fix"
-    ],
-    "packages/*/{src,types}/**/*.ts*": [
-      "eslint --cache --cache-location node_modules/.cache/eslint/ --fix"
-    ]
-  },
   "simple-git-hooks": {
     "pre-commit": "bun run lint-staged --concurrent false"
   }
