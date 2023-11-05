@@ -18,13 +18,13 @@ import Root from "./root";
 import type { RenderToStreamOptions } from "@builder.io/qwik/server";
 
 export default async function (opts: RenderToStreamOptions) {
-    return renderToStream(<Root />, {
-        manifest,
-        ...opts,
-        // Use container attributes to set attributes on the html tag.
-        containerAttributes: {
-            lang: "ja",
-            ...opts.containerAttributes,
-        },
-    });
+  return renderToStream(<Root />, {
+    manifest,
+    ...opts,
+    // Use container attributes to set attributes on the html tag.
+    containerAttributes: {
+      lang: "ja",
+      ...opts.containerAttributes,
+    },
+  });
 }

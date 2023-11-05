@@ -1,10 +1,10 @@
 {
-    "name": "@wycey/tsconfig",
-    "version": "0.0.1",
-    "private": true,
-    "author": {
-        "name": "Mido",
-        "email": "mido@wycey.dev",
-        "url": "https://mido.wycey.dev"
-    }
+  "name": "@wycey/tsconfig",
+  "version": "0.0.1",
+  "private": true,
+  "author": {
+    "name": "Mido",
+    "email": "mido@wycey.dev",
+    "url": "https://mido.wycey.dev"
+  }
 }
