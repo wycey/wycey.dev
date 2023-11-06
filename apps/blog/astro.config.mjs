@@ -34,10 +34,12 @@ export default defineConfig({
     solidJs(),
   ],
   vite: {
-    plugins: [solidLables({
-      filter: {
-        include: "src/components/**/*.{ts,js,tsx,jsx}"
-      },
-    })],
+    plugins: [
+      solidLables({
+        filter: {
+          include: "src/components/**/*.{ts,js,tsx,jsx}",
+        },
+      }),
+    ],
   },
 });
