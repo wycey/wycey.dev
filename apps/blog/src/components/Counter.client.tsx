@@ -6,7 +6,7 @@ const useCounter = () => {
   $(console.log("Current count:", count));
 
   return $refSignal(count);
-}
+};
 
 export const Counter = () => {
   let count = $derefSignal(useCounter());
@@ -24,5 +24,4 @@ export const Counter = () => {
       </Show>
     </>
   );
-}
-
+};

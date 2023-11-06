@@ -1,38 +1,13 @@
 ---
-import { Counter } from "@/components/Counter.tsx";
+import { Counter } from "@/components/Counter.client";
+import RootLayout from "@/layouts/RootLayout.astro";
 
 // const posts = await getContentPieces({ limit: "all" });
 ---
 
-<html lang="ja">
-  <head>
-    <!-- Google tag (gtag.js) -->
-    <script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-SWKQ6261R9"></script>
-    <script type="text/partytown">
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "G-SWKQ6261R9");
-    </script>
-
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="sitemap" href="/siemap-index.xml" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>wycey blog</title>
-  </head>
-  <body>
-    <main>
-      <section>
-        <Counter client:idle />
-        <ul>
-          <li>hoge</li>
-        </ul>
-      </section>
-    </main>
-  </body>
-</html>
+<RootLayout title="Home" url={Astro.url}>
+  <Counter client:idle />
+  <ul>
+    <li>hoge</li>
+  </ul>
+</RootLayout>
