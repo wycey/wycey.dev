@@ -1,0 +1,7 @@
+---
+type Props = JSX.IntrinsicElements["a"];
+
+const props = Astro.props;
+---
+
+<a rel="prefetch-intent" {...props}><slot /></a>
