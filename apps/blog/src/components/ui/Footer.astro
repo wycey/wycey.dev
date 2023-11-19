@@ -1,7 +1,6 @@
 ---
 import { css } from "@shadow-panda/styled-system/css";
 import { hstack, grid, gridItem } from "@shadow-panda/styled-system/patterns";
-import Link from "@/components/Link.astro";
 
 interface Props {
   class?: string;
@@ -38,13 +37,13 @@ interface Props {
       },
     })}
   >
-    <li><Link href="mailto:contact@wycey.dev">Contact</Link></li>
+    <li><a href="mailto:contact@wycey.dev">Contact</a></li>
     <li>Contact</li>
   </ul>
   <div class={grid({ gridTemplateColumns: "auto 1fr auto", gridTemplateAreas: `"left spacer right"`, w: "full" })}>
     <p class={gridItem({ gridArea: "left" })}>&copy; 2023- Wycey</p>
     <p class={gridItem({ gridArea: "right" })}>
-      Powered by <Link target="_blank" href="https://astro.build">Astro</Link>
+      Powered by <a target="_blank" href="https://astro.build">Astro</a>
     </p>
   </div>
 </footer>
