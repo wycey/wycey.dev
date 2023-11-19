@@ -5,7 +5,7 @@ import RootLayout from "@/layouts/RootLayout.astro";
 // const posts = await getContentPieces({ limit: "all" });
 ---
 
-<RootLayout title="Home" url={Astro.url}>
+<RootLayout title="Home" url={Astro.url.href}>
   <Counter client:idle />
   <ul>
     <li>hoge</li>

@@ -1,6 +1,5 @@
 import cloudflare from "@astrojs/cloudflare";
 import partytown from "@astrojs/partytown";
-import prefetch from "@astrojs/prefetch";
 import sitemap from "@astrojs/sitemap";
 import solidJs from "@astrojs/solid-js";
 import pandacss from "@pandacss/astro";
@@ -16,6 +15,9 @@ export default defineConfig({
   site: "https://blog.wycey.dev",
   output: "server",
   adapter: cloudflare(),
+  prefetch: {
+    prefetchAll: true,
+  },
   integrations: [
     pandacss(),
     vritePlugin({
@@ -27,7 +29,6 @@ export default defineConfig({
         forward: ["dataLayer.push"],
       },
     }),
-    prefetch(),
     sitemap({
       filter: page => !page.startsWith("https://blog.wycey.dev/private"),
     }),
