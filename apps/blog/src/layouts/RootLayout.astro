@@ -4,10 +4,12 @@ import Header from "@/components/ui/Header.astro";
 import Footer from "@/components/ui/Footer.astro";
 import type { MarkdownLayoutProps } from "astro";
 
-type Props = MarkdownLayoutProps<{
+type InnerProps = {
   title: string;
   description?: string;
-}>;
+};
+
+type Props = Partial<MarkdownLayoutProps<InnerProps>> & InnerProps;
 
 const { title, description, url } = Astro.props.frontmatter || Astro.props;
 ---
