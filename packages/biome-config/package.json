@@ -8,8 +8,5 @@
     "email": "mido@wycey.dev",
     "url": "https://mido.wycey.dev"
   },
-  "main": "biome.jsonc",
-  "devDependencies": {
-    "@wycey/tsconfig": "workspace:*"
-  }
+  "main": "biome.jsonc"
 }
