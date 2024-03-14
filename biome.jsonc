@@ -5,5 +5,8 @@
     "enabled": true,
     "clientKind": "git",
     "defaultBranch": "main"
+  },
+  "files": {
+    "ignore": ["**/styled-system/*"]
   }
 }
