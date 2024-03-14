@@ -1,0 +1,36 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.6.1/schema.json",
+  "organizeImports": {
+    "enabled": true
+  },
+  "formatter": {
+    "indentStyle": "space"
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "complexity": {
+        "useSimplifiedLogicExpression": "error"
+      },
+      "correctness": {
+        "noUnusedVariables": "warn",
+        "noUnusedPrivateClassMembers": "warn",
+        "noUnusedImports": "warn",
+        "useHookAtTopLevel": "error"
+      },
+      "style": {
+        "noNegationElse": "warn",
+        "noShoutyConstants": "warn",
+        "useConsistentArrayType": "error",
+        "useCollapsedElseIf": "warn",
+        "useSingleCaseStatement": "error",
+        "useFragmentSyntax": "error",
+        "useShorthandAssign": "error"
+      },
+      "nursery": {
+        "useSortedClasses": "warn"
+      }
+    }
+  }
+}

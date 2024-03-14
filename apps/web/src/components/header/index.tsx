@@ -3,7 +3,13 @@ import { component$, useStyles$ } from "@builder.io/qwik";
 import { Badge } from "@/components/badge";
 
 import NavigationLink from "./elements/navigation-link";
-import _styles, { HeaderBase, Logo, LogoImage, NavigationArea, NavigationList } from "./header.css";
+import _styles, {
+  HeaderBase,
+  Logo,
+  LogoImage,
+  NavigationArea,
+  NavigationList,
+} from "./header.css";
 
 export default component$(() => {
   useStyles$(_styles);
@@ -24,7 +30,12 @@ export default component$(() => {
         <div />
         <NavigationList>
           <li>
-            <Badge accent="indigo" href="https://mido.wycey.dev" aria-label="Go to the website by Mido" target="_blank">
+            <Badge
+              accent="indigo"
+              href="https://mido.wycey.dev"
+              aria-label="Go to the website by Mido"
+              target="_blank"
+            >
               <Badge.Icon src="/icons/mido.png" alt="Mido" />
               Mido
             </Badge>

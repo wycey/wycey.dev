@@ -3,12 +3,16 @@ import partytown from "@astrojs/partytown";
 import sitemap from "@astrojs/sitemap";
 import qwikdev from "@qwikdev/astro";
 import { vritePlugin } from "@vrite/sdk/astro";
-import { defineConfig } from "astro/config";
 import robotsTxt from "astro-robots-txt";
 import stylex from "astro-stylex";
+import { defineConfig } from "astro/config";
 import { loadEnv } from "vite";
 
-const { VRITE_ACCESS_TOKEN, VRITE_CONTENT_GROUP_ID } = loadEnv(import.meta.env.MODE, process.cwd(), "");
+const { VRITE_ACCESS_TOKEN, VRITE_CONTENT_GROUP_ID } = loadEnv(
+  import.meta.env.MODE,
+  process.cwd(),
+  "",
+);
 
 // https://astro.build/config
 export default defineConfig({
@@ -29,7 +33,7 @@ export default defineConfig({
       },
     }),
     sitemap({
-      filter: page => !page.startsWith("https://blog.wycey.dev/private"),
+      filter: (page) => !page.startsWith("https://blog.wycey.dev/private"),
     }),
     robotsTxt({
       policy: [

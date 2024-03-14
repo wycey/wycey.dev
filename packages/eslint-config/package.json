@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "@types/eslint": "^8.44.6",
-    "@wycey/tsconfig": "workspace:*"
+    "@wycey/tsconfig": "workspace:*",
+    "eslint": "^8.57.0"
   }
 }

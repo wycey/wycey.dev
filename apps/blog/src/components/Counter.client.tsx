@@ -8,7 +8,11 @@ export const Counter = component$(() => {
 
   return (
     <>
-      <button type="button" onClick$={increment} class={css({ color: count.value % 2 === 0 ? "red" : "blue" })}>
+      <button
+        type="button"
+        onClick$={increment}
+        class={css({ color: count.value % 2 === 0 ? "red" : "blue" })}
+      >
         {message}
       </button>
       <p>{count.value % 2 === 0 ? "Even" : "Odd"}</p>

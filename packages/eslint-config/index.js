@@ -126,7 +126,10 @@ const tsRules = {
     },
   ],
   "@typescript-eslint/ban-tslint-comment": "error",
-  "@typescript-eslint/consistent-indexed-object-style": ["error", "index-signature"],
+  "@typescript-eslint/consistent-indexed-object-style": [
+    "error",
+    "index-signature",
+  ],
   "@typescript-eslint/consistent-type-definitions": ["error", "interface"],
   "@typescript-eslint/consistent-type-imports": [
     "error",
@@ -311,37 +314,57 @@ const unicornPluginConfig = {
   },
 };
 
-const importPluginConfig = {
-  plugins: {
-    import: importPlugin,
-  },
-  rules: {
-    ...importPlugin.configs.recommended.rules,
+const importPluginConfig = [
+  {
+    plugins: {
+      import: importPlugin,
+    },
+    rules: {
+      ...importPlugin.configs.recommended.rules,
 
-    "import/newline-after-import": "error",
-    "import/no-nodejs-modules": ["error", { allow: builtinModules.map(mod => `node:${mod}`) }],
-    "import/no-self-import": "error",
-    "import/no-unresolved": "off",
-    "import/no-useless-path-segments": "error",
-    "import/order": [
-      "error",
-      {
-        alphabetize: {
-          order: "asc",
-        },
-        groups: ["builtin", "external", "parent", "sibling", "index", "object", "type"],
-        "newlines-between": "always",
-        pathGroups: [
-          {
-            group: "parent",
-            pattern: "@/**",
-            position: "before",
+      "import/newline-after-import": "error",
+      "import/no-nodejs-modules": [
+        "error",
+        { allow: builtinModules.map((mod) => `node:${mod}`) },
+      ],
+      "import/no-self-import": "error",
+      "import/no-unresolved": "off",
+      "import/no-useless-path-segments": "error",
+      "import/order": [
+        "error",
+        {
+          alphabetize: {
+            order: "asc",
           },
-        ],
-      },
-    ],
+          groups: [
+            "builtin",
+            "external",
+            "parent",
+            "sibling",
+            "index",
+            "object",
+            "type",
+          ],
+          "newlines-between": "always",
+          pathGroups: [
+            {
+              group: "parent",
+              pattern: "@/**",
+              position: "before",
+            },
+          ],
+        },
+      ],
+    },
   },
-};
+  {
+    settings: {
+      "import/parsers": {
+        espree: [".js", ".cjs", ".mts", ".jsx"],
+      },
+    },
+  },
+];
 
 export default [
   {
@@ -370,8 +393,11 @@ export default [
       ...jsRules,
     },
   },
-  ...compat.extends("plugin:@eslint-community/eslint-comments/recommended", "plugin:regexp/recommended"),
+  ...compat.extends(
+    "plugin:@eslint-community/eslint-comments/recommended",
+    "plugin:regexp/recommended",
+  ),
   unusedImportsPluginConfig,
   unicornPluginConfig,
-  importPluginConfig,
+  ...importPluginConfig,
 ];
