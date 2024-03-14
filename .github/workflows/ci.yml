@@ -26,7 +26,7 @@ jobs:
       empty: ${{ steps.changed-apps.outputs.empty }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Find changed workspaces
         uses: AlexShukel/get-changed-workspaces-action@v2.0.0
@@ -43,7 +43,7 @@ jobs:
       only-changed: ${{ steps.changed-files.outputs.only_changed }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Find changed files
         uses: tj-actions/changed-files@v43
@@ -68,7 +68,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup bun
         uses: oven-sh/setup-bun@v1
@@ -111,7 +111,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup bun
         uses: oven-sh/setup-bun@v1
