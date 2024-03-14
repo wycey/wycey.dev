@@ -14,6 +14,7 @@
     "start": "astro dev",
     "build": "astro check --tsconfig tsconfig.json && astro build",
     "preview": "wrangler pages dev ./dist",
+    "clean": "rimraf dist; rimraf .wrangler",
     "lint": "biome lint .",
     "lint.fix": "biome lint --apply ."
   },

@@ -18,6 +18,7 @@
     "build.types": "tsc --incremental --noEmit",
     "deploy": "wrangler pages publish ./dist",
     "dev": "vite --mode ssr",
+    "clean": "rimraf dist; rimraf server; rimraf .wrangler",
     "lint": "biome lint .",
     "lint.fix": "biome lint --apply .",
     "preview": "vite preview --open",
