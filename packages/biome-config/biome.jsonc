@@ -16,7 +16,6 @@
       "correctness": {
         "noUnusedVariables": "warn",
         "noUnusedPrivateClassMembers": "warn",
-        "noUnusedImports": "warn",
         "useHookAtTopLevel": "error"
       },
       "style": {

@@ -16,6 +16,7 @@
     "preinstall": "bunx only-allow bun",
     "prepare": "run-s setup:*",
     "setup:git": "lefthook install",
+    "setup:blog": "cd apps/blog && bun run panda codegen",
     "build": "turbo run build",
     "deploy": "turbo run deploy",
     "dev": "turbo run dev",

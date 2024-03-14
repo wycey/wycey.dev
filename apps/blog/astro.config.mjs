@@ -1,10 +1,10 @@
 import cloudflare from "@astrojs/cloudflare";
 import partytown from "@astrojs/partytown";
 import sitemap from "@astrojs/sitemap";
+import solid from "@astrojs/solid-js";
 import qwikdev from "@qwikdev/astro";
 import { vritePlugin } from "@vrite/sdk/astro";
 import robotsTxt from "astro-robots-txt";
-import stylex from "astro-stylex";
 import { defineConfig } from "astro/config";
 import { loadEnv } from "vite";
 
@@ -43,7 +43,11 @@ export default defineConfig({
         },
       ],
     }),
-    qwikdev(),
-    stylex(),
+    qwikdev({
+      include: ["**/qwik/*"],
+    }),
+    solid({
+      include: ["**/solid/*"],
+    }),
   ],
 });

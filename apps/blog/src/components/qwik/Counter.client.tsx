@@ -1,5 +1,4 @@
 import { $, component$, useComputed$, useSignal } from "@builder.io/qwik";
-import { css } from "@shadow-panda/styled-system/css";
 
 export const Counter = component$(() => {
   const count = useSignal(0);
@@ -8,11 +7,7 @@ export const Counter = component$(() => {
 
   return (
     <>
-      <button
-        type="button"
-        onClick$={increment}
-        class={css({ color: count.value % 2 === 0 ? "red" : "blue" })}
-      >
+      <button type="button" onClick$={increment}>
         {message}
       </button>
       <p>{count.value % 2 === 0 ? "Even" : "Odd"}</p>
