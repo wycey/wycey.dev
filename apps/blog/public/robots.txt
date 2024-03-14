@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://blog.wycey.dev/sitemap-index.xml
-

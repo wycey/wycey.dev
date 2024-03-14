@@ -4,15 +4,15 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@pub/*": ["public/*"]
+      "@assets/*": ["assets/*"]
     },
     "plugins": [
       {
         "name": "@astrojs/ts-plugin"
       }
     ],
-    "jsx": "preserve",
-    "jsxImportSource": "solid-js"
+    "jsx": "react-jsx",
+    "jsxImportSource": "@builder.io/qwik"
   },
   "exclude": ["dist"]
 }
