@@ -16,9 +16,14 @@ This is a bunch of repos of wycey.dev.
 
 ## Packages
 
-### [`@wycey/eslint-config`](packages/eslint-config)
+### [`@wycey/biome-config`](packages/eslint-config)
 
-Base ESLint config used by [`apps/*`](apps).
+Base Biome config used by [`apps/*`](apps).
+
+
+### [`eslint-config-wycey`](packages/eslint-config)
+
+Base ESLint config.
 
 ### [`@wycey/tsconfig`](packages/tsconfig)
 

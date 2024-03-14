@@ -14,9 +14,8 @@
     "start": "astro dev",
     "build": "astro check --tsconfig tsconfig.json && astro build",
     "preview": "wrangler pages dev ./dist",
-    "lint": "eslint --cache --cache-location node_modules/.cache/eslint/ .",
-    "lint.ci": "eslint -f @microsoft/eslint-formatter-sarif -o ../../blog.sarif --cache --cache-location node_modules/.cache/eslint/ .",
-    "lint.fix": "eslint --fix --cache --cache-location node_modules/.cache/eslint/ ."
+    "lint": "biome lint .",
+    "lint.fix": "biome lint --apply ."
   },
   "dependencies": {
     "@astrojs/partytown": "^2.0.2",
@@ -33,11 +32,8 @@
     "@astrojs/check": "^0.3.1",
     "@astrojs/cloudflare": "^8.0.0",
     "@astrojs/ts-plugin": "^1.3.1",
-    "@stylexjs/eslint-plugin": "^0.3.0",
     "astro-robots-txt": "^1.0.0",
     "astro-stylex": "^0.1.1",
-    "eslint-plugin-astro": "^0.29.1",
-    "eslint-plugin-jsx-a11y": "^6.8.0",
     "typescript": "^5.3"
   }
 }
