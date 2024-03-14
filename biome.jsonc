@@ -1,0 +1,9 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.6.1/schema.json",
+  "extends": ["@wycey/biome-config"],
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "defaultBranch": "main"
+  }
+}

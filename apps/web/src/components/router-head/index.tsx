@@ -16,15 +16,16 @@ export const RouterHead = component$(() => {
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-      {head.meta.map(m => (
+      {head.meta.map((m) => (
         <meta {...m} />
       ))}
 
-      {head.links.map(l => (
+      {head.links.map((l) => (
         <link {...l} />
       ))}
 
-      {head.styles.map(s => (
+      {head.styles.map((s) => (
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: This is a style injection
         <style {...s.props} dangerouslySetInnerHTML={s.style} />
       ))}
     </>
