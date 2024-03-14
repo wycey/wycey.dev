@@ -70,23 +70,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-
-      - name: Setup Node.js 18
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: pnpm
+      - name: Setup bun
+        uses: oven-sh/setup-bun@v1
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: bun install --frozen-lockfile
 
       - name: Lint
         env:
           TURBO_TOKEN: ${{ secrets.TURBOREPO_TOKEN }}
-        # run: pnpm lint.ci
-        run: pnpm lint
+        # run: bun run lint.ci
+        run: bun run lint
 
       # - name: Merge all SARIF files into results.sarif
       #   run: pnpx @microsoft/sarif-multitool merge *.sarif --recurse --output-directory=. --output-file=results.sarif
@@ -98,7 +92,7 @@ jobs:
       #       category: eslint
 
       - name: Check formatting
-        run: pnpm fmt.check
+        run: bun run fmt.check
 
   deploy:
     name: Deploy ${{ matrix.package.name }}
@@ -119,22 +113,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-
-      - name: Setup Node.js 18
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: pnpm
+      - name: Setup bun
+        uses: oven-sh/setup-bun@v1
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: bun install --frozen-lockfile
 
       - name: Build ${{ matrix.package.name }}
         env:
           TURBO_TOKEN: ${{ secrets.TURBOREPO_TOKEN }}
-        run: pnpm build --filter="${{ matrix.package.name }}"
+        # run: bun run build --filter="${{ matrix.package.name }}" Bun doesn't support filter
+        run: bun run build
 
       - name: Generate project information
         id: project-name
