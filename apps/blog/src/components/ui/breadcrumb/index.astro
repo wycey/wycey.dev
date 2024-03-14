@@ -1,0 +1,62 @@
+---
+import logoLight from "@assets/images/wycey-full-light.svg";
+
+import BreadcrumbDivider from "./BreadcrumbDivider.astro";
+
+interface BreadcrumbItem {
+  name: string;
+  href?: string;
+}
+
+interface Props {
+  items?: BreadcrumbItem[];
+}
+
+const { items = [] }: Props = Astro.props;
+---
+
+<>
+  {
+    items.length > 0 && (
+      <ul
+        class={hstack({
+          "& > li > a": {
+            _hover: {
+              color: "blue",
+            },
+          },
+        })}
+      >
+        <li>
+          <a
+            href="https://wycey.dev"
+            class={css({
+              _hover: {
+                bga: "white/10",
+              },
+            })}
+          >
+            <img
+              src={logoLight.src}
+              alt="Logo"
+              class={css({
+                width: "24",
+                m: "4",
+              })}
+            />
+          </a>
+        </li>
+
+        <BreadcrumbDivider />
+
+        {items.map(({ name, href }, i) => (
+          <>
+            <li>{href ? <a href={href}>{name}</a> : <p>{name}</p>}</li>
+
+            {i < items.length - 1 && <BreadcrumbDivider />}
+          </>
+        ))}
+      </ul>
+    )
+  }
+</>

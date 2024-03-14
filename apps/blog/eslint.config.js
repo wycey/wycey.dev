@@ -2,6 +2,7 @@ import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { FlatCompat } from "@eslint/eslintrc";
+import stylex from "@stylexjs/eslint-plugin";
 import unicorn from "eslint-plugin-unicorn";
 
 import baseConfig from "../../eslint.config.js";
@@ -29,9 +30,11 @@ export default [
   {
     files: ["src/pages/**/*.{j,t}s{,x}"],
     plugins: {
+      stylex,
       unicorn,
     },
     rules: {
+      "stylex/valid-styles": "error",
       "unicorn/filename-case": [
         "error",
         {
@@ -41,7 +44,7 @@ export default [
     },
   },
   {
-    files: ["src/components/**/*.{j,t}s{,x}", "src/layouts/**/*.astro"],
+    files: ["src/components/**/*.{j,t}s{,x}", "src/components/**/*.astro", "src/layouts/**/*.astro"],
     plugins: {
       unicorn,
     },

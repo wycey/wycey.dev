@@ -1,12 +1,16 @@
 ---
-import { Counter } from "@/components/Counter.client";
+export const prerender = false;
+
+//import { Counter } from "@/components/Counter.client";
+//import Breadcrumb from "@/components/ui/breadcrumb/index.astro";
 import RootLayout from "@/layouts/RootLayout.astro";
 
 // const posts = await getContentPieces({ limit: "all" });
 ---
 
 <RootLayout title="Home" url={Astro.url.href}>
-  <Counter client:idle />
+  <!-- <Breadcrumb items={[{ name: "B" }]} /> -->
+  <!-- <Counter /> -->
   <ul>
     <li>hoge</li>
   </ul>

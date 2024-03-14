@@ -1,0 +1,28 @@
+---
+import { When } from "@astropub/flow";
+
+import { isProd } from "@/utils/env";
+
+type Props = {
+  tag: string;
+};
+
+const { tag } = Astro.props;
+const gtagUrl = `https://www.googletagmanager.com/gtag/js?id=${tag}`;
+---
+
+<When test={isProd}>
+  <script type="text/partytown" src={gtagUrl}></script>
+  <script id="ga-init" type="text/partytown" data-ga-tag={tag}>
+    const tag = document.getElementById("ga-init").getAttribute("data-ga-tag");
+
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag("js", new Date());
+    gtag("config", tag);
+  </script>
+</When>

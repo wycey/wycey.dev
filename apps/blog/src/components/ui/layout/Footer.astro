@@ -1,6 +1,7 @@
 ---
-import { css } from "@shadow-panda/styled-system/css";
-import { hstack, grid, gridItem } from "@shadow-panda/styled-system/patterns";
+import { For } from "@astropub/flow";
+
+import { footerLinks } from "@/resources/footer/links";
 
 interface Props {
   class?: string;
@@ -37,13 +38,18 @@ interface Props {
       },
     })}
   >
-    <li><a href="mailto:contact@wycey.dev">Contact</a></li>
-    <li>Contact</li>
+    <For of={footerLinks}>
+      {
+        ({ name, href }) => (
+          <li>
+            <a {href}>{name}</a>
+          </li>
+        )
+      }
+    </For>
   </ul>
   <div class={grid({ gridTemplateColumns: "auto 1fr auto", gridTemplateAreas: `"left spacer right"`, w: "full" })}>
     <p class={gridItem({ gridArea: "left" })}>&copy; 2023- Wycey</p>
-    <p class={gridItem({ gridArea: "right" })}>
-      Powered by <a target="_blank" href="https://astro.build">Astro</a>
-    </p>
+    <p class={gridItem({ gridArea: "right" })}>Powered by <a target="_blank" href="https://astro.build">Astro</a></p>
   </div>
 </footer>
