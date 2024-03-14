@@ -1,7 +1,8 @@
 ---
-import { css } from "@shadow-panda/styled-system/css";
-import Header from "@/components/ui/Header.astro";
-import Footer from "@/components/ui/Footer.astro";
+import GoogleAnalytics from "@/components/GoogleAnalytics.astro";
+//import Footer from "@/components/ui/layout/Footer.astro";
+import Header from "@/components/ui/layout/Header.astro";
+
 import type { MarkdownLayoutProps } from "astro";
 
 type InnerProps = {
@@ -14,29 +15,19 @@ type Props = Partial<MarkdownLayoutProps<InnerProps>> & InnerProps;
 const { title, description, url } = Astro.props.frontmatter || Astro.props;
 ---
 
-<html lang="ja" class={css({ h: "full" })}>
+<html lang="ja" class="">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-SWKQ6261R9"></script>
-    <script type="text/partytown">
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "G-SWKQ6261R9");
-    </script>
+    <GoogleAnalytics tag="G-SWKQ6261R9" />
 
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="canonical" href={new URL(url, Astro.site).pathname} />
+    <link rel="canonical" href={new URL(url ?? "/", Astro.site).pathname} />
     <link rel="sitemap" href="/siemap-index.xml" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>wycey blog{title !== "Home" ? ` - ${title}` : ""}</title>
+    <title>Wycey blog{title === "Home" ? "" : ` - ${title}`}</title>
   </head>
-  <body class={css({ h: "full" })}>
+  <body class="">
     <Header />
     <main>
       <h1>{title}</h1>
@@ -45,6 +36,6 @@ const { title, description, url } = Astro.props.frontmatter || Astro.props;
         <slot />
       </section>
     </main>
-    <Footer />
+    <!-- <Footer /> -->
   </body>
 </html>

@@ -1,25 +1,24 @@
 import cloudflare from "@astrojs/cloudflare";
 import partytown from "@astrojs/partytown";
 import sitemap from "@astrojs/sitemap";
-import solidJs from "@astrojs/solid-js";
-import pandacss from "@pandacss/astro";
+import qwikdev from "@qwikdev/astro";
 import { vritePlugin } from "@vrite/sdk/astro";
 import { defineConfig } from "astro/config";
+import robotsTxt from "astro-robots-txt";
+import stylex from "astro-stylex";
 import { loadEnv } from "vite";
-import solidLables from "vite-plugin-solid-labels";
 
 const { VRITE_ACCESS_TOKEN, VRITE_CONTENT_GROUP_ID } = loadEnv(import.meta.env.MODE, process.cwd(), "");
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://blog.wycey.dev",
-  output: "server",
+  output: "hybrid",
   adapter: cloudflare(),
   prefetch: {
     prefetchAll: true,
   },
   integrations: [
-    pandacss(),
     vritePlugin({
       accessToken: VRITE_ACCESS_TOKEN,
       contentGroupId: VRITE_CONTENT_GROUP_ID,
@@ -32,15 +31,15 @@ export default defineConfig({
     sitemap({
       filter: page => !page.startsWith("https://blog.wycey.dev/private"),
     }),
-    solidJs(),
-  ],
-  vite: {
-    plugins: [
-      solidLables({
-        filter: {
-          include: "src/components/**/*.{ts,js,tsx,jsx}",
+    robotsTxt({
+      policy: [
+        {
+          userAgent: "*",
+          disallow: "/",
         },
-      }),
-    ],
-  },
+      ],
+    }),
+    qwikdev(),
+    stylex(),
+  ],
 });
