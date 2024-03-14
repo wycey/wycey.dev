@@ -4,7 +4,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@assets/*": ["assets/*"]
+      "@assets/*": ["assets/*"],
+      "@style/*": ["styled-system/*"]
     },
     "plugins": [
       {
@@ -14,5 +15,6 @@
     "jsx": "react-jsx",
     "jsxImportSource": "@builder.io/qwik"
   },
+  "include": ["src", "styled-system"],
   "exclude": ["dist"]
 }
