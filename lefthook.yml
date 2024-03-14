@@ -1,0 +1,8 @@
+pre-commit:
+  commands:
+    check:
+      run: bun biome check --apply --no-errors-on-unmatched --files-ignore-unknown=true {staged_files} && git update-index --again
+    check_eslint:
+      root: 'packages/eslint-config'
+      glob: "*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}"
+      run: eslint --cache --cache-location node_modules/.cache/eslint/ --fix {staged_files} && git update-index --again
