@@ -1,3 +1,0 @@
-{
-  "**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}": "eslint --cache --cache-location node_modules/.cache/eslint/ --fix"
-}
