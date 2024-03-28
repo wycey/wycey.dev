@@ -1,0 +1,33 @@
+---
+export const prerender = false;
+
+import ArticleLayout from "@/layouts/ArticleLayout.astro";
+
+import { ArticleRefresher } from "@/components/solid/ArticleRefresher.client";
+
+import {
+  ServerSideClientService
+} from "@/resources/services/server-side-client";
+
+const contentId = Astro.url.searchParams.get("id");
+const draftKey = Astro.url.searchParams.get("dk");
+
+if (!contentId) {
+  return {
+    status: 400,
+    title: "Invalid request",
+  };
+}
+
+if (!draftKey) {
+  return {
+    status: 403,
+    title: "Forbidden",
+    message: "Draft key is required",
+  };
+}
+
+const article = await new ServerSideClientService(Astro.locals.runtime).getPreview(contentId, draftKey);
+---
+<ArticleLayout article={article} />
+<ArticleRefresher id={contentId} key={draftKey} client:only="solid-js" />

@@ -1,4 +1,55 @@
 ---
----
+import { ChevronRight } from "lucide-astro";
 
-<header>a</header>
+import WyceyLogo from "../../assets/WyceyLogo.astro";
+
+import { css } from "@style/css";
+import { flex } from "@style/patterns";
+---
+<header class={flex({
+  px: "4",
+  h: "16",
+  alignItems: "center",
+})}>
+  <div class={flex({
+    pos: "relative",
+    px: "1",
+    alignItems: "center",
+    cursor: "default",
+    userSelect: "none",
+
+    _before: {
+      display: "block",
+      pos: "absolute",
+      inset: "0",
+      zIndex: "-1",
+      bg: "primary.solidBg/40",
+      content: "''",
+
+      transform: "scaleX(0)",
+      transformOrigin: "bottom right",
+
+      transition: "transform .3s ease"
+    },
+
+    _hover: {
+      _before: {
+        transform: "scaleX(0.9999)", // 1 makes layout weird
+        transformOrigin: "bottom left",
+      }
+    },
+  })}>
+    <a href="https://wycey.dev">
+      <WyceyLogo />
+    </a>
+  </div>
+  <ChevronRight class={css({
+    mx: "1",
+    color: "border.disabled",
+  })} />
+  <a class={css({
+    color: "text.muted",
+  })} href="https://blog.wycey.dev">
+    Blog
+  </a>
+</header>

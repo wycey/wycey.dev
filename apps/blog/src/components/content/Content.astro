@@ -1,0 +1,69 @@
+---
+import "katex/dist/katex.css";
+
+import { Markup } from "astro-remote";
+
+import RemoteImage from "./RemoteImage.astro";
+import CodeBlock from "./CodeBlock.astro";
+import CodeSpan from "./CodeSpan.astro";
+
+type Props = {
+  content: string;
+};
+
+const { content } = Astro.props;
+---
+<Markup {content} components={{
+  img: RemoteImage,
+  pre: CodeBlock,
+  code: CodeSpan,
+}} />
+<style is:global>
+  #article-body {
+    h2 {
+      position: sticky;
+      top: 0;
+
+      background: var(--colors-bg);
+
+      z-index: 10;
+
+      margin-top: 1.75rem;
+      margin-bottom: 1rem;
+      margin-inline: -4px;
+      padding-inline: 4px;
+      font-size: 1.75rem;
+      font-weight: 600;
+
+      border-bottom-width: 1px;
+    }
+
+    h3 {
+      margin-top: 1.5rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    h4 {
+      margin-top: 1.25rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    h5 {
+      margin-top: 1rem;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+  }
+
+  /* Astro Code */
+  html.dark .astro-code,
+  html.dark .astro-code span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+    font-style: var(--shiki-dark-font-style) !important;
+    font-weight: var(--shiki-dark-font-weight) !important;
+    text-decoration: var(--shiki-dark-text-decoration) !important;
+  }
+</style>

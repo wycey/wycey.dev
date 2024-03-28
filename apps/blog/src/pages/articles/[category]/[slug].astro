@@ -1,0 +1,24 @@
+---
+export const prerender = false;
+
+import ArticleLayout from "@/layouts/ArticleLayout.astro";
+
+import {
+  ServerSideClientService
+} from "@/resources/services/server-side-client";
+
+//export { getStaticPaths } from "@/resources/content";
+
+const { category, slug } = Astro.params;
+
+const article = await new ServerSideClientService(Astro.locals.runtime).get(slug);
+
+if (!article || article.category.id !== category) {
+  return new Response(null, {
+    status: 404,
+    statusText: "Article not found",
+  });
+}
+
+---
+<ArticleLayout article={article} />
