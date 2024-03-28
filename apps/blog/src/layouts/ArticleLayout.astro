@@ -1,0 +1,102 @@
+---
+import { When } from "@astropub/flow";
+import { Seo } from "astro-seo-meta";
+import { Schema } from "astro-seo-schema";
+
+import { CirclePlus, Clock } from "lucide-astro";
+
+import RootLayout from "./RootLayout.astro";
+import Content from "@/components/content/Content.astro";
+import RemoteImage from "@/components/content/RemoteImage.astro";
+
+import { TOC } from "@/components/qwik/TOC.client";
+import { SidebarSectionHeader } from "../components/qwik/SidebarSectionHeader";
+
+import { css } from "@style/css";
+import { flex } from "@style/patterns";
+
+import type { ParsedArticle } from "@/lib/client";
+
+type Props = {
+  article: ParsedArticle;
+}
+
+const { article: {
+  title,
+  cover,
+  content,
+  headings,
+  ...article
+} }: Props = Astro.props;
+
+const createdAtYMD = article.createdAt.split("T")[0];
+const updatedAtYMD = article.updatedAt.split("T")[0];
+---
+<RootLayout {title} url={Astro.url.href}>
+  <Fragment slot="head">
+    <Seo
+      facebook={{
+        ...(cover ? { image: cover.url } : {}),
+        type: "article",
+      }}
+      twitter={{
+        ...(cover ? { image: cover.url } : {}),
+        card: "summary",
+      }}
+    />
+    <!--<Schema
+      item={{
+
+      }}
+    />-->
+
+    <slot name="head" />
+  </Fragment>
+  <Fragment slot="sidebar">
+    <TOC class={css({
+      display: { base: "none", md: "block" },
+    })} {headings} />
+    <section>
+      <SidebarSectionHeader>この記事を書いた人</SidebarSectionHeader>
+      <section class={flex()}>
+        <When test={article.author.avatar}>
+          <RemoteImage class={css({
+            m: "2",
+          })} src={article.author.avatar.url} alt={`${article.author.name}'s avatar`} width={60} />
+        </When>
+        <div class={css({ mt: "1" })}>
+          <h3>{article.author.name}</h3>
+          <When test={article.author.bio}>
+            <p>{article.author.bio}</p>
+          </When>
+        </div>
+      </section>
+    </section>
+  </Fragment>
+  <section slot="title-append" class={flex({
+    w: "full",
+    color: "text.muted/50",
+    gap: "2",
+  })}>
+    <p data-refresh-key="createdAt" class={flex()}>
+      <CirclePlus stroke-width="1.5" size={20} class={css({ mr: "1" })} />
+      {createdAtYMD}
+    </p>
+    <p data-refresh-key="createdAt" class={flex()}>
+      <Clock stroke-width="1.5" size={20} class={css({ mr: "1" })} />
+      {updatedAtYMD}
+    </p>
+  </section>
+  <article class={css({
+    m: "0 auto",
+    p: "2",
+    maxW: "800px",
+  })}>
+    <When test={cover}>
+      <RemoteImage src={cover.url} alt={title} width={cover.width} height={cover.height} />
+    </When>
+    <section data-refresh-key="content" id="article-body">
+      <Content {content} />
+    </section>
+  </article>
+</RootLayout>

@@ -8,20 +8,20 @@ interface Props {
   class?: string;
 }
 ---
-
 <footer
   class:list={[
     grid({
       placeItems: "center",
-      position: "sticky",
-      top: "100dvh",
-      borderTop: "base",
+      pos: "sticky",
+      top: "[100dvh]",
+      borderTopWidth: "1px",
       px: "6",
       py: "8",
+      color: "text.muted",
 
       _hover: {
         "& ul": {
-          color: "foreground",
+          color: "text",
         },
       },
     }),
@@ -31,7 +31,9 @@ interface Props {
   <ul
     class={hstack({
       color: "border",
-      gap: "0",
+      gap: "1",
+      transition: "color .2s",
+      cursor: "default",
       "& li:not(:last-child)": {
         _after: {
           content: "'·'",
@@ -49,7 +51,7 @@ interface Props {
       }
     </For>
   </ul>
-  <div class={grid({ gridTemplateColumns: "auto 1fr auto", gridTemplateAreas: `"left spacer right"`, w: "full" })}>
+  <div class={grid({ color: "text.muted/75", gridTemplateColumns: "[auto 1fr auto]", gridTemplateAreas: `"left spacer right"`, w: "full" })}>
     <p class={gridItem({ gridArea: "left" })}>&copy; 2023- Wycey</p>
     <p class={gridItem({ gridArea: "right" })}>Powered by <a target="_blank" href="https://astro.build">Astro</a></p>
   </div>

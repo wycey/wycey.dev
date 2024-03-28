@@ -1,0 +1,36 @@
+---
+import { Image } from "astro:assets";
+
+import wyceyLight from "@/assets/images/wycey-full-light.svg";
+import wyceyDark from "@/assets/images/wycey-full-dark.svg";
+
+import { css } from "@style/css";
+
+type Props = {
+  height?: number;
+};
+
+const { height = 30 } = Astro.props;
+---
+<div class={css({
+  pos: "relative",
+  aspectRatio: "15 / 4",
+})} style={{
+  height: `${height}px`,
+}}>
+  <Image class={css({
+    pos: "absolute",
+
+    _dark: {
+      display: "none",
+    }
+  })} src={wyceyLight} alt="Wycey Logo" {height} />
+  <Image class={css({
+    pos: "absolute",
+    display: "none",
+
+    _dark: {
+      display: "block",
+    }
+  })} src={wyceyDark} alt="Wycey Logo" {height} />
+</div>

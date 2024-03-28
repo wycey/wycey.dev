@@ -1,0 +1,13 @@
+---
+import { Picture } from "astro:assets";
+
+type Props = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+};
+
+const props = Astro.props;
+---
+<Picture {...props} formats={["avif", "webp"]} inferSize />

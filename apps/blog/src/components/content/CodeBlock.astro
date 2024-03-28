@@ -1,0 +1,36 @@
+---
+import { Code } from "astro:components";
+import { When } from "@astropub/flow";
+import { decode } from "html-entities";
+
+import { MermaidLoader } from "../qwik/MermaidLoader.client";
+
+import type { ComponentProps } from "astro/types";
+import type { Except, Merge } from "type-fest";
+
+type Props = Merge<Except<ComponentProps<typeof Code>, "code">, {
+  "data-code"?: "true";
+  "data-has-title"?: "true";
+}>;
+
+const { lang, "data-code": isCode, ...props } = Astro.props;
+
+const content = Astro.slots.has("default")
+  ? decode(await Astro.slots.render("default"))
+  : "";
+---
+<When test={isCode === "true"}>
+  {lang === "mermaid"
+    ? <MermaidLoader {content} />
+    : <Code code={content} {lang} wrap themes={{
+      light: "catppuccin-latte",
+      dark: "catppuccin-mocha",
+    }} tabindex="-1" {...props as astroHTML.JSX.IntrinsicAttributes} />
+  }
+
+  <Fragment slot="else">
+    <pre {...props}>
+      <Fragment set:html={content} />
+    </pre>
+  </Fragment>
+</When>

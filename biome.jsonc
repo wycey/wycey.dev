@@ -7,6 +7,9 @@
     "defaultBranch": "main"
   },
   "files": {
-    "ignore": ["**/styled-system/*"]
+    "ignore": [
+      "**/styled-system/*",
+      "**/*.astro" // TODO: Remove this when Astro is supported
+    ]
   }
 }

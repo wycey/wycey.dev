@@ -1,18 +1,35 @@
 ---
 export const prerender = false;
 
+
 import RootLayout from "../layouts/RootLayout.astro";
+import { For } from "@astropub/flow";
+import { getArticleList } from "../resources/content";
 
-//import { Counter } from "@/components/Counter.client";
-//import Breadcrumb from "@/components/ui/breadcrumb/index.astro";
-
-// const posts = await getContentPieces({ limit: "all" });
+const articles = await getArticleList();
 ---
-
 <RootLayout title="Home" url={Astro.url.href}>
-  <!-- <Breadcrumb items={[{ name: "B" }]} /> -->
-  <!-- <Counter /> -->
-  <ul>
-    <li>hoge</li>
-  </ul>
+  <Fragment slot="head">
+    <meta property="og:type" content="website" />
+  </Fragment>
+
+  <section>
+    <h2>Wycey blog</h2>
+    <p>Wycey blog is a blog about web development, programming, and other things.</p>
+
+    <section>
+      <h3>Recent posts</h3>
+      <ul>
+        <For of={articles}>
+          {(article) => (
+            <li>
+              <article>
+                <a href={`articles/${article.category.id}/${article.id}`}>{article.title}</a>
+              </article>
+            </li>
+          )}
+        </For>
+      </ul>
+    </section>
+  </section>
 </RootLayout>

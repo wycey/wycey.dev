@@ -1,0 +1,28 @@
+---
+import { css } from "@style/css";
+
+import SideHeaderArea from "./SideHeaderArea.astro";
+
+import { SidebarNavigator } from "../../qwik/SidebarNavigator.client";
+---
+<section class={css({
+  w: "72",
+})}>
+  <SideHeaderArea>
+    <SidebarNavigator />
+  </SideHeaderArea>
+  <aside class={css({
+    w: "full",
+    pos: "sticky",
+    top: "0",
+    overflowX: "hidden",
+    overflowY: "auto",
+    pb: "16", // Same as header height
+
+    md: {
+      h: "dvh",
+    },
+  })}>
+    <slot />
+  </aside>
+</section>
