@@ -10,7 +10,6 @@ type Props = {
 const { tag } = Astro.props;
 const gtagUrl = `https://www.googletagmanager.com/gtag/js?id=${tag}`;
 ---
-
 <When test={isProd}>
   <script is:inline type="text/partytown" src={gtagUrl}></script>
   <script is:inline id="ga-init" type="text/partytown" data-ga-tag={tag}>

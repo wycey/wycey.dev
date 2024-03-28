@@ -26,9 +26,6 @@
         "useSingleCaseStatement": "error",
         "useFragmentSyntax": "error",
         "useShorthandAssign": "error"
-      },
-      "nursery": {
-        "useSortedClasses": "warn"
       }
     }
   }

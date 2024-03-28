@@ -13,7 +13,8 @@
       }
     ],
     "jsx": "react-jsx",
-    "jsxImportSource": "@builder.io/qwik"
+    "jsxImportSource": "@builder.io/qwik",
+    "importHelpers": true
   },
   "include": ["src", "styled-system"],
   "exclude": ["dist"]

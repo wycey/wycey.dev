@@ -1,0 +1,11 @@
+# Top-level configuration
+name = "wycey-blog"
+main = "dist/_worker.js"
+compatibility_date = "2024-03-24"
+
+workers_dev = false
+route = { pattern = "blog.wycey.dev/*", zone_name = "wycey.dev" }
+
+kv_namespaces = [
+  { binding = "CACHE_KV", id = "21fcaa663c04486db2f4ab54781b3db7" }
+]

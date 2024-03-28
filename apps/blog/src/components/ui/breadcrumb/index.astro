@@ -1,5 +1,5 @@
 ---
-import logoLight from "@assets/images/wycey-full-light.svg";
+import logoLight from "../../../assets/images/wycey-full-light.svg";
 import { css } from "@style/css";
 import { hstack } from "@style/patterns";
 
@@ -16,7 +16,6 @@ interface Props {
 
 const { items = [] }: Props = Astro.props;
 ---
-
 <>
   {
     items.length > 0 && (
@@ -24,7 +23,7 @@ const { items = [] }: Props = Astro.props;
         class={hstack({
           "& > li > a": {
             _hover: {
-              color: "blue",
+              color: "primary.text",
             },
           },
         })}

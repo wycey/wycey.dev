@@ -1,0 +1,34 @@
+---
+import { For, When } from "@astropub/flow";
+
+type Props = {
+  publishedTime?: string;
+  modifiedTime?: string;
+  sections?: string[];
+  tags?: string[];
+  authors?: string[];
+};
+
+const { publishedTime, modifiedTime, sections = [], tags = [], authors = [] } = Astro.props;
+---
+<When test={!!publishedTime}>
+  <meta property="article:published_time" content={publishedTime} />
+</When>
+<When test={!!modifiedTime}>
+  <meta property="article:modified_time" content={modifiedTime} />
+</When>
+<For of={sections}>
+  {(section) => (
+    <meta property="article:section" content={section} />
+  )}
+</For>
+<For of={tags}>
+  {(tag) => (
+    <meta property="article:tag" content={tag} />
+  )}
+</For>
+<For of={authors}>
+  {(author) => (
+    <meta property="article:author" content={author} />
+  )}
+</For>
