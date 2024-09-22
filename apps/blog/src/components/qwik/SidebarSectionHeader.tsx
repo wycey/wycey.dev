@@ -1,7 +1,7 @@
-import { Slot } from "@builder.io/qwik";
+import { Slot, component$ } from "@builder.io/qwik";
 
-export const SidebarSectionHeader = () => (
+export const SidebarSectionHeader = component$(() => (
   <h2 data-section={true}>
     <Slot />
   </h2>
-);
+));

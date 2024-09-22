@@ -1,13 +1,21 @@
-import { client } from "@/lib/client.ts";
+import { type ParsedArticle, client } from "@/lib/client.ts";
 import { rehypeExtractHeadings } from "@/lib/rehype/extract-headings.ts";
 import { trimSurrounding } from "@/utils/strings.ts";
 import rehypeSectionize from "@hbsnow/rehype-sectionize";
 import type { MarkdownHeading } from "astro";
+import type { MicroCMSImage } from "microcms-js-sdk";
 import { rehype } from "rehype";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeKatex from "rehype-katex";
 import rehypeRewrite from "rehype-rewrite";
 import rehypeSlug from "rehype-slug";
+import type {
+  Article,
+  BlogPosting,
+  BreadcrumbList,
+  ImageObject,
+  WithContext,
+} from "schema-dts";
 
 export const getStaticPaths = async () => {
   const data = await client.getList({
@@ -56,6 +64,87 @@ export const getPreviewArticle = async (id: string, key: string) =>
     contentId: id,
     queries: { draftKey: key },
   });
+
+export const createAuthorUrl = (handle: string) => `/@${handle}`;
+
+const microCMSImageToImageObject = (image: MicroCMSImage): ImageObject => ({
+  "@type": "ImageObject",
+  url: image.url,
+  width: `${image.width}`,
+  height: `${image.height}`,
+});
+
+export const createArticleSchema = (
+  article: ParsedArticle,
+): [WithContext<BlogPosting>, WithContext<BreadcrumbList>] => {
+  return [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: article.title,
+      datePublished: article.createdAt,
+      dateModified: article.updatedAt,
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": `https://blog.wycey.dev/${article.category.id}/${article.id}`,
+      },
+      url: `https://blog.wycey.dev/${article.category.id}/${article.id}`,
+      ...(article.cover
+        ? {
+            image: microCMSImageToImageObject(article.cover),
+          }
+        : {}),
+      author: [
+        {
+          "@type": "Person",
+          name: article.author.name,
+          description: article.author.bio,
+          url: `https://blog.wycey.dev/${createAuthorUrl(
+            article.author.handle,
+          )}`,
+          ...(article.author.avatar
+            ? {
+                image: microCMSImageToImageObject(article.author.avatar),
+              }
+            : {}),
+        },
+      ],
+      publisher: {
+        "@type": "Organization",
+        name: "Wycey",
+        url: "https://wycey.dev",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://blog.wycey.dev/logo.svg",
+        },
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://blog.wycey.dev/",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: article.category.name,
+          item: `https://blog.wycey.dev/${article.category.id}`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: article.title,
+          item: `https://blog.wycey.dev/${article.category.id}/${article.id}`,
+        },
+      ],
+    },
+  ] as const;
+};
 
 const editors = {
   applyTabindexToHeadings: (node: import("hast").Element) => {

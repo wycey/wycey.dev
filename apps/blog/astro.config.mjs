@@ -1,3 +1,4 @@
+import { esbuildDecorators } from "@anatine/esbuild-decorators";
 import cloudflare from "@astrojs/cloudflare";
 import partytown from "@astrojs/partytown";
 import sitemap from "@astrojs/sitemap";
