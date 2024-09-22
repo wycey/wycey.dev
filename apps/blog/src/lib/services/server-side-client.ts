@@ -1,10 +1,12 @@
 import type { ParsedArticle } from "@/lib/client.ts";
+import { CfRuntimeService } from "@/lib/services/cf-runtime.ts";
 import {
   getArticleWithoutCache,
   getPreviewArticle,
   processHtml,
 } from "@/resources/content.ts";
 import { Cat, Option, Promise as PromiseT, Tuple } from "@mikuroxina/mini-fn";
+import type { AstroGlobal } from "astro";
 
 type CacheObject = {
   response: ParsedArticle;
@@ -12,7 +14,7 @@ type CacheObject = {
 };
 
 export class ServerSideClientService {
-  constructor(private rt: Runtime["runtime"]) {}
+  constructor(private rt: CfRuntimeService) {}
 
   private createCacheKey(slug: string) {
     return `article-${slug}`;
@@ -21,7 +23,7 @@ export class ServerSideClientService {
   private async tryGetCache(
     key: string,
   ): Promise<Tuple.Tuple<boolean, Option.Option<ParsedArticle>>> {
-    const obj = await this.rt.env.CACHE_KV.get<CacheObject>(key, "json");
+    const obj = await this.rt.cacheKv.get<CacheObject>(key, "json");
 
     if (obj === null) return [true, Option.none()];
 
@@ -32,7 +34,7 @@ export class ServerSideClientService {
     // Cache for 7 days
     const cacheTtl = new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 7);
 
-    await this.rt.env.CACHE_KV.put(
+    await this.rt.cacheKv.put(
       key,
       JSON.stringify({
         response,
@@ -118,3 +120,6 @@ export class ServerSideClientService {
     };
   }
 }
+
+export const createServerClient = (astro: AstroGlobal) =>
+  new ServerSideClientService(new CfRuntimeService(astro.locals.runtime));

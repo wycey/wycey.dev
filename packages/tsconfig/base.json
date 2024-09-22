@@ -3,7 +3,7 @@
   "compilerOptions": {
     "allowJs": true,
     "strict": true,
-    "moduleResolution": "Node",
+    "moduleResolution": "Bundler",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,

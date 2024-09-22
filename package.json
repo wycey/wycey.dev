@@ -1,7 +1,6 @@
 {
   "name": "@wycey/wycey-monorepo",
-  "version": "0.0.0",
-  "type": "module",
+  "private": true,
   "engines": {
     "node": "please-use-bun",
     "npm": "please-use-bun",
@@ -9,14 +8,17 @@
     "pnpm": "please-use-bun",
     "bun": ">=1"
   },
-  "private": true,
   "homepage": "https://wycey.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wycey/wycey.dev.git"
+  },
   "workspaces": ["apps/*", "packages/*"],
   "scripts": {
     "preinstall": "bunx only-allow bun",
     "prepare": "run-s setup:*",
     "setup:git": "lefthook install",
-    "setup:blog": "cd apps/blog && bun run panda codegen",
+    "setup:blog": "cd apps/blog && bun run prepare",
     "build": "turbo run build",
     "deploy": "turbo run deploy",
     "dev": "turbo run dev",
@@ -32,16 +34,23 @@
     "turbo": "turbo"
   },
   "dependencies": {
-    "@biomejs/biome": "^1.6.1",
-    "@cloudflare/workers-types": "^4.20231025.0",
-    "@types/node": "^20.8.10",
-    "lefthook": "^1.6.5",
-    "npm-run-all": "^4.1.5",
-    "rimraf": "^5.0.5",
-    "tslib": "^2.6.2",
-    "turbo": "^1.10.16",
-    "typescript": "^5.2.2",
-    "vite-tsconfig-paths": "^4.2.1"
+    "@biomejs/biome": "^1.9.2",
+    "@cloudflare/workers-types": "4.20240919.0",
+    "@types/node": "^22.5.5",
+    "lefthook": "^1.7.15",
+    "npm-run-all2": "^6.2.3",
+    "rimraf": "^6.0.1",
+    "tslib": "^2.7.0",
+    "turbo": "^2.1.2",
+    "typescript": "^5.6.2",
+    "vite-tsconfig-paths": "^5.0.1"
   },
-  "trustedDependencies": ["@biomejs/biome"]
+  "trustedDependencies": [
+    "@biomejs/biome",
+    "@swc/core",
+    "esbuild",
+    "lefthook",
+    "sharp",
+    "workerd"
+  ]
 }
