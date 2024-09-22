@@ -2,6 +2,7 @@
   "extends": "@wycey/tsconfig/jsx.json",
   "compilerOptions": {
     "jsxImportSource": "@builder.io/qwik",
+    "resolveJsonModule": true,
     "paths": {
       "@/*": ["./src/*"],
       "@ui/*": ["./node_modules/@wycey/ui-qwik/src/*"]

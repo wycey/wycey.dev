@@ -20,9 +20,8 @@
     "dev": "vite --mode ssr",
     "clean": "rimraf dist; rimraf server; rimraf .wrangler",
     "lint": "biome lint .",
-    "lint.fix": "biome lint --apply .",
-    "preview": "vite preview --open",
-    "preview.build": "qwik build preview",
+    "lint.fix": "biome lint --write .",
+    "preview": "qwik build preview && vite preview --open",
     "serve": "wrangler pages dev ./dist",
     "qwik": "qwik"
   },
@@ -30,13 +29,13 @@
     "@radix-ui/colors": "^3.0.0"
   },
   "devDependencies": {
-    "@builder.io/qwik": "^1.2.17",
-    "@builder.io/qwik-city": "^1.2.17",
-    "@vanilla-extract/css": "^1.13.0",
+    "@builder.io/qwik": "^1.9.0",
+    "@builder.io/qwik-city": "^1.9.0",
+    "@vanilla-extract/css": "^1.15.5",
     "@wycey/tsconfig": "workspace:*",
-    "node-fetch": "^3.3.2",
-    "sass": "^1.69.5",
-    "styled-vanilla-extract": "^0.5.12",
-    "wrangler": "^3.0.0"
+    "sass": "^1.79.3",
+    "styled-vanilla-extract": "^1.0.0",
+    "undici": "^6.19.8",
+    "wrangler": "^3.78.7"
   }
 }

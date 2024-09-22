@@ -5,9 +5,7 @@ import ArticleLayout from "@/layouts/ArticleLayout.astro";
 
 import { ArticleRefresher } from "@/components/solid/ArticleRefresher.client";
 
-import {
-  ServerSideClientService
-} from "@/resources/services/server-side-client";
+import { createServerClient } from "@/lib/services/server-side-client";
 
 const contentId = Astro.url.searchParams.get("id");
 const draftKey = Astro.url.searchParams.get("dk");
@@ -27,7 +25,8 @@ if (!draftKey) {
   };
 }
 
-const article = await new ServerSideClientService(Astro.locals.runtime).getPreview(contentId, draftKey);
+const client = createServerClient(Astro);
+const article = await client.getPreview(contentId, draftKey);
 ---
 <ArticleLayout article={article} />
 <ArticleRefresher id={contentId} key={draftKey} client:only="solid-js" />

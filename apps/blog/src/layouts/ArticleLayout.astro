@@ -44,11 +44,11 @@ const updatedAtYMD = article.updatedAt.split("T")[0];
         card: "summary",
       }}
     />
-    <!--<Schema
+    <Schema
       item={{
 
       }}
-    />-->
+    />
 
     <slot name="head" />
   </Fragment>
@@ -59,11 +59,11 @@ const updatedAtYMD = article.updatedAt.split("T")[0];
     <section>
       <SidebarSectionHeader>この記事を書いた人</SidebarSectionHeader>
       <section class={flex()}>
-        <When test={article.author.avatar}>
+        {article.author.avatar && (
           <RemoteImage class={css({
             m: "2",
           })} src={article.author.avatar.url} alt={`${article.author.name}'s avatar`} width={60} />
-        </When>
+        )}
         <div class={css({ mt: "1" })}>
           <h3>{article.author.name}</h3>
           <When test={article.author.bio}>
@@ -92,11 +92,12 @@ const updatedAtYMD = article.updatedAt.split("T")[0];
     p: "2",
     maxW: "800px",
   })}>
-    <When test={cover}>
-      <RemoteImage src={cover.url} alt={title} width={cover.width} height={cover.height} />
-    </When>
+    {cover && <RemoteImage src={cover.url} alt={title} width={cover.width} height={cover.height} />}
     <section data-refresh-key="content" id="article-body">
       <Content {content} />
     </section>
+    <footer>
+      Share
+    </footer>
   </article>
 </RootLayout>

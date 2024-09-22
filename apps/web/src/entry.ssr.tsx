@@ -26,5 +26,8 @@ export default async function (opts: RenderToStreamOptions) {
       lang: "ja",
       ...opts.containerAttributes,
     },
+    serverData: {
+      ...opts.serverData,
+    },
   });
 }
