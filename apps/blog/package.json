@@ -44,7 +44,7 @@
     "hast-util-to-string": "^3.0.0",
     "html-entities": "^2.5.2",
     "katex": "^0.16.11",
-    "lucide-astro": "^0.445.0",
+    "lucide-astro": "^0.454.0",
     "lucide-qwik": "^1.0.0",
     "mermaid": "^11.2.1",
     "microcms-js-sdk": "^3.1.2",
