@@ -33,7 +33,7 @@
     "@qwikdev/astro": "^0.6.3",
     "@tanstack/solid-query": "^5.56.2",
     "@unpic/astro": "^0.0.47",
-    "astro": "~4.15.8",
+    "astro": "~4.16.0",
     "astro-purgecss": "^4.6.0",
     "astro-remote": "^0.3.3",
     "astro-seo-meta": "^4.1.1",
