@@ -32,7 +32,7 @@
     "@qwik-ui/headless": "^0.6.1",
     "@qwikdev/astro": "^0.6.3",
     "@tanstack/solid-query": "^5.56.2",
-    "@unpic/astro": "^0.0.47",
+    "@unpic/astro": "^0.1.0",
     "astro": "~4.16.0",
     "astro-purgecss": "^4.6.0",
     "astro-remote": "^0.3.3",
