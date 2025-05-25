@@ -30,7 +30,7 @@
     "@hbsnow/rehype-sectionize": "^1.0.7",
     "@mikuroxina/mini-fn": "^6.6.0",
     "@qwik-ui/headless": "^0.6.1",
-    "@qwikdev/astro": "^0.6.3",
+    "@qwikdev/astro": "^0.8.0",
     "@tanstack/solid-query": "^5.56.2",
     "@unpic/astro": "^0.0.47",
     "astro": "~4.16.0",
