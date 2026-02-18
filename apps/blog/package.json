@@ -59,7 +59,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.3",
-    "@astrojs/cloudflare": "^11.0.5",
+    "@astrojs/cloudflare": "^12.6.6",
     "@astrojs/ts-plugin": "^1.10.2",
     "@pandacss/dev": "^0.47.0",
     "@park-ui/panda-preset": "^0.42.0",
