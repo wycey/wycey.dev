@@ -31,6 +31,6 @@
   "devDependencies": {
     "@types/eslint": "^9.0.0",
     "@wycey/tsconfig": "workspace:*",
-    "eslint": "^9.0.0"
+    "eslint": "^10.0.0"
   }
 }
