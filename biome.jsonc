@@ -1,15 +1,10 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.6.1/schema.json",
-  "extends": ["@wycey/biome-config"],
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "extends": ["@wycey/biome-config/base"],
   "vcs": {
     "enabled": true,
     "clientKind": "git",
+    "useIgnoreFile": true,
     "defaultBranch": "main"
-  },
-  "files": {
-    "ignore": [
-      "**/styled-system/*",
-      "**/*.astro" // TODO: Remove this when Astro is supported
-    ]
   }
 }

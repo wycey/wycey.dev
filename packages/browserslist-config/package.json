@@ -1,0 +1,11 @@
+{
+  "name": "@wycey/browserslist-config",
+  "version": "0.0.1",
+  "private": true,
+  "author": {
+    "name": "Mido",
+    "email": "mido@wycey.dev",
+    "url": "https://mido.wycey.dev"
+  },
+  "main": "index.cjs"
+}

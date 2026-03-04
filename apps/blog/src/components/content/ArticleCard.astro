@@ -1,0 +1,129 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import { getEntry } from "astro:content";
+import { formatDate, parseDate } from "@/lib/content/date";
+
+interface Props {
+  article: CollectionEntry<"articles">;
+}
+
+const { article } = Astro.props;
+const { title, publishedAt, category: categoryRef, author: authorRef, tags: tagSlugs, minutesRead, words } = article.data;
+
+const category = await getEntry("categories", categoryRef.id);
+const author = await getEntry("authors", authorRef.id);
+const tags = tagSlugs
+  .map(slug => category?.data.tags?.find(t => t.slug === slug))
+  .filter(Boolean);
+
+const date = publishedAt ? formatDate(parseDate(publishedAt)) : undefined;
+const href = `/articles/${categoryRef.id}/${article.id}`;
+---
+<a
+  href={href}
+  grid
+  rounded="2"
+  p="5"
+  border="1 border-subtle"
+  transition="all 200"
+  class="group row-span-3 grid-rows-subgrid hover:bg-bg-subtle/50"
+>
+  <div flex items="start" gap="2">
+    <h3
+      text="lg"
+      font="bold"
+      transition
+      flex-auto
+      min-w="0"
+      group-hover="text-primary-10"
+      class="line-clamp-2"
+      style="word-break: auto-phrase"
+    >
+      {title}
+    </h3>
+    <span
+      block
+      text="lg primary-10"
+      shrink="0"
+      mt="1"
+      transition="all 200"
+      group-hover="opacity-100 translate-x-1"
+      class="i-lucide:chevron-right opacity-0"
+    />
+  </div>
+
+  <div flex items="center" gap="2.5" flex-wrap="wrap">
+    {category && (
+      <span
+        text="xs"
+        font="medium"
+        bg="primary-bg"
+        rounded="2"
+        px="2"
+        py="0.5"
+        class="text-primary-10 whitespace-nowrap"
+      >
+        {category.data.name}
+      </span>
+    )}
+    {tags.length > 0 && (
+      <>
+        <div w="px" h="3.5" bg="border" rounded="full" shrink="0" />
+        <div flex items="center" gap="1.5" flex-wrap="wrap" min-w="0">
+          {tags.map(tag => (
+            <span
+              text="xs fg-muted"
+              border="1 border-subtle"
+              rounded="1.5"
+              px="1.5"
+              py="0.5"
+              class="whitespace-nowrap"
+            >#{tag.name}</span>
+          ))}
+        </div>
+      </>
+    )}
+  </div>
+
+  <div flex items="center" gap="3" flex-wrap="wrap" text="fg-muted" class="self-end">
+    {author && (
+      <div flex items="center" gap="1.5">
+        {author.data.avatar ? (
+          <Image
+            src={author.data.avatar}
+            alt=""
+            width={48}
+            height={48}
+            w="5"
+            h="5"
+            rounded="full"
+            shrink="0"
+            class="object-cover"
+          />
+        ) : (
+          <span class="p-1 bg-primary-bg rounded-1.5">
+            <span block text="xs primary-10" class="i-lucide:user" />
+          </span>
+        )}
+        <span text="xs">{author.data.name}</span>
+      </div>
+    )}
+    {date && (
+      <div flex items="center" gap="1.5">
+        <span class="p-1 bg-primary-bg rounded-1.5">
+          <span block text="xs primary-10" class="i-lucide:calendar" />
+        </span>
+        <time datetime={publishedAt} text="xs">{date}</time>
+      </div>
+    )}
+    {words > 0 && (
+      <div flex items="center" gap="1.5">
+        <span class="p-1 bg-primary-bg rounded-1.5">
+          <span block text="xs primary-10" class="i-lucide:text" />
+        </span>
+        <span text="xs">{words} 字</span>
+      </div>
+    )}
+  </div>
+</a>

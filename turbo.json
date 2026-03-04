@@ -42,23 +42,11 @@
       ],
       "cache": false
     },
-    "dev.debug": {
-      "cache": false
-    },
     "start": {
       "cache": false
     },
     "clean": {
       "cache": false
-    },
-    "lint": {
-      "outputs": []
-    },
-    "lint.ci": {
-      "outputs": []
-    },
-    "lint.fix": {
-      "outputs": []
     }
   }
 }

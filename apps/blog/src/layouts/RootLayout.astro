@@ -1,133 +1,138 @@
 ---
-import "@/styles/panda.css";
+import { SEO } from "astro-seo";
+import type { Graph, Thing } from "schema-dts";
+import Footer from "@/components/layout/Footer.astro";
+import Header from "@/components/layout/Header.astro";
+import GoogleAnalytics from "@/components/scripts/GoogleAnalytics.astro";
+import { ColorSchemeWatcher } from "@/components/solid/ColorSchemeWatcher.client";
+import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/constants";
+import { createWebSiteSchema } from "@/lib/content/json-ld";
 
-import { When } from "@astropub/flow";
-//import { ViewTransitions } from "astro:transitions";
-import { Seo } from "astro-seo-meta";
+import "@/styles/global.css";
 
-import GoogleAnalytics from "@/components/GoogleAnalytics.astro";
-import Footer from "@/components/ui/layout/Footer.astro";
-import Header from "@/components/ui/layout/Header.astro";
-
-import { ColorSchemeWatcher } from "@/components/qwik/ColorSchemeWatcher";
-
-import type { MarkdownLayoutProps } from "astro";
-import { css } from "@style/css";
-import { flex } from "@style/patterns";
-import Sidebar from "../components/ui/layout/Sidebar.astro";
+type OgArticle = NonNullable<Parameters<typeof SEO>[0]["openGraph"]>["article"];
+type Twitter = Parameters<typeof SEO>[0]["twitter"];
 
 type InnerProps = {
-  title: string;
+  title?: string;
   description?: string;
+  breadcrumbs?: {
+    name: string;
+    href: string;
+  }[];
+  headings?: {
+    depth: number;
+    slug: string;
+    text: string;
+  }[];
+  ogType?: string;
+  ogImage?: string;
+  ogArticle?: OgArticle;
+  twitter?: Twitter;
+  jsonLd?: Thing | readonly Thing[];
 };
 
-type Props = Partial<MarkdownLayoutProps<InnerProps>> & InnerProps;
+type Props = InnerProps & {
+  frontmatter?: InnerProps;
+};
 
-const metaDateYMD = new Date().toISOString().split("T")[0];
+const {
+  title,
+  description,
+  breadcrumbs = [],
+  headings = [],
+  ogType,
+  ogImage,
+  ogArticle,
+  twitter,
+  jsonLd: maybeJsonLd,
+} = Astro.props.frontmatter || Astro.props;
 
-const { title, description, url } = Astro.props.frontmatter || Astro.props;
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": maybeJsonLd ? [maybeJsonLd].flat() : [createWebSiteSchema()],
+} satisfies Graph;
 ---
-<html lang="ja">
+<html lang="ja" bg="bg" style={{ "overflow-x": "hidden" }}>
 <head prefix={`og: https://ogp.me/ns# article: https://ogp.me/ns/article#`}>
-  <GoogleAnalytics tag="G-SWKQ6261R9" />
-
-  <meta charset="utf-8" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="canonical" href={new URL(url ?? "/", Astro.site).pathname} />
   <link rel="sitemap" href="/siemap-index.xml" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
-  <meta name="author" content="Wycey" />
-  <meta name="date" content={metaDateYMD} />
 
   <meta name="generator" content={Astro.generator} />
+  
+  <GoogleAnalytics tag="G-SWKQ6261R9" />
 
-  <Seo
-    title={`${title === "Home" ? "" : `${ title } · `}Wycey blog`}
-    description={description}
-    keywords={["Wycey", "blog", "development", "programming"]}
-    themeColor="#5944ba"
-    colorScheme={"light dark" as unknown as "light"}
+  <SEO
+    {...(title ? { title } : {})}
+    titleDefault={SITE_NAME}
+    titleTemplate={`%s · ${SITE_NAME}`}
+    description={SITE_DESCRIPTION}
+    charset="UTF-8"
+    removeTrailingSlashForRoot={true}
+    {...(ogImage ? {
+      openGraph: {
+        basic: {
+          title: title ?? "ホーム",
+          type: ogType ?? "website",
+          image: ogImage,
+        },
+        optional: {
+          siteName: SITE_NAME,
+          locale: "ja_JP",
+          ...(description ? { description } : {}),
+        },
+        image: {
+          width: 1200,
+          height: 630,
+          alt: `タイトル「${title}」のページを示す ${SITE_NAME} の OGP 画像`,
+        },
+        ...(ogArticle ? { article: ogArticle } : {}),
+      },
+    } : {})}
+    twitter={{
+      ...(ogImage ? { card: "summary_large_image" } : {}),
+      ...twitter
+    }}
   />
 
-  <meta property="og:site_name" content="Wycey blog" />
-  <meta property="og:locale" content="ja_JP" />
-
-  <!--<ViewTransitions />-->
+  <link rel="alternate" type="application/rss+xml" title={SITE_NAME} href={new URL("rss.xml", Astro.site)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
 
   <script is:inline>
-    const getDefaultTheme = () =>
-      matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
-
-    const getActualTheme = (theme) => theme === "system" ? getDefaultTheme() : theme
-
-    const getTheme = () => {
-      if (typeof localStorage !== "undefined") {
+    const isDark = () => {
+      try {
         const theme = localStorage.getItem("theme");
+        if (theme === "dark") return true;
+        if (theme === "light") return false;
+        if (!theme) localStorage.setItem("theme", "system");
+      } catch {}
+      return matchMedia("(prefers-color-scheme: dark)").matches;
+    };
 
-        if (theme) {
-          return getActualTheme(theme);
-        }
+    const applyTheme = (doc) => {
+      const dark = isDark();
+      doc.documentElement.classList.toggle("dark", dark);
+      doc.documentElement.style.colorScheme = dark ? "dark" : "light";
+    };
 
-        localStorage.setItem("theme", "system");
+    applyTheme(document);
 
-        return getDefaultTheme();
-      }
-    }
-
-    const refreshTheme = () => {
-      const actualTheme = getTheme();
-
-      if (actualTheme === "light") {
-        document.documentElement.classList.remove("dark");
-      } else {
-        document.documentElement.classList.add("dark");
-      }
-    }
-
-    refreshTheme();
-
-    document.addEventListener("astro:after-swap", refreshTheme);
+    document.addEventListener("astro:before-swap", (e) => {
+      applyTheme(e.newDocument);
+    });
   </script>
 
   <slot name="head" />
 </head>
-<body>
-<main class={flex({
-  direction: { base: "column-reverse", md: "row-reverse" },
-})}>
-  <Sidebar>
-    <slot name="sidebar" />
-  </Sidebar>
-  <section class={css({
-    flex: "1",
-  })}>
-    <Header />
-    <section class={flex({
-      direction: "column",
-      pos: "relative",
-      px: "4",
-      h: "24",
-      maxW: "900px",
-      mx: "auto",
-    })}>
-      <slot name="title-prepend" />
-      <h1 class={css({
-        fontSize: "3xl",
-        fontWeight: "medium",
-      })} data-refresh-key="title" id="article-title">
-        {title}
-      </h1>
-      <slot name="title-append" />
-    </section>
-    <When test={description}>
-      <p data-refresh-key="description">{description}</p>
-    </When>
-    <section>
-      <slot />
-    </section>
-  </section>
-</main>
-<Footer />
-<ColorSchemeWatcher />
+<body flex flex-col>
+  <Header breadcrumbs={breadcrumbs} headings={headings} />
+
+  <main flex-auto flex flex-col>
+    <slot />
+  </main>
+
+  <ColorSchemeWatcher client:only="solid-js" />
+  <Footer />
 </body>
 </html>
