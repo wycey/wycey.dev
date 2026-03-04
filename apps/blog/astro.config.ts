@@ -39,7 +39,6 @@ import remarkSectionize from "remark-sectionize";
 import { createGenerator } from "unocss";
 import unoCSS from "unocss/astro";
 import removeConsole from "vite-plugin-remove-console";
-import solidLabels from "vite-plugin-solid-labels";
 import {
   type RehypeBudouxOptions,
   rehypeBudoux,
