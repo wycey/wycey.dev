@@ -47,12 +47,10 @@ export const getSortedArticles = async ({
 
   for (let i = 1; i < sortedArticles.length; i++) {
     sortedArticles[i].data.nextId = sortedArticles[i - 1].id;
-    sortedArticles[i].data.nextTitle = sortedArticles[i - 1].data.title;
   }
 
   for (let i = 0; i < sortedArticles.length - 1; i++) {
     sortedArticles[i].data.prevId = sortedArticles[i + 1].id;
-    sortedArticles[i].data.prevTitle = sortedArticles[i + 1].data.title;
   }
 
   // Embed remark plugin frontmatter (reading time, word count)
