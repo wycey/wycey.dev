@@ -1,0 +1,74 @@
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import { remark } from "remark";
+import stripMarkdown from "strip-markdown";
+import { dateNow, parseDate } from "@/lib/content/date";
+import { isDev } from "@/lib/utils/env";
+
+export const createAuthorUrl = (handle: string) => `/@${handle}`;
+
+interface GetSortedArticlesOptions {
+  sortPinned?: boolean;
+  filterPredicate?: (article: CollectionEntry<"articles">) => boolean;
+}
+
+export const getSortedArticles = async ({
+  sortPinned = true,
+  filterPredicate = () => true,
+}: GetSortedArticlesOptions = {}) => {
+  const articles = await getCollection("articles", (article) => {
+    if (isDev) return filterPredicate(article);
+
+    const publishedAt = article.data.publishedAt
+      ? parseDate(article.data.publishedAt)
+      : undefined;
+
+    if (!publishedAt) return false;
+
+    if (!publishedAt.isBefore(dateNow())) return false;
+
+    return filterPredicate(article);
+  });
+
+  const sortedArticles = articles.toSorted((a, b) => {
+    if (sortPinned) {
+      if (a.data.pinned && !b.data.pinned) return -1;
+      if (!a.data.pinned && b.data.pinned) return 1;
+    }
+
+    const dateA = a.data.publishedAt
+      ? parseDate(a.data.publishedAt)
+      : undefined;
+    const dateB = b.data.publishedAt
+      ? parseDate(b.data.publishedAt)
+      : undefined;
+
+    return (dateB?.valueOf() ?? 0) - (dateA?.valueOf() ?? 0);
+  });
+
+  for (let i = 1; i < sortedArticles.length; i++) {
+    sortedArticles[i].data.nextId = sortedArticles[i - 1].id;
+    sortedArticles[i].data.nextTitle = sortedArticles[i - 1].data.title;
+  }
+
+  for (let i = 0; i < sortedArticles.length - 1; i++) {
+    sortedArticles[i].data.prevId = sortedArticles[i + 1].id;
+    sortedArticles[i].data.prevTitle = sortedArticles[i + 1].data.title;
+  }
+
+  // Embed remark plugin frontmatter (reading time, word count)
+  await Promise.all(
+    sortedArticles.map(async (article) => {
+      const { remarkPluginFrontmatter } = await render(article);
+      article.data.minutesRead = remarkPluginFrontmatter.minutesRead ?? "";
+      article.data.words = remarkPluginFrontmatter.words ?? 0;
+    }),
+  );
+
+  return sortedArticles;
+};
+
+export const markdownToReadableString = async (data: string = "") => {
+  const file = await remark().use(stripMarkdown).process(data);
+
+  return String(file).replaceAll(/\s+/g, " ").trim();
+};

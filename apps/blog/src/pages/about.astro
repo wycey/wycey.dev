@@ -1,0 +1,19 @@
+---
+import RootLayout from "@/layouts/RootLayout.astro";
+import { SITE_NAME } from "@/lib/constants";
+import { createAboutPageSchema } from "@/lib/content/json-ld";
+
+import "@/styles/typography.css";
+---
+<RootLayout
+  title={`${SITE_NAME} について`}
+  jsonLd={createAboutPageSchema()}
+>
+  <article flex-auto class="brand-container prose">
+    <section>
+      <h1>{SITE_NAME} について</h1>
+      <p>主に<a href="/@mido">Mido</a>が運営しているブログです。</p>
+      <p>技術的な情報をメインに、日常の出来事や趣味の話などもたまに書いています。</p>
+    </section>
+  </article>
+</RootLayout>

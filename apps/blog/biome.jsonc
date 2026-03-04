@@ -1,0 +1,41 @@
+{
+  "$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
+  "extends": "//",
+  "files": {
+    "includes": ["**", "!!**/GoogleAnalytics.astro"]
+  },
+  "linter": {
+    "rules": {
+      "correctness": {
+        "noUnknownFunction": {
+          "level": "error",
+          "options": {
+            "ignore": ["icon", "theme"]
+          }
+        }
+      }
+    }
+  },
+  "overrides": [
+    {
+      "includes": ["**/*.astro"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "useJsxKeyInIterable": "off"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["**/*.{astro,css}"],
+      "linter": {
+        "rules": {
+          "suspicious": {
+            "noUnknownAtRules": "off"
+          }
+        }
+      }
+    }
+  ]
+}

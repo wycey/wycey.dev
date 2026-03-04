@@ -1,6 +1,32 @@
 ---
-export const prerender = false;
+import { getCollection } from "astro:content";
+import type { GetStaticPaths } from "astro";
+import AuthorCard from "@/components/content/AuthorCard.astro";
+import { ArticleTimeline } from "@/components/solid/ArticleTimeline.client";
+import RootLayout from "@/layouts/RootLayout.astro";
+import { getSortedArticles } from "@/lib/content";
+import { createAuthorArticlesSchema } from "@/lib/content/json-ld";
 
-const { handle } = Astro.params;
+export const getStaticPaths = (async () => {
+  const authors = await getCollection("authors");
+
+  return authors.map(author => ({
+    params: {
+      handle: author.id,
+    },
+    props: { author },
+  }))
+}) satisfies GetStaticPaths;
+
+const { author } = Astro.props;
+const articles = await getSortedArticles({ sortPinned: false, filterPredicate: article => article.data.author.id === author.id })
 ---
-<p>Handle: {handle}</p>
+<RootLayout
+  title={`${author.data.name} (@${author.id})`}
+  jsonLd={await createAuthorArticlesSchema(author, articles)}
+>
+  <section flex-auto class="brand-container">
+    <AuthorCard author={author} articleCount={articles.length} />
+    <ArticleTimeline client:only="solid-js" {articles} />
+  </section>
+</RootLayout>

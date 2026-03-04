@@ -1,23 +1,11 @@
 {
-  "extends": "astro/tsconfigs/strict",
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@wycey/tsconfig/jsx",
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@assets/*": ["assets/*"],
-      "@style/*": ["styled-system/*"]
-    },
-    "plugins": [
-      {
-        "name": "@astrojs/ts-plugin"
-      }
-    ],
-    "jsx": "react-jsx",
-    "jsxImportSource": "@builder.io/qwik",
-    "importHelpers": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+      "@/*": ["./src/*"]
+    }
   },
-  "include": ["src", "styled-system"],
+  "include": [".astro/types.d.ts", "**/*"],
   "exclude": ["dist"]
 }

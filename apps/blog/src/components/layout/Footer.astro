@@ -1,0 +1,45 @@
+---
+import { footerLinks } from "@/lib/content/footer/links";
+
+interface Props {
+  class?: string;
+}
+---
+<footer
+  sticky
+  flex
+  flex-col
+  gap="4"
+  items="center"
+  text="fg-muted"
+  p="x-6 y-8"
+  class:list={[
+    "top-[100dvh]",
+    Astro.props.class,
+  ]}
+>
+  <ul
+    flex
+    text="fg-disabled hover:fg"
+    transition-colors
+    cursor="default"
+  >
+      {
+        footerLinks.map(({ name, href }) => (
+          <li class="not-last:after:content-['·'] after:mx-4">
+            <a href={href} target="_blank" rel="noreferrer noopener">{name}</a>
+          </li>
+        ))
+      }
+  </ul>
+  <section
+    w="full"
+    grid
+    grid-cols="[auto_1fr_auto]"
+    text="fg-disabled/75%"
+  >
+    <p>&copy; 2023- Wycey</p>
+    <div />
+    <p>Powered by <a href="https://astro.build" target="_blank" rel="noreferrer noopener">Astro</a></p>
+  </section>
+</footer>

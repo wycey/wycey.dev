@@ -1,0 +1,45 @@
+---
+import { getCollection } from "astro:content";
+import CategoryCard from "@/components/content/CategoryCard.astro";
+import { ArticleTimeline } from "@/components/solid/ArticleTimeline.client";
+import RootLayout from "@/layouts/RootLayout.astro";
+import { getSortedArticles } from "@/lib/content";
+import { createCategoriesSchema } from "@/lib/content/json-ld";
+
+export async function getStaticPaths() {
+  const categories = await getCollection("categories");
+  
+  return categories.map(category => ({
+    params: {
+      category: category.id,
+    },
+    props: { category },
+  }))
+}
+
+const { category } = Astro.props;
+const articles = await getSortedArticles({ sortPinned: false, filterPredicate: article => article.data.category.id === category.id });
+
+const tagSlugToName = new Map(
+  (category.data.tags ?? []).map(t => [t.slug, t.name])
+);
+const tagCounts = new Map<string, number>();
+for (const article of articles) {
+  for (const tag of article.data.tags) {
+    tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1);
+  }
+}
+const topTags = [...tagCounts.entries()]
+  .map(([slug, count]) => ({ name: tagSlugToName.get(slug) ?? slug, count }))
+  .toSorted((a, b) => b.count - a.count)
+  .slice(0, 10);
+---
+<RootLayout
+  title={`${category.data.name}の記事一覧`}
+  jsonLd={createCategoriesSchema(category, articles)}
+>
+  <section flex-auto class="brand-container">
+    <CategoryCard category={category} articleCount={articles.length} topTags={topTags} />
+    <ArticleTimeline client:only="solid-js" {articles} />
+  </section>
+</RootLayout>

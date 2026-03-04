@@ -1,6 +1,7 @@
 # generated types
 .astro/
 
-## Panda
-styled-system
-styled-system-studio
+# wrangler
+worker-configuration.d.ts
+
+public/remark-link-card-plus

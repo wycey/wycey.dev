@@ -1,0 +1,31 @@
+---
+import PageHeaderCard from "./PageHeaderCard.astro";
+
+interface Props {
+  articleCount: number;
+  categoryCount: number;
+  tagCount: number;
+}
+
+const { articleCount, categoryCount, tagCount } = Astro.props;
+
+const stats = [
+  { icon: "i-lucide:file-text", value: articleCount, label: "記事" },
+  { icon: "i-lucide:folder", value: categoryCount, label: "カテゴリー" },
+  { icon: "i-lucide:tag", value: tagCount, label: "タグ" },
+];
+---
+<PageHeaderCard>
+  <h1 text="2xl" font="bold">アーカイブ</h1>
+  <p text="fg-muted" mt="2">すべての記事を時系列で掲載しています</p>
+
+  <div flex items="center" gap="6" mt="4" flex-wrap="wrap">
+    {stats.map(({ icon, value, label }) => (
+      <div flex items="center" gap="1.5" text="sm">
+        <span block text="primary-10" class={icon} />
+        <span font="bold">{value}</span>
+        <span text="fg-muted">{label}</span>
+      </div>
+    ))}
+  </div>
+</PageHeaderCard>

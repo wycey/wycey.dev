@@ -1,0 +1,39 @@
+---
+import type { CollectionEntry } from "astro:content";
+import PageHeaderCard from "./PageHeaderCard.astro";
+
+interface Props {
+  category: CollectionEntry<"categories">;
+  articleCount: number;
+  topTags: { name: string; count: number }[];
+}
+
+const { category, articleCount, topTags } = Astro.props;
+---
+<PageHeaderCard>
+  <h1 text="2xl" font="bold">{category.data.name}</h1>
+  <p text="fg-muted" mt="1">
+    <span font="bold">{articleCount}</span> 記事
+  </p>
+
+  {topTags.length > 0 && (
+    <div flex items="center" gap="2" mt="4" flex-wrap="wrap">
+      <span block text="sm primary-10" class="i-lucide:tag" shrink="0" />
+      {topTags.map(({ name, count }) => (
+        <span
+          text="sm"
+          bg="primary-bg"
+          rounded="full"
+          px="3"
+          py="0.5"
+          transition
+        >
+          {name}
+          {count > 1 && (
+            <span text="xs fg-muted" ml="1">({count})</span>
+          )}
+        </span>
+      ))}
+    </div>
+  )}
+</PageHeaderCard>

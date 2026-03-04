@@ -4,15 +4,10 @@ This is a bunch of repos of wycey.dev.
 
 ## Apps
 
-### [`@wycey/web`](apps/web)
-
-- Link: [`wycey.dev`](https://wycey.dev)  
-  Official homepage of wycey.dev.
-
 ## [`@wycey/blog`](apps/blog)
 
-- Link: _(Inaccessible)_ [`blog.wycey.dev`](https://blog.wycey.dev)  
-  Official blog of wycey.dev, under construction.
+- Link: [`blog.wycey.dev`](https://blog.wycey.dev)  
+  Official blog of wycey.dev.
 
 ## Packages
 
@@ -20,10 +15,9 @@ This is a bunch of repos of wycey.dev.
 
 Base Biome config used by [`apps/*`](apps).
 
+### [`@wycey/browserslist-config`](packages/browserslist-config)
 
-### [`eslint-config-wycey`](packages/eslint-config)
-
-Base ESLint config.
+Base Browserslist configuration used by [`apps/*`](apps).
 
 ### [`@wycey/tsconfig`](packages/tsconfig)
 
@@ -34,10 +28,10 @@ Base `tsconfig.json` with presets used by [`apps/*`](apps).
 Run on **the root directory**:
 
 ```bash
-$ pnpm i
+$ bun install
 
 # Open dev environment on all apps
-$ pnpm dev
+$ bun dev
 ```
 
 ## Build All
@@ -45,7 +39,7 @@ $ pnpm dev
 Run on **the root directory**:
 
 ```bash
-$ pnpm build
+$ bun run build
 ```
 
 ## Lint / Format
@@ -54,11 +48,11 @@ Run on **the root directory**:
 
 ```bash
 # Lint
-$ pnpm lint
+$ bun lint
 
 # If you want to fix errors, run following:
-$ pnpm lint.fix
+$ bun lint.fix
 
 # Format
-$ pnpm fmt
+$ bun fmt
 ```

@@ -1,0 +1,119 @@
+---
+import { MAX_VISIBLE_PAGES } from "@/lib/constants";
+
+interface Props {
+  prevUrl: string | undefined;
+  nextUrl: string | undefined;
+  currentPage: number;
+  lastPage: number;
+}
+
+const { prevUrl, nextUrl, currentPage, lastPage } = Astro.props;
+
+function getPageUrl(page: number): string {
+  return page === 1 ? "/" : `/${page}`;
+}
+
+function getVisiblePages(current: number, last: number): (number | "ellipsis")[] {
+  if (last <= MAX_VISIBLE_PAGES) {
+    return Array.from({ length: last }, (_, i) => i + 1);
+  }
+
+  const pages: (number | "ellipsis")[] = [];
+  const half = Math.floor((MAX_VISIBLE_PAGES - 2) / 2);
+
+  // Always show first page
+  pages.push(1);
+
+  let start = Math.max(2, current - half);
+  let end = Math.min(last - 1, current + half);
+
+  // Adjust range to show MAX_VISIBLE_PAGES - 2 middle pages
+  if (current - half < 2) {
+    end = Math.min(last - 1, MAX_VISIBLE_PAGES - 1);
+  }
+  if (current + half > last - 1) {
+    start = Math.max(2, last - MAX_VISIBLE_PAGES + 2);
+  }
+
+  if (start > 2) pages.push("ellipsis");
+  for (let i = start; i <= end; i++) pages.push(i);
+  if (end < last - 1) pages.push("ellipsis");
+
+  // Always show last page
+  pages.push(last);
+
+  return pages;
+}
+
+const visiblePages = getVisiblePages(currentPage, lastPage);
+---
+{lastPage > 1 && (
+  <nav aria-label="ページネーション" flex items="center" justify="center" gap="1" py="8" px="4">
+    <a
+      href={prevUrl}
+      aria-label="前のページ"
+      aria-disabled={!prevUrl}
+      flex
+      items="center"
+      gap="1"
+      px="3"
+      py="2"
+      rounded="2"
+      transition="all 200"
+      class:list={[
+        prevUrl ? "text-fg-muted hover:text-fg hover:bg-primary-bg-hover" : "text-fg-disabled pointer-events-none",
+      ]}
+    >
+      <span block text="sm" class="i-lucide:chevron-left" />
+      <span text="sm" class="hidden sm:inline">前へ</span>
+    </a>
+
+    <div flex items="center" gap="1" mx="1">
+      {visiblePages.map((item) =>
+        item === "ellipsis" ? (
+          <span text="sm fg-disabled" px="1" class="select-none">…</span>
+        ) : (
+          <a
+            href={getPageUrl(item)}
+            aria-label={`ページ ${item}`}
+            aria-current={item === currentPage ? "page" : undefined}
+            flex
+            items="center"
+            justify="center"
+            text="sm"
+            rounded="2"
+            transition="all 200"
+            class:list={[
+              "min-w-8 h-8",
+              item === currentPage
+                ? "bg-primary-bg-active text-fg font-medium"
+                : "text-fg-muted hover:text-fg hover:bg-primary-bg-hover",
+            ]}
+          >
+            {item}
+          </a>
+        )
+      )}
+    </div>
+
+    <a
+      href={nextUrl}
+      aria-label="次のページ"
+      aria-disabled={!nextUrl}
+      flex
+      items="center"
+      gap="1"
+      px="3"
+      py="2"
+      rounded="2"
+      transition="all 200"
+      class:list={[
+        nextUrl ? "text-fg-muted hover:text-fg hover:bg-primary-bg-hover" : "text-fg-disabled pointer-events-none",
+      ]}
+    >
+      <span text="sm" class="hidden sm:inline">次へ</span>
+      <span block text="sm" class="i-lucide:chevron-right" />
+    </a>
+  </nav>
+)}

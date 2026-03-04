@@ -8,5 +8,7 @@
     "email": "mido@wycey.dev",
     "url": "https://mido.wycey.dev"
   },
-  "main": "biome.jsonc"
+  "exports": {
+    "./*": "./*.jsonc"
+  }
 }

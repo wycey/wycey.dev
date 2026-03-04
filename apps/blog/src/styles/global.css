@@ -1,0 +1,188 @@
+/** biome-ignore-all lint/complexity/noImportantStyles: This file is meant to be a global reset and base styles, so it's expected to have some !important styles. */
+
+/* CSS Reset and Base Styles */
+
+:where(html, :host) {
+  @apply leading-relaxed;
+}
+
+:where(:root) {
+  color-scheme: light;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  text-spacing-trim: trim-start;
+  text-autospace: normal;
+  line-break: strict;
+  overflow-x: hidden;
+  overflow-wrap: anywhere;
+  scrollbar-gutter: stable both-edges;
+  interpolate-size: allow-keywords;
+  scroll-behavior: smooth;
+}
+
+:where(.dark) {
+  color-scheme: dark;
+}
+
+:where(body) {
+  @apply min-block-[100dvb] focus-within:scroll-smooth;
+}
+
+:where(search) {
+  display: block flow;
+}
+
+:where(address:lang(ja)) {
+  font-style: unset;
+}
+
+:where(dt) {
+  font-weight: bolder;
+}
+
+:where(dd) {
+  margin-inline-start: unset;
+}
+
+:where(pre) {
+  text-spacing-trim: space-all;
+  text-autospace: no-autospace;
+}
+
+@media print {
+  :where(pre) {
+    text-wrap-mode: unset;
+  }
+}
+
+:where(em) {
+  font-style: italic;
+}
+
+:where(:is(i, cite, dfn):lang(ja)) {
+  font-style: unset;
+}
+
+:where(time) {
+  text-autospace: no-autospace;
+}
+
+:where(:focus-visible) {
+  outline-offset: 3px;
+}
+
+:where(
+    input:not([type="button" i], [type="submit" i], [type="reset" i]),
+    textarea,
+    [contenteditable]
+  ) {
+  text-autospace: no-autospace;
+}
+
+:where(dialog, [popover]) {
+  overscroll-behavior-block: contain;
+}
+
+:where(dialog) {
+  max-inline-size: unset;
+  max-block-size: unset;
+}
+
+:where(dialog)::backdrop {
+  background-color: oklch(0% 0 0deg / 30%);
+}
+
+:where([popover]) {
+  margin: unset;
+}
+
+[tabindex="-1"]:focus {
+  outline: none !important;
+}
+
+:where(:disabled, [aria-disabled="true" i]) {
+  cursor: default;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001s !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* End of CSS Reset and Base Styles */
+
+/* Custom Global Styles */
+
+body {
+  @apply bg-bg text-fg scheme-light dark:scheme-dark;
+}
+
+*,
+*::before,
+*::after {
+  @apply border-border-subtle border-solid outline-transparent transition-outline-color duration-150 ease-in-out;
+
+  &:focus-visible {
+    @apply 'outline-2 outline-solid outline-primary-solidBg/30%' 'rounded-sm';
+  }
+}
+
+*::placeholder {
+  @apply opacity-1 text-primary-border;
+}
+
+*::selection {
+  @apply 'bg-primary-solidBg/30%';
+}
+
+.brand-container {
+  @apply 'max-w-[75ch] w-full mx-auto px-4';
+}
+
+.dashed-line {
+  @apply relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 10%;
+    height: 100%;
+    left: calc(50% - 1px);
+    border-left: 2px dashed theme("colors.fg.disabled");
+    pointer-events: none;
+    transition: all 0.3s;
+    translate: 0 -50%;
+  }
+}
+
+/* typst.ts */
+
+svg.typst-doc {
+  --glyph_fill: currentColor;
+  --glyph_stroke: currentColor;
+}
+
+svg.typst-doc .typst-text {
+  fill: currentColor;
+}
+
+svg.typst-doc .typst-shape {
+  stroke: currentColor;
+}
+
+svg.typst-doc *::selection {
+  @apply 'bg-primary-solidBg/30%';
+}
+
+/* End of Custom Global Styles */

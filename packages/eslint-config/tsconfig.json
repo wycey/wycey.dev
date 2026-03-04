@@ -1,8 +1,0 @@
-{
-  "extends": "@wycey/tsconfig/base.json",
-  "compilerOptions": {
-    "module": "NodeNext"
-  },
-  "files": [".eslintrc.cjs"],
-  "include": ["index.cjs"]
-}

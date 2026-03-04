@@ -1,0 +1,101 @@
+---
+import { getImage } from "astro:assets";
+import { getCollection } from "astro:content";
+import WyceyLogo from "@/assets/images/wycey-full.svg";
+import { ThemeSwitcher } from "@/components/solid/ThemeSwitcher.client";
+import type { BreadcrumbEntry, Heading } from "../react/MainBreadcrumbs.client";
+import { MainBreadcrumbs } from "../react/MainBreadcrumbs.client";
+
+interface Props {
+  breadcrumbs?: BreadcrumbEntry[];
+  headings?: Heading[];
+}
+
+const { breadcrumbs = [], headings = [] } = Astro.props;
+
+const currentPath = Astro.url.pathname;
+
+const allAuthors = await getCollection("authors");
+const allCategories = await getCollection("categories");
+const allArticles = await getCollection("articles");
+
+const authors = await Promise.all(
+  allAuthors.map(async (a) => {
+    let avatar: string | undefined;
+
+    if (a.data.avatar) {
+      try {
+        const optimized = await getImage({
+          src: String(a.data.avatar),
+          width: 32,
+          height: 32,
+        });
+        avatar = optimized.src;
+      } catch {
+        avatar = String(a.data.avatar);
+      }
+    }
+
+    return {
+      id: a.id,
+      name: a.data.name,
+      ...(avatar ? { avatar } : {}),
+    };
+  }),
+);
+
+const categories = allCategories.map((c) => ({
+  id: c.id,
+  name: c.data.name,
+  articleCount: allArticles.filter((a) => a.data.category.id === c.id).length,
+}));
+---
+<header
+  w="full"
+  px="4"
+  py="4"
+  flex
+  flex-wrap
+  items="center"
+  justify="between"
+  gap="y-2"
+  text="fg-muted/75%"
+>
+  <!--
+  <a href="https://wycey.dev" aria-label="Wycey メインページへ" text="fg" class="md:hidden">
+    <WyceyLogo class="h-7 w-auto px-2" />
+  </a>
+  -->
+  <WyceyLogo class="text-fg md:hidden h-7 w-auto px-2" />
+  <ul
+    flex
+    items="center"
+    gap="4"
+    class="md:order-1"
+  >
+    <li>
+      <ThemeSwitcher client:only="solid-js" />
+    </li>
+  </ul>
+  <div class="breadcrumb-wrap w-full md:w-auto md:order-0">
+    <MainBreadcrumbs
+      client:idle
+      {breadcrumbs}
+      {headings}
+      {currentPath}
+      {authors}
+      {categories}
+    >
+      <WyceyLogo class="h-7 w-full px-2" />
+    </MainBreadcrumbs>
+  </div>
+</header>
+
+<style is:global>
+  @screen lt-md {
+    .breadcrumb-wrap [data-slot="breadcrumb-list"] > :first-child,
+    .breadcrumb-wrap [data-slot="breadcrumb-list"] > :nth-child(2) {
+      display: none;
+    }
+  }
+</style>

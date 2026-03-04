@@ -1,0 +1,54 @@
+---
+import type { GetStaticPaths } from "astro";
+import WyceyLogo from "@/assets/images/wycey-full.svg";
+import ArticleCard from "@/components/content/ArticleCard.astro";
+import Pagination from "@/components/content/Pagination.astro";
+import RootLayout from "@/layouts/RootLayout.astro";
+import { PAGE_SIZE, SITE_DESCRIPTION } from "@/lib/constants";
+import { getSortedArticles } from "@/lib/content";
+import { createHomePageSchema } from "@/lib/content/json-ld";
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const articles = await getSortedArticles();
+  
+  return paginate(articles, { pageSize: PAGE_SIZE });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+const isFirstPage = page.currentPage === 1;
+---
+<RootLayout jsonLd={createHomePageSchema(page.currentPage)}>
+  <div flex-auto class="brand-container">
+    {isFirstPage && (
+      <section text="center" pt="10" pb="6" px="4">
+        <WyceyLogo class="h-10 w-auto mx-auto mb-3" />
+        <p text="sm fg-muted">{SITE_DESCRIPTION}</p>
+        <div border="b border-subtle" mt="6" mx="auto" class="max-w-48" />
+      </section>
+    )}
+
+    <section px="4" pt="4" pb="2">
+      {!isFirstPage && (
+        <h2 text="xl fg-muted" font="bold" mb="4" px="1">
+          ページ {page.currentPage}
+        </h2>
+      )}
+      <div
+        grid
+        gap="4"
+        class="grid-cols-1 md:grid-cols-2"
+      >
+        {page.data.map((article) => (
+          <ArticleCard article={article} />
+        ))}
+      </div>
+    </section>
+
+    <Pagination
+      prevUrl={page.url.prev}
+      nextUrl={page.url.next}
+      currentPage={page.currentPage}
+      lastPage={page.lastPage}
+    />
+  </div>
+</RootLayout>

@@ -1,0 +1,9 @@
+---
+interface Props {
+  class?: string;
+}
+---
+<div p="x-8 t-8 b-4" class={Astro.props.class}>
+  <slot />
+  <div border="b border-subtle" mt="6" />
+</div>

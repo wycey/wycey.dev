@@ -2,9 +2,9 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "./base.json",
   "compilerOptions": {
-    "target": "ES2017",
-    "module": "ES2022",
-    "lib": ["ES2022", "DOM", "WebWorker", "DOM.Iterable"],
+    "target": "ES2024",
+    "module": "ESNext",
+    "lib": ["ES2024", "DOM", "WebWorker", "DOM.Iterable"],
     "jsx": "react-jsx",
     "noEmit": true,
     "types": ["node", "vite/client"]

@@ -1,0 +1,17 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "wycey-blog",
+  "compatibility_date": "2026-02-25",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 0.1
+  },
+  "workers_dev": false,
+  "routes": [
+    {
+      "pattern": "blog.wycey.dev/*",
+      "zone_name": "wycey.dev"
+    }
+  ]
+}

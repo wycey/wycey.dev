@@ -1,0 +1,83 @@
+---
+import { getImage } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import PageHeaderCard from "./PageHeaderCard.astro";
+
+interface Props {
+  author: CollectionEntry<"authors">;
+  articleCount: number;
+}
+
+const { author, articleCount } = Astro.props;
+const { name, bio, avatar, socialLinks = [] } = author.data;
+
+let optimizedAvatar: string | undefined;
+if (avatar) {
+  try {
+    const img = await getImage({ src: String(avatar), width: 96, height: 96 });
+    optimizedAvatar = img.src;
+  } catch {
+    optimizedAvatar = String(avatar);
+  }
+}
+
+const socialIcons: Record<string, { icon: string; label: string; href: string }> = {};
+for (const link of socialLinks) {
+  if (link.type === "website") {
+    socialIcons.website = { icon: "i-lucide:globe", label: "ウェブサイト", href: link.url };
+  } else if (link.type === "x") {
+    socialIcons.x = { icon: "i-lucide:twitter", label: `X (@${link.username})`, href: `https://x.com/${link.username}` };
+  } else if (link.type === "github") {
+    socialIcons.github = { icon: "i-lucide:github", label: `GitHub (@${link.username})`, href: `https://github.com/${link.username}` };
+  }
+}
+---
+<PageHeaderCard>
+  <div flex items="start" gap="4">
+    {optimizedAvatar && (
+      <img
+        src={optimizedAvatar}
+        alt={`${name} のアバター`}
+        w="12"
+        h="12"
+        rounded="full"
+        outline="2 primary-10/20%"
+        shrink="0"
+        class="aspect-square"
+      />
+    )}
+    <div flex flex-col gap="1" min-w="0">
+      <div flex items="baseline" gap="2" flex-wrap="wrap">
+        <h1 text="xl" font="bold" class="leading-tight">{name}</h1>
+        <span text="sm fg-muted">@{author.id}</span>
+        <span text="sm fg-disabled">·</span>
+        <span text="sm fg-muted">
+          {articleCount} 記事
+        </span>
+      </div>
+      {bio && (
+        <p text="fg-muted" mt="1">{bio}</p>
+      )}
+    </div>
+  </div>
+
+  {Object.keys(socialIcons).length > 0 && (
+    <div flex items="center" gap="3" mt="4">
+      {Object.values(socialIcons).map(({ icon, label, href }) => (
+        <a
+          href={href}
+          target="_blank"
+          rel="noreferrer noopener"
+          aria-label={label}
+          text="fg-muted hover:primary-10"
+          transition
+          p="1"
+          rounded="1"
+          bg="hover:primary-bg-hover"
+        >
+          <span block text="lg" class={icon} />
+        </a>
+      ))}
+    </div>
+  )}
+</PageHeaderCard>
