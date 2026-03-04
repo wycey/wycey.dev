@@ -175,6 +175,9 @@ export default defineConfig({
   vite: {
     build: {
       cssMinify: "lightningcss",
+      rollupOptions: {
+        external: ["@resvg/resvg-js"],
+      },
     },
     css: {
       lightningcss: {
