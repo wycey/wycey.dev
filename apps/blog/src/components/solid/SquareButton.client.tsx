@@ -1,14 +1,36 @@
 /* @jsxImportSource solid-js */
 
-import { type ComponentProps, children, createSignal, Show } from "solid-js";
+import {
+  type ComponentProps,
+  children,
+  createSignal,
+  Show,
+  splitProps,
+} from "solid-js";
 
-export const SquareButton = ({
-  class: className,
-  ...props
-}: ComponentProps<"button">) => {
+export type SquareButtonProps =
+  | ({ href?: never } & ComponentProps<"button">)
+  | ({ href: string } & ComponentProps<"a">);
+
+export const SquareButton = (props: SquareButtonProps) => {
+  const [local, rest] = splitProps(props, ["href", "class"]);
   const nodes = children(() => props.children);
 
-  return (
+  return local.href ? (
+    <a
+      href={local.href}
+      text="primary-10 lg"
+      transition="300"
+      p="4"
+      rounded="2"
+      bg="primary-bg hover:primary-bg-hover active:primary-bg-active disabled:primary-bg-disabled"
+      cursor="disabled:not-allowed"
+      class={local.class}
+      {...(rest as ComponentProps<"a">)}
+    >
+      {nodes()}
+    </a>
+  ) : (
     <button
       type="button"
       text="primary-10 lg"
@@ -17,19 +39,29 @@ export const SquareButton = ({
       rounded="2"
       bg="primary-bg hover:primary-bg-hover active:primary-bg-active disabled:primary-bg-disabled"
       cursor="disabled:not-allowed"
-      class={className}
-      {...props}
+      class={local.class}
+      {...(rest as ComponentProps<"button">)}
     >
       {nodes()}
     </button>
   );
 };
 
-export const ShareButton = ({
-  class: className,
-  shareTitle,
-  ...props
-}: ComponentProps<"button"> & { shareTitle: string }) => {
+export const ShareButton = (
+  props: ComponentProps<"button"> & {
+    shareTitle: string;
+    shareText: string;
+    shareUrl: string;
+  },
+) => {
+  const [local, rest] = splitProps(props, [
+    "shareTitle",
+    "shareText",
+    "shareUrl",
+    "class",
+    "classList",
+  ]);
+
   const [copied, setCopied] = createSignal(false);
 
   return (
@@ -37,8 +69,9 @@ export const ShareButton = ({
       aria-label="このページを共有"
       onClick={() => {
         const shareData: ShareData = {
-          title: shareTitle,
-          url: window.location.href,
+          title: local.shareTitle,
+          text: local.shareText,
+          url: local.shareUrl,
         };
         if (navigator.share && navigator.canShare(shareData)) {
           navigator.share(shareData).catch((error) => {
@@ -46,7 +79,7 @@ export const ShareButton = ({
           });
         } else {
           navigator.clipboard
-            .writeText(location.href)
+            .writeText(local.shareUrl)
             .then(() => {
               setCopied(true);
 
@@ -59,14 +92,15 @@ export const ShareButton = ({
             });
         }
       }}
-      class={className}
-      {...props}
+      class={local.class}
+      classList={local.classList}
+      {...rest}
     >
       <Show
-        when={copied}
-        fallback={<span class="i-lucide:share lg:i-lucide:copy block" />}
+        when={copied()}
+        fallback={<span class="block i-lucide:share lg:i-lucide:copy" />}
       >
-        <span class="i-lucide:check block" />
+        <span class="block i-lucide:check" />
       </Show>
     </SquareButton>
   );
