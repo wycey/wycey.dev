@@ -21,7 +21,7 @@ function BreadcrumbList({ className, ...props }: ComponentProps<"ol">) {
       flex-wrap
       items="center"
       gap="4"
-      text="sm fg-muted"
+      text="sm fg-muted print:fg"
       className={cn("wrap-break-word", className)}
       {...props}
     />
@@ -54,7 +54,7 @@ function BreadcrumbLink({
     <Comp
       data-slot="breadcrumb-link"
       transition="colors"
-      text="hover:fg"
+      text="hover:fg print:fg"
       className={cn(className)}
       {...props}
     />
