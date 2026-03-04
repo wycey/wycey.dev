@@ -9,7 +9,7 @@ interface Props {
 }
 
 const { article } = Astro.props;
-const { title, publishedAt, category: categoryRef, author: authorRef, tags: tagSlugs, minutesRead, words } = article.data;
+const { title, publishedAt, category: categoryRef, author: authorRef, tags: tagSlugs, words } = article.data;
 
 const category = await getEntry("categories", categoryRef.id);
 const author = await getEntry("authors", authorRef.id);

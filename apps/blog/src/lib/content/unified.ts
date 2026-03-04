@@ -1,4 +1,6 @@
 /** biome-ignore-all lint/suspicious/noExplicitAny: Uses untyped keys to store original nodes */
+
+import { exec } from "node:child_process";
 import { loadDefaultJapaneseParser } from "budoux";
 import type * as hast from "hast";
 import { h } from "hastscript";
@@ -10,6 +12,19 @@ import type { Plugin } from "unified";
 import { EXIT, visit } from "unist-util-visit";
 
 const budouxParser = loadDefaultJapaneseParser();
+
+export const remarkLastModified: Plugin<[], mdast.Root> = () => {
+  return async (_, file) => {
+    if (!file.data.astro?.frontmatter) {
+      return;
+    }
+
+    const filepath = file.history[0];
+    const result = exec(`git log -1 --pretty="format:%cI" "${filepath}"`);
+
+    file.data.astro.frontmatter.lastModified = result.toString();
+  };
+};
 
 export const remarkReadingTime: Plugin<[], mdast.Root> = () => {
   return (tree, { data }) => {
