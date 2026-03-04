@@ -94,7 +94,6 @@
         "satori": "^0.24.1",
         "schema-dts": "^1.1.5",
         "sharp": "^0.34.5",
-        "solid-labels": "^0.17.0",
         "sudachi-synonyms-dictionary": "^17.0.0",
         "textlint": "^15.5.2",
         "textlint-filter-rule-allowlist": "^4.0.0",
