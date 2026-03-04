@@ -56,13 +56,14 @@ const categories = allCategories.map((c) => ({
 <header
   w="full"
   px="4"
-  py="4"
+  py="3"
   flex
   flex-wrap
   items="center"
   justify="between"
-  gap="y-2"
+  gap="y-4"
   text="fg-muted/75%"
+  class="min-h-32 md:min-h-20 content-center"
 >
   <!--
   <a href="https://wycey.dev" aria-label="Wycey メインページへ" text="fg" class="md:hidden">
@@ -77,10 +78,19 @@ const categories = allCategories.map((c) => ({
     class="md:order-1"
   >
     <li>
-      <ThemeSwitcher client:only="solid-js" />
+      <ThemeSwitcher client:only="solid-js">
+        <section slot="fallback" flex items="center" aria-hidden="true" invisible>
+          <button type="button" text="lg" p="2.5">
+            <span block class="i-lucide:sun" />
+          </button>
+          <button type="button" text="lg" p="2.5">
+            <span block class="i-lucide:monitor" />
+          </button>
+        </section>
+      </ThemeSwitcher>
     </li>
   </ul>
-  <div class="breadcrumb-wrap w-full md:w-auto md:order-0">
+  <div class="breadcrumb-wrap w-full md:w-auto md:order-0 pl-2 md:pl-0">
     <MainBreadcrumbs
       client:idle
       {breadcrumbs}

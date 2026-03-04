@@ -14,32 +14,42 @@ interface Props {
   text="fg-muted"
   p="x-6 y-8"
   class:list={[
-    "top-[100dvh]",
+    "top-dvh",
     Astro.props.class,
   ]}
 >
   <ul
     flex
+    items="center"
+    w="full"
     text="fg-disabled hover:fg"
     transition-colors
     cursor="default"
   >
-      {
-        footerLinks.map(({ name, href }) => (
-          <li class="not-last:after:content-['·'] after:mx-4">
+    {
+      footerLinks.map(({ name, href }, i) => (
+        <>
+          {i > 0 && (
+            <li aria-hidden="true" class="shrink-0 px-4 pointer-events-none">·</li>
+          )}
+          <li
+            class:list={[
+              i === 0 && "flex-1 text-right",
+              i === footerLinks.length - 1 && "flex-1",
+            ]}
+          >
             <a href={href} target="_blank" rel="noreferrer noopener">{name}</a>
           </li>
-        ))
-      }
+        </>
+      ))
+    }
   </ul>
   <section
     w="full"
-    grid
-    grid-cols="[auto_1fr_auto]"
+    flex
     text="fg-disabled/75%"
   >
-    <p>&copy; 2023- Wycey</p>
-    <div />
+    <p flex-auto>&copy; 2023- Wycey</p>
     <p>Powered by <a href="https://astro.build" target="_blank" rel="noreferrer noopener">Astro</a></p>
   </section>
 </footer>
