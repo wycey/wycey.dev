@@ -1,0 +1,45 @@
+{
+  "plugins": {},
+  "filters": {
+    "comments": true,
+    "allowlist": {
+      "allow": ["/\\$[\\s\\S]*?\\$/m"]
+    }
+  },
+  "rules": {
+    "doubled-spaces": true,
+    "no-surrogate-pair": true,
+    "no-curly-quotes": true,
+    "no-kangxi-radicals": true,
+    "@textlint-ja/no-synonyms": true,
+    "ja-space-after-exclamation": true,
+    "ja-space-after-question": true,
+    "period-in-header": true,
+    "preset-ja-technical-writing": {
+      "max-ten": {
+        "max": 4
+      },
+      "max-comma": {
+        "max": 4
+      },
+      "ja-no-mixed-period": {
+        "allowPeriodMarks": [":"],
+        "allowEmojiAtEnd": true
+      },
+      "ja-no-weak-phrase": false,
+      "no-doubled-joshi": {
+        "allow": ["も"]
+      },
+      "no-exclamation-question-mark": {
+        "allowFullWidthExclamation": true,
+        "allowFullWidthQuestion": true
+      },
+      "no-mix-dearu-desumasu": {
+        "preferInHeader": "",
+        "preferInBody": "",
+        "preferInList": "である",
+        "strict": false
+      }
+    }
+  }
+}
