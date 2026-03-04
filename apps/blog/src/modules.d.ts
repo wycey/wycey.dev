@@ -3,3 +3,8 @@ declare module "@myriaddreamin/rehype-typst" {
     type: import("rehype-slug/lib").Root,
   ) => undefined;
 }
+
+declare module "*?base64" {
+  const dataUri: string;
+  export default dataUri;
+}

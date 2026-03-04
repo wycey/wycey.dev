@@ -1,8 +1,7 @@
 /** biome-ignore-all lint/suspicious/noArrayIndexKey: Items are static and won't change order */
 
-import { readFileSync } from "node:fs";
-import { join } from "node:path";
 import type React from "react";
+import logoBase64 from "../../assets/images/wycey-full-light.png?base64";
 import { processTitle } from "./text";
 
 // Radix Violet / Mauve light mode colors
@@ -38,27 +37,6 @@ export interface OgImageProps {
   tags: TagInfo[];
 }
 
-const loadLogoBase64 = (): string => {
-  const logoPath = join(
-    process.cwd(),
-    "src",
-    "assets",
-    "images",
-    "wycey-full-light.png",
-  );
-  const buffer = readFileSync(logoPath);
-  return `data:image/png;base64,${buffer.toString("base64")}`;
-};
-
-let logoBase64Cache: string | undefined;
-
-const getLogoBase64 = (): string => {
-  if (!logoBase64Cache) {
-    logoBase64Cache = loadLogoBase64();
-  }
-  return logoBase64Cache;
-};
-
 export const createOgImage = ({
   title,
   authorName,
@@ -67,7 +45,6 @@ export const createOgImage = ({
   tags,
 }: OgImageProps): React.ReactNode => {
   const titleChunks = processTitle(title);
-  const logoSrc = getLogoBase64();
 
   return (
     <div
@@ -235,7 +212,7 @@ export const createOgImage = ({
 
           {/* Logo */}
           <img
-            src={logoSrc}
+            src={logoBase64}
             alt=""
             height={40}
             style={{

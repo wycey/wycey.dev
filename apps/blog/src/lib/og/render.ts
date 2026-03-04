@@ -6,7 +6,9 @@ import { createOgImage, type OgImageProps } from "./image";
 const OG_WIDTH = 1200;
 const OG_HEIGHT = 630;
 
-export const renderOgImage = async (props: OgImageProps): Promise<Buffer> => {
+export const renderOgImage = async (
+  props: OgImageProps,
+): Promise<Uint8Array> => {
   const fonts = await loadFonts();
   const element = createOgImage(props);
 
@@ -29,5 +31,6 @@ export const renderOgImage = async (props: OgImageProps): Promise<Buffer> => {
   });
 
   const pngData = resvg.render();
+
   return pngData.asPng();
 };
