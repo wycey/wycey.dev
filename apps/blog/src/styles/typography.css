@@ -421,7 +421,14 @@
     mix-blend-mode: darken;
 
     background-color: var(--callout-bg, theme("colors.primary.bg"));
-
+    
+    &::details-content {
+      transition:
+        height .4s,
+        opacity .4s,
+        content-visibility .4s allow-discrete;
+    }
+    
     @media (prefers-color-scheme: dark) {
       mix-blend-mode: lighten;
 
