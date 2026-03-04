@@ -15,7 +15,7 @@ import oEmbedTransformer, {
   type Config as OEmbedTransformerConfig,
 } from "@remark-embedder/transformer-oembed";
 import type { AstroIntegration } from "astro";
-import { defineConfig } from "astro/config";
+import { defineConfig, envField } from "astro/config";
 import expressiveCode from "astro-expressive-code";
 import robotsTxt from "astro-robots-txt";
 import browserslist from "browserslist";
@@ -125,6 +125,16 @@ export default defineConfig({
       config: {
         kernel: "mks2021",
       },
+    },
+  },
+  env: {
+    schema: {
+      GA_MEASUREMENT_ID: envField.string({
+        context: "client",
+        access: "public",
+        length: 10,
+        optional: true,
+      }),
     },
   },
   integrations: [
