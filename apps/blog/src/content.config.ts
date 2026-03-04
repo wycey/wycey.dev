@@ -91,9 +91,7 @@ const articles = defineCollection({
     relatedPosts: z.array(reference("articles")).default([]),
 
     /* 内部で利用 */
-    prevTitle: z.string().default(""),
     prevId: z.string().default(""),
-    nextTitle: z.string().default(""),
     nextId: z.string().default(""),
     minutesRead: z.string().default(""),
     words: z.number().default(0),

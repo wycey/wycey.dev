@@ -47,6 +47,9 @@ export const getStaticPaths = (async () => {
 const { article, author, category } = Astro.props;
 const tags = article.data.tags.map(tag => category.data.tags?.find(t => t.slug === tag)).filter(Boolean) ?? [];
 const shareTitle = `${article.data.title} by ${author.data.name} · ${category.data.name} · ${SITE_NAME}`;
+
+const ogImageUrl = new URL(`/og/${category.id}/${article.id}.png`, Astro.site).href;
+
 const { Content, headings: rawHeadings, remarkPluginFrontmatter } = await render(article);
 
 const validSlugs = new Set<string>(remarkPluginFrontmatter.validHeadingSlugs ?? []);
@@ -57,7 +60,14 @@ const updatedAt = remarkPluginFrontmatter.lastModified ? parseDate(remarkPluginF
   : publishedAt 
     ? publishedAt
     : dateNow();
-const ogImageUrl = new URL(`/og/${category.id}/${article.id}.png`, Astro.site).href;
+
+const prevArticle = article.data.prevId ? await getEntry("articles", article.data.prevId) : undefined;
+const nextArticle = article.data.nextId ? await getEntry("articles", article.data.nextId) : undefined;
+
+const prevCategory = prevArticle?.data.category.id;
+const nextCategory = nextArticle?.data.category.id;
+const prevTitle = prevArticle?.data.title;
+const nextTitle = nextArticle?.data.title;
 ---
 <RootLayout
   title={`${article.data.title} · ${category.data.name}`}
@@ -167,7 +177,7 @@ const ogImageUrl = new URL(`/og/${category.id}/${article.id}.png`, Astro.site).h
       {
         article.data.prevId
         ? <a
-            href={article.data.prevId}
+            href={`/articles/${prevCategory}/${article.data.prevId}`}
             flex
             gap="4"
             items="center"
@@ -178,7 +188,7 @@ const ogImageUrl = new URL(`/og/${category.id}/${article.id}.png`, Astro.site).h
             <div text="2xl primary-10" transition="transform" translate-x="1 group-hover:0" class="i-lucide:chevron-left" />
             <section w="full">
               <p text="sm fg-muted">前の記事</p>
-              <p text="group-hover:primary-10" transition="colors" font="medium">{article.data.prevTitle}</p>
+              <p text="group-hover:primary-10" transition="colors" font="medium">{prevTitle}</p>
             </section>
           </a>
           : <div />
@@ -186,7 +196,7 @@ const ogImageUrl = new URL(`/og/${category.id}/${article.id}.png`, Astro.site).h
       {
         article.data.nextId
         ? <a
-            href={article.data.nextId}
+            href={`/articles/${nextCategory}/${article.data.nextId}`}
             flex
             flex-row-reverse
             gap="4"
@@ -198,7 +208,7 @@ const ogImageUrl = new URL(`/og/${category.id}/${article.id}.png`, Astro.site).h
             <div text="2xl primary-10" transition="transform" translate-x="-1 group-hover:0" class="i-lucide:chevron-right" />
             <section w="full" text-align="end">
               <p text="sm fg-muted">次の記事</p>
-              <p text="group-hover:primary-10" transition="colors" font="medium">{article.data.nextTitle}</p>
+              <p text="group-hover:primary-10" transition="colors" font="medium">{nextTitle}</p>
             </section>
           </a>
           : <div />
