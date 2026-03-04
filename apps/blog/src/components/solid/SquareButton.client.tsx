@@ -1,11 +1,11 @@
 /* @jsxImportSource solid-js */
 
-import { children, type JSX } from "solid-js";
+import { type ComponentProps, children, createSignal, Show } from "solid-js";
 
 export const SquareButton = ({
   class: className,
   ...props
-}: JSX.ButtonHTMLAttributes<HTMLButtonElement>) => {
+}: ComponentProps<"button">) => {
   const nodes = children(() => props.children);
 
   return (
@@ -29,8 +29,8 @@ export const ShareButton = ({
   class: className,
   shareTitle,
   ...props
-}: JSX.ButtonHTMLAttributes<HTMLButtonElement> & { shareTitle: string }) => {
-  let copied = $signal(false);
+}: ComponentProps<"button"> & { shareTitle: string }) => {
+  const [copied, setCopied] = createSignal(false);
 
   return (
     <SquareButton
@@ -48,10 +48,10 @@ export const ShareButton = ({
           navigator.clipboard
             .writeText(location.href)
             .then(() => {
-              copied = true;
+              setCopied(true);
 
               setTimeout(() => {
-                copied = false;
+                setCopied(false);
               }, 2000);
             })
             .catch((error) => {

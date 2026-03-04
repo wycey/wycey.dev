@@ -1,8 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 import type { GetStaticPaths } from "astro";
+import ArticleTimeline from "@/components/ArticleTimeline.astro";
 import AuthorCard from "@/components/content/AuthorCard.astro";
-import { ArticleTimeline } from "@/components/solid/ArticleTimeline.client";
 import RootLayout from "@/layouts/RootLayout.astro";
 import { getSortedArticles } from "@/lib/content";
 import { createAuthorArticlesSchema } from "@/lib/content/json-ld";
@@ -27,6 +27,6 @@ const articles = await getSortedArticles({ sortPinned: false, filterPredicate: a
 >
   <section flex-auto class="brand-container">
     <AuthorCard author={author} articleCount={articles.length} />
-    <ArticleTimeline client:only="solid-js" {articles} />
+    <ArticleTimeline {articles} />
   </section>
 </RootLayout>

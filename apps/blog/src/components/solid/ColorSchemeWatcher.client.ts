@@ -1,24 +1,19 @@
 /* @jsxImportSource solid-js */
 
+import { createEffect } from "solid-js";
+import { useTheme } from "@/hooks/solid/useTheme";
+
 export const ColorSchemeWatcher = () => {
-  const listener = (e: MediaQueryListEvent) => {
-    try {
-      const theme = localStorage.getItem("theme");
+  const { isDark } = useTheme();
 
-      if (theme === "dark" || theme === "light") return;
-    } catch {}
-    const dark = e.matches;
+  createEffect(() => {
+    if (isDark()) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
 
-    document.documentElement.classList.toggle("dark", dark);
-    document.documentElement.style.colorScheme = dark ? "dark" : "light";
-  };
-
-  const media = matchMedia("(prefers-color-scheme: dark)");
-
-  media.addEventListener("change", listener);
-
-  $cleanup(() => {
-    media.removeEventListener("change", listener);
+    document.documentElement.style.colorScheme = isDark() ? "dark" : "light";
   });
 
   return null;

@@ -224,7 +224,6 @@ export default defineConfig({
           return `export default ${JSON.stringify(`data:${mime};base64,${buffer.toString("base64")}`)}`;
         },
       },
-      solidLabels({ dev: false }),
       removeConsole({
         includes: ["log", "debug"],
       }),

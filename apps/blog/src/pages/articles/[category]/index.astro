@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
+import ArticleTimeline from "@/components/ArticleTimeline.astro";
 import CategoryCard from "@/components/content/CategoryCard.astro";
-import { ArticleTimeline } from "@/components/solid/ArticleTimeline.client";
 import RootLayout from "@/layouts/RootLayout.astro";
 import { getSortedArticles } from "@/lib/content";
 import { createCategoriesSchema } from "@/lib/content/json-ld";
@@ -40,6 +40,6 @@ const topTags = [...tagCounts.entries()]
 >
   <section flex-auto class="brand-container">
     <CategoryCard category={category} articleCount={articles.length} topTags={topTags} />
-    <ArticleTimeline client:only="solid-js" {articles} />
+    <ArticleTimeline {articles} />
   </section>
 </RootLayout>

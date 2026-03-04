@@ -1,58 +1,33 @@
-export type ThemePreference = "light" | "dark" | "system";
-
-const applyTheme = (dark: boolean) => {
-  document.documentElement.classList.toggle("dark", dark);
-  document.documentElement.style.colorScheme = dark ? "dark" : "light";
-};
-
-const resolveIsDark = (theme: ThemePreference): boolean => {
-  if (theme === "dark") return true;
-  if (theme === "light") return false;
-  return matchMedia("(prefers-color-scheme: dark)").matches;
-};
+import { useStore } from "@nanostores/solid";
+import { createPrefersDark } from "@solid-primitives/media";
+import { $theme } from "@/lib/atoms/theme";
 
 export const useTheme = () => {
-  let theme = $signal<ThemePreference>(
-    (localStorage.getItem("theme") as ThemePreference) || "system",
-  );
-  let isDark = $signal(resolveIsDark(theme));
+  const theme = useStore($theme);
 
-  const setTheme = (next: ThemePreference) => {
-    theme = next;
+  const isSystem = () => theme() === "system";
 
-    localStorage.setItem("theme", next);
+  const prefersDark = createPrefersDark();
 
-    isDark = resolveIsDark(next);
+  const isDark = () => {
+    if (theme() === "dark") return true;
+    if (theme() === "light") return false;
 
-    applyTheme(isDark);
+    return prefersDark();
   };
 
   const toggleLightDark = () => {
-    setTheme(isDark ? "light" : "dark");
+    $theme.set(isDark() ? "light" : "dark");
   };
 
   const setSystem = () => {
-    setTheme("system");
+    $theme.set("system");
   };
-
-  const listener = (e: MediaQueryListEvent) => {
-    if (theme !== "system") return;
-
-    isDark = e.matches;
-
-    applyTheme(isDark);
-  };
-
-  const media = matchMedia("(prefers-color-scheme: dark)");
-  media.addEventListener("change", listener);
-
-  $cleanup(() => {
-    media.removeEventListener("change", listener);
-  });
 
   return {
-    getTheme: $get(theme),
-    isDark: $get(isDark),
+    theme,
+    isSystem,
+    isDark,
     toggleLightDark,
     setSystem,
   } as const;
