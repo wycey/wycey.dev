@@ -173,6 +173,9 @@ export default defineConfig({
     cacheSave(remarkEmbedderCache),
   ],
   vite: {
+    ssr: {
+      external: ["@resvg/resvg-js"],
+    },
     optimizeDeps: {
       exclude: ["@resvg/resvg-js"],
     },
