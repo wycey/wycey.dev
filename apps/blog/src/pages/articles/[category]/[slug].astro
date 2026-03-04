@@ -2,7 +2,7 @@
 import { Picture } from "astro:assets";
 import { getEntry, render } from "astro:content";
 import type { GetStaticPaths } from "astro";
-import ArticleActionButtons from "@/components/ArticleActionButtons.astro";
+import { ArticleActionButtons } from "@/components/solid/ArticleActionButtons.client";
 import RootLayout from "@/layouts/RootLayout.astro";
 import { SITE_NAME } from "@/lib/constants";
 import {
@@ -14,6 +14,7 @@ import { createArticleSchema } from "@/lib/content/json-ld";
 import { truncateString } from "@/lib/utils/strings";
 
 import "@/styles/typography.css";
+import { FancyboxLoader } from "@/components/solid/FancyboxLoader.client";
 
 export const getStaticPaths = (async () => {
   const articles = await getSortedArticles();
@@ -46,7 +47,8 @@ export const getStaticPaths = (async () => {
 
 const { article, author, category } = Astro.props;
 const tags = article.data.tags.map(tag => category.data.tags?.find(t => t.slug === tag)).filter(Boolean) ?? [];
-const shareTitle = `${article.data.title} by ${author.data.name} · ${category.data.name} · ${SITE_NAME}`;
+const shareTitle = SITE_NAME;
+const shareText = `${article.data.title} by ${author.data.name} · ${category.data.name} · ${SITE_NAME}`;
 
 const ogImageUrl = new URL(`/og/${category.id}/${article.id}.png`, Astro.site).href;
 
@@ -215,143 +217,9 @@ const nextTitle = nextArticle?.data.title;
           : <div />
       }
     </nav>
-    <footer
-      flex
-      flex-row-reverse
-      m="t-8 -b-8"
-      pb="8"
-      gap="4"
-      z="36"
-      print="hidden"
-      lg="hidden"
-      class="sticky inset-b-0 translate-y-full"
-    >
-      <ArticleActionButtons {shareTitle} />
-    </footer>
-    <aside
-      h="full"
-      flex-col
-      gap="4"
-      items="end"
-      class="absolute top-2 right--16 items-end hidden lg:flex print:hidden!"
-    >
-      <section flex flex-col gap="4" class="sticky top-4">
-        <ArticleActionButtons {shareTitle} />
-      </section>
-    </aside>
+
+    <ArticleActionButtons client:visible {shareTitle} {shareText} shareUrl={Astro.url.href} />
   </section>
+  
+  <FancyboxLoader client:idle />
 </RootLayout>
-
-<script>
-  import type { FancyboxOptions } from "@fancyapps/ui";
-
-  const fancyboxSelectors: string[] = [];
-  let Fancybox: typeof import("@fancyapps/ui").Fancybox | null = null;
-  
-  const setupFancybox = async () => {
-    const fancyboxSelector = "[data-fancybox]" as const;
-    
-    const hasImages = document.querySelector(fancyboxSelector);
-    
-    if (!hasImages) {
-      return;
-    }
-    
-    if (!Fancybox) {
-      const module = await import("@fancyapps/ui");
-      
-      Fancybox = module.Fancybox;
-      
-      await import("@fancyapps/ui/dist/fancybox/fancybox.css");
-    }
-
-    if (fancyboxSelectors.length > 0) {
-      return;
-    }
-
-    Fancybox.bind(fancyboxSelector, {
-      Carousel: {
-        Toolbar: {
-          display: {
-            left: ["counter"],
-            middle: [
-              "zoomIn",
-              "zoomOut",
-              "reset",
-            ],
-            right: ["thumbs", "close"],
-          },
-        },
-        // biome-ignore lint/suspicious/noExplicitAny: Fancybox is too difficult to type
-        formatCaption: (_carouselRef: any, slide: any) => {
-          return slide.triggerEl?.nextElementSibling || "";
-        }, 
-      },
-      hideScrollbar: false,
-    } as unknown as FancyboxOptions);
-    fancyboxSelectors.push(fancyboxSelector);
-  };
-  
-  const setupFooterInteraction = () => {
-    // スクロールに合わせてフッターを表示/非表示する
-    const footer = document.querySelector("footer");
-    const buttons = document.querySelectorAll("footer button");
-
-    if (!footer) {
-      throw new Error("Footer element not found");
-    }
-
-    setTimeout(() => {
-      // 初期アニメーションを防止するため、ページ読み込み後にtransitionクラスを追加
-      footer.classList.add("transition");
-    });
-
-    // 縦にスクロールできない場合は常にフッターを表示
-    if (window.innerHeight >= document.body.offsetHeight) {
-      footer.classList.remove("translate-y-full");
-
-      for (const button of buttons) {
-        button.classList.add("shadow-none");
-      }
-    }
-
-    let lastScrollY = window.scrollY;
-
-    window.addEventListener("scroll", () => {
-      if (window.scrollY === lastScrollY) {
-        return;
-      }
-
-      if (window.scrollY <= lastScrollY || window.innerHeight + window.scrollY >= document.body.offsetHeight - 400) {
-        // スクロールアップ・下端付近に到達 - フッターを表示
-        footer.classList.remove("translate-y-full");
-      } else {
-        // スクロールダウン - フッターを隠す
-        footer.classList.add("translate-y-full");
-      }
-
-      if (window.scrollY <= 100) {
-        // 上端付近に到達 - フッターを隠す
-        footer.classList.add("translate-y-full");
-      }
-
-      // フッターがstickyで張り付いたら影をつける
-      const footerRect = footer.getBoundingClientRect();
-
-      if (footerRect.top <= window.innerHeight && footerRect.bottom >= window.innerHeight) {
-        for (const button of buttons) {
-          button.classList.remove("shadow-none");
-        }
-      } else {
-        for (const button of buttons) {
-          button.classList.add("shadow-none");
-        }
-      }
-
-      lastScrollY = window.scrollY;
-    });
-  }
-  
-  setupFancybox();
-  setupFooterInteraction();
-</script>
