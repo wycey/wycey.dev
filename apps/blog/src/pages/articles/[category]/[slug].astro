@@ -214,10 +214,26 @@ const nextTitle = nextArticle?.data.title;
           : <div />
       }
     </nav>
-    <footer flex flex-row-reverse m="t-8 -b-8" pb="8" gap="4" z="36" class="sticky inset-b-0 translate-y-full lg:hidden">
+    <footer
+      flex
+      flex-row-reverse
+      m="t-8 -b-8"
+      pb="8"
+      gap="4"
+      z="36"
+      print="hidden"
+      lg="hidden"
+      class="sticky inset-b-0 translate-y-full"
+    >
       <ArticleActionButtons {shareTitle} />
     </footer>
-    <aside h="full" flex-col gap="4" class="absolute top-2 right--16 items-end hidden lg:flex">
+    <aside
+      h="full"
+      flex-col
+      gap="4"
+      items="end"
+      class="absolute top-2 right--16 items-end hidden lg:flex print:hidden!"
+    >
       <section flex flex-col gap="4" class="sticky top-4">
         <ArticleActionButtons {shareTitle} />
       </section>
