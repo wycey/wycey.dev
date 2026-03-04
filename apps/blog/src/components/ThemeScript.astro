@@ -1,0 +1,33 @@
+---
+---
+<script is:inline>
+  const getColorMode = () => {
+    const prefers = matchMedia("(prefers-color-scheme: dark)").matches;
+    const fromStorage = localStorage.getItem("theme");
+    
+    return fromStorage === "system" || fromStorage === null
+      ? prefers
+      : fromStorage === "light"
+        ? "light"
+        : "dark";
+  };
+
+  const applyTheme = (doc) => {
+    const dark = getColorMode();
+
+    if (dark) {
+      doc.documentElement.classList.add("dark");
+    } else {
+      doc.documentElement.classList.remove("dark");
+    }
+
+    doc.documentElement.style.colorScheme = dark ? "dark" : "light";
+  };
+
+  applyTheme(document);
+
+  // Apply theme when navigating (SPA)
+  document.addEventListener("astro:before-swap", (e) => {
+    applyTheme(e.newDocument);
+  });
+</script>
