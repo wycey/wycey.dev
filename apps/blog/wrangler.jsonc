@@ -14,8 +14,8 @@
   "preview_urls": true,
   "routes": [
     {
-      "pattern": "blog.wycey.dev/*",
-      "zone_name": "wycey.dev"
+      "pattern": "blog.wycey.dev",
+      "custom_domain": true
     }
   ]
 }
