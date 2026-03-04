@@ -3,9 +3,7 @@
 import { useTheme } from "@/hooks/solid/useTheme";
 
 export const ThemeSwitcher = () => {
-  const { getTheme, isDark, toggleLightDark, setSystem } = useTheme();
-
-  const isSystem = () => getTheme() === "system";
+  const { isSystem, isDark, toggleLightDark, setSystem } = useTheme();
 
   return (
     <section flex items="center" aria-label="テーマ切り替え">
