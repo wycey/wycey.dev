@@ -173,11 +173,11 @@ export default defineConfig({
     cacheSave(remarkEmbedderCache),
   ],
   vite: {
+    optimizeDeps: {
+      exclude: ["@resvg/resvg-js"],
+    },
     build: {
       cssMinify: "lightningcss",
-      rollupOptions: {
-        external: ["@resvg/resvg-js"],
-      },
     },
     css: {
       lightningcss: {
