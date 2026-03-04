@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import { getEntry } from "astro:content";
 import { formatDate, parseDate } from "@/lib/content/date";
@@ -90,11 +90,12 @@ const href = `/articles/${categoryRef.id}/${article.id}`;
     {author && (
       <div flex items="center" gap="1.5">
         {author.data.avatar ? (
-          <Image
+          <Picture
             src={author.data.avatar}
-            alt=""
+            alt={`${author.data.name} のアバター画像`}
             width={48}
             height={48}
+            priority={true}
             w="5"
             h="5"
             rounded="full"

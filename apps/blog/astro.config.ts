@@ -110,6 +110,7 @@ export default defineConfig({
   trailingSlash: "never",
   build: {
     assets: "_assets",
+    inlineStylesheets: "always",
   },
   server: {
     open: true,

@@ -109,7 +109,8 @@ const nextTitle = nextArticle?.data.title;
             <Picture
               src={author.data.avatar}
               alt={`${author.data.name} のアバター画像`}
-              inferSize={true}
+              width={48}
+              height={48}
               priority={true}
               class="w-6 h-6 rounded-full object-contain"
             />
@@ -170,7 +171,7 @@ const nextTitle = nextArticle?.data.title;
       <section id="article-body" class="prose">
         <Content />
 
-        <script is:inline async src="https://platform.twitter.com/widgets.js" charset="utf-8" />
+        <script is:inline src="https://platform.twitter.com/widgets.js" charset="utf-8" defer />
       </section>
     </article>
     <nav w="full" h="20" mt="4" grid grid-rows="2 md:1" grid-cols="1 md:2" items="center" justify="start" gap="4">
