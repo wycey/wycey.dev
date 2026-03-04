@@ -5,6 +5,9 @@
 :where(html, :host) {
   @apply leading-relaxed;
 }
+:root {
+  interpolate-size: allow-keywords;
+}
 
 :where(:root) {
   color-scheme: light;
@@ -78,6 +81,19 @@
     [contenteditable]
   ) {
   text-autospace: no-autospace;
+}
+
+:where(details) {
+  &::details-content {
+    overflow: clip;
+    opacity: 0;
+    height: 0;
+  }
+
+  &[open]::details-content {
+    opacity: 1;
+    height: auto;
+  }
 }
 
 :where(dialog, [popover]) {
