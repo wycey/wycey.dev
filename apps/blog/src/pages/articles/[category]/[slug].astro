@@ -52,8 +52,11 @@ const { Content, headings: rawHeadings, remarkPluginFrontmatter } = await render
 const validSlugs = new Set<string>(remarkPluginFrontmatter.validHeadingSlugs ?? []);
 const headings = rawHeadings.filter((h) => validSlugs.has(h.slug));
 
-const updatedAt = dateNow();
 const publishedAt = article.data.publishedAt ? parseDate(article.data.publishedAt) : undefined;
+const updatedAt = remarkPluginFrontmatter.lastModified ? parseDate(remarkPluginFrontmatter.lastModified) 
+  : publishedAt 
+    ? publishedAt
+    : dateNow();
 const ogImageUrl = new URL(`/og/${category.id}/${article.id}.png`, Astro.site).href;
 ---
 <RootLayout
