@@ -21,11 +21,15 @@ const getCachedFont = (weight: number): Buffer | undefined => {
 };
 
 const cacheFont = (weight: number, data: Buffer): void => {
-  if (!existsSync(CACHE_DIR)) {
-    mkdirSync(CACHE_DIR, { recursive: true });
-  }
+  try {
+    if (!existsSync(CACHE_DIR)) {
+      mkdirSync(CACHE_DIR, { recursive: true });
+    }
 
-  writeFileSync(getCachePath(weight), data);
+    writeFileSync(getCachePath(weight), data);
+  } catch {
+    // Cache write is best-effort; ignore permission errors
+  }
 };
 
 const extractUrlForWeight = (

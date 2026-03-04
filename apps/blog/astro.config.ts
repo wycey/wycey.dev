@@ -1,6 +1,5 @@
 import { readFileSync } from "node:fs";
 import { writeFile } from "node:fs/promises";
-import cloudflare from "@astrojs/cloudflare";
 import partytown from "@astrojs/partytown";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
@@ -109,7 +108,6 @@ const unoCtx = await createGenerator(unoConfig);
 export default defineConfig({
   site: "https://blog.wycey.dev",
   output: "static",
-  adapter: cloudflare(),
   trailingSlash: "never",
   build: {
     assets: "_assets",
@@ -174,13 +172,13 @@ export default defineConfig({
   ],
   vite: {
     ssr: {
-      external: ["@resvg/resvg-js"],
+      external: ["@resvg/resvg-wasm"],
     },
     optimizeDeps: {
-      exclude: ["@resvg/resvg-js"],
+      exclude: ["@resvg/resvg-wasm"],
     },
     build: {
-      cssMinify: "lightningcss",
+      //cssMinify: "lightningcss",
     },
     css: {
       lightningcss: {
@@ -188,6 +186,34 @@ export default defineConfig({
       },
     },
     plugins: [
+      {
+        name: "base64-loader",
+        enforce: "pre",
+        async resolveId(id, importer) {
+          if (!id.endsWith("?base64")) return;
+          const basePath = id.slice(0, -"?base64".length);
+          const resolved = await this.resolve(basePath, importer, {
+            skipSelf: true,
+          });
+          if (resolved) return `${resolved.id}?base64`;
+        },
+        load(id) {
+          if (!id.endsWith("?base64")) return;
+          const filePath = id.slice(0, -"?base64".length);
+          const buffer = readFileSync(filePath);
+          const ext = filePath.split(".").pop()?.toLowerCase() ?? "";
+          const mimeTypes: Record<string, string> = {
+            png: "image/png",
+            jpg: "image/jpeg",
+            jpeg: "image/jpeg",
+            gif: "image/gif",
+            webp: "image/webp",
+            svg: "image/svg+xml",
+          };
+          const mime = mimeTypes[ext] ?? "application/octet-stream";
+          return `export default ${JSON.stringify(`data:${mime};base64,${buffer.toString("base64")}`)}`;
+        },
+      },
       solidLabels({ dev: false }),
       removeConsole({
         includes: ["log", "debug"],
