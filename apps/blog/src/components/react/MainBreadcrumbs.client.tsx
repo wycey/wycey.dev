@@ -1,3 +1,4 @@
+import type { MarkdownHeading } from "astro";
 import {
   type ReactNode,
   useCallback,
@@ -17,22 +18,16 @@ import {
   BreadcrumbSeparator,
 } from "./ui/breadcrumb";
 
-export interface Author {
+interface Author {
   id: string;
   name: string;
   avatar?: string;
 }
 
-export interface Category {
+interface Category {
   id: string;
   name: string;
   articleCount: number;
-}
-
-export interface Heading {
-  depth: number;
-  slug: string;
-  text: string;
 }
 
 export interface BreadcrumbEntry {
@@ -45,7 +40,7 @@ export interface MainBreadcrumbsProps {
   currentPath: string;
   authors?: Author[];
   categories?: Category[];
-  headings?: Heading[];
+  headings?: MarkdownHeading[];
   breadcrumbs?: BreadcrumbEntry[];
 }
 
@@ -186,7 +181,7 @@ const buildCategoryMenuItems = (
       type: "item" as const,
       label: cat.name,
       href,
-      rightText: String(cat.articleCount),
+      rightText: `${cat.articleCount}`,
     });
   }
 
@@ -194,7 +189,7 @@ const buildCategoryMenuItems = (
 };
 
 const buildTocMenuItems = (
-  headings: Heading[],
+  headings: MarkdownHeading[],
   activeSlug: string | null,
 ): DropdownMenuItemDef[] => {
   const items: DropdownMenuItemDef[] = [{ type: "label", label: "目次" }];

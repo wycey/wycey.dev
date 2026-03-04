@@ -1,14 +1,16 @@
 ---
 import { getImage } from "astro:assets";
 import { getCollection } from "astro:content";
+import type { MarkdownHeading } from "astro";
 import WyceyLogo from "@/assets/images/wycey-full.svg";
 import { ThemeSwitcher } from "@/components/solid/ThemeSwitcher.client";
-import type { BreadcrumbEntry, Heading } from "../react/MainBreadcrumbs.client";
+import { getSortedArticles } from "@/lib/content";
+import type { BreadcrumbEntry } from "../react/MainBreadcrumbs.client";
 import { MainBreadcrumbs } from "../react/MainBreadcrumbs.client";
 
 interface Props {
   breadcrumbs?: BreadcrumbEntry[];
-  headings?: Heading[];
+  headings?: MarkdownHeading[];
 }
 
 const { breadcrumbs = [], headings = [] } = Astro.props;
@@ -17,7 +19,7 @@ const currentPath = Astro.url.pathname;
 
 const allAuthors = await getCollection("authors");
 const allCategories = await getCollection("categories");
-const allArticles = await getCollection("articles");
+const allArticles = await getSortedArticles();
 
 const authors = await Promise.all(
   allAuthors.map(async (a) => {
@@ -26,13 +28,14 @@ const authors = await Promise.all(
     if (a.data.avatar) {
       try {
         const optimized = await getImage({
-          src: String(a.data.avatar),
+          src: a.data.avatar,
           width: 32,
           height: 32,
         });
+
         avatar = optimized.src;
       } catch {
-        avatar = String(a.data.avatar);
+        avatar = a.data.avatar;
       }
     }
 
