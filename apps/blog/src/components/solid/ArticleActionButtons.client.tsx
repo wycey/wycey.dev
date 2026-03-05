@@ -53,6 +53,7 @@ const InnerActionButtons = (
           "hidden lg:block": true,
           "shadow-lg": props.applyShadow,
           "shadow-none": !props.applyShadow,
+          "lg:shadow-none": true,
         }}
       >
         <span class="block i-lucide:twitter" />
@@ -67,7 +68,7 @@ const isAtBottom = () =>
 export const ArticleActionButtons = (props: ArticleActionButtonsProps) => {
   const [enableTransition, setEnableTransition] = createSignal(false);
   const [showFooter, setShowFooter] = createSignal(false);
-  const [applyButtonShadow, setApplyButtonShadow] = createSignal(true);
+  const [applyButtonShadow, setApplyButtonShadow] = createSignal(false);
 
   let footerRef!: HTMLDivElement;
   let lastScrollY!: number;
