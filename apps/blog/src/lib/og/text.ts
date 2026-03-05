@@ -2,25 +2,11 @@ import { loadDefaultJapaneseParser } from "budoux";
 
 const budouxParser = loadDefaultJapaneseParser();
 
-/**
- * BudouXを用いてテキストを分かち書きする。
- * 各チャンクは改行可能な単位。
- */
-export const splitByBudoux = (text: string): string[] => {
-  return budouxParser.parse(text);
-};
-
-// ラテン文字の範囲 (基本ラテン + 拡張)
-const LATIN_REGEX = /[\u0020-\u024F\u1E00-\u1EFF]/;
-// CJK文字の範囲
-const CJK_REGEX =
-  /[\u3000-\u303F\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFF\uF900-\uFAFF\uFF00-\uFF60\uFFE0-\uFFE6]/;
+const LATIN_REGEX = /\p{Script=Latin}/u;
+const CJK_REGEX = /\p{Script=Han}|\p{Script=Hiragana}|\p{Script=Katakana}/u;
 
 const FOUR_PER_EM_SPACE = "\u2005";
 
-/**
- * ラテン文字と和文の間に四分アキ (U+2005) を挿入する。
- */
 export const insertQuarterEmSpaces = (text: string): string => {
   const chars = [...text];
   const result: string[] = [];
@@ -46,11 +32,8 @@ export const insertQuarterEmSpaces = (text: string): string => {
   return result.join("");
 };
 
-/**
- * OGP画像用にテキストを処理する。
- * 四分アキ挿入 → BudouX分かち書き
- */
 export const processTitle = (title: string): string[] => {
   const spaced = insertQuarterEmSpaces(title);
-  return splitByBudoux(spaced);
+
+  return budouxParser.parse(spaced);
 };
