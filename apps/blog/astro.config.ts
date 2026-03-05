@@ -16,7 +16,7 @@ import oEmbedTransformer, {
   type Config as OEmbedTransformerConfig,
 } from "@remark-embedder/transformer-oembed";
 import type { AstroIntegration } from "astro";
-import { defineConfig, envField } from "astro/config";
+import { defineConfig, envField, sharpImageService } from "astro/config";
 import expressiveCode from "astro-expressive-code";
 import robotsTxt from "astro-robots-txt";
 import browserslist from "browserslist";
@@ -108,7 +108,9 @@ const unoCtx = await createGenerator(unoConfig);
 export default defineConfig({
   site: "https://blog.wycey.dev",
   output: "static",
-  adapter: cloudflare(),
+  adapter: cloudflare({
+    imageService: "compile", // https://github.com/withastro/astro/issues/13825
+  }),
   trailingSlash: "never",
   build: {
     assets: "_assets",
@@ -122,12 +124,7 @@ export default defineConfig({
     remotePatterns: [{ protocol: "https" }],
     responsiveStyles: true,
     layout: "constrained",
-    service: {
-      entrypoint: "astro/assets/services/sharp",
-      config: {
-        kernel: "mks2021",
-      },
-    },
+    service: sharpImageService({ kernel: "mks2021" }),
   },
   env: {
     schema: {
