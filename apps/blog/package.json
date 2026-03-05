@@ -13,6 +13,7 @@
     "dev": "wrangler types && astro dev",
     "start": "wrangler types && astro dev",
     "build": "wrangler types && astro check --tsconfig tsconfig.json && astro build",
+    "deploy": "wrangler deploy",
     "build:og": "bun run ./scripts/generate-og.ts",
     "postbuild": "run-s build:og",
     "typecheck": "wrangler types && astro check --tsconfig tsconfig.json",
