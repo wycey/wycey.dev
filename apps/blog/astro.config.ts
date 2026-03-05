@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import { writeFile } from "node:fs/promises";
+import cloudflare from "@astrojs/cloudflare";
 import partytown from "@astrojs/partytown";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
@@ -107,6 +108,7 @@ const unoCtx = await createGenerator(unoConfig);
 export default defineConfig({
   site: "https://blog.wycey.dev",
   output: "static",
+  adapter: cloudflare(),
   trailingSlash: "never",
   build: {
     assets: "_assets",
