@@ -11,8 +11,8 @@ interface Props {
 const { article } = Astro.props;
 const { title, publishedAt, category: categoryRef, author: authorRef, tags: tagSlugs, words } = article.data;
 
-const category = await getEntry("categories", categoryRef.id);
-const author = await getEntry("authors", authorRef.id);
+const category = await getEntry(categoryRef);
+const author = await getEntry(authorRef);
 const tags = tagSlugs
   .map(slug => category?.data.tags?.find(t => t.slug === slug))
   .filter(Boolean);

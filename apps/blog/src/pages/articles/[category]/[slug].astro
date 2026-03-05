@@ -22,13 +22,13 @@ export const getStaticPaths = (async () => {
   return Promise.all(
     articles
       .map(async (article) => {
-        const author = await getEntry("authors", article.data.author.id);
+        const author = await getEntry(article.data.author);
 
         if (!author) {
           throw new Error(`Author ${article.data.author.id} not found for article ${article.id}`);
         }
 
-        const category = await getEntry("categories", article.data.category.id);
+        const category = await getEntry(article.data.category);
       
         if (!category) {
           throw new Error(`Category ${article.data.category.id} not found for article ${article.id}`);
