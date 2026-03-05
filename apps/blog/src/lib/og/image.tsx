@@ -1,7 +1,7 @@
 /** biome-ignore-all lint/suspicious/noArrayIndexKey: Items are static and won't change order */
 
 import type React from "react";
-import logoBase64 from "../../assets/images/wycey-full-light.png?base64";
+import { ImageRegistry, type ImageResources } from "@/lib/og/image-registry";
 import { processTitle } from "./text";
 
 // Radix Violet / Mauve light mode colors
@@ -32,19 +32,23 @@ interface TagInfo {
 export interface OgImageProps {
   title: string;
   authorName: string;
-  authorAvatarBase64?: string | undefined;
+  authorId: string;
   categoryName: string;
+  categoryId: string;
   tags: TagInfo[];
+  images: ImageResources;
 }
 
 export const createOgImage = ({
   title,
   authorName,
-  authorAvatarBase64,
+  authorId,
   categoryName,
   tags,
+  images,
 }: OgImageProps): React.ReactNode => {
   const titleChunks = processTitle(title);
+  const imageRegitry = new ImageRegistry(images);
 
   return (
     <div
@@ -170,9 +174,9 @@ export const createOgImage = ({
               gap: "12px",
             }}
           >
-            {authorAvatarBase64 ? (
+            {imageRegitry.has(authorId) ? (
               <img
-                src={authorAvatarBase64}
+                src={imageRegitry.getBase64(authorId)}
                 alt=""
                 width={40}
                 height={40}
@@ -212,7 +216,7 @@ export const createOgImage = ({
 
           {/* Logo */}
           <img
-            src={logoBase64}
+            src={imageRegitry.getBase64("logo")}
             alt=""
             height={40}
             style={{
