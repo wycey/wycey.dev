@@ -220,8 +220,8 @@ export const createArticleSchema = async (
   { id, data: article, body }: CollectionEntry<"articles">,
   updatedAt: Dayjs,
 ): Promise<[BlogPosting, BreadcrumbList, CollectionPage, WebSite]> => {
-  const author = await getEntry("authors", article.author.id);
-  const category = await getEntry("categories", article.category.id);
+  const author = await getEntry(article.author);
+  const category = await getEntry(article.category);
   const publishedAt = article.publishedAt
     ? parseDate(article.publishedAt)
     : undefined;

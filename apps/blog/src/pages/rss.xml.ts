@@ -16,7 +16,7 @@ export const GET: APIRoute = async (context) => {
     trailingSlash: false,
     items: await Promise.all(
       articles.map(async (article) => {
-        const category = await getEntry("categories", article.data.category.id);
+        const category = await getEntry(article.data.category);
 
         if (!category) {
           throw new Error(
