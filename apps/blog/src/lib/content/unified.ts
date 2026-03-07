@@ -11,6 +11,8 @@ import { default as _remarkLinkCard } from "remark-link-card-plus";
 import type { Plugin } from "unified";
 import { EXIT, visit } from "unist-util-visit";
 
+const HIDDEN_NODE_TYPE = "__hidden_node__";
+
 const budouxParser = loadDefaultJapaneseParser();
 
 export const remarkHeading1ToTitle: Plugin<[], mdast.Root> = () => {
@@ -28,14 +30,14 @@ export const remarkHeading1ToTitle: Plugin<[], mdast.Root> = () => {
         }
 
         data.astro.frontmatter.title = title;
-      }
 
-      // Remove the original H1 heading from the content
-      if (node.depth === 1 && parent && index !== undefined) {
-        parent.children.splice(index, 1);
-      }
+        // Remove the original H1 heading from the content
+        if (parent && index !== undefined) {
+          parent.children.splice(index, 1);
+        }
 
-      return EXIT;
+        return EXIT;
+      }
     });
   };
 };
@@ -53,7 +55,13 @@ export const remarkLastModified: Plugin<[], mdast.Root> = () => {
       (resolve, reject) =>
         exec(command, (error, stdout) => {
           if (error) {
-            reject(error);
+            const contextualError = new Error(
+              `Failed to retrieve last modified date via git log for file "${filepath}": ${error.message}`,
+            );
+
+            (contextualError as any).cause = error;
+
+            reject(contextualError);
           } else {
             resolve(stdout.trim());
           }
@@ -110,18 +118,18 @@ export const remarkLinkCard: Plugin<[], mdast.Root> = () => {
       if (!hasUrl) return;
 
       node._originalType = node.type;
-      node.type = "__hidden_node__";
+      node.type = HIDDEN_NODE_TYPE;
 
       for (const childNode of node.children) {
         childNode._originalType = childNode.type;
-        childNode.type = "__hidden_node__";
+        childNode.type = HIDDEN_NODE_TYPE;
       }
     });
 
     // @ts-expect-error
     await _remarkLinkCard({ cache: true })(tree);
 
-    visit(tree, "__hidden_node__", (node: any) => {
+    visit(tree, HIDDEN_NODE_TYPE, (node: any) => {
       node.type = node._originalType;
 
       delete node._originalType;
@@ -211,10 +219,8 @@ export const rehypeBudoux: Plugin<[RehypeBudouxOptions], hast.Root> = ({
       parent.children.splice(index, 1, ...parsedNode);
 
       if (parsedNode.length > 1) {
-        parent.properties = {
-          ...parent.properties,
-          dataBudoux: true,
-        };
+        parent.properties ??= {};
+        parent.properties.dataBudoux = true;
       }
     });
   };

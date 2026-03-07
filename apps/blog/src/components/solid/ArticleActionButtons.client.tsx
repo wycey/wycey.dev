@@ -113,6 +113,10 @@ export const ArticleActionButtons = (props: ArticleActionButtonsProps) => {
         setShowFooter(false);
       }
 
+      if (!footerRef) {
+        throw new Error("footerRef is not assigned");
+      }
+
       // フッターがstickyで張り付いたら影をつける
       const footerRect = footerRef.getBoundingClientRect();
 

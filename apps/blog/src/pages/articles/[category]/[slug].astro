@@ -46,7 +46,10 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 const { article, author, category } = Astro.props;
-const tags = article.data.tags.map(tag => category.data.tags?.find(t => t.slug === tag)).filter(Boolean) ?? [];
+const tags = article.data.tags
+  .flatMap(tag =>
+    category.data.tags?.find(t => t.slug === tag) as NonNullable<typeof category.data.tags>[number]
+  );
 const shareTitle = SITE_NAME;
 const shareText = `${article.data.title} by ${author.data.name} · ${category.data.name} · ${SITE_NAME}`;
 

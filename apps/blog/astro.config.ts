@@ -64,7 +64,9 @@ const createCache = (path: string): Cache => {
       return JSON.parse(readFileSync(path, "utf-8")) as {
         [key: string]: string;
       };
-    } catch (_) {}
+    } catch (_) {
+      // Failed to read or parse cache file; treat as missing and start with an empty cache
+    }
 
     return {};
   })();
@@ -189,7 +191,7 @@ export default defineConfig({
       exclude: ["@resvg/resvg-wasm"],
     },
     build: {
-      //cssMinify: "lightningcss",
+      //cssMinify: "lightningcss", TODO: Enable when the build issue with LightningCSS is resolved
     },
     css: {
       lightningcss: {
@@ -216,13 +218,13 @@ export default defineConfig({
       ],
       remarkMath,
       [
-        // @ts-expect-error
+        // @ts-expect-error remarkEmbedder without .default causes type error, but with .default it works. This might be an issue with the type definitions of remarkEmbedder
         remarkEmbedder.default,
         {
           cache: remarkEmbedderCache,
           transformers: [
             [
-              // @ts-expect-error
+              // @ts-expect-error Same as above regarding .default
               oEmbedTransformer.default,
               {
                 params: {
