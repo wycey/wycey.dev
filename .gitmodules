@@ -1,0 +1,3 @@
+[submodule "apps/blog/content"]
+	path = apps/blog/content
+	url = https://github.com/wycey/blog-content
