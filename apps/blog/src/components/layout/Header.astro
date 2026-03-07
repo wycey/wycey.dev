@@ -5,6 +5,7 @@ import type { MarkdownHeading } from "astro";
 import WyceyLogo from "@/assets/images/wycey-full.svg";
 import { ThemeSwitcher } from "@/components/solid/ThemeSwitcher.client";
 import { getSortedArticles } from "@/lib/content";
+import { getAvatarUrl } from "@/lib/content/avatar";
 import type { BreadcrumbEntry } from "../react/MainBreadcrumbs.client";
 import { MainBreadcrumbs } from "../react/MainBreadcrumbs.client";
 
@@ -23,26 +24,16 @@ const allArticles = await getSortedArticles();
 
 const authors = await Promise.all(
   allAuthors.map(async (a) => {
-    let avatar: string | undefined;
-
-    if (a.data.avatar) {
-      try {
-        const optimized = await getImage({
-          src: a.data.avatar,
-          width: 32,
-          height: 32,
-        });
-
-        avatar = optimized.src;
-      } catch {
-        avatar = a.data.avatar;
-      }
-    }
+    const avatar = await getImage({
+      src: await getAvatarUrl(a.data.name,  a.data.avatar),
+      width: 32,
+      height: 32,
+    });
 
     return {
       id: a.id,
       name: a.data.name,
-      ...(avatar ? { avatar } : {}),
+      avatar: avatar.src,
     };
   }),
 );

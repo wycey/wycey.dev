@@ -1,6 +1,7 @@
 ---
-import { getImage } from "astro:assets";
+import { Picture } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
+import { getAvatarUrl } from "@/lib/content/avatar";
 import PageHeaderCard from "./PageHeaderCard.astro";
 
 interface Props {
@@ -9,17 +10,8 @@ interface Props {
 }
 
 const { author, articleCount } = Astro.props;
-const { name, bio, avatar, socialLinks = [] } = author.data;
-
-let optimizedAvatar: string | undefined;
-if (avatar) {
-  try {
-    const img = await getImage({ src: String(avatar), width: 96, height: 96 });
-    optimizedAvatar = img.src;
-  } catch {
-    optimizedAvatar = String(avatar);
-  }
-}
+const { name, bio, socialLinks = [] } = author.data;
+const avatar = await getAvatarUrl(author.data.name, author.data.avatar)
 
 const socialIcons: Record<string, { icon: string; label: string; href: string }> = {};
 for (const link of socialLinks) {
@@ -34,18 +26,14 @@ for (const link of socialLinks) {
 ---
 <PageHeaderCard>
   <div flex items="start" gap="4">
-    {optimizedAvatar && (
-      <img
-        src={optimizedAvatar}
-        alt={`${name} のアバター`}
-        w="12"
-        h="12"
-        rounded="full"
-        outline="2 primary-10/20%"
-        shrink="0"
-        class="aspect-square"
-      />
-    )}
+    <Picture
+      src={avatar}
+      alt={`${name} のアバター画像`}
+      width={96}
+      height={96}
+      priority={true}
+      class="w-12 h-12 rounded-full outline-2 outline-primary-10/20% shrink-0 aspect-square"
+    />
     <div flex flex-col gap="1" min-w="0">
       <div flex items="baseline" gap="2" flex-wrap="wrap">
         <h1 text="xl" font="bold" class="leading-tight">{name}</h1>

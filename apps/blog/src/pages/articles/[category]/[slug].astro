@@ -110,16 +110,14 @@ const nextTitle = nextArticle?.data.title;
           transition-colors
           class="px-2 rounded-2 hover:bg-primary-bg-hover"
         >
-          {author.data.avatar && (
-            <Picture
-              src={author.data.avatar}
-              alt={`${author.data.name} のアバター画像`}
-              width={48}
-              height={48}
-              priority={true}
-              class="w-6 h-6 rounded-full object-contain"
-            />
-          )}
+          <Picture
+            src={avatar}
+            alt={`${author.data.name} のアバター画像`}
+            width={48}
+            height={48}
+            priority={true}
+            class="w-6 h-6 rounded-full object-contain"
+          />
           <p class="whitespace-nowrap">{author.data.name}</p>
         </a>
         <div w="px" min-h="0" bg="border" rounded="full" />

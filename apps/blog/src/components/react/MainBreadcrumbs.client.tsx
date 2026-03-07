@@ -21,7 +21,7 @@ import {
 interface Author {
   id: string;
   name: string;
-  avatar?: string;
+  avatar: string;
 }
 
 interface Category {
@@ -142,16 +142,14 @@ const buildBlogMenuItems = (
       href: authorPath,
       rightText: authorPath,
       active: isAuthorActive,
-      icon: author.avatar ? (
+      icon: (
         <img
           src={author.avatar}
-          alt=""
+          alt={`${author.name} のアバター画像`}
           width={16}
           height={16}
           className="size-4 rounded-full object-contain shrink-0"
         />
-      ) : (
-        <span block size="4" shrink="0" className="i-lucide:user" />
       ),
     });
   }

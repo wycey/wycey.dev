@@ -2,6 +2,7 @@
 import { Picture } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import { getEntry } from "astro:content";
+import { getAvatarUrl } from "@/lib/content/avatar";
 import { formatDate, parseDate } from "@/lib/content/date";
 
 interface Props {
@@ -16,6 +17,8 @@ const author = await getEntry(authorRef);
 const tags = tagSlugs
   .map(slug => category?.data.tags?.find(t => t.slug === slug))
   .filter(Boolean);
+
+const avatar = await getAvatarUrl(author.data.name, author.data.avatar);
 
 const date = publishedAt ? formatDate(parseDate(publishedAt)) : undefined;
 const href = `/articles/${categoryRef.id}/${article.id}`;
@@ -89,24 +92,18 @@ const href = `/articles/${categoryRef.id}/${article.id}`;
   <div flex items="center" gap="3" flex-wrap="wrap" text="fg-muted" class="self-end">
     {author && (
       <div flex items="center" gap="1.5">
-        {author.data.avatar ? (
-          <Picture
-            src={author.data.avatar}
-            alt={`${author.data.name} のアバター画像`}
-            width={48}
-            height={48}
-            priority={true}
-            w="5"
-            h="5"
-            rounded="full"
-            shrink="0"
-            class="object-cover"
-          />
-        ) : (
-          <span class="p-1 bg-primary-bg rounded-1.5">
-            <span block text="xs primary-10" class="i-lucide:user" />
-          </span>
-        )}
+        <Picture
+          src={avatar}
+          alt={`${author.data.name} のアバター画像`}
+          width={48}
+          height={48}
+          priority={true}
+          w="5"
+          h="5"
+          rounded="full"
+          shrink="0"
+          class="object-cover"
+        />
         <span text="xs">{author.data.name}</span>
       </div>
     )}
