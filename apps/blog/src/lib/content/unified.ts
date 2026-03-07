@@ -15,7 +15,7 @@ const budouxParser = loadDefaultJapaneseParser();
 
 export const remarkHeading1ToTitle: Plugin<[], mdast.Root> = () => {
   return (tree, { data }) => {
-    visit(tree, "heading", (node) => {
+    visit(tree, "heading", (node, index, parent) => {
       if (node.depth === 1) {
         const title = mdastToString(node);
 
@@ -29,6 +29,13 @@ export const remarkHeading1ToTitle: Plugin<[], mdast.Root> = () => {
 
         data.astro.frontmatter.title = title;
       }
+
+      // Remove the original H1 heading from the content
+      if (node.depth === 1 && parent && index !== undefined) {
+        parent.children.splice(index, 1);
+      }
+
+      return EXIT;
     });
   };
 };
