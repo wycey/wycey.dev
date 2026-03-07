@@ -134,7 +134,6 @@ export default defineConfig({
       GA_MEASUREMENT_ID: envField.string({
         context: "client",
         access: "public",
-        length: 10,
         optional: true,
       }),
     },
@@ -198,34 +197,6 @@ export default defineConfig({
       },
     },
     plugins: [
-      {
-        name: "base64-loader",
-        enforce: "pre",
-        async resolveId(id, importer) {
-          if (!id.endsWith("?base64")) return;
-          const basePath = id.slice(0, -"?base64".length);
-          const resolved = await this.resolve(basePath, importer, {
-            skipSelf: true,
-          });
-          if (resolved) return `${resolved.id}?base64`;
-        },
-        load(id) {
-          if (!id.endsWith("?base64")) return;
-          const filePath = id.slice(0, -"?base64".length);
-          const buffer = readFileSync(filePath);
-          const ext = filePath.split(".").pop()?.toLowerCase() ?? "";
-          const mimeTypes: Record<string, string> = {
-            png: "image/png",
-            jpg: "image/jpeg",
-            jpeg: "image/jpeg",
-            gif: "image/gif",
-            webp: "image/webp",
-            svg: "image/svg+xml",
-          };
-          const mime = mimeTypes[ext] ?? "application/octet-stream";
-          return `export default ${JSON.stringify(`data:${mime};base64,${buffer.toString("base64")}`)}`;
-        },
-      },
       removeConsole({
         includes: ["log", "debug"],
       }),
