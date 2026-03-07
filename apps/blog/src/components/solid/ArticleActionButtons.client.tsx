@@ -35,7 +35,7 @@ const InnerActionButtons = (
         }}
       >
         <ScrollProgressRing>
-          <span class="block i-lucide:chevron-up -translate-y-[1px]" />
+          <span class="block i-lucide:chevron-up" />
         </ScrollProgressRing>
       </SquareButton>
       <ShareButton
