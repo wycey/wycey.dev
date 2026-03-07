@@ -7,21 +7,25 @@
     
     return fromStorage === "system" || fromStorage === null
       ? prefers
+        ? "dark"
+        : "light"
       : fromStorage === "light"
         ? "light"
         : "dark";
   };
 
   const applyTheme = (doc) => {
-    const dark = getColorMode();
+    const mode = getColorMode();
 
-    if (dark) {
+    doc.documentElement.style.colorScheme = mode;
+    
+    if (mode === "dark") {
       doc.documentElement.classList.add("dark");
-    } else {
+      doc.documentElement.classList.remove("light");
+    } else if (mode === "light") {
+      doc.documentElement.classList.light("dark");
       doc.documentElement.classList.remove("dark");
     }
-
-    doc.documentElement.style.colorScheme = dark ? "dark" : "light";
   };
 
   applyTheme(document);
