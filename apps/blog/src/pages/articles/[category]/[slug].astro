@@ -48,7 +48,7 @@ export const getStaticPaths = (async () => {
 const { article, author, category } = Astro.props;
 const tags = article.data.tags
   .flatMap(tag =>
-    category.data.tags?.find(t => t.slug === tag) as NonNullable<typeof category.data.tags>[number]
+    category.data.tags?.find(t => t.slug === tag) ?? []
   );
 const shareTitle = SITE_NAME;
 const shareText = `${article.data.title} by ${author.data.name} · ${category.data.name} · ${SITE_NAME}`;
@@ -63,9 +63,7 @@ const headings = rawHeadings.filter((h) => validSlugs.has(h.slug));
 const publishedAt = article.data.publishedAt ? parseDate(article.data.publishedAt) : undefined;
 const updatedAt = remarkPluginFrontmatter.lastModified
   ? parseDate(remarkPluginFrontmatter.lastModified) 
-  : publishedAt 
-    ? publishedAt
-    : dateNow();
+  : (publishedAt || dateNow());
 
 const prevArticle = article.data.prevId ? await getArticle(article.data.prevId) : undefined;
 const nextArticle = article.data.nextId ? await getArticle(article.data.nextId) : undefined;
