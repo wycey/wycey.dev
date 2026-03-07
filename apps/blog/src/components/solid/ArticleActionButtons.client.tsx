@@ -18,6 +18,7 @@ export interface ArticleActionButtonsProps {
 const InnerActionButtons = (
   props: ArticleActionButtonsProps & {
     applyShadow: boolean;
+    showScrollToTop: boolean;
   },
 ) => {
   const twitterShareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${props.shareText.trim()}\n`)}&url=${encodeURIComponent(props.shareUrl.trim())}`;
@@ -31,6 +32,7 @@ const InnerActionButtons = (
           "shadow-lg": props.applyShadow,
           "shadow-none": !props.applyShadow,
           "lg:shadow-none": true,
+          "invisible pointer-events-none": !props.showScrollToTop,
           ...props.classList,
         }}
       >
@@ -76,11 +78,20 @@ export const ArticleActionButtons = (props: ArticleActionButtonsProps) => {
   const [enableTransition, setEnableTransition] = createSignal(false);
   const [showFooter, setShowFooter] = createSignal(false);
   const [applyButtonShadow, setApplyButtonShadow] = createSignal(false);
+  const [showScrollToTop, setShowScrollToTop] = createSignal(false);
 
   let footerRef!: HTMLDivElement;
   let lastScrollY!: number;
 
   onMount(() => {
+    const updateScrollability = () => {
+      setShowScrollToTop(
+        document.documentElement.scrollHeight > window.innerHeight,
+      );
+    };
+    updateScrollability();
+    createEventListener(window, "resize", updateScrollability);
+
     // - 縦にスクロールできない場合は常にフッターを表示
     // - 最初からスクロール位置が下端付近にある場合はフッターを表示
     if (window.innerHeight >= document.body.offsetHeight || isAtBottom()) {
@@ -154,6 +165,7 @@ export const ArticleActionButtons = (props: ArticleActionButtonsProps) => {
       >
         <InnerActionButtons
           applyShadow={applyButtonShadow()}
+          showScrollToTop={showScrollToTop()}
           classList={{
             transition: enableTransition(),
             "duration-200": enableTransition(),
@@ -174,6 +186,7 @@ export const ArticleActionButtons = (props: ArticleActionButtonsProps) => {
         <section sticky flex flex-col gap="4" class="top-4">
           <InnerActionButtons
             applyShadow={applyButtonShadow()}
+            showScrollToTop={showScrollToTop()}
             classList={{
               transition: true,
             }}

@@ -19,7 +19,7 @@ export const SquareButton = (props: SquareButtonProps) => {
   return local.href ? (
     <a
       href={local.href}
-      inline-flex
+      inline-flex=""
       items="center"
       justify="center"
       text="primary-10 lg"
