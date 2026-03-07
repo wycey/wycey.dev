@@ -9,6 +9,7 @@ import {
   createAuthorUrl, getArticle, getSortedArticles,
   markdownToReadableString
 } from "@/lib/content";
+import { getAvatarUrl } from "@/lib/content/avatar";
 import { dateNow, formatDate, parseDate } from "@/lib/content/date";
 import { createArticleSchema } from "@/lib/content/json-ld";
 import { truncateString } from "@/lib/utils/strings";
@@ -50,6 +51,8 @@ const tags = article.data.tags
   .flatMap(tag =>
     category.data.tags?.find(t => t.slug === tag) ?? []
   );
+
+const avatar = await getAvatarUrl(author.data.name, author.data.avatar);
 
 const shareTitle = `${article.data.title} · ${SITE_NAME}`;
 const shareText = `${article.data.title} by ${author.data.name} · ${category.data.name} · ${SITE_NAME}`;
