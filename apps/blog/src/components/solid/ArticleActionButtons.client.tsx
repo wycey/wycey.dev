@@ -2,12 +2,14 @@
 
 import { createEventListener } from "@solid-primitives/event-listener";
 import { createSignal, onMount } from "solid-js";
+import { ScrollProgressRing } from "@/components/solid/ScrollProgressRing.client";
 import {
   ShareButton,
   SquareButton,
 } from "@/components/solid/SquareButton.client";
 
 export interface ArticleActionButtonsProps {
+  classList?: { [key: string]: boolean };
   shareTitle: string;
   shareText: string;
   shareUrl: string;
@@ -29,9 +31,12 @@ const InnerActionButtons = (
           "shadow-lg": props.applyShadow,
           "shadow-none": !props.applyShadow,
           "lg:shadow-none": true,
+          ...props.classList,
         }}
       >
-        <span class="block i-lucide:chevron-up" />
+        <ScrollProgressRing>
+          <span class="block i-lucide:chevron-up -translate-y-[1px]" />
+        </ScrollProgressRing>
       </SquareButton>
       <ShareButton
         shareTitle={props.shareTitle}
@@ -42,6 +47,7 @@ const InnerActionButtons = (
           "shadow-lg": props.applyShadow,
           "shadow-none": !props.applyShadow,
           "lg:shadow-none": true,
+          ...props.classList,
         }}
       />
       <SquareButton
@@ -54,6 +60,7 @@ const InnerActionButtons = (
           "shadow-lg": props.applyShadow,
           "shadow-none": !props.applyShadow,
           "lg:shadow-none": true,
+          ...props.classList,
         }}
       >
         <span class="block i-lucide:twitter" />
@@ -74,24 +81,19 @@ export const ArticleActionButtons = (props: ArticleActionButtonsProps) => {
   let lastScrollY!: number;
 
   onMount(() => {
+    // - 縦にスクロールできない場合は常にフッターを表示
+    // - 最初からスクロール位置が下端付近にある場合はフッターを表示
+    if (window.innerHeight >= document.body.offsetHeight || isAtBottom()) {
+      setShowFooter(true);
+
+      setApplyButtonShadow(false);
+    } else {
+    }
+
     setTimeout(() => {
       // 初期アニメーションを防止するため、ページ読み込み後にtransitionクラスを追加
       setEnableTransition(true);
     });
-
-    // 縦にスクロールできない場合は常にフッターを表示
-    if (window.innerHeight >= document.body.offsetHeight) {
-      setShowFooter(true);
-
-      setApplyButtonShadow(false);
-    }
-
-    // 最初からスクロール位置が下端付近にある場合はフッターを表示
-    if (isAtBottom()) {
-      setShowFooter(true);
-
-      setApplyButtonShadow(false);
-    }
 
     lastScrollY = window.scrollY;
 
@@ -147,12 +149,19 @@ export const ArticleActionButtons = (props: ArticleActionButtonsProps) => {
         print="hidden"
         lg="hidden"
         classList={{
-          "sticky inset-b-0": true,
-          transition: enableTransition(),
-          "translate-y-full": !showFooter(),
+          "sticky inset-b-0 origin-c": true,
         }}
       >
-        <InnerActionButtons applyShadow={applyButtonShadow()} {...props} />
+        <InnerActionButtons
+          applyShadow={applyButtonShadow()}
+          classList={{
+            transition: enableTransition(),
+            "duration-200": enableTransition(),
+            "scale-0": !showFooter(),
+            "opacity-0": !showFooter(),
+          }}
+          {...props}
+        />
       </footer>
       <aside
         absolute
@@ -163,7 +172,13 @@ export const ArticleActionButtons = (props: ArticleActionButtonsProps) => {
         class="top-2 right--16 hidden lg:flex print:hidden!"
       >
         <section sticky flex flex-col gap="4" class="top-4">
-          <InnerActionButtons applyShadow={applyButtonShadow()} {...props} />
+          <InnerActionButtons
+            applyShadow={applyButtonShadow()}
+            classList={{
+              transition: true,
+            }}
+            {...props}
+          />
         </section>
       </aside>
     </>

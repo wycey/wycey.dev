@@ -13,19 +13,21 @@ export type SquareButtonProps =
   | ({ href: string } & ComponentProps<"a">);
 
 export const SquareButton = (props: SquareButtonProps) => {
-  const [local, rest] = splitProps(props, ["href", "class"]);
+  const [local, rest] = splitProps(props, ["href", "classList"]);
   const nodes = children(() => props.children);
 
   return local.href ? (
     <a
       href={local.href}
+      inline-flex
+      items="center"
+      justify="center"
       text="primary-10 lg"
-      transition="300"
       p="4"
       rounded="2"
       bg="primary-bg hover:primary-bg-hover active:primary-bg-active disabled:primary-bg-disabled"
       cursor="disabled:not-allowed"
-      class={local.class}
+      classList={local.classList}
       {...(rest as ComponentProps<"a">)}
     >
       {nodes()}
@@ -34,12 +36,11 @@ export const SquareButton = (props: SquareButtonProps) => {
     <button
       type="button"
       text="primary-10 lg"
-      transition="300"
       p="4"
       rounded="2"
       bg="primary-bg hover:primary-bg-hover active:primary-bg-active disabled:primary-bg-disabled"
       cursor="disabled:not-allowed"
-      class={local.class}
+      classList={local.classList}
       {...(rest as ComponentProps<"button">)}
     >
       {nodes()}
