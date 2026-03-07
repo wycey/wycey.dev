@@ -13,6 +13,26 @@ import { EXIT, visit } from "unist-util-visit";
 
 const budouxParser = loadDefaultJapaneseParser();
 
+export const remarkHeading1ToTitle: Plugin<[], mdast.Root> = () => {
+  return (tree, { data }) => {
+    visit(tree, "heading", (node) => {
+      if (node.depth === 1) {
+        const title = mdastToString(node);
+
+        if (!data.astro) {
+          data.astro = {};
+        }
+
+        if (!data.astro.frontmatter) {
+          data.astro.frontmatter = {};
+        }
+
+        data.astro.frontmatter.title = title;
+      }
+    });
+  };
+};
+
 export const remarkLastModified: Plugin<[], mdast.Root> = () => {
   return async (_, file) => {
     if (!file.data.astro?.frontmatter) {
@@ -20,9 +40,18 @@ export const remarkLastModified: Plugin<[], mdast.Root> = () => {
     }
 
     const filepath = file.history[0];
-    const result = exec(`git log -1 --pretty="format:%cI" "${filepath}"`);
+    const command = `git log -1 --pretty="format:%cI" "${filepath}"`;
 
-    file.data.astro.frontmatter.lastModified = result.toString();
+    file.data.astro.frontmatter.lastModified = await new Promise(
+      (resolve, reject) =>
+        exec(command, (error, stdout) => {
+          if (error) {
+            reject(error);
+          } else {
+            resolve(stdout.trim());
+          }
+        }),
+    );
   };
 };
 
