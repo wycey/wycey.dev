@@ -22,8 +22,9 @@ export const ScrollProgressRing = (props: { children: JSX.Element }) => {
         attr: { "stroke-dashoffset": 0 },
         ease: "none",
         scrollTrigger: {
-          start: 0,
-          end: "max",
+          trigger: "#article",
+          start: "top top",
+          end: "bottom bottom",
           scrub: 0.2,
         },
       },
