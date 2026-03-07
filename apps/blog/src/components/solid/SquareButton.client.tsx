@@ -35,6 +35,9 @@ export const SquareButton = (props: SquareButtonProps) => {
   ) : (
     <button
       type="button"
+      inline-flex=""
+      items="center"
+      justify="center"
       text="primary-10 lg"
       p="4"
       rounded="2"

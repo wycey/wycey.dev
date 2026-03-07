@@ -33,7 +33,7 @@ export const getStaticPaths = (async () => {
         if (!category) {
           throw new Error(`Category ${article.data.category.id} not found for article ${article.id}`);
         }
-        
+
         return {
           params: {
             category: category.id,
@@ -50,7 +50,8 @@ const tags = article.data.tags
   .flatMap(tag =>
     category.data.tags?.find(t => t.slug === tag) ?? []
   );
-const shareTitle = SITE_NAME;
+
+const shareTitle = `${article.data.title} · ${SITE_NAME}`;
 const shareText = `${article.data.title} by ${author.data.name} · ${category.data.name} · ${SITE_NAME}`;
 
 const ogImageUrl = new URL(`/og/${category.id}/${article.id}.png`, Astro.site).href;
