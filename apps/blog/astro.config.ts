@@ -184,12 +184,6 @@ export default defineConfig({
     cacheSave(remarkEmbedderCache),
   ],
   vite: {
-    ssr: {
-      external: ["@resvg/resvg-wasm"],
-    },
-    optimizeDeps: {
-      exclude: ["@resvg/resvg-wasm"],
-    },
     build: {
       //cssMinify: "lightningcss", TODO: Enable when the build issue with LightningCSS is resolved
     },

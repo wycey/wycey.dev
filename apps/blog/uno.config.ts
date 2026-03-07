@@ -99,7 +99,7 @@ export default defineConfig({
     };
 
     theme.colors.fg = {
-      ...theme.colors.base.fg,
+      ...theme.colors.base,
       DEFAULT: theme.colors.base[12],
       disabled: theme.colors.base[7],
       muted: theme.colors.base[9],
