@@ -6,7 +6,7 @@ import { ArticleActionButtons } from "@/components/solid/ArticleActionButtons.cl
 import RootLayout from "@/layouts/RootLayout.astro";
 import { SITE_NAME } from "@/lib/constants";
 import {
-  createAuthorUrl, getSortedArticles, 
+  createAuthorUrl, getArticle, getSortedArticles,
   markdownToReadableString
 } from "@/lib/content";
 import { dateNow, formatDate, parseDate } from "@/lib/content/date";
@@ -29,7 +29,7 @@ export const getStaticPaths = (async () => {
         }
 
         const category = await getEntry(article.data.category);
-      
+
         if (!category) {
           throw new Error(`Category ${article.data.category.id} not found for article ${article.id}`);
         }
@@ -58,13 +58,14 @@ const validSlugs = new Set<string>(remarkPluginFrontmatter.validHeadingSlugs ?? 
 const headings = rawHeadings.filter((h) => validSlugs.has(h.slug));
 
 const publishedAt = article.data.publishedAt ? parseDate(article.data.publishedAt) : undefined;
-const updatedAt = remarkPluginFrontmatter.lastModified ? parseDate(remarkPluginFrontmatter.lastModified) 
+const updatedAt = remarkPluginFrontmatter.lastModified
+  ? parseDate(remarkPluginFrontmatter.lastModified) 
   : publishedAt 
     ? publishedAt
     : dateNow();
 
-const prevArticle = article.data.prevId ? await getEntry("articles", article.data.prevId) : undefined;
-const nextArticle = article.data.nextId ? await getEntry("articles", article.data.nextId) : undefined;
+const prevArticle = article.data.prevId ? await getArticle(article.data.prevId) : undefined;
+const nextArticle = article.data.nextId ? await getArticle(article.data.nextId) : undefined;
 
 const prevCategory = prevArticle?.data.category.id;
 const nextCategory = nextArticle?.data.category.id;

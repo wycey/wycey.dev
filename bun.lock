@@ -95,6 +95,7 @@
         "remark-emoji": "^5.0.2",
         "remark-link-card-plus": "^0.7.3",
         "remark-math": "^6.0.0",
+        "remark-normalize-headings": "^4.0.0",
         "remark-sectionize": "^2.1.0",
         "satori": "^0.24.1",
         "schema-dts": "^1.1.5",
@@ -2003,6 +2004,8 @@
 
     "md5": ["md5@2.3.0", "", { "dependencies": { "charenc": "0.0.2", "crypt": "0.0.2", "is-buffer": "~1.1.6" } }, "sha512-T1GITYmFaKuO91vxyoQMFETst+O71VUPEU3ze5GNzDm0OWdP8v1ziTaAEPUr/3kLsY3Sftgz242A1SetQiDL7g=="],
 
+    "mdast-normalize-headings": ["mdast-normalize-headings@4.0.0", "", { "dependencies": { "@types/mdast": "^4.0.0", "unist-util-visit": "^5.0.0" } }, "sha512-PlUAiR4x49XGYLoyEoQYbqJfO6MdcGt5Uq/0ivZvAUv55YABk8psT6177lhng6hAwTF64P6CjXrE8Aew8oqSAQ=="],
+
     "mdast-util-definitions": ["mdast-util-definitions@6.0.0", "", { "dependencies": { "@types/mdast": "^4.0.0", "@types/unist": "^3.0.0", "unist-util-visit": "^5.0.0" } }, "sha512-scTllyX6pnYNZH/AIp/0ePz6s4cZtARxImwoPJ7kS42n+MnVsI4XbnG6d4ibehRIldYMWM2LD7ImQblVhUejVQ=="],
 
     "mdast-util-find-and-replace": ["mdast-util-find-and-replace@3.0.2", "", { "dependencies": { "@types/mdast": "^4.0.0", "escape-string-regexp": "^5.0.0", "unist-util-is": "^6.0.0", "unist-util-visit-parents": "^6.0.0" } }, "sha512-Tmd1Vg/m3Xz43afeNxDIhWRtFZgM2VLyaf4vSTYwudTyeuTneoL3qtWMA5jeLyz/O1vDJmmV4QuScFCA2tBPwg=="],
@@ -2434,6 +2437,8 @@
     "remark-link-card-plus": ["remark-link-card-plus@0.7.3", "", { "dependencies": { "file-type": "^21.3.0", "open-graph-scraper": "^6.11.0", "sanitize-html": "^2.17.0", "unified": "^11.0.5", "unist-util-visit": "^5.0.0" } }, "sha512-abWy0PeihkWYvQP2rPSORdXviJrpn/v7K1P7PQyhqz6JIQs55Jwb0QHcnykCmjIdLYKUL2UmTGfva2yB8iakUw=="],
 
     "remark-math": ["remark-math@6.0.0", "", { "dependencies": { "@types/mdast": "^4.0.0", "mdast-util-math": "^3.0.0", "micromark-extension-math": "^3.0.0", "unified": "^11.0.0" } }, "sha512-MMqgnP74Igy+S3WwnhQ7kqGlEerTETXMvJhrUzDikVZ2/uogJCb+WHUg97hK9/jcfc0dkD73s3LN8zU49cTEtA=="],
+
+    "remark-normalize-headings": ["remark-normalize-headings@4.0.0", "", { "dependencies": { "@types/mdast": "^4.0.0", "mdast-normalize-headings": "^4.0.0" } }, "sha512-fSE2hJxQlqxEsiB/Oni3UcERQ0IbnUuO3RNmQd4LjgEaknek0I//fK05wgFrKP/wYhWEWA+hgm1MHkddpPDcJQ=="],
 
     "remark-parse": ["remark-parse@11.0.0", "", { "dependencies": { "@types/mdast": "^4.0.0", "mdast-util-from-markdown": "^2.0.0", "micromark-util-types": "^2.0.0", "unified": "^11.0.0" } }, "sha512-FCxlKLNGknS5ba/1lmpYijMUzX2esxW5xQqjWxw2eHFfS2MSdaHVINFmhjo+qN1WhZhNimq0dZATN9pH0IDrpA=="],
 

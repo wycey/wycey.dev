@@ -36,6 +36,7 @@ import remarkCjkFriendly from "remark-cjk-friendly";
 import remarkGfmStrikethroughCjkFriendly from "remark-cjk-friendly-gfm-strikethrough";
 import remarkEmoji, { type RemarkEmojiOptions } from "remark-emoji";
 import remarkMath from "remark-math";
+import remarkNormalizeHeadings from "remark-normalize-headings";
 import remarkSectionize from "remark-sectionize";
 import { createGenerator } from "unocss";
 import unoCSS from "unocss/astro";
@@ -46,6 +47,8 @@ import {
   rehypeFancybox,
   rehypeRecordHeadings,
   rehypeTypstMathDisplay,
+  remarkHeading1ToTitle,
+  remarkLastModified,
   remarkLinkCard,
   remarkReadingTime,
 } from "./src/lib/content/unified";
@@ -230,7 +233,10 @@ export default defineConfig({
   },
   markdown: {
     remarkPlugins: [
+      remarkNormalizeHeadings,
+      remarkHeading1ToTitle,
       remarkReadingTime,
+      remarkLastModified,
       [
         remarkEmoji,
         {

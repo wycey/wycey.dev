@@ -62,7 +62,7 @@ export const authorsSchema = z.object({
 });
 
 export const articlesSchema = z.object({
-  title: z.string(),
+  title: z.string().default("Untitled Article"), // H1 is used for title
   author: reference("authors"),
   category: reference("categories"),
   tags: z.array(z.string()).default([]),

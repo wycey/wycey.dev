@@ -1,4 +1,9 @@
-import { type CollectionEntry, getCollection, render } from "astro:content";
+import {
+  type CollectionEntry,
+  getCollection,
+  getEntry,
+  render,
+} from "astro:content";
 import { remark } from "remark";
 import stripMarkdown from "strip-markdown";
 import { dateNow, parseDate } from "@/lib/content/date";
@@ -10,6 +15,31 @@ interface GetSortedArticlesOptions {
   sortPinned?: boolean;
   filterPredicate?: (article: CollectionEntry<"articles">) => boolean;
 }
+
+interface GetArticle {
+  (article: CollectionEntry<"articles">): Promise<CollectionEntry<"articles">>;
+
+  (id: string): Promise<CollectionEntry<"articles">>;
+}
+
+export const getArticle: GetArticle = async (idOrArticle) => {
+  const article =
+    typeof idOrArticle === "string"
+      ? await getEntry("articles", idOrArticle)
+      : idOrArticle;
+
+  if (!article) {
+    throw new Error(`Article with id ${idOrArticle} not found`);
+  }
+
+  const { remarkPluginFrontmatter } = await render(article);
+
+  article.data.title = remarkPluginFrontmatter.title;
+  article.data.minutesRead = remarkPluginFrontmatter.minutesRead ?? "";
+  article.data.words = remarkPluginFrontmatter.words ?? 0;
+
+  return article;
+};
 
 export const getSortedArticles = async ({
   sortPinned = true,
@@ -54,13 +84,7 @@ export const getSortedArticles = async ({
   }
 
   // Embed remark plugin frontmatter (reading time, word count)
-  await Promise.all(
-    sortedArticles.map(async (article) => {
-      const { remarkPluginFrontmatter } = await render(article);
-      article.data.minutesRead = remarkPluginFrontmatter.minutesRead ?? "";
-      article.data.words = remarkPluginFrontmatter.words ?? 0;
-    }),
-  );
+  await Promise.all(sortedArticles.map(getArticle));
 
   return sortedArticles;
 };
