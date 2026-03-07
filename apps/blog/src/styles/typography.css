@@ -175,6 +175,10 @@
       @apply rounded-2;
     }
 
+    img[data-fancybox] {
+      @apply cursor-pointer transition-transform hover:scale-[1.02];
+    }
+
     figcaption {
       @apply mt-2 text-sm text-center text-fg-muted;
     }
@@ -421,14 +425,14 @@
     mix-blend-mode: darken;
 
     background-color: var(--callout-bg, theme("colors.primary.bg"));
-    
+
     &::details-content {
       transition:
-        height .4s,
-        opacity .4s,
-        content-visibility .4s allow-discrete;
+        height 0.4s,
+        opacity 0.4s,
+        content-visibility 0.4s allow-discrete;
     }
-    
+
     @media (prefers-color-scheme: dark) {
       mix-blend-mode: lighten;
 
