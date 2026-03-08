@@ -100,9 +100,7 @@
   h6,
   figcaption {
     font-kerning: normal;
-    font-feature-settings:
-      "palt" on,
-      "pkna" on;
+    font-variant-east-asian: proportional-width;
     text-wrap: balance;
   }
 

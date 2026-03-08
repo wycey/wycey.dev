@@ -50,9 +50,9 @@ const groups = Object.keys(groupedKeyValue)
   {groups.map(({year, articles}) => (
     <>
       <div flex items="center" w="full" h="15">
-        <p w="20% md:15%" transition text="3xl right" font="bold">
+        <h2 w="20% md:15%" transition text="3xl right" font="bold" tabular-nums>
           {year}
-        </p>
+        </h2>
         <div w="20% md:15%">
           <div
             h="3"
@@ -65,9 +65,9 @@ const groups = Object.keys(groupedKeyValue)
             class="aspect-square"
           ></div>
         </div>
-        <div w="70% md:65%" transition text="left fg-muted">
+        <p w="70% md:65%" transition text="left fg-muted" tabular-nums>
           記事数: {articles.length}
-        </div>
+        </p>
       </div>
         {articles.map((article) => (
           <a
@@ -83,7 +83,7 @@ const groups = Object.keys(groupedKeyValue)
             class="group"
           >
             <div flex items="center" justify="start" h="full">
-              <p w="20% md:15%" transition text="sm right fg-muted">
+              <p w="20% md:15%" transition text="sm right fg-muted" tabular-nums>
                 {formatDate(article.data.publishedAt)}
               </p>
 
@@ -109,7 +109,7 @@ const groups = Object.keys(groupedKeyValue)
                 />
               </div>
 
-              <p
+              <h3
                 w="70% md:65%"
                 max-w="md:65%"
                 pr="8"
@@ -121,10 +121,17 @@ const groups = Object.keys(groupedKeyValue)
                 class="whitespace-nowrap"
               >
                 {article.data.title}
-              </p>
+              </h3>
             </div>
           </a>
         ))}
     </>
   ))}
 </div>
+
+<style>
+  h2, h3 {
+    font-kerning: normal;
+    font-variant-east-asian: proportional-width;
+  }
+</style>
