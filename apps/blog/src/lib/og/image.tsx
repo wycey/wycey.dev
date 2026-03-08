@@ -1,6 +1,5 @@
 /** biome-ignore-all lint/suspicious/noArrayIndexKey: Items are static and won't change order */
 
-import type React from "react";
 import { ImageRegistry, type ImageResources } from "@/lib/og/image-registry";
 import { processTitle } from "./text";
 
@@ -24,29 +23,33 @@ const colors = {
   mauve12: "#1c1b1f",
 } as const;
 
+interface OgImageProps {
+  title: string;
+  routePath: string;
+  images: ImageResources;
+}
+
 interface TagInfo {
   name: string;
   slug: string;
 }
 
-export interface OgImageProps {
-  title: string;
+export interface ArticleOgImageProps extends OgImageProps {
   authorName: string;
   authorId: string;
   categoryName: string;
   categoryId: string;
   tags: TagInfo[];
-  images: ImageResources;
 }
 
-export const createOgImage = ({
+export const createArticleOg = ({
   title,
   authorName,
   authorId,
   categoryName,
   tags,
   images,
-}: OgImageProps): React.ReactNode => {
+}: ArticleOgImageProps) => {
   const titleChunks = processTitle(title);
   const imageRegitry = new ImageRegistry(images);
 
@@ -216,7 +219,7 @@ export const createOgImage = ({
 
           {/* Logo */}
           <img
-            src={imageRegitry.getBase64("logo")}
+            src={imageRegitry.getBase64("logoLight")}
             alt=""
             height={40}
             style={{
@@ -227,4 +230,12 @@ export const createOgImage = ({
       </div>
     </div>
   );
+};
+
+export interface PerPageOgImageProps extends OgImageProps {
+  description: string;
+}
+
+export const createPerPageOg = (props: PerPageOgImageProps) => {
+  return null;
 };

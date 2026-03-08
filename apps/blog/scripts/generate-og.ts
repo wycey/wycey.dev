@@ -6,14 +6,11 @@ import {
   authorsSchema,
   categoriesSchema,
 } from "@/lib/content/schema";
-import type { OgImageProps } from "@/lib/og/image";
+import { type ArticleOgImageProps, createArticleOg } from "@/lib/og/image";
 import type { ImageResources } from "@/lib/og/image-registry";
 import { type FontData, renderOgImage } from "@/lib/og/render";
 
-const LOGO_DIR = resolve(
-  import.meta.dir,
-  "../src/assets/images/wycey-full-light.png",
-);
+const IMAGES_DIR = resolve(import.meta.dir, "../src/assets/images");
 
 const FONTS_DIR = resolve(import.meta.dir, "../assets/fonts");
 
@@ -25,7 +22,12 @@ const CATEGORIES_DIR = resolve(CONTENT_DIR, "categories");
 const OUTPUT_DIR = resolve(import.meta.dir, "../dist/client/og");
 
 const createDefaultImageResources = async (): Promise<ImageResources> => ({
-  logo: await Bun.file(LOGO_DIR).arrayBuffer(),
+  logoLight: await Bun.file(
+    resolve(IMAGES_DIR, "wycey-full-light.png"),
+  ).arrayBuffer(),
+  logoDark: await Bun.file(
+    resolve(IMAGES_DIR, "wycey-full-dark.png"),
+  ).arrayBuffer(),
 });
 
 const loadFont = async (
@@ -51,11 +53,20 @@ const loadFont = async (
 
 const FONTS: FontData[] = await Promise.all([
   loadFont(
-    resolve(FONTS_DIR, "NotoSansJP-Regular.otf.zst"),
+    resolve(FONTS_DIR, "NotoSansJP-Regular-pwid.otf.zst"),
     "Noto Sans JP",
     400,
   ),
-  loadFont(resolve(FONTS_DIR, "NotoSansJP-Bold.otf.zst"), "Noto Sans JP", 700),
+  loadFont(
+    resolve(FONTS_DIR, "NotoSansJP-Bold-pwid.otf.zst"),
+    "Noto Sans JP",
+    700,
+  ),
+  loadFont(
+    resolve(FONTS_DIR, "Inter-Regular-tnum.otf.zst"),
+    "Inter Tabular Numbers",
+    400,
+  ),
 ]);
 
 const getArticleData = async (content: string) => {
@@ -84,10 +95,11 @@ const getCategoryData = async (categoryId: string) => {
   return await categoriesSchema.parseAsync(rawData);
 };
 
-const getProps = async (
+const getArticleOgImageProps = async (
   articlePath: string,
+  articleId: string,
   images: ImageResources,
-): Promise<OgImageProps | undefined> => {
+): Promise<ArticleOgImageProps | undefined> => {
   const article = await getArticleData(await Bun.file(articlePath).text());
 
   if (!article.publishedAt) {
@@ -115,6 +127,7 @@ const getProps = async (
 
   return {
     title: article.title,
+    routePath: `/articles/${article.category.id}/${articleId}`,
     authorName: author.name,
     authorId: article.author.id,
     categoryName: category.name,
@@ -159,19 +172,29 @@ const renderArticles = async (
   for await (const articlePath of articlesGlob.scan()) {
     const articleId = dirname(articlePath).split("/").pop();
 
+    if (!articleId) {
+      console.warn(
+        `Skipping article at ${articlePath} due to invalid path structure.`,
+      );
+
+      continue;
+    }
+
     promises.push(
-      getProps(articlePath, images).then(async (props) => {
-        if (!props) return;
+      getArticleOgImageProps(articlePath, articleId, images).then(
+        async (props) => {
+          if (!props) return;
 
-        const data = await renderOgImage(props, FONTS);
-        const outputPath = resolve(
-          OUTPUT_DIR,
-          props.categoryId,
-          `${articleId}.png`,
-        );
+          const data = await renderOgImage(createArticleOg(props), FONTS);
+          const outputPath = resolve(
+            OUTPUT_DIR,
+            props.categoryId,
+            `${articleId}.png`,
+          );
 
-        await Bun.write(outputPath, data);
-      }),
+          await Bun.write(outputPath, data);
+        },
+      ),
     );
   }
 

@@ -1,6 +1,6 @@
 import { Resvg } from "@resvg/resvg-js";
+import type { ReactNode } from "react";
 import satori from "satori";
-import { createOgImage, type OgImageProps } from "./image";
 
 const OG_WIDTH = 1200;
 const OG_HEIGHT = 630;
@@ -13,11 +13,9 @@ export interface FontData {
 }
 
 export const renderOgImage = async (
-  props: OgImageProps,
+  element: ReactNode,
   fonts: FontData[],
 ): Promise<Buffer> => {
-  const element = createOgImage(props);
-
   const svg = await satori(element, {
     width: OG_WIDTH,
     height: OG_HEIGHT,
