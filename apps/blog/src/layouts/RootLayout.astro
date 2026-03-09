@@ -1,5 +1,4 @@
 ---
-import ThemeScript from "@/components/ThemeScript.astro";
 import { GA_MEASUREMENT_ID } from "astro:env/client";
 import { SEO } from "astro-seo";
 import type { Graph, Thing } from "schema-dts";
@@ -7,6 +6,7 @@ import Footer from "@/components/layout/Footer.astro";
 import Header from "@/components/layout/Header.astro";
 import GoogleAnalytics from "@/components/scripts/GoogleAnalytics.astro";
 import { ColorSchemeWatcher } from "@/components/solid/ColorSchemeWatcher.client";
+import ThemeScript from "@/components/ThemeScript.astro";
 import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/constants";
 import { createWebSiteSchema } from "@/lib/content/json-ld";
 
@@ -44,11 +44,13 @@ const {
   breadcrumbs = [],
   headings = [],
   ogType,
-  ogImage,
+  ogImage: maybeOgImage,
   ogArticle,
   twitter,
   jsonLd: maybeJsonLd,
 } = Astro.props.frontmatter || Astro.props;
+
+const ogImage = maybeOgImage ? new URL(maybeOgImage, Astro.site).href : new URL("/og/default.png", Astro.site).href;
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -72,28 +74,26 @@ const jsonLd = {
     description={SITE_DESCRIPTION}
     charset="UTF-8"
     removeTrailingSlashForRoot={true}
-    {...(ogImage ? {
-      openGraph: {
-        basic: {
-          title: title ?? "ホーム",
-          type: ogType ?? "website",
-          image: ogImage,
-        },
-        optional: {
-          siteName: SITE_NAME,
-          locale: "ja_JP",
-          ...(description ? { description } : {}),
-        },
-        image: {
-          width: 1200,
-          height: 630,
-          alt: `タイトル「${title}」のページを示す ${SITE_NAME} の OGP 画像`,
-        },
-        ...(ogArticle ? { article: ogArticle } : {}),
+    openGraph={{
+      basic: {
+        title: title ?? "ホーム",
+        type: ogType ?? "website",
+        image: ogImage,
       },
-    } : {})}
+      optional: {
+        siteName: SITE_NAME,
+        locale: "ja_JP",
+        ...(description ? { description } : {}),
+      },
+      image: {
+        width: 1200,
+        height: 630,
+        alt: `タイトル「${title}」のページを示す ${SITE_NAME} の OGP 画像`,
+      },
+      ...(ogArticle ? { article: ogArticle } : {}),
+    }}
     twitter={{
-      ...(ogImage ? { card: "summary_large_image" } : {}),
+      card: "summary_large_image",
       ...twitter
     }}
   />

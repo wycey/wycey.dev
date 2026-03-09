@@ -8,7 +8,11 @@ import {
   authorsSchema,
   categoriesSchema,
 } from "@/lib/content/schema";
-import { type ArticleOgImageProps, createArticleOg } from "@/lib/og/image";
+import {
+  type ArticleOgImageProps,
+  createArticleOg,
+  createDefaultOg,
+} from "@/lib/og/image";
 import type { ImageResources } from "@/lib/og/image-registry";
 import { type FontData, renderOgImage } from "@/lib/og/render";
 
@@ -213,13 +217,20 @@ const renderArticles = async (
   return promises;
 };
 
+const renderDefault = async (images: ImageResources) => {
+  const data = await renderOgImage(await createDefaultOg({ images }), FONTS);
+  const outputPath = resolve(OUTPUT_DIR, "default.png");
+
+  await Bun.write(outputPath, data);
+};
+
 console.info("Generating OG images...");
 console.time("OG image generation completed.");
 
 const images = await createDefaultImageResources();
 const promises: Promise<void>[] = [];
 
-promises.push(...(await renderArticles(images)));
+promises.push(...(await renderArticles(images)), renderDefault(images));
 
 await Promise.all(promises);
 

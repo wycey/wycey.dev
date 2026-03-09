@@ -17,7 +17,10 @@ export const getStaticPaths = (async ({ paginate }) => {
 const { page } = Astro.props;
 const isFirstPage = page.currentPage === 1;
 ---
-<RootLayout jsonLd={createHomePageSchema(page.currentPage)}>
+<RootLayout
+  jsonLd={createHomePageSchema(page.currentPage)}
+  {...(isFirstPage ? {} : { title: `ページ ${page.currentPage}` })}
+>
   <div flex-auto class="brand-container">
     {isFirstPage && (
       <section text="center" pt="10" pb="6" px="4">

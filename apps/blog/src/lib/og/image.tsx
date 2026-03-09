@@ -1,8 +1,8 @@
 /** biome-ignore-all lint/suspicious/noArrayIndexKey: Items are static and won't change order */
-/** biome-ignore-all lint/a11y/useAltText: OG images are not used in HTML context */
 /** biome-ignore-all lint/a11y/noSvgWithoutTitle: OG images are not used in HTML context */
 
 import type { PropsWithChildren } from "react";
+import { SITE_DESCRIPTION } from "@/lib/constants";
 import { ImageRegistry, type ImageResources } from "@/lib/og/image-registry";
 import { processTitle } from "./text";
 
@@ -30,7 +30,13 @@ const colors = {
     base12: "#211f26",
   },
   dark: {
+    base1: "#121113",
     base5: "#323035",
+    base7: "#49474e",
+    base8: "#625f69",
+    base10: "#7c7a85",
+    base11: "#b5b2bc",
+    base12: "#eeeef0",
   },
 } as const;
 
@@ -51,8 +57,6 @@ const TagItem = ({ children }: PropsWithChildren) => (
 );
 
 interface OgImageProps {
-  title: string;
-  routePath: string;
   images: ImageResources;
 }
 
@@ -62,6 +66,8 @@ interface TagInfo {
 }
 
 export interface ArticleOgImageProps extends OgImageProps {
+  title: string;
+  routePath: string;
   articleId: string;
   authorName: string;
   authorId: string;
@@ -260,6 +266,7 @@ export const createArticleOg = async ({
           >
             <img
               src={await imageRegistry.getBase64(`avatar-${authorId}`)}
+              alt=""
               width={48}
               height={48}
               style={{
@@ -425,6 +432,7 @@ export const createArticleOg = async ({
             />
             <img
               src={await imageRegistry.getBase64("logoLight")}
+              alt=""
               width={150}
               height={40}
               style={{
@@ -475,9 +483,168 @@ export const createArticleOg = async ({
 };
 
 export interface PerPageOgImageProps extends OgImageProps {
+  title: string;
+  routePath: string;
   description: string;
 }
 
-export const createPerPageOg = (props: PerPageOgImageProps) => {
-  return null;
+export const createPerPageOg = async ({
+  title,
+  routePath,
+  description,
+  images,
+}: PerPageOgImageProps) => {
+  const titleChunks = processTitle(title);
+  const imageRegistry = new ImageRegistry(images);
+
+  return (
+    <div
+      style={{
+        width: `${OG_WIDTH}px`,
+        height: `${OG_HEIGHT}px`,
+        display: "flex",
+        color: colors.dark.base12,
+        backgroundColor: colors.dark.base1,
+        fontFamily: '"Noto Sans JP"',
+      }}
+    >
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          padding: "64px 96px 24px 96px",
+          flexShrink: 1,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "32px",
+        }}
+      >
+        {/* Page Title */}
+        <div
+          style={{
+            display: "block",
+            wordBreak: "break-word",
+            fontSize: "48px",
+            fontWeight: 700,
+            textAlign: "center",
+            textOverflow: "ellipsis",
+            lineClamp: "3",
+          }}
+        >
+          {titleChunks.join("\u200b")}
+        </div>
+        {/* Separator */}
+        <div
+          style={{
+            width: "100%",
+            height: "2px",
+            backgroundColor: colors.dark.base7,
+          }}
+        />
+        {/* Page Description */}
+        <div
+          style={{
+            marginLeft: "24px",
+            marginRight: "24px",
+            display: "block",
+            color: colors.dark.base11,
+            wordBreak: "break-word",
+            fontSize: "26px",
+            textAlign: "center",
+            textOverflow: "ellipsis",
+            lineClamp: "3",
+          }}
+        >
+          {description}
+        </div>
+        {/* Spacer */}
+        <div style={{ flexGrow: 1 }} />
+        {/* Bottom Section */}
+        <div
+          style={{
+            flexShrink: 0,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "16px",
+          }}
+        >
+          <img
+            src={await imageRegistry.getBase64("logoDark")}
+            alt=""
+            width={260}
+            height={69}
+          />
+          <div
+            style={{
+              display: "block",
+              color: colors.dark.base8,
+              wordBreak: "break-word",
+              fontSize: "16px",
+              textAlign: "center",
+              textOverflow: "ellipsis",
+              lineClamp: "1",
+            }}
+          >
+            {routePath}
+          </div>
+          <div
+            style={{
+              display: "block",
+              color: colors.dark.base10,
+              wordBreak: "break-word",
+              fontSize: "20px",
+              textAlign: "center",
+              textOverflow: "ellipsis",
+              lineClamp: "1",
+            }}
+          >
+            {SITE_DESCRIPTION}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const createDefaultOg = async ({ images }: OgImageProps) => {
+  const imageRegistry = new ImageRegistry(images);
+
+  return (
+    <div
+      style={{
+        width: `${OG_WIDTH}px`,
+        height: `${OG_HEIGHT}px`,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: "48px",
+        color: colors.dark.base12,
+        backgroundColor: colors.dark.base1,
+        fontFamily: '"Noto Sans JP"',
+      }}
+    >
+      <img
+        src={await imageRegistry.getBase64("logoDark")}
+        alt=""
+        width={448}
+        height={120}
+      />
+      <div
+        style={{
+          display: "block",
+          color: colors.dark.base10,
+          wordBreak: "break-word",
+          fontSize: "20px",
+          textAlign: "center",
+          textOverflow: "ellipsis",
+          lineClamp: "1",
+        }}
+      >
+        {SITE_DESCRIPTION}
+      </div>
+    </div>
+  );
 };

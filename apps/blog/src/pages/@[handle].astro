@@ -6,7 +6,6 @@ import AuthorCard from "@/components/content/AuthorCard.astro";
 import RootLayout from "@/layouts/RootLayout.astro";
 import { getSortedArticles } from "@/lib/content";
 import { createAuthorArticlesSchema } from "@/lib/content/json-ld";
-
 export const getStaticPaths = (async () => {
   const authors = await getCollection("authors");
 
@@ -23,6 +22,7 @@ const articles = await getSortedArticles({ sortPinned: false, filterPredicate: a
 ---
 <RootLayout
   title={`${author.data.name} (@${author.id})`}
+  description={`${author.data.name}さんが執筆した記事の一覧です。`}
   jsonLd={await createAuthorArticlesSchema(author, articles)}
 >
   <section flex-auto class="brand-container">

@@ -12,6 +12,7 @@ const allTags = new Set(articles.flatMap(a => a.data.tags));
 ---
 <RootLayout
   title="アーカイブ"
+  description="すべての記事の一覧です。"
   jsonLd={createArchiveArticlesSchema(articles)}
 >
   <section flex-auto class="brand-container">
