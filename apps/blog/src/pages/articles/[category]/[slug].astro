@@ -20,7 +20,7 @@ import { FancyboxLoader } from "@/components/solid/FancyboxLoader.client";
 
 export const getStaticPaths = (async () => {
   const articles = await getSortedArticles();
-  
+
   return Promise.all(
     articles
       .map(async (article) => {
@@ -67,7 +67,7 @@ const headings = rawHeadings.filter((h) => validSlugs.has(h.slug));
 
 const publishedAt = article.data.publishedAt ? parseDate(article.data.publishedAt) : undefined;
 const updatedAt = remarkPluginFrontmatter.lastModified
-  ? parseDate(remarkPluginFrontmatter.lastModified) 
+  ? parseDate(remarkPluginFrontmatter.lastModified)
   : (publishedAt || dateNow());
 
 const prevArticle = article.data.prevId ? await getArticle(article.data.prevId) : undefined;
@@ -149,12 +149,14 @@ const { words, minutesText } = await getReadingTime(article.body);
         }
         <div flex-auto />
         <div flex flex-wrap items="center" gap="3" text="fg-muted" grid-col="4">
-          <div flex items="center" gap="2">
-            <p class="p-2 bg-primary-bg rounded-2">
-              <span class="block i-lucide:calendar-sync text-primary-10" />
-            </p>
-            <time datetime={updatedAt.toISOString()}>{formatDate(updatedAt)}</time>
-          </div>
+          {(!publishedAt || formatDate(publishedAt) !== formatDate(updatedAt)) && (
+            <div flex items="center" gap="2">
+              <p class="p-2 bg-primary-bg rounded-2">
+                <span class="block i-lucide:calendar-sync text-primary-10" />
+              </p>
+              <time datetime={updatedAt.toISOString()}>{formatDate(updatedAt)}</time>
+            </div>
+          )}
           {publishedAt && (
             <div flex items="center" gap="2">
               <p class="p-2 bg-primary-bg rounded-2">
@@ -227,7 +229,7 @@ const { words, minutesText } = await getReadingTime(article.body);
 
     <ArticleActionButtons client:visible {shareTitle} {shareText} shareUrl={Astro.url.href} />
   </section>
-  
+
   <FancyboxLoader client:idle />
 </RootLayout>
 
