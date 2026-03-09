@@ -5,13 +5,14 @@ import type { GetStaticPaths } from "astro";
 import { ArticleActionButtons } from "@/components/solid/ArticleActionButtons.client";
 import RootLayout from "@/layouts/RootLayout.astro";
 import { SITE_NAME } from "@/lib/constants";
-import {
-  createAuthorUrl, getArticle, getSortedArticles,
-  markdownToReadableString
-} from "@/lib/content";
+import { createAuthorUrl, getArticle, getSortedArticles } from "@/lib/content";
 import { getAvatarUrl } from "@/lib/content/avatar";
 import { dateNow, formatDate, parseDate } from "@/lib/content/date";
 import { createArticleSchema } from "@/lib/content/json-ld";
+import {
+  getReadingTime,
+  markdownToReadableString
+} from "@/lib/content/markdown";
 import { truncateString } from "@/lib/utils/strings";
 
 import "@/styles/typography.css";
@@ -76,6 +77,8 @@ const prevCategory = prevArticle?.data.category.id;
 const nextCategory = nextArticle?.data.category.id;
 const prevTitle = prevArticle?.data.title;
 const nextTitle = nextArticle?.data.title;
+
+const { words, minutesText } = await getReadingTime(article.body);
 ---
 <RootLayout
   title={`${article.data.title} · ${category.data.name}`}
@@ -164,13 +167,13 @@ const nextTitle = nextArticle?.data.title;
             <p class="p-2 bg-primary-bg rounded-2">
               <span class="block i-lucide:clock text-primary-10" />
             </p>
-            <span>{article.data.minutesRead}</span>
+            <span>{minutesText}</span>
           </div>
           <div flex items="center" gap="2">
             <p class="p-2 bg-primary-bg rounded-2">
               <span class="block i-lucide:text text-primary-10" />
             </p>
-            <span>{article.data.words} 字</span>
+            <span>{words}字</span>
           </div>
         </div>
       </section>
@@ -227,3 +230,12 @@ const nextTitle = nextArticle?.data.title;
   
   <FancyboxLoader client:idle />
 </RootLayout>
+
+<style>
+  h1 {
+    font-kerning: normal;
+    font-variant-east-asian: proportional-width;
+    text-wrap: balance;
+    word-break: auto-phrase;
+  }
+</style>

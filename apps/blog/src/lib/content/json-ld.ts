@@ -14,8 +14,9 @@ import type {
   WebSite,
 } from "schema-dts";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/constants";
-import { createAuthorUrl, markdownToReadableString } from "@/lib/content";
+import { createAuthorUrl } from "@/lib/content";
 import { parseDate } from "@/lib/content/date";
+import { markdownToReadableString } from "@/lib/content/markdown";
 import { truncateString } from "@/lib/utils/strings";
 
 export const createPublisherSchema = (): Organization => ({

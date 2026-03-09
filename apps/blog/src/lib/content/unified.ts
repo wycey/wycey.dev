@@ -6,7 +6,6 @@ import type * as hast from "hast";
 import { h } from "hastscript";
 import type * as mdast from "mdast";
 import { toString as mdastToString } from "mdast-util-to-string";
-import { readingTime } from "reading-time-estimator";
 import { default as _remarkLinkCard } from "remark-link-card-plus";
 import type { Plugin } from "unified";
 import { EXIT, visit } from "unist-util-visit";
@@ -67,26 +66,6 @@ export const remarkLastModified: Plugin<[], mdast.Root> = () => {
           }
         }),
     );
-  };
-};
-
-export const remarkReadingTime: Plugin<[], mdast.Root> = () => {
-  return (tree, { data }) => {
-    const textOnPage = mdastToString(tree);
-    const readingTimeResult = readingTime(textOnPage, {
-      language: "ja",
-      translations: {
-        ja: {
-          less: "1分未満",
-          default: "分",
-        },
-      },
-    });
-
-    if (data.astro?.frontmatter) {
-      data.astro.frontmatter.minutesRead = readingTimeResult.text;
-      data.astro.frontmatter.words = readingTimeResult.words;
-    }
   };
 };
 

@@ -73,6 +73,4 @@ export const articlesSchema = z.object({
   /* Used internally */
   prevId: z.string().default(""),
   nextId: z.string().default(""),
-  minutesRead: z.string().default(""),
-  words: z.number().default(0),
 });

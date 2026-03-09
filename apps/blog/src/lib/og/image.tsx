@@ -1,27 +1,54 @@
 /** biome-ignore-all lint/suspicious/noArrayIndexKey: Items are static and won't change order */
+/** biome-ignore-all lint/a11y/useAltText: OG images are not used in HTML context */
+/** biome-ignore-all lint/a11y/noSvgWithoutTitle: OG images are not used in HTML context */
 
+import type { PropsWithChildren } from "react";
 import { ImageRegistry, type ImageResources } from "@/lib/og/image-registry";
 import { processTitle } from "./text";
 
-// Radix Violet / Mauve light mode colors
+export const OG_WIDTH = 1200;
+export const OG_HEIGHT = 630;
+
 const colors = {
-  // Background
-  bgOuter: "#f5f2ff",
-  bgCard: "#ffffff",
+  // primary: violet
+  // base: mauve
 
-  // Violet accents
-  violet3: "#f0ebff",
-  violet4: "#e6deff",
-  violet5: "#d7ceff",
-  violet9: "#6e56cf",
-  violet11: "#5746af",
-  violet12: "#20134b",
+  light: {
+    primary1: "#fdfcfe",
+    primary3: "#f4f0fe",
+    primary7: "#c2b5f5",
+    primary10: "#654dc4",
 
-  // Mauve (neutral)
-  mauve9: "#8e8c99",
-  mauve11: "#6f6d78",
-  mauve12: "#1c1b1f",
+    base1: "#fdfcfd",
+    base3: "#f2eff3",
+    base5: "#e3dfe6",
+    base6: "#dbd8e0",
+    base7: "#d0cdd7",
+    base8: "#bcbac7",
+    base9: "#8e8c99",
+    base11: "#65636d",
+    base12: "#211f26",
+  },
+  dark: {
+    base5: "#323035",
+  },
 } as const;
+
+const TagItem = ({ children }: PropsWithChildren) => (
+  <div
+    style={{
+      height: "100%",
+      padding: "4px 16px",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      border: `1px solid ${colors.light.base7}`,
+      borderRadius: "8px",
+    }}
+  >
+    {children}
+  </div>
+);
 
 interface OgImageProps {
   title: string;
@@ -35,198 +62,413 @@ interface TagInfo {
 }
 
 export interface ArticleOgImageProps extends OgImageProps {
+  articleId: string;
   authorName: string;
   authorId: string;
   categoryName: string;
   categoryId: string;
+  publishedAt: string;
+  words: number;
   tags: TagInfo[];
 }
 
-export const createArticleOg = ({
+export const createArticleOg = async ({
   title,
-  authorName,
+  routePath,
+  articleId,
   authorId,
+  authorName,
+  categoryId,
   categoryName,
+  publishedAt,
+  words,
   tags,
   images,
 }: ArticleOgImageProps) => {
   const titleChunks = processTitle(title);
-  const imageRegitry = new ImageRegistry(images);
+  const imageRegistry = new ImageRegistry(images);
 
   return (
     <div
       style={{
-        width: "1200px",
-        height: "630px",
+        width: `${OG_WIDTH}px`,
+        height: `${OG_HEIGHT}px`,
         display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        background: `linear-gradient(135deg, ${colors.bgOuter} 0%, ${colors.violet3} 100%)`,
+        color: colors.light.base12,
+        backgroundColor: colors.light.primary1,
         fontFamily: '"Noto Sans JP"',
       }}
     >
       <div
         style={{
+          width: "100%",
+          height: "100%",
+          padding: "64px 48px 32px 48px",
+          flexShrink: 1,
           display: "flex",
           flexDirection: "column",
-          width: "1120px",
-          height: "550px",
-          backgroundColor: colors.bgCard,
-          borderRadius: "24px",
-          padding: "48px 56px",
-          boxShadow: "0 4px 24px rgba(110, 86, 207, 0.08)",
-          border: `1px solid ${colors.violet4}`,
         }}
       >
-        {/* Title */}
+        {/* Page Type (Blog) */}
         <div
           style={{
-            display: "flex",
-            flexWrap: "wrap",
-            fontSize: "46px",
-            fontWeight: 700,
-            color: colors.mauve12,
-            lineHeight: 1.55,
-            textAlign: "left",
-            flexGrow: 1,
-            alignContent: "center",
-          }}
-        >
-          {titleChunks.map((chunk, i) => (
-            <span key={i} style={{ wordBreak: "keep-all" }}>
-              {chunk}
-            </span>
-          ))}
-        </div>
-
-        {/* Separator */}
-        <div
-          style={{
-            display: "flex",
             width: "100%",
-            height: "2px",
-            backgroundColor: colors.violet5,
-            marginTop: "20px",
-            marginBottom: "20px",
-            flexShrink: 0,
+            height: "32px",
+            display: "flex",
+            gap: "16px",
+            alignItems: "center",
+            color: colors.light.base8,
+            fontFamily: '"Inter Tabular Numbers"',
           }}
-        />
-
-        {/* Category & Tags */}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width={32}
+            height={32}
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            className="lucide lucide-pen-line-icon lucide-pen-line"
+          >
+            <path d="M13 21h8" />
+            <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+          </svg>
+          <p style={{ fontSize: "20px" }}>Blog</p>
+        </div>
+        {/* Article Title */}
+        <div
+          style={{
+            display: "block",
+            flexShrink: 1,
+            minHeight: "0",
+            wordBreak: "break-word",
+            fontSize: "60px",
+            fontWeight: 700,
+            textOverflow: "ellipsis",
+            lineClamp: "4",
+          }}
+        >
+          {titleChunks.join("\u200b")}
+        </div>
+        {/* Spacer */}
+        <div style={{ flexGrow: "1" }} />
+        {/* Bottom Section */}
         <div
           style={{
             display: "flex",
-            alignItems: "center",
-            gap: "12px",
+            flexDirection: "column",
             flexShrink: 0,
-            marginBottom: "20px",
-            flexWrap: "wrap",
           }}
         >
-          {/* Category badge */}
+          {/* Page Path */}
           <div
             style={{
-              display: "flex",
-              alignItems: "center",
-              backgroundColor: colors.violet9,
-              color: "#ffffff",
-              fontSize: "20px",
-              fontWeight: 700,
-              padding: "6px 16px",
-              borderRadius: "8px",
+              color: colors.light.base7,
             }}
           >
-            {categoryName}
+            {routePath}
           </div>
-
-          {/* Tags */}
-          {tags.slice(0, 4).map((tag) => (
+          {/* Separator */}
+          <div
+            style={{
+              width: "100%",
+              marginTop: "16px",
+              height: "1px",
+              backgroundColor: colors.light.base6,
+            }}
+          />
+          {/* Categories & Tags */}
+          <div
+            style={{
+              width: "100%",
+              marginTop: "32px",
+              display: "flex",
+              alignItems: "center",
+              gap: "32px",
+            }}
+          >
+            {/* Category Badge */}
             <div
-              key={tag.slug}
               style={{
-                display: "flex",
-                alignItems: "center",
-                fontSize: "18px",
-                color: colors.violet11,
-                backgroundColor: colors.violet3,
-                padding: "4px 12px",
-                borderRadius: "6px",
-                gap: "2px",
+                padding: "4px 16px",
+                color: colors.light.primary10,
+                backgroundColor: colors.light.primary3,
+                borderRadius: "8px",
+                fontSize: "20px",
+                fontWeight: 700,
+                textAlign: "center",
               }}
             >
-              <span style={{ fontSize: "16px", opacity: 0.7 }}>#</span>
-              {tag.name}
+              {categoryName}
             </div>
-          ))}
-        </div>
-
-        {/* Bottom: Author + Logo */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            flexShrink: 0,
-          }}
-        >
-          {/* Author */}
+            {/* Vertical Separator */}
+            <div
+              style={{
+                width: "1px",
+                height: "80%",
+                backgroundColor: colors.light.base6,
+              }}
+            />
+            {/* Tags */}
+            <div
+              style={{
+                height: "100%",
+                flex: "1",
+                display: "flex",
+                alignItems: "center",
+                gap: "12px",
+                color: colors.light.base9,
+                textAlign: "center",
+              }}
+            >
+              {tags.slice(0, 2).map((tag) => (
+                <TagItem key={tag.slug}>{`#${tag.name}`}</TagItem>
+              ))}
+              {/* Tags Overflow Ellipsis */}
+              {tags.length > 2 && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width={24}
+                  height={24}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  className="lucide lucide-ellipsis-icon lucide-ellipsis"
+                >
+                  <circle cx="12" cy="12" r="1" />
+                  <circle cx="19" cy="12" r="1" />
+                  <circle cx="5" cy="12" r="1" />
+                </svg>
+              )}
+            </div>
+          </div>
+          {/* Author & Metadata */}
           <div
             style={{
+              marginTop: "24px",
+              width: "100%",
               display: "flex",
               alignItems: "center",
-              gap: "12px",
+              gap: "16px",
             }}
           >
-            {imageRegitry.has(authorId) ? (
-              <img
-                src={imageRegitry.getBase64(authorId)}
-                alt=""
-                width={40}
-                height={40}
-                style={{
-                  borderRadius: "50%",
-                  objectFit: "cover",
-                }}
-              />
-            ) : (
-              <div
-                style={{
-                  width: "40px",
-                  height: "40px",
-                  borderRadius: "50%",
-                  backgroundColor: colors.violet4,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  color: colors.violet9,
-                  fontSize: "18px",
-                  fontWeight: 700,
-                }}
-              >
-                {authorName[0]}
-              </div>
-            )}
-            <span
+            <img
+              src={await imageRegistry.getBase64(`avatar-${authorId}`)}
+              width={48}
+              height={48}
               style={{
-                fontSize: "22px",
-                fontWeight: 400,
-                color: colors.mauve11,
+                backgroundColor: colors.light.base7,
+                borderRadius: "100%",
+              }}
+            />
+            <div
+              style={{
+                marginLeft: "8px",
+                color: colors.light.base11,
+                display: "block",
+                fontSize: "20px",
+                textOverflow: "ellipsis",
+                lineClamp: 1,
               }}
             >
               {authorName}
-            </span>
+            </div>
+            {/* Spacer */}
+            <div style={{ flexGrow: 1 }} />
+            {/* Metadata */}
+            <div
+              style={{
+                flexShrink: 0,
+                display: "flex",
+                alignItems: "center",
+                gap: "12px",
+                fontSize: "20px",
+              }}
+            >
+              <div
+                style={{
+                  width: "48px",
+                  height: "48px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: colors.light.primary3,
+                  color: colors.light.primary10,
+                  borderRadius: "8px",
+                }}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width={24}
+                  height={24}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  className="lucide lucide-text-align-start-icon lucide-text-align-start"
+                >
+                  <path d="M21 5H3" />
+                  <path d="M15 12H3" />
+                  <path d="M17 19H3" />
+                </svg>
+              </div>
+              <div
+                style={{
+                  marginRight: "8px",
+                }}
+              >
+                {`${words}字`}
+              </div>
+              <div
+                style={{
+                  width: "48px",
+                  height: "48px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: colors.light.primary3,
+                  color: colors.light.primary10,
+                  borderRadius: "8px",
+                }}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width={24}
+                  height={24}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  className="lucide lucide-calendar-icon lucide-calendar"
+                >
+                  <path d="M8 2v4" />
+                  <path d="M16 2v4" />
+                  <rect width="18" height="18" x="3" y="4" rx="2" />
+                  <path d="M3 10h18" />
+                </svg>
+              </div>
+              <div
+                style={{
+                  marginRight: "8px",
+                  fontFamily: '"Inter Tabular Numbers"',
+                }}
+              >
+                {publishedAt}
+              </div>
+            </div>
           </div>
-
-          {/* Logo */}
-          <img
-            src={imageRegitry.getBase64("logoLight")}
-            alt=""
-            height={40}
-            style={{
-              objectFit: "contain",
-            }}
-          />
         </div>
+      </div>
+      <div
+        style={{
+          width: "16px",
+          height: "100%",
+          backgroundColor: colors.light.primary7,
+          marginRight: "16px",
+        }}
+      />
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          flexBasis: "38.2%",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+
+          ...(imageRegistry.has(`cover-${articleId}`)
+            ? {
+                alignItems: "flex-end",
+                justifyContent: "flex-end",
+                backgroundImage: `url(${await imageRegistry.getBase64(`cover-${categoryId}-${articleId}`)})`,
+              }
+            : {
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundImage: `url(${await imageRegistry.getBase64("ogGradient")})`,
+              }),
+        }}
+      >
+        {imageRegistry.has(`cover-${articleId}`) ? (
+          <div
+            style={{
+              position: "relative",
+              width: "200px",
+              height: "70px",
+              padding: "16px 32px",
+              marginRight: "32px",
+              marginBottom: "32px",
+              display: "flex",
+            }}
+          >
+            <div
+              style={{
+                position: "absolute",
+                top: "0",
+                left: "0",
+                width: "100%",
+                height: "100%",
+                backgroundColor: colors.light.base7,
+                opacity: "0.75",
+                borderRadius: "8px",
+              }}
+            />
+            <img
+              src={await imageRegistry.getBase64("logoLight")}
+              width={150}
+              height={40}
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+              }}
+            />
+          </div>
+        ) : (
+          <div
+            style={{
+              position: "relative",
+              width: "100%",
+              height: "140px",
+              display: "flex",
+            }}
+          >
+            <div
+              style={{
+                position: "absolute",
+                top: "0",
+                left: "0",
+                width: "100%",
+                height: "100%",
+                backgroundColor: colors.light.base5,
+                opacity: "0.2",
+              }}
+            />
+            <img
+              src={await imageRegistry.getBase64("logoDark")}
+              alt=""
+              width={300}
+              height={80}
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+              }}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

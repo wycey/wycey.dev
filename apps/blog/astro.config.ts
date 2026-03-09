@@ -50,7 +50,6 @@ import {
   remarkHeading1ToTitle,
   remarkLastModified,
   remarkLinkCard,
-  remarkReadingTime,
 } from "./src/lib/content/unified";
 import unoConfig from "./uno.config";
 
@@ -202,7 +201,6 @@ export default defineConfig({
     remarkPlugins: [
       remarkNormalizeHeadings,
       remarkHeading1ToTitle,
-      remarkReadingTime,
       remarkLastModified,
       [
         remarkEmoji,

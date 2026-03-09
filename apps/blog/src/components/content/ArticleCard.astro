@@ -4,13 +4,16 @@ import type { CollectionEntry } from "astro:content";
 import { getEntry } from "astro:content";
 import { getAvatarUrl } from "@/lib/content/avatar";
 import { formatDate, parseDate } from "@/lib/content/date";
+import { getReadingTime } from "@/lib/content/markdown";
 
 interface Props {
   article: CollectionEntry<"articles">;
 }
 
 const { article } = Astro.props;
-const { title, publishedAt, category: categoryRef, author: authorRef, tags: tagSlugs, words } = article.data;
+const { title, publishedAt, category: categoryRef, author: authorRef, tags: tagSlugs } = article.data;
+
+const { words } = await getReadingTime(article.body);
 
 const category = await getEntry(categoryRef);
 const author = await getEntry(authorRef);

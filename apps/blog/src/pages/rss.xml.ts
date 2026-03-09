@@ -3,7 +3,8 @@ import rss from "@astrojs/rss";
 import type { APIRoute } from "astro";
 import dayjs from "dayjs";
 import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/constants";
-import { getSortedArticles, markdownToReadableString } from "@/lib/content";
+import { getSortedArticles } from "@/lib/content";
+import { markdownToReadableString } from "@/lib/content/markdown";
 import { truncateString } from "@/lib/utils/strings";
 
 export const GET: APIRoute = async (context) => {

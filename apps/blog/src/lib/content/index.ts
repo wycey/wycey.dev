@@ -4,8 +4,6 @@ import {
   getEntry,
   render,
 } from "astro:content";
-import { remark } from "remark";
-import stripMarkdown from "strip-markdown";
 import { dateNow, parseDate } from "@/lib/content/date";
 import { isDev } from "@/lib/utils/env";
 
@@ -35,8 +33,6 @@ export const getArticle: GetArticle = async (idOrArticle) => {
   const { remarkPluginFrontmatter } = await render(article);
 
   article.data.title = remarkPluginFrontmatter.title;
-  article.data.minutesRead = remarkPluginFrontmatter.minutesRead ?? "";
-  article.data.words = remarkPluginFrontmatter.words ?? 0;
 
   return article;
 };
@@ -87,10 +83,4 @@ export const getSortedArticles = async ({
   await Promise.all(sortedArticles.map(getArticle));
 
   return sortedArticles;
-};
-
-export const markdownToReadableString = async (data: string = "") => {
-  const file = await remark().use(stripMarkdown).process(data);
-
-  return String(file).replaceAll(/\s+/g, " ").trim();
 };

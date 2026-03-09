@@ -1,6 +1,8 @@
 import { basename, dirname, resolve } from "node:path";
 import { Glob } from "bun";
 import matter from "gray-matter";
+import { parseDate } from "@/lib/content/date";
+import { getFirstHeading, getReadingTime } from "@/lib/content/markdown";
 import {
   articlesSchema,
   authorsSchema,
@@ -10,9 +12,10 @@ import { type ArticleOgImageProps, createArticleOg } from "@/lib/og/image";
 import type { ImageResources } from "@/lib/og/image-registry";
 import { type FontData, renderOgImage } from "@/lib/og/render";
 
-const IMAGES_DIR = resolve(import.meta.dir, "../src/assets/images");
+const SRC_IMAGES_DIR = resolve(import.meta.dir, "../src/assets/images");
 
 const FONTS_DIR = resolve(import.meta.dir, "../assets/fonts");
+const IMAGES_DIR = resolve(import.meta.dir, "../assets/images");
 
 const CONTENT_DIR = resolve(import.meta.dir, "../content");
 const ARTICLES_DIR = resolve(CONTENT_DIR, "articles");
@@ -23,10 +26,13 @@ const OUTPUT_DIR = resolve(import.meta.dir, "../dist/client/og");
 
 const createDefaultImageResources = async (): Promise<ImageResources> => ({
   logoLight: await Bun.file(
-    resolve(IMAGES_DIR, "wycey-full-light.png"),
+    resolve(SRC_IMAGES_DIR, "wycey-full-light.png"),
   ).arrayBuffer(),
   logoDark: await Bun.file(
-    resolve(IMAGES_DIR, "wycey-full-dark.png"),
+    resolve(SRC_IMAGES_DIR, "wycey-full-dark.png"),
+  ).arrayBuffer(),
+  ogGradient: await Bun.file(
+    resolve(IMAGES_DIR, "og-gradient.png"),
   ).arrayBuffer(),
 });
 
@@ -100,7 +106,9 @@ const getArticleOgImageProps = async (
   articleId: string,
   images: ImageResources,
 ): Promise<ArticleOgImageProps | undefined> => {
-  const article = await getArticleData(await Bun.file(articlePath).text());
+  const text = await Bun.file(articlePath).text();
+  const article = await getArticleData(text);
+  const { words } = await getReadingTime(text);
 
   if (!article.publishedAt) {
     // Skip unpublished articles
@@ -126,12 +134,15 @@ const getArticleOgImageProps = async (
   }
 
   return {
-    title: article.title,
+    title: getFirstHeading(text) ?? article.title,
     routePath: `/articles/${article.category.id}/${articleId}`,
+    articleId,
     authorName: author.name,
     authorId: article.author.id,
     categoryName: category.name,
     categoryId: article.category.id,
+    publishedAt: parseDate(article.publishedAt).format("YYYY/MM/DD"),
+    words,
     tags: article.tags.map(getTag).filter(Boolean),
     images,
   };
@@ -151,8 +162,9 @@ const renderArticles = async (
   for await (const authorPath of allAuthorsGlob.scan()) {
     const authorId = basename(authorPath, ".yaml");
     const author = await getAuthorData(authorId);
+    const authorKey = `avatar-${authorId}`;
 
-    if (author.avatar && !images[authorId]) {
+    if (author.avatar && !images[authorKey]) {
       const promise = fetch(author.avatar).then(async (response) => {
         if (!response.ok) {
           throw new Error(
@@ -160,7 +172,7 @@ const renderArticles = async (
           );
         }
 
-        images[authorId] = await response.arrayBuffer();
+        images[authorKey] = await response.arrayBuffer();
       });
 
       authorImagePromises.push(promise);
@@ -185,7 +197,7 @@ const renderArticles = async (
         async (props) => {
           if (!props) return;
 
-          const data = await renderOgImage(createArticleOg(props), FONTS);
+          const data = await renderOgImage(await createArticleOg(props), FONTS);
           const outputPath = resolve(
             OUTPUT_DIR,
             props.categoryId,
