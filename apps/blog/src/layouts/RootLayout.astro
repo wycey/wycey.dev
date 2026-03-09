@@ -89,7 +89,9 @@ const jsonLd = {
       image: {
         width: 1200,
         height: 630,
-        alt: `タイトル「${title}」のページを示す ${SITE_NAME} の OGP 画像`,
+        alt: title
+          ?`タイトル「${title}」のページを示す ${SITE_NAME} の OGP 画像`
+          : `${SITE_NAME} の OGP 画像`,
       },
       ...(ogArticle && { article: ogArticle }),
     }}
