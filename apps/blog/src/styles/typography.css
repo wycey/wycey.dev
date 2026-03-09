@@ -17,6 +17,10 @@
     @apply text-inherit;
   }
 
+  ol > li, ul > li {
+    @apply mt-0 mb-2;
+  }
+
   ul {
     @apply list-disc my-2 pl-4;
 
