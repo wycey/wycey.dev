@@ -154,7 +154,7 @@ export const createArticleOg = async ({
             fontSize: "60px",
             fontWeight: 700,
             textOverflow: "ellipsis",
-            lineClamp: "4",
+            lineClamp: "3",
           }}
         >
           {titleChunks.join("\u200b")}
