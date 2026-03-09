@@ -57,7 +57,7 @@ const InnerActionButtons = (
       <SquareButton
         href={twitterShareUrl}
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noreferrer"
         aria-label="このページをTwitterで共有"
         classList={{
           "hidden lg:block": true,

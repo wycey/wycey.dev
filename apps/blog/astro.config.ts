@@ -250,7 +250,7 @@ export default defineConfig({
         rehypeExternalLinks,
         {
           target: "_blank",
-          rel: ["noopener", "noreferrer"],
+          rel: ["noreferrer"],
           content: {
             type: "element",
             tagName: "span",
