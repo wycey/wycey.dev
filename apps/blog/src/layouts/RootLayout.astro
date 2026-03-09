@@ -62,6 +62,7 @@ const jsonLd = {
 <head prefix={`og: https://ogp.me/ns# article: https://ogp.me/ns/article#`}>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="sitemap" href="/sitemap-index.xml" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
 
   <meta name="generator" content={Astro.generator} />
@@ -73,7 +74,6 @@ const jsonLd = {
     titleDefault={SITE_NAME}
     titleTemplate={`%s · ${SITE_NAME}`}
     description={SITE_DESCRIPTION}
-    charset="UTF-8"
     removeTrailingSlashForRoot={true}
     openGraph={{
       basic: {
