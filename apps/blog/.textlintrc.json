@@ -39,6 +39,9 @@
         "preferInBody": "",
         "preferInList": "である",
         "strict": false
+      },
+      "sentence-length": {
+        "skipPatterns": ["/\\(.*\\)$\\./", "/`[^`]*`/"]
       }
     }
   }
