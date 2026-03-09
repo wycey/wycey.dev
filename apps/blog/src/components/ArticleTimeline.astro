@@ -65,8 +65,8 @@ const groups = Object.keys(groupedKeyValue)
             class="aspect-square"
           ></div>
         </div>
-        <p w="70% md:65%" transition text="left fg-muted" tabular-nums>
-          記事数: {articles.length}
+        <p w="70% md:65%" transition text="left fg-muted">
+          記事数: <span text="medium" tabular-nums>{articles.length}</span>
         </p>
       </div>
         {articles.map((article) => (

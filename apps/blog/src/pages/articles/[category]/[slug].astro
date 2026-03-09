@@ -2,7 +2,9 @@
 import { Picture } from "astro:assets";
 import { getEntry, render } from "astro:content";
 import type { GetStaticPaths } from "astro";
+import IconChip from "@/components/IconChip.astro";
 import { ArticleActionButtons } from "@/components/solid/ArticleActionButtons.client";
+import TagItem from "@/components/TagItem.astro";
 import RootLayout from "@/layouts/RootLayout.astro";
 import { SITE_NAME } from "@/lib/constants";
 import { createAuthorUrl, getArticle, getSortedArticles } from "@/lib/content";
@@ -127,56 +129,41 @@ const { words, minutesText } = await getReadingTime(article.body);
           <p class="whitespace-nowrap">{author.data.name}</p>
         </a>
         <div w="px" min-h="0" bg="border" rounded="full" />
+        <IconChip class="text-fg-muted" icon="i-lucide:folder">
+          {category.data.name}
+        </IconChip>
         {
           tags.length > 0 &&
-            <section flex items="center" gap="2">
-              <p class="p-2 bg-primary-bg rounded-2">
-                <span class="block i-lucide:hash text-primary-10" />
-              </p>
-              <ul flex items="center" gap="4">
+            <IconChip class="text-fg-muted" icon="i-lucide:hash">
+              <div flex items="center" gap="4">
                 {tags.map(
                   tag => (
-                    <li
-                      class="hover:bg-bg-subtle px-2 py-1 rounded-2"
-                      text="fg-muted hover:fg"
-                      transition-colors
-                      cursor="default"
-                    >{tag.name}</li>
+                    <TagItem>
+                      {tag.name}
+                    </TagItem>
                   )
                 )}
-              </ul>
-            </section>
+              </div>
+            </IconChip>
         }
         <div flex-auto />
         <div flex flex-wrap items="center" gap="3" text="fg-muted" grid-col="4">
           {(!publishedAt || formatDate(publishedAt) !== formatDate(updatedAt)) && (
-            <div flex items="center" gap="2">
-              <p class="p-2 bg-primary-bg rounded-2">
-                <span class="block i-lucide:calendar-sync text-primary-10" />
-              </p>
+            <IconChip icon="i-lucide:calendar-sync">
               <time datetime={updatedAt.toISOString()}>{formatDate(updatedAt)}</time>
-            </div>
+            </IconChip>
           )}
           {publishedAt && (
-            <div flex items="center" gap="2">
-              <p class="p-2 bg-primary-bg rounded-2">
-                <span class="block i-lucide:calendar text-primary-10" />
-              </p>
+            <IconChip icon="i-lucide:calendar">
               <time datetime={publishedAt.toISOString()}>{formatDate(publishedAt)}</time>
-            </div>
+            </IconChip>
           )}
-          <div flex items="center" gap="2">
-            <p class="p-2 bg-primary-bg rounded-2">
-              <span class="block i-lucide:clock text-primary-10" />
-            </p>
+          <IconChip icon="i-lucide:clock">
             <span>{minutesText}</span>
-          </div>
-          <div flex items="center" gap="2">
-            <p class="p-2 bg-primary-bg rounded-2">
-              <span class="block i-lucide:text text-primary-10" />
-            </p>
+          </IconChip>
+          <IconChip icon="i-lucide:text">
             <span>{words}字</span>
-          </div>
+          </IconChip>
         </div>
       </section>
       <section id="article-body" class="prose">

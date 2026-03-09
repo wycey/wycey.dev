@@ -1,5 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import IconChip from "../IconChip.astro";
+import TagItem from "../TagItem.astro";
 import PageHeaderCard from "./PageHeaderCard.astro";
 
 interface Props {
@@ -13,27 +15,26 @@ const { category, articleCount, topTags } = Astro.props;
 <PageHeaderCard>
   <h1 text="2xl" font="bold">{category.data.name}</h1>
   <p text="fg-muted" mt="1">
-    <span font="bold">{articleCount}</span> 記事
+    <span font="medium">{articleCount}</span> 記事
   </p>
 
   {topTags.length > 0 && (
-    <div flex items="center" gap="2" mt="4" flex-wrap="wrap">
-      <span block text="sm primary-10" class="i-lucide:tag" shrink="0" />
-      {topTags.map(({ name, count }) => (
-        <span
-          text="sm"
-          bg="primary-bg"
-          rounded="full"
-          px="3"
-          py="0.5"
-          transition
-        >
-          {name}
-          {count > 1 && (
-            <span text="xs fg-muted" ml="1">({count})</span>
-          )}
-        </span>
-      ))}
+    <div flex items="center" mt="4">
+      <IconChip class="flex-wrap" icon="i-lucide:hash">
+        {topTags.filter((_, i) => i < 5).map(({ name, count }, i, filteredTags) => (
+          <>
+            <TagItem>
+              {name}
+              {count > 1 && (
+                <span text="xs fg-muted" ml="1">({count})</span>
+              )}
+            </TagItem>
+            {filteredTags.length > 5 && i === 4 && (
+              <span text="xs fg-muted" ml="1">他 {filteredTags.length - 5} 件</span>
+            )}
+          </>
+        ))}
+      </IconChip>
     </div>
   )}
 </PageHeaderCard>

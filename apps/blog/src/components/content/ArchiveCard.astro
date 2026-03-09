@@ -1,4 +1,5 @@
 ---
+import IconChip from "../IconChip.astro";
 import PageHeaderCard from "./PageHeaderCard.astro";
 
 interface Props {
@@ -22,9 +23,12 @@ const stats = [
   <div flex items="center" gap="6" mt="4" flex-wrap="wrap">
     {stats.map(({ icon, value, label }) => (
       <div flex items="center" gap="1.5" text="sm">
-        <span block text="primary-10" class={icon} />
-        <span font="bold">{value}</span>
-        <span text="fg-muted">{label}</span>
+        <IconChip icon={icon}>
+          <p>
+            <span font="medium">{value}</span>
+            <span text="fg-muted" pl="1">{label}</span>
+          </p>
+        </IconChip>
       </div>
     ))}
   </div>
