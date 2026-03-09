@@ -350,10 +350,10 @@
   }
 
   [data-footnotes] {
-    @apply text-sm text-fg py-6 b-border b-t;
+    @apply text-sm text-fg mt-16 py-6 b-border b-t;
 
     ol {
-      @apply flex gap-2 list-decimal pl-4;
+      @apply flex flex-col gap-2 list-decimal pl-4;
     }
   }
 
