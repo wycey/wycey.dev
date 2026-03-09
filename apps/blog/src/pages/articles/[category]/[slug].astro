@@ -183,7 +183,7 @@ const { words, minutesText } = await getReadingTime(article.body);
         <script is:inline src="https://platform.twitter.com/widgets.js" charset="utf-8" defer />
       </section>
     </article>
-    <nav w="full" h="20" mt="4" grid grid-rows="2 md:1" grid-cols="1 md:2" items="center" justify="start" gap="4">
+    <nav w="full" h="md:20" mt="4" grid grid-rows="2 md:1" grid-cols="1 md:2" items="center" justify="start" gap="4">
       {
         article.data.prevId
         ? <a
