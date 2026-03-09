@@ -46,4 +46,6 @@ export const FancyboxLoader = () => {
     } as unknown as FancyboxOptions);
     fancyboxSelectors.push(fancyboxSelector);
   });
+
+  return null;
 };

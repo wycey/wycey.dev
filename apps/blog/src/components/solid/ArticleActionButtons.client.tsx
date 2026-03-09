@@ -1,7 +1,7 @@
 /* @jsxImportSource solid-js */
 
 import { createEventListener } from "@solid-primitives/event-listener";
-import { createSignal, onMount } from "solid-js";
+import { createSignal, onMount, Show } from "solid-js";
 import { ScrollProgressRing } from "@/components/solid/ScrollProgressRing.client";
 import {
   ShareButton,
@@ -19,6 +19,7 @@ const InnerActionButtons = (
   props: ArticleActionButtonsProps & {
     applyShadow: boolean;
     showScrollToTop: boolean;
+    onClickScrollToTop?: () => void;
   },
 ) => {
   const twitterShareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${props.shareText.trim()}\n`)}&url=${encodeURIComponent(props.shareUrl.trim())}`;
@@ -28,6 +29,7 @@ const InnerActionButtons = (
       <SquareButton
         href="#article"
         aria-label="一番上へ戻る"
+        onClick={props.onClickScrollToTop}
         classList={{
           "shadow-lg": props.applyShadow,
           "shadow-none": !props.applyShadow,
@@ -80,6 +82,14 @@ export const ArticleActionButtons = (props: ArticleActionButtonsProps) => {
   const [applyButtonShadow, setApplyButtonShadow] = createSignal(false);
   const [showScrollToTop, setShowScrollToTop] = createSignal(false);
 
+  let suppressScrollFooter = false;
+
+  const onClickScrollToTop = () => {
+    setShowFooter(false);
+
+    suppressScrollFooter = true;
+  };
+
   let footerRef!: HTMLDivElement;
   let lastScrollY!: number;
 
@@ -89,6 +99,7 @@ export const ArticleActionButtons = (props: ArticleActionButtonsProps) => {
         document.documentElement.scrollHeight > window.innerHeight,
       );
     };
+
     updateScrollability();
     createEventListener(window, "resize", updateScrollability);
 
@@ -106,6 +117,15 @@ export const ArticleActionButtons = (props: ArticleActionButtonsProps) => {
       setEnableTransition(true);
     });
 
+    const clearSuppressScrollFooter = () => {
+      suppressScrollFooter = false;
+    };
+
+    createEventListener(window, "wheel", clearSuppressScrollFooter);
+    createEventListener(window, "touchstart", clearSuppressScrollFooter);
+    createEventListener(window, "pointerdown", clearSuppressScrollFooter);
+    createEventListener(window, "keydown", clearSuppressScrollFooter);
+
     lastScrollY = window.scrollY;
 
     createEventListener(window, "scroll", () => {
@@ -113,17 +133,19 @@ export const ArticleActionButtons = (props: ArticleActionButtonsProps) => {
         return;
       }
 
-      if (window.scrollY <= lastScrollY || isAtBottom()) {
-        // スクロールアップ・下端付近に到達 - フッターを表示
-        setShowFooter(true);
-      } else {
-        // スクロールダウン - フッターを隠す
-        setShowFooter(false);
-      }
+      if (!suppressScrollFooter) {
+        if (window.scrollY <= lastScrollY || isAtBottom()) {
+          // スクロールアップ・下端付近に到達 - フッターを表示
+          setShowFooter(true);
+        } else {
+          // スクロールダウン - フッターを隠す
+          setShowFooter(false);
+        }
 
-      if (window.scrollY <= 100) {
-        // 上端付近に到達 - フッターを隠す
-        setShowFooter(false);
+        if (window.scrollY <= 100) {
+          // 上端付近に到達 - フッターを隠す
+          setShowFooter(false);
+        }
       }
 
       if (!footerRef) {
@@ -166,6 +188,7 @@ export const ArticleActionButtons = (props: ArticleActionButtonsProps) => {
         <InnerActionButtons
           applyShadow={applyButtonShadow()}
           showScrollToTop={showScrollToTop()}
+          onClickScrollToTop={onClickScrollToTop}
           classList={{
             transition: enableTransition(),
             "duration-200": enableTransition(),
