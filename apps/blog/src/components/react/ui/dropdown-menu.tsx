@@ -43,7 +43,6 @@ function DropdownMenuContent({
         max-h="var(--radix-dropdown-menu-content-available-height)"
         w="var(--radix-dropdown-menu-trigger-width)"
         min-w="48"
-        transform-origin="var(--radix-dropdown-menu-content-transform-origin)"
         overflow="x-hidden y-auto"
         rounded="2"
         bg="bg-subtle"
@@ -54,7 +53,7 @@ function DropdownMenuContent({
         radix-open="animate-in fade-in-0 zoom-in-95"
         radix-closed="overflow-hidden animate-out fade-out-0 zoom-out-95"
         className={cn(
-          "duration-100 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+          "duration-100 origin-[var(--radix-dropdown-menu-content-transform-origin)] data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
           className,
         )}
         {...props}
@@ -310,11 +309,10 @@ function DropdownMenuSubContent({
       text="fg"
       shadow="lg"
       ring="1 fg-10/10"
-      transform-origin="var(--radix-dropdown-menu-content-transform-origin)"
       radix-open="animate-in fade-in-0 zoom-in-95"
       radix-closed="overflow-hidden animate-out fade-out-0 zoom-out-95"
       className={cn(
-        "duration-100 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+        "duration-100 origin-[var(--radix-dropdown-menu-content-transform-origin)] data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
         className,
       )}
       {...props}
