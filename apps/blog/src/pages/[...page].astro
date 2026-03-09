@@ -19,7 +19,7 @@ const isFirstPage = page.currentPage === 1;
 ---
 <RootLayout
   jsonLd={createHomePageSchema(page.currentPage)}
-  {...(isFirstPage ? {} : { title: `ページ ${page.currentPage}` })}
+  {...(!isFirstPage && { title: `ページ ${page.currentPage}` })}
 >
   <div flex-auto class="brand-container">
     {isFirstPage && (

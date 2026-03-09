@@ -1,9 +1,9 @@
 import { getEntry } from "astro:content";
 import rss from "@astrojs/rss";
 import type { APIRoute } from "astro";
-import dayjs from "dayjs";
 import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/constants";
 import { getSortedArticles } from "@/lib/content";
+import { parseDate } from "@/lib/content/date";
 import { markdownToReadableString } from "@/lib/content/markdown";
 import { truncateString } from "@/lib/utils/strings";
 
@@ -30,9 +30,11 @@ export const GET: APIRoute = async (context) => {
           description: truncateString(
             await markdownToReadableString(article.body),
           ),
-          pubDate: dayjs(article.data.publishedAt, "Asia/Tokyo").toDate(),
           categories: [category.data.name],
           link: `/${article.data.category.id}/${article.id}`,
+          ...(article.data.publishedAt && {
+            pubDate: parseDate(article.data.publishedAt).toDate(),
+          }),
         };
       }),
     ),

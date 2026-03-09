@@ -91,7 +91,7 @@ const { words, minutesText } = await getReadingTime(article.body);
   ogImage={ogImageUrl}
   ogType="article"
   ogArticle={{
-    ...(publishedAt ? { publishedTime: publishedAt.toISOString() } : {}),
+    ...(publishedAt && { publishedTime: publishedAt.toISOString() }),
     modifiedTime: updatedAt.toISOString(),
     authors: [author.data.name],
     section: category.data.name,

@@ -61,7 +61,7 @@ const jsonLd = {
 <html lang="ja" bg="bg" style={{ "overflow-x": "hidden" }}>
 <head prefix={`og: https://ogp.me/ns# article: https://ogp.me/ns/article#`}>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="sitemap" href="/siemap-index.xml" />
+  <link rel="sitemap" href="/sitemap-index.xml" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
 
   <meta name="generator" content={Astro.generator} />
@@ -69,7 +69,7 @@ const jsonLd = {
   {GA_MEASUREMENT_ID && <GoogleAnalytics tag={GA_MEASUREMENT_ID} />}
 
   <SEO
-    {...(title ? { title } : {})}
+    {...(title && { title })}
     titleDefault={SITE_NAME}
     titleTemplate={`%s · ${SITE_NAME}`}
     description={SITE_DESCRIPTION}
@@ -84,14 +84,14 @@ const jsonLd = {
       optional: {
         siteName: SITE_NAME,
         locale: "ja_JP",
-        ...(description ? { description } : {}),
+        ...(description && { description }),
       },
       image: {
         width: 1200,
         height: 630,
         alt: `タイトル「${title}」のページを示す ${SITE_NAME} の OGP 画像`,
       },
-      ...(ogArticle ? { article: ogArticle } : {}),
+      ...(ogArticle && { article: ogArticle }),
     }}
     twitter={{
       card: "summary_large_image",

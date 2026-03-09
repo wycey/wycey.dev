@@ -1,7 +1,7 @@
 /* @jsxImportSource solid-js */
 
 import { createEventListener } from "@solid-primitives/event-listener";
-import { createSignal, onMount, Show } from "solid-js";
+import { createSignal, onMount } from "solid-js";
 import { ScrollProgressRing } from "@/components/solid/ScrollProgressRing.client";
 import {
   ShareButton,
