@@ -8,7 +8,7 @@ import { createCategoriesSchema } from "@/lib/content/json-ld";
 
 export async function getStaticPaths() {
   const categories = await getCollection("categories");
-  
+
   return categories.map(category => ({
     params: {
       category: category.id,
@@ -37,6 +37,9 @@ const topTags = [...tagCounts.entries()]
 <RootLayout
   title={`${category.data.name}の記事一覧`}
   description={`${category.data.name}カテゴリに属する記事の一覧です。`}
+  breadcrumbs={[
+    { name: category.data.name, href: `/articles/${category.id}` },
+  ]}
   jsonLd={createCategoriesSchema(category, articles)}
 >
   <section flex-auto class="brand-container">
