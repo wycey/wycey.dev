@@ -5,8 +5,9 @@ import type { Graph, Thing } from "schema-dts";
 import Footer from "@/components/layout/Footer.astro";
 import Header from "@/components/layout/Header.astro";
 import GoogleAnalytics from "@/components/scripts/GoogleAnalytics.astro";
+import ThemeScript from "@/components/scripts/ThemeScript.astro";
 import { ColorSchemeWatcher } from "@/components/solid/ColorSchemeWatcher.client";
-import ThemeScript from "@/components/ThemeScript.astro";
+import { RadixPointerEventFix } from "@/components/solid/RadixPointerEventFix.client";
 import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/constants";
 import { createWebSiteSchema } from "@/lib/content/json-ld";
 
@@ -113,6 +114,8 @@ const jsonLd = {
   </main>
 
   <ColorSchemeWatcher client:load />
+  <RadixPointerEventFix client:load />
+
   <Footer />
 </body>
 </html>
