@@ -7,12 +7,7 @@
     "mode": "smart"
   },
   "assets": {
-    "binding": "ASSETS",
-    "directory": "./dist",
     "not_found_handling": "404-page"
-  },
-  "images": {
-    "binding": "IMAGES"
   },
   "observability": {
     "logs": {

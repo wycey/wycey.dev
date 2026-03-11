@@ -114,7 +114,10 @@ export default defineConfig({
   site: "https://blog.wycey.dev",
   output: "static",
   adapter: cloudflare({
-    imageService: "compile", // https://github.com/withastro/astro/issues/13825
+    imageService: {
+      build: "compile",
+      runtime: "cloudflare-binding",
+    },
   }),
   trailingSlash: "never",
   build: {

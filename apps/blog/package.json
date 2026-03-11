@@ -18,7 +18,7 @@
     "postbuild": "run-s build:og",
     "typecheck": "wrangler types && astro check --tsconfig tsconfig.json",
     "lint": "textlint content/**/*.{md,mdx}",
-    "preview": "wrangler dev",
+    "preview": "wrangler types && astro preview",
     "clean": "rimraf dist; rimraf .wrangler"
   },
   "browserslist": [
