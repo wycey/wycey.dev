@@ -1,0 +1,65 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  direction: "prev" | "next";
+  label?: string;
+}
+
+const { href, title, direction, label: labelProp } = Astro.props;
+const isPrev = direction === "prev";
+const label = labelProp ?? (isPrev ? "前の記事" : "次の記事");
+---
+<a
+  href={href}
+  flex
+  gap="4"
+  items="center"
+  transition="colors"
+  bg="bg hover:bg-subtle"
+  border="1 border"
+  md="row-span-2 grid grid-cols-[auto_1fr] grid-rows-subgrid gap-x-4 gap-y-0"
+  class:list={[
+    "group rounded-2 px-4 py-2",
+    { "flex-row-reverse": !isPrev },
+  ]}
+>
+  <div
+    text="2xl primary-10"
+    transition="transform"
+    class:list={[
+      isPrev ? "i-lucide:chevron-left" : "i-lucide:chevron-right",
+      isPrev ? "translate-x-1" : "-translate-x-1",
+      "group-hover:translate-x-0 md:row-start-1 md:row-span-2 md:self-center",
+      isPrev ? "md:col-start-1" : "md:col-start-2",
+    ]}
+  />
+  <section
+    flex="1"
+    class:list={[
+      "md:contents",
+      { "text-end": !isPrev },
+    ]}
+  >
+    <p
+      text="sm fg-muted"
+      class:list={[
+        "md:row-start-1 md:self-end",
+        isPrev ? "md:col-start-2 md:text-start" : "md:col-start-1 md:text-end",
+      ]}
+    >
+      {label}
+    </p>
+    <p
+      text="group-hover:primary-10"
+      transition="colors"
+      font="medium"
+      class:list={[
+        "md:row-start-2 md:self-start",
+        isPrev ? "md:col-start-2 md:text-start" : "md:col-start-1 md:text-end",
+      ]}
+    >
+      {title}
+    </p>
+  </section>
+</a>

@@ -2,6 +2,7 @@
 import { Picture } from "astro:assets";
 import { getEntry, render } from "astro:content";
 import type { GetStaticPaths } from "astro";
+import ArticleNavCard from "@/components/content/ArticleNavCard.astro";
 import IconChip from "@/components/IconChip.astro";
 import { ArticleActionButtons } from "@/components/solid/ArticleActionButtons.client";
 import TagItem from "@/components/TagItem.astro";
@@ -172,45 +173,16 @@ const { words, minutesText } = await getReadingTime(article.body);
         <script is:inline src="https://platform.twitter.com/widgets.js" charset="utf-8" defer />
       </section>
     </article>
-    <nav w="full" h="md:20" mt="4" grid grid-rows="2 md:1" grid-cols="1 md:2" items="center" justify="start" gap="4">
+    <nav w="full" mt="4" grid grid-cols="1 md:2" grid-rows="md:[auto_auto]" gap="4 md:y-0">
       {
-        article.data.prevId
-        ? <a
-            href={`/articles/${prevCategory}/${article.data.prevId}`}
-            flex
-            gap="4"
-            items="center"
-            transition="colors"
-            border="1 border"
-            class="group bg-bg hover:bg-bg-subtle rounded-2 px-4 py-2"
-          >
-            <div text="2xl primary-10" transition="transform" translate-x="1 group-hover:0" class="i-lucide:chevron-left" />
-            <section w="full">
-              <p text="sm fg-muted">前の記事</p>
-              <p text="group-hover:primary-10" transition="colors" font="medium">{prevTitle}</p>
-            </section>
-          </a>
-          : <div />
+        article.data.prevId && prevTitle
+        ? <ArticleNavCard href={`/articles/${prevCategory}/${article.data.prevId}`} title={prevTitle} direction="prev" />
+        : <div md="row-span-2" />
       }
       {
-        article.data.nextId
-        ? <a
-            href={`/articles/${nextCategory}/${article.data.nextId}`}
-            flex
-            flex-row-reverse
-            gap="4"
-            items="center"
-            transition="colors"
-            border="1 border"
-            class="group bg-bg hover:bg-bg-subtle rounded-2 px-4 py-2"
-          >
-            <div text="2xl primary-10" transition="transform" translate-x="-1 group-hover:0" class="i-lucide:chevron-right" />
-            <section w="full" text-align="end">
-              <p text="sm fg-muted">次の記事</p>
-              <p text="group-hover:primary-10" transition="colors" font="medium">{nextTitle}</p>
-            </section>
-          </a>
-          : <div />
+        article.data.nextId && nextTitle
+        ? <ArticleNavCard href={`/articles/${nextCategory}/${article.data.nextId}`} title={nextTitle} direction="next" />
+        : <div md="row-span-2" />
       }
     </nav>
 
