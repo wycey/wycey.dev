@@ -231,6 +231,11 @@ export const MainBreadcrumbs = ({
 
   const currentCategory = breadcrumbs[0];
 
+  const categoryTriggerIcon = useMemo(
+    () => <span block size="4" shrink="0" className="i-lucide:folder" />,
+    [],
+  );
+
   const categoryMenuItems = useMemo(
     () => buildCategoryMenuItems(categories),
     [categories],
@@ -320,6 +325,7 @@ export const MainBreadcrumbs = ({
             <BreadcrumbSeparator />
             <BreadcrumbDropdownItem
               triggerLabel={currentCategory.name}
+              triggerIcon={categoryTriggerIcon}
               items={categoryMenuItems}
             />
           </>
