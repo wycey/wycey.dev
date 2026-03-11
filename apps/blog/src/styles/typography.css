@@ -355,7 +355,7 @@
   }
 
   [data-footnotes] {
-    @apply text-sm text-fg mt-16 py-6 b-border b-t;
+    @apply relative text-sm text-fg mt-16 py-6 b-border b-t;
 
     ol {
       @apply flex flex-col gap-2 list-decimal pl-4;
