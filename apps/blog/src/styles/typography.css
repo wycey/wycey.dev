@@ -339,7 +339,7 @@
   /* remark-rehype */
 
   [data-footnote-ref] {
-    @apply mr-0.5;
+    @apply mr-0.5 scroll-mt-24;
   }
 
   [data-footnote-ref]::before {
