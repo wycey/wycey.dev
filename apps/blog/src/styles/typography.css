@@ -17,7 +17,8 @@
     @apply text-inherit;
   }
 
-  ol > li, ul > li {
+  ol > li,
+  ul > li {
     @apply mt-0 mb-2;
   }
 
@@ -215,7 +216,7 @@
   }
 
   code {
-    @apply font-mono text-sm bg-bg-muted text-fg px-2 py-1 rounded-1;
+    @apply font-mono text-sm bg-bg-muted text-fg mx-1 px-2 py-1 rounded-1;
   }
 
   pre {
