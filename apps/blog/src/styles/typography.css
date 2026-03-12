@@ -286,56 +286,6 @@
     @apply mx-auto;
   }
 
-  /* remark-link-card-plus */
-
-  .remark-link-card-plus__container {
-    @apply w-full my-4 transition-colors bg-bg hover:bg-bg-subtle b-border b-1 rounded-2;
-  }
-
-  .remark-link-card-plus__card {
-    @apply grid grid-cols-[1fr_calc(116px+var(--spacing)*3)] gap-4 decoration-none;
-
-    @media (min-width: 75ch) {
-      grid-template-columns: 1fr calc(220px + var(--spacing) * 6);
-    }
-  }
-
-  .remark-link-card-plus__main {
-    @apply col-1 flex flex-col pl-6 py-3 justify-center font-normal max-w-full min-w-full;
-  }
-
-  .remark-link-card-plus__title {
-    @apply text-base text-fg leading-5 font-bold line-clamp-2 text-ellipsis;
-  }
-
-  .remark-link-card-plus__description {
-    @apply mt-1 mb-3 text-xs text-fg-muted line-clamp-1 text-ellipsis;
-  }
-
-  .remark-link-card-plus__meta {
-    @apply flex items-center gap-2;
-  }
-
-  .remark-link-card-plus__favicon {
-    @apply m-0 mt-0.5;
-  }
-
-  .remark-link-card-plus__url {
-    @apply text-xs text-fg-muted line-clamp-1 text-ellipsis;
-  }
-
-  .remark-link-card-plus__thumbnail {
-    @apply col-2 aspect-square;
-
-    @media (min-width: 75ch) {
-      aspect-ratio: 1.91;
-    }
-  }
-
-  .remark-link-card-plus__image {
-    @apply m-0 h-full w-full rounded-2 object-cover;
-  }
-
   /* remark-rehype */
 
   [data-footnote-ref] {
@@ -364,6 +314,56 @@
 
   [data-footnote-backref] {
     @apply decoration-none;
+  }
+
+  /* rehype-og-card */
+
+  .og-card-container {
+    @apply w-full my-4 transition-colors bg-bg hover:bg-bg-subtle b-border b-1 rounded-2;
+  }
+
+  .og-card-container a {
+    @apply grid grid-cols-[1fr_calc(116px+var(--spacing)*3)] gap-4 decoration-none;
+
+    @media (min-width: 75ch) {
+      grid-template-columns: 1fr calc(220px + var(--spacing) * 6);
+    }
+  }
+
+  .og-card-info {
+    @apply col-1 flex flex-col pl-6 py-3 justify-center font-normal max-w-full min-w-full;
+  }
+
+  .og-card-title {
+    @apply text-base text-fg leading-5 font-bold line-clamp-2 text-ellipsis;
+  }
+
+  .og-card-description {
+    @apply mt-1 mb-3 text-xs text-fg-muted line-clamp-1 text-ellipsis;
+  }
+
+  .og-card-url-container {
+    @apply flex items-center gap-2;
+  }
+
+  .og-card-favicon {
+    @apply m-0 mt-0.5;
+  }
+
+  .og-card-url {
+    @apply text-xs text-fg-muted line-clamp-1 text-ellipsis;
+  }
+
+  .og-card-image-container {
+    @apply col-2 aspect-square;
+
+    @media (min-width: 75ch) {
+      aspect-ratio: 1.91;
+    }
+  }
+
+  .og-card-image {
+    @apply m-0 h-full w-full rounded-2 object-cover;
   }
 
   /* rehype-callout */

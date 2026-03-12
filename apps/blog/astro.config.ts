@@ -32,6 +32,7 @@ import rehypeExternalLinks, {
   type Options as RehypeExternalLinksOptions,
 } from "rehype-external-links";
 import rehypeMermaid, { type RehypeMermaidOptions } from "rehype-mermaid";
+import rehypeOGCard, { type RehypeOGCardOptions } from "rehype-og-card";
 import rehypeSlug from "rehype-slug";
 import remarkCjkFriendly from "remark-cjk-friendly";
 import remarkGfmStrikethroughCjkFriendly from "remark-cjk-friendly-gfm-strikethrough";
@@ -50,7 +51,6 @@ import {
   rehypeTypstMathDisplay,
   remarkHeading1ToTitle,
   remarkLastModified,
-  remarkLinkCard,
 } from "./src/lib/content/unified";
 import unoConfig from "./uno.config";
 
@@ -105,7 +105,9 @@ const cacheSave = (cache: Cache): AstroIntegration => {
   };
 };
 
-const remarkEmbedderCache = createCache("./.astro/remark-embedder.json");
+const remarkEmbedderCache = createCache(
+  "./node_modules/.astro/remark-embedder.json",
+);
 
 const unoCtx = await createGenerator(unoConfig);
 
@@ -134,9 +136,7 @@ export default defineConfig({
     layout: "constrained",
     service: sharpImageService({ kernel: "mks2021" }),
   },
-  prefetch: {
-    prefetchAll: true,
-  },
+  prefetch: false, // https://github.com/withastro/astro/issues/15520
   env: {
     schema: {
       GA_MEASUREMENT_ID: envField.string({
@@ -237,7 +237,6 @@ export default defineConfig({
           ],
         } satisfies RemarkEmbedderOptions,
       ],
-      remarkLinkCard,
       remarkCjkFriendly,
       remarkGfmStrikethroughCjkFriendly,
       remarkSectionize,
@@ -253,10 +252,21 @@ export default defineConfig({
       rehypeSlug,
       rehypeRecordHeadings,
       [
+        rehypeOGCard,
+        {
+          buildCache: true,
+          buildCachePath: "./node_modules/.astro",
+          enableSameTextURLConversion: true,
+          serverCache: true,
+          openInNewTab: true,
+          serverCachePath: "./public",
+        } satisfies RehypeOGCardOptions,
+      ],
+      [
         rehypeExternalLinks,
         {
           target: "_blank",
-          rel: ["noreferrer"],
+          rel: ["nofollow", "noreferrer"],
           content: {
             type: "element",
             tagName: "span",
@@ -265,6 +275,23 @@ export default defineConfig({
               "data-external-link-icon": "",
             },
             children: [],
+          },
+          test: (el, index, parent) => {
+            if (
+              parent &&
+              parent.type === "element" &&
+              parent.tagName === "div" &&
+              parent.children.length === 1 &&
+              (
+                (parent.properties.className as string[] | undefined) ?? []
+              ).includes("og-card-container") &&
+              index === 0
+            ) {
+              console.error(parent);
+              return false;
+            }
+
+            return el.tagName === "a";
           },
         } satisfies RehypeExternalLinksOptions,
       ],

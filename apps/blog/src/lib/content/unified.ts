@@ -6,11 +6,8 @@ import type * as hast from "hast";
 import { h } from "hastscript";
 import type * as mdast from "mdast";
 import { toString as mdastToString } from "mdast-util-to-string";
-import { default as _remarkLinkCard } from "remark-link-card-plus";
 import type { Plugin } from "unified";
 import { EXIT, visit } from "unist-util-visit";
-
-const HIDDEN_NODE_TYPE = "__hidden_node__";
 
 const budouxParser = loadDefaultJapaneseParser();
 
@@ -66,53 +63,6 @@ export const remarkLastModified: Plugin<[], mdast.Root> = () => {
           }
         }),
     );
-  };
-};
-
-export const remarkLinkCard: Plugin<[], mdast.Root> = () => {
-  const isValidUrl = (value: string): boolean => {
-    if (!URL.canParse(value)) return false;
-
-    return /^(https?:\/\/[^\s/$.?#].\S*)$/i.test(value);
-  };
-
-  return async (tree) => {
-    visit(tree, "paragraph", (node: any) => {
-      // remark-embedder は data にHTMLを直接挿入するため、data があるノードを一時的に隠すことで remark-link-card-plus との衝突を防ぐ
-      if (!node.data) return;
-      if (node.children.length !== 1) return;
-
-      let hasUrl = false;
-
-      visit(node, "text", (node, index, parent) => {
-        if (index === undefined || !parent) return;
-
-        if (isValidUrl(node.value)) {
-          hasUrl = true;
-
-          return EXIT;
-        }
-      });
-
-      if (!hasUrl) return;
-
-      node._originalType = node.type;
-      node.type = HIDDEN_NODE_TYPE;
-
-      for (const childNode of node.children) {
-        childNode._originalType = childNode.type;
-        childNode.type = HIDDEN_NODE_TYPE;
-      }
-    });
-
-    // @ts-expect-error
-    await _remarkLinkCard({ cache: true })(tree);
-
-    visit(tree, HIDDEN_NODE_TYPE, (node: any) => {
-      node.type = node._originalType;
-
-      delete node._originalType;
-    });
   };
 };
 
