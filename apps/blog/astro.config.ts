@@ -134,6 +134,9 @@ export default defineConfig({
     layout: "constrained",
     service: sharpImageService({ kernel: "mks2021" }),
   },
+  prefetch: {
+    prefetchAll: true,
+  },
   env: {
     schema: {
       GA_MEASUREMENT_ID: envField.string({
@@ -390,5 +393,6 @@ export default defineConfig({
   experimental: {
     contentIntellisense: true,
     svgo: true,
+    clientPrerender: true,
   },
 });

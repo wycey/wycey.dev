@@ -1,5 +1,6 @@
 /** biome-ignore-all lint/suspicious/noArrayIndexKey: Items are static and won't change order */
 
+import { prefetch } from "astro:prefetch";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils/classnames";
 import { BreadcrumbItem } from "./ui/breadcrumb";
@@ -36,7 +37,23 @@ export function BreadcrumbDropdownItem({
 }: BreadcrumbDropdownItemProps) {
   return (
     <BreadcrumbItem>
-      <DropdownMenu modal={false}>
+      <DropdownMenu
+        modal={false}
+        onOpenChange={(open) => {
+          // Prefetch all internal links
+          if (open) {
+            items.forEach((item) => {
+              if (
+                item.type === "item" &&
+                item.href &&
+                item.href.startsWith("/")
+              ) {
+                prefetch(item.href);
+              }
+            });
+          }
+        }}
+      >
         <DropdownMenuTrigger
           flex
           gap="2"
