@@ -287,7 +287,6 @@ export default defineConfig({
               ).includes("og-card-container") &&
               index === 0
             ) {
-              console.error(parent);
               return false;
             }
 
