@@ -15,6 +15,7 @@ import remarkEmbedder, {
 import oEmbedTransformer, {
   type Config as OEmbedTransformerConfig,
 } from "@remark-embedder/transformer-oembed";
+import sentry from "@sentry/astro";
 import type { AstroIntegration } from "astro";
 import { defineConfig, envField, sharpImageService } from "astro/config";
 import expressiveCode from "astro-expressive-code";
@@ -144,6 +145,12 @@ export default defineConfig({
         access: "public",
         optional: true,
       }),
+      SENTRY_DSN: envField.string({
+        context: "client",
+        access: "public",
+        optional: true,
+        url: true,
+      }),
     },
   },
   integrations: [
@@ -189,6 +196,12 @@ export default defineConfig({
       },
     }),
     cacheSave(remarkEmbedderCache),
+    sentry({
+      telemetry: false,
+      sourcemaps: {
+        filesToDeleteAfterUpload: ["./dist/**/*.map"],
+      },
+    }),
   ],
   vite: {
     build: {

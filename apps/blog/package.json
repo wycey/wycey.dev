@@ -39,6 +39,8 @@
     "@nanostores/react": "^1.0.0",
     "@nanostores/solid": "^1.1.1",
     "@resvg/resvg-js": "^2.6.2",
+    "@sentry/astro": "^10.43.0",
+    "@sentry/cloudflare": "^10.43.0",
     "@solid-primitives/media": "^2.3.5",
     "@tanstack/solid-query": "^5.90.23",
     "astro": "6.0.2",
