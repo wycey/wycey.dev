@@ -1,7 +1,6 @@
 import { readFileSync } from "node:fs";
 import { writeFile } from "node:fs/promises";
 import cloudflare from "@astrojs/cloudflare";
-import partytown from "@astrojs/partytown";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import solid from "@astrojs/solid-js";
@@ -144,11 +143,6 @@ export default defineConfig({
   prefetch: false, // https://github.com/withastro/astro/issues/15520
   env: {
     schema: {
-      GA_MEASUREMENT_ID: envField.string({
-        context: "client",
-        access: "public",
-        optional: true,
-      }),
       SENTRY_DSN: envField.string({
         context: "client",
         access: "public",
@@ -163,11 +157,6 @@ export default defineConfig({
     }),
     solid({
       include: ["**/solid/*"],
-    }),
-    partytown({
-      config: {
-        forward: ["dataLayer.push"],
-      },
     }),
     minifyHtml(),
     sitemap(),
