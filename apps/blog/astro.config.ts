@@ -180,6 +180,9 @@ export default defineConfig({
         },
       ],
     }),
+    sentry({
+      telemetry: false,
+    }),
     unoCSS({
       injectReset: true,
     }),
@@ -200,9 +203,6 @@ export default defineConfig({
       },
     }),
     cacheSave(remarkEmbedderCache),
-    sentry({
-      telemetry: false,
-    }),
   ],
   vite: {
     build: {
