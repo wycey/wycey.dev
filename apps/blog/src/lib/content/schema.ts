@@ -1,5 +1,5 @@
 import { createReference } from "astro/content/runtime";
-import { z } from "astro/zod";
+import { z } from "zod/v4";
 import {
   GITHUB_USERNAME_REGEX,
   SLUG_REGEX,

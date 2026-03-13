@@ -121,6 +121,7 @@ export default defineConfig({
       build: "compile",
       runtime: "cloudflare-binding",
     },
+    prerenderEnvironment: "node",
   }),
   trailingSlash: "never",
   build: {
@@ -136,6 +137,9 @@ export default defineConfig({
     responsiveStyles: true,
     layout: "constrained",
     service: sharpImageService({ kernel: "mks2021" }),
+  },
+  devToolbar: {
+    enabled: false,
   },
   prefetch: false, // https://github.com/withastro/astro/issues/15520
   env: {
@@ -213,9 +217,10 @@ export default defineConfig({
       },
     },
     plugins: [
-      removeConsole({
-        includes: ["log", "debug"],
-      }),
+      import.meta.env.PROD &&
+        removeConsole({
+          includes: ["log", "debug"],
+        }),
     ],
   },
   markdown: {
