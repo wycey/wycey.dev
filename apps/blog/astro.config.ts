@@ -202,9 +202,6 @@ export default defineConfig({
     cacheSave(remarkEmbedderCache),
     sentry({
       telemetry: false,
-      sourcemaps: {
-        filesToDeleteAfterUpload: ["./dist/**/*.map"],
-      },
     }),
   ],
   vite: {
