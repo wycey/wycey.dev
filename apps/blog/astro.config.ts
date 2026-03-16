@@ -120,7 +120,6 @@ export default defineConfig({
       build: "compile",
       runtime: "cloudflare-binding",
     },
-    prerenderEnvironment: "node",
   }),
   trailingSlash: "never",
   build: {
