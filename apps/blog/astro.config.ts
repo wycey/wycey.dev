@@ -1,5 +1,3 @@
-import { readFileSync } from "node:fs";
-import { writeFile } from "node:fs/promises";
 import cloudflare from "@astrojs/cloudflare";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
@@ -15,7 +13,6 @@ import oEmbedTransformer, {
   type Config as OEmbedTransformerConfig,
 } from "@remark-embedder/transformer-oembed";
 import sentry from "@sentry/astro";
-import type { AstroIntegration } from "astro";
 import { defineConfig, envField, sharpImageService } from "astro/config";
 import expressiveCode from "astro-expressive-code";
 import minifyHtml from "astro-minify-html-swc";
@@ -52,58 +49,11 @@ import {
   remarkHeading1ToTitle,
   remarkLastModified,
 } from "./src/lib/content/unified";
+import {
+  cacheSaveIntegration,
+  createCache,
+} from "./src/lib/integrations/cache";
 import unoConfig from "./uno.config";
-
-type Cache = RemarkEmbedderOptions["cache"] & {
-  save(): Promise<void>;
-};
-
-const createCache = (path: string): Cache => {
-  const cache = (() => {
-    try {
-      return JSON.parse(readFileSync(path, "utf-8")) as {
-        [key: string]: string;
-      };
-    } catch (_) {
-      // Failed to read or parse cache file; treat as missing and start with an empty cache
-    }
-
-    return {};
-  })();
-
-  return {
-    async get(key: string) {
-      return cache[key];
-    },
-
-    async set(key: string, value: string) {
-      cache[key] = value;
-    },
-
-    async save() {
-      const sorted: Record<string, string> = {};
-
-      Object.keys(cache)
-        .sort()
-        .forEach((key) => {
-          sorted[key] = cache[key];
-        });
-
-      await writeFile(path, JSON.stringify(sorted, null, 2));
-    },
-  };
-};
-
-const cacheSave = (cache: Cache): AstroIntegration => {
-  return {
-    name: "cache-save",
-    hooks: {
-      "astro:build:generated": async () => {
-        await cache.save();
-      },
-    },
-  };
-};
 
 const remarkEmbedderCache = createCache(
   "./node_modules/.astro/remark-embedder.json",
@@ -190,7 +140,7 @@ export default defineConfig({
         borderColor: unoCtx.config.theme.colors.border.subtle,
       },
     }),
-    cacheSave(remarkEmbedderCache),
+    cacheSaveIntegration(remarkEmbedderCache),
   ],
   vite: {
     build: {
