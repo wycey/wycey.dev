@@ -89,7 +89,7 @@
     "astro-minify-html-swc": "^0.1.11",
     "astro-robots-txt": "^1.0.0",
     "browserslist": "^4.28.1",
-    "budoux": "^0.7.0",
+    "budoux": "^0.8.0",
     "gray-matter": "^4.0.3",
     "hastscript": "^9.0.1",
     "lightningcss": "^1.32.0",
