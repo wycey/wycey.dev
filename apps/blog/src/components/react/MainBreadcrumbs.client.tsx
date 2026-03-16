@@ -172,14 +172,14 @@ const buildCategoryMenuItems = (
 ): DropdownMenuItemDef[] => {
   const items: DropdownMenuItemDef[] = [{ type: "label", label: "カテゴリー" }];
 
-  for (const cat of categories) {
-    const href = `/articles/${cat.id}`;
+  for (const category of categories) {
+    const href = `/articles/${category.id}`;
 
     items.push({
       type: "item" as const,
-      label: cat.name,
+      label: category.name,
       href,
-      rightText: `${cat.articleCount}`,
+      rightText: `${category.articleCount}`,
     });
   }
 

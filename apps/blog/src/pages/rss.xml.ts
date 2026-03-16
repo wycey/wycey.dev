@@ -31,7 +31,7 @@ export const GET: APIRoute = async (context) => {
             await markdownToReadableString(article.body),
           ),
           categories: [category.data.name],
-          link: `/${article.data.category.id}/${article.id}`,
+          link: `/articles/${article.data.category.id}/${article.id}`,
           ...(article.data.publishedAt && {
             pubDate: parseDate(article.data.publishedAt).toDate(),
           }),
