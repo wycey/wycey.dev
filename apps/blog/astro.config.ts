@@ -118,9 +118,11 @@ export default defineConfig({
         },
       ],
     }),
-    sentry({
-      telemetry: false,
-    }),
+    process.env.SENTRY_AUTH_TOKEN
+      ? sentry({
+          telemetry: false,
+        })
+      : undefined,
     unoCSS({
       injectReset: true,
     }),
