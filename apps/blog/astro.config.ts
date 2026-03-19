@@ -37,7 +37,7 @@ import remarkDirective from "remark-directive";
 import remarkEmoji, { type RemarkEmojiOptions } from "remark-emoji";
 import remarkMath from "remark-math";
 import remarkNormalizeHeadings from "remark-normalize-headings";
-import remarkRubyDirective from "remark-ruby-directive/dist";
+import remarkRubyDirective from "remark-ruby-directive";
 import remarkSectionize from "remark-sectionize";
 import { createGenerator } from "unocss";
 import unoCSS from "unocss/astro";
