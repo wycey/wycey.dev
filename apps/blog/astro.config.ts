@@ -89,7 +89,9 @@ export default defineConfig({
   devToolbar: {
     enabled: false,
   },
-  prefetch: false, // https://github.com/withastro/astro/issues/15520
+  prefetch: {
+    prefetchAll: true,
+  },
   env: {
     schema: {
       SENTRY_DSN: envField.string({
