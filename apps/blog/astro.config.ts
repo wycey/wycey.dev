@@ -30,6 +30,7 @@ import rehypeExternalLinks, {
 import rehypeMermaid, { type RehypeMermaidOptions } from "rehype-mermaid";
 import rehypeOGCard, { type RehypeOGCardOptions } from "rehype-og-card";
 import rehypeSlug from "rehype-slug";
+import remarkBreaks from "remark-breaks";
 import remarkCjkFriendly from "remark-cjk-friendly";
 import remarkGfmStrikethroughCjkFriendly from "remark-cjk-friendly-gfm-strikethrough";
 import remarkEmoji, { type RemarkEmojiOptions } from "remark-emoji";
@@ -156,6 +157,7 @@ export default defineConfig({
   },
   markdown: {
     remarkPlugins: [
+      remarkBreaks,
       remarkNormalizeHeadings,
       remarkHeading1ToTitle,
       remarkLastModified,
