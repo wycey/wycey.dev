@@ -33,9 +33,11 @@ import rehypeSlug from "rehype-slug";
 import remarkBreaks from "remark-breaks";
 import remarkCjkFriendly from "remark-cjk-friendly";
 import remarkGfmStrikethroughCjkFriendly from "remark-cjk-friendly-gfm-strikethrough";
+import remarkDirective from "remark-directive";
 import remarkEmoji, { type RemarkEmojiOptions } from "remark-emoji";
 import remarkMath from "remark-math";
 import remarkNormalizeHeadings from "remark-normalize-headings";
+import remarkRubyDirective from "remark-ruby-directive/dist";
 import remarkSectionize from "remark-sectionize";
 import { createGenerator } from "unocss";
 import unoCSS from "unocss/astro";
@@ -158,6 +160,8 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [
       remarkBreaks,
+      remarkDirective,
+      remarkRubyDirective,
       remarkNormalizeHeadings,
       remarkHeading1ToTitle,
       remarkLastModified,
