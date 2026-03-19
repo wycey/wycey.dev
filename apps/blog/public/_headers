@@ -17,7 +17,7 @@ https://:version.:subdomain.workers.dev/*
 /apple-touch-icon.png
   Cache-Control: public, max-age=31556952, immutable
 
-/_astro/*
+/_assets/*
   Cache-Control: public, max-age=31556952, immutable
 
 /assets/*
