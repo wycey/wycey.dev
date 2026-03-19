@@ -48,7 +48,7 @@ export const ThemeSwitcher = () => {
         relative
         class={
           isSystem()
-            ? "bg-primary-solidBg text-border hover:bg-primary-solidBg-hover"
+            ? "bg-primary-bg-solid text-border hover:bg-primary-bg-solid-hover"
             : "bg-primary-bg text-fg-muted hover:bg-primary-bg-hover hover:text-fg active:bg-primary-bg-active"
         }
       >

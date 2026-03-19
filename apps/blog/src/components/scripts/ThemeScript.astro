@@ -1,30 +1,25 @@
 ---
 ---
+<meta name="color-scheme" content="light dark" />
+
 <script is:inline>
-  const getColorMode = () => {
-    const prefers = matchMedia("(prefers-color-scheme: dark)").matches;
-    const fromStorage = localStorage.getItem("theme");
-    
-    return fromStorage === "system" || fromStorage === null
-      ? prefers
-        ? "dark"
-        : "light"
-      : fromStorage === "light"
-        ? "light"
-        : "dark";
-  };
-
   const applyTheme = (doc) => {
-    const mode = getColorMode();
+    const fromStorage = localStorage.getItem("theme");
 
-    doc.documentElement.style.colorScheme = mode;
-    
-    if (mode === "dark") {
-      doc.documentElement.classList.add("dark");
-      doc.documentElement.classList.remove("light");
-    } else if (mode === "light") {
-      doc.documentElement.classList.add("light");
-      doc.documentElement.classList.remove("dark");
+    const meta = doc.querySelector('meta[name="color-scheme"]');
+
+    if (!(meta instanceof HTMLMetaElement)) {
+      throw new Error("Meta element with name 'color-scheme' not found");
+    }
+
+    if (fromStorage === "system" || fromStorage === null) {
+      meta.setAttribute("content", "light dark");
+
+      delete doc.documentElement.dataset.theme;
+    } else {
+      meta.setAttribute("content", fromStorage);
+
+      doc.documentElement.dataset.theme = fromStorage;
     }
   };
 

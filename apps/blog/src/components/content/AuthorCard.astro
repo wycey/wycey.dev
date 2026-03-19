@@ -18,7 +18,7 @@ for (const link of socialLinks) {
   if (link.type === "website") {
     socialIcons.website = { icon: "i-lucide:globe", label: "ウェブサイト", href: link.url };
   } else if (link.type === "x") {
-    socialIcons.x = { icon: "i-lucide:twitter", label: `X (@${link.username})`, href: `https://x.com/${link.username}` };
+    socialIcons.x = { icon: "i-lucide:twitter", label: `Twitter (@${link.username})`, href: `https://twitter.com/${link.username}` };
   } else if (link.type === "github") {
     socialIcons.github = { icon: "i-lucide:github", label: `GitHub (@${link.username})`, href: `https://github.com/${link.username}` };
   }
@@ -32,7 +32,7 @@ for (const link of socialLinks) {
       width={96}
       height={96}
       priority={true}
-      class="w-12 h-12 rounded-full outline-2 outline-primary-10/20% shrink-0 aspect-square"
+      class="w-12 h-12 rounded-full outline-2 outline-primary-focusRing/50% shrink-0 aspect-square"
     />
     <div flex flex-col gap="1" min-w="0">
       <div flex items="baseline" gap="2" flex-wrap="wrap">
@@ -57,7 +57,7 @@ for (const link of socialLinks) {
           target="_blank"
           rel="noreferrer"
           aria-label={label}
-          text="fg-muted hover:primary-10"
+          text="fg-muted hover:primary-fg-solid"
           transition
           p="1"
           rounded="1"

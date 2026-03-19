@@ -1,36 +1,131 @@
+/* biome-ignore-all lint/suspicious/noExplicitAny: UnoCSS theme is too complex to type */
+
+import { variantMatcher } from "@unocss/rule-utils";
 import {
   defineConfig,
-  type Preset,
   presetAttributify,
   presetIcons,
   presetWind4,
   transformerAttributifyJsx,
   transformerDirectives,
+  type Variant,
 } from "unocss";
 import { presetAnimations } from "unocss-preset-animations";
-import { presetRadix } from "unocss-preset-radix";
 
-// biome-ignore lint/suspicious/noExplicitAny: UnoCSS theme is too complex to type
-const createColorPaletteForRadix = (theme: any, color: string) => ({
-  DEFAULT: theme.colors[color][2],
-  bg: {
-    disabled: theme.colors[color][1],
-    DEFAULT: theme.colors[color][2],
-    hover: theme.colors[color][3],
-    active: theme.colors[color][4],
-  },
-  border: {
-    DEFAULT: theme.colors[color][6],
-    interact: theme.colors[color][7],
-    strong: theme.colors[color][8],
-  },
-  solidBg: {
-    DEFAULT: theme.colors[color][9],
-    hover: theme.colors[color][10],
-  },
-  fg: theme.colors[color].fg,
-  ...theme.colors[color],
-});
+const RADIX_PREFIX = "radix-";
+
+const SCALES = [
+  "primary",
+  "secondary",
+  "info",
+  "warning",
+  "error",
+  "success",
+] as const;
+
+const MISC_SCALES = ["indigo", "amber"] as const;
+
+const createColorVars = (color: string, theme: any) => {
+  theme.colors[color] ??= {};
+
+  // solid and alpha scale
+  for (let i = 1; i <= 12; i++) {
+    theme.colors[color][i] = {
+      DEFAULT: `var(--color-${color}-${i})`,
+      A: `var(--color-${color}-${i}-A)`,
+    };
+  }
+};
+
+const createAccentColorVars = (color: string, theme: any) => {
+  createColorVars(color, theme);
+
+  // semantic tokens
+
+  theme.colors[color].bg = {
+    DEFAULT: `var(--color-${color}-bg)`,
+    canvas: `var(--color-${color}-bg-canvas)`,
+    subtle: `var(--color-${color}-bg-subtle)`,
+    hover: `var(--color-${color}-bg-hover)`,
+    active: `var(--color-${color}-bg-active)`,
+    solid: {
+      DEFAULT: `var(--color-${color}-bg-solid)`,
+      hover: `var(--color-${color}-bg-hover)`,
+    },
+  };
+
+  theme.colors[color].border = {
+    DEFAULT: `var(--color-${color}-border)`,
+    subtle: `var(--color-${color}-border-subtle)`,
+    hover: `var(--color-${color}-border-hover)`,
+  };
+
+  theme.colors[color].focusRing = `var(--color-${color}-focusRing)`;
+
+  theme.colors[color].fg = {
+    DEFAULT: `var(--color-${color}-fg)`,
+    solid: `var(--color-${color}-fg-solid)`,
+    muted: `var(--color-${color}-fg-muted)`,
+  };
+};
+
+const createBaseColorVars = (theme: any) => {
+  theme.colors.base ??= {};
+
+  // semantic tokens
+
+  theme.colors.base.bg = {
+    DEFAULT: `var(--color-base-bg)`,
+    canvas: `var(--color-base-bg-canvas)`,
+    subtle: `var(--color-base-bg-subtle)`,
+    hover: `var(--color-base-bg-hover)`,
+    active: `var(--color-base-bg-active)`,
+  };
+
+  theme.colors.base.border = {
+    DEFAULT: `var(--color-base-border)`,
+    subtle: `var(--color-base-border-subtle)`,
+    hover: `var(--color-base-border-hover)`,
+  };
+
+  theme.colors.base.fg = {
+    DEFAULT: `var(--color-base-fg)`,
+    muted: `var(--color-base-fg-muted)`,
+  };
+};
+
+const createAliasColorVars = (theme: any) => {
+  // aliases
+
+  theme.colors.bg = {
+    DEFAULT: `var(--color-bg)`,
+    normal: `var(--color-bg-normal)`,
+    subtle: `var(--color-bg-subtle)`,
+    hover: `var(--color-bg-hover)`,
+    active: `var(--color-bg-active)`,
+  };
+
+  theme.colors.border = {
+    DEFAULT: `var(--color-border)`,
+    hover: `var(--color-border-hover)`,
+    subtle: `var(--color-border-subtle)`,
+  };
+
+  theme.colors.fg = {
+    DEFAULT: `var(--color-fg)`,
+    disabled: `var(--color-fg-disabled)`,
+    muted: `var(--color-fg-muted)`,
+  };
+};
+
+const createDataVariant = (
+  prefix: string,
+  attribute: string,
+  selector: string,
+): Variant =>
+  variantMatcher(`${prefix}${attribute}`, (input) => ({
+    selector: `${input.selector}${selector}`,
+  }));
 
 export default defineConfig({
   presets: [
@@ -39,20 +134,6 @@ export default defineConfig({
         reset: true,
       },
     }),
-    presetRadix({
-      palette: ["violet", "iris", "indigo", "amber", "red", "green", "mauve"],
-      aliases: {
-        primary: "violet",
-        secondary: "iris",
-        info: "indigo",
-        warning: "amber",
-        error: "red",
-        success: "green",
-        base: "mauve",
-      },
-      darkSelector: ".dark",
-      lightSelector: ":root, .light",
-    }) as unknown as Preset,
     presetAnimations(),
     presetAttributify(),
     presetIcons({
@@ -64,46 +145,36 @@ export default defineConfig({
     }),
   ],
   transformers: [transformerDirectives(), transformerAttributifyJsx()],
-  // biome-ignore lint/suspicious/noExplicitAny: UnoCSS theme is too complex to type
+  variants: [
+    createDataVariant(RADIX_PREFIX, "open", "[data-state='open']"),
+    createDataVariant(RADIX_PREFIX, "closed", "[data-state='closed']"),
+    createDataVariant(
+      RADIX_PREFIX,
+      "horizontal",
+      "[createData-orientation='horizontal']",
+    ),
+    createDataVariant(
+      RADIX_PREFIX,
+      "vertical",
+      "[data-orientation='vertical']",
+    ),
+    createDataVariant(RADIX_PREFIX, "disabled", "[data-disabled]"),
+    createDataVariant(RADIX_PREFIX, "enabled", ":not([data-disabled])"),
+    createDataVariant(RADIX_PREFIX, "side-top", "[data-side='top']"),
+    createDataVariant(RADIX_PREFIX, "side-left", "[data-side='left']"),
+    createDataVariant(RADIX_PREFIX, "side-right", "[data-side='right']"),
+    createDataVariant(RADIX_PREFIX, "side-bottom", "[data-side='bottom']"),
+  ],
   extendTheme: (theme: any) => {
-    theme.colors.primary = createColorPaletteForRadix(theme, "primary");
-    theme.colors.secondary = createColorPaletteForRadix(theme, "secondary");
-    theme.colors.info = createColorPaletteForRadix(theme, "info");
-    theme.colors.warning = createColorPaletteForRadix(theme, "warning");
-    theme.colors.error = createColorPaletteForRadix(theme, "error");
-    theme.colors.success = createColorPaletteForRadix(theme, "success");
+    for (const color of SCALES) {
+      createAccentColorVars(color, theme);
+    }
 
-    theme.colors.base = {
-      border: {
-        DEFAULT: theme.colors.base[6],
-        interact: theme.colors.base[7],
-        strong: theme.colors.base[8],
-      },
-      ...theme.colors.base,
-    };
+    for (const color of MISC_SCALES) {
+      createColorVars(color, theme);
+    }
 
-    theme.colors.bg = {
-      DEFAULT: theme.colors.base[1],
-      subtle: theme.colors.base[2],
-      disabled: theme.colors.base[3],
-      muted: theme.colors.base[3],
-      emphasized: theme.colors.base[4],
-    };
-
-    theme.colors.border = {
-      subtle: theme.colors.base[4],
-      disabled: theme.colors.base[5],
-      muted: theme.colors.base[6],
-      DEFAULT: theme.colors.base[7],
-      outline: theme.colors.base[9],
-    };
-
-    theme.colors.fg = {
-      ...theme.colors.base,
-      DEFAULT: theme.colors.base[12],
-      disabled: theme.colors.base[7],
-      muted: theme.colors.base[9],
-      emphasized: theme.colors.base[12],
-    };
+    createBaseColorVars(theme);
+    createAliasColorVars(theme);
   },
 });

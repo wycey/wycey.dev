@@ -129,6 +129,8 @@ export default defineConfig({
     expressiveCode({
       plugins: [pluginLineNumbers(), pluginCodeCaption()],
       themes: ["catppuccin-mocha", "catppuccin-latte"],
+      useDarkModeMediaQuery: true,
+      themeCssSelector: (theme) => `[data-theme='${theme.type}']`,
       defaultProps: {
         wrap: true,
         overridesByLang: {

@@ -2,16 +2,28 @@ import { createEffect } from "solid-js";
 import { useTheme } from "@/hooks/solid/useTheme";
 
 export const ColorSchemeWatcher = () => {
-  const { isDark } = useTheme();
+  const { isSystem, isDark } = useTheme();
+
+  let meta: HTMLMetaElement | null | undefined;
 
   createEffect(() => {
-    if (isDark()) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
+    if (meta === undefined) {
+      meta = document.querySelector('meta[name="color-scheme"]');
     }
 
-    document.documentElement.style.colorScheme = isDark() ? "dark" : "light";
+    if (meta) {
+      if (isSystem()) {
+        meta.setAttribute("content", "light dark");
+
+        delete document.documentElement.dataset.theme;
+      } else {
+        const mode = isDark() ? "dark" : "light";
+
+        meta.setAttribute("content", mode);
+
+        document.documentElement.dataset.theme = mode;
+      }
+    }
   });
 
   return null;

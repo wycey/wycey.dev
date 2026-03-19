@@ -248,9 +248,9 @@ export const MainBreadcrumbs = ({
 
   const getHash = useCallback(
     () =>
-      typeof window !== "undefined"
-        ? decodeURIComponent(window.location.hash.slice(1))
-        : "",
+      typeof window === "undefined"
+        ? ""
+        : decodeURIComponent(window.location.hash.slice(1)),
     [],
   );
 

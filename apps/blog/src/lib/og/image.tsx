@@ -14,10 +14,10 @@ const colors = {
   // base: mauve
 
   light: {
-    primary1: "#fdfcfe",
-    primary3: "#f4f0fe",
-    primary7: "#c2b5f5",
-    primary10: "#654dc4",
+    primary1: "#fcfcfe",
+    primary3: "#f3f0ff",
+    primary7: "#c4b2fe",
+    primary10: "#9a7fe0",
 
     base1: "#fdfcfd",
     base3: "#f2eff3",

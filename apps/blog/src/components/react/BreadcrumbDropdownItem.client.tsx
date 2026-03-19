@@ -114,7 +114,7 @@ export function BreadcrumbDropdownItem({
                   <DropdownMenuItem
                     key={`item-${i}`}
                     className={cn(
-                      item.active && "bg-accent text-accent-foreground",
+                      item.active && "bg-primary-bg text-primary-fg",
                     )}
                     disabled
                   >
@@ -128,7 +128,7 @@ export function BreadcrumbDropdownItem({
                   <a
                     href={item.href}
                     className={cn(
-                      item.active && "bg-accent text-accent-foreground",
+                      item.active && "bg-primary-bg text-primary-fg",
                     )}
                   >
                     {content}

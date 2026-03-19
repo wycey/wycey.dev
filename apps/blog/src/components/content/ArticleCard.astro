@@ -43,15 +43,14 @@ const href = `/articles/${categoryRef.id}/${article.id}`;
       flex-auto
       min-w="0"
       transition="colors 200"
-      group-hover="text-primary-10"
+      group-hover="text-primary-fg-solid"
       class="line-clamp-2"
-      style="word-break: auto-phrase"
     >
       {title}
     </h3>
     <span
       block
-      text="lg primary-10"
+      text="lg primary-fg-solid"
       shrink="0"
       mt="1"
       transition="all 200"
@@ -69,7 +68,7 @@ const href = `/articles/${categoryRef.id}/${article.id}`;
         rounded="2"
         px="2"
         py="0.5"
-        class="text-primary-10 whitespace-nowrap"
+        class="text-primary-fg-solid whitespace-nowrap"
       >
         {category.data.name}
       </span>
@@ -77,7 +76,7 @@ const href = `/articles/${categoryRef.id}/${article.id}`;
     {tags.length > 0 && (
       <>
         <div w="px" h="3.5" bg="border" rounded="full" shrink="0" />
-        <div flex items="center" gap="1.5" flex-wrap="wrap" min-w="0">
+        <div flex items="center" gap="1.5" flex-wrap min-w="0">
           {tags.map(tag => (
             <span
               text="xs fg-muted"
@@ -93,7 +92,7 @@ const href = `/articles/${categoryRef.id}/${article.id}`;
     )}
   </div>
 
-  <div flex items="center" gap="3" flex-wrap="wrap" text="fg-muted" class="self-end">
+  <div flex items="center" gap="3" flex-wrap text="fg-muted" class="self-end">
     {author && (
       <div flex items="center" gap="1.5">
         <Picture
@@ -114,7 +113,7 @@ const href = `/articles/${categoryRef.id}/${article.id}`;
     {date && (
       <div flex items="center" gap="1.5">
         <span class="p-1 bg-primary-bg rounded-1.5">
-          <span block text="xs primary-10" class="i-lucide:calendar" />
+          <span block text="xs primary-fg-solid" class="i-lucide:calendar" />
         </span>
         <time datetime={publishedAt} text="xs">{date}</time>
       </div>
@@ -122,7 +121,7 @@ const href = `/articles/${categoryRef.id}/${article.id}`;
     {words > 0 && (
       <div flex items="center" gap="1.5">
         <span class="p-1 bg-primary-bg rounded-1.5">
-          <span block text="xs primary-10" class="i-lucide:text" />
+          <span block text="xs primary-fg-solid" class="i-lucide:text" />
         </span>
         <span text="xs">{words} 字</span>
       </div>

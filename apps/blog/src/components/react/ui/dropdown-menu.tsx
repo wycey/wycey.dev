@@ -49,11 +49,11 @@ function DropdownMenuContent({
         p="2"
         text="fg"
         shadow="md"
-        ring="1 fg-10/10"
+        ring="1 primary-10/10%"
         radix-open="animate-in fade-in-0 zoom-in-95"
         radix-closed="overflow-hidden animate-out fade-out-0 zoom-out-95"
         className={cn(
-          "duration-100 origin-[var(--radix-dropdown-menu-content-transform-origin)] data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+          "duration-100 origin-[var(--radix-dropdown-menu-content-transform-origin)] radix-side-bottom:slide-in-from-top-2 radix-side-left:slide-in-from-right-2 radix-side-right:slide-in-from-left-2 radix-side-top:slide-in-from-bottom-2",
           className,
         )}
         {...props}
@@ -94,7 +94,7 @@ function DropdownMenuItem({
       text="sm"
       outline="none"
       select="none"
-      focus="bg-bg-muted"
+      focus="bg-bg-subtle"
       radix-disabled="pointer-events-none opacity-50"
       className={cn("group/dropdown-menu-item", className)}
       {...props}
@@ -125,7 +125,7 @@ function DropdownMenuCheckboxItem({
       text="sm"
       outline="none"
       select="none"
-      focus="bg-bg-muted"
+      focus="bg-bg-subtle"
       radix-disabled="pointer-events-none opacity-50"
       className={cn(className)}
       // biome-ignore lint/style/noNonNullAssertion: checked can be undefined, but Radix will treat it as false
@@ -183,7 +183,7 @@ function DropdownMenuRadioItem({
       text="sm"
       outline="none"
       select="none"
-      focus="bg-bg-muted"
+      focus="bg-bg-subtle"
       radix-disabled="pointer-events-none opacity-50"
       className={cn(className)}
       {...props}
@@ -281,8 +281,8 @@ function DropdownMenuSubTrigger({
       text="sm"
       outline="none"
       select="none"
-      focus="bg-bg-muted"
-      radix-open="bg-bg-muted"
+      focus="bg-bg-subtle"
+      radix-open="bg-bg-subtle"
       className={cn(className)}
       {...props}
     >
@@ -308,11 +308,11 @@ function DropdownMenuSubContent({
       p="2"
       text="fg"
       shadow="lg"
-      ring="1 fg-10/10"
+      ring="1 primary-10/10%"
       radix-open="animate-in fade-in-0 zoom-in-95"
       radix-closed="overflow-hidden animate-out fade-out-0 zoom-out-95"
       className={cn(
-        "duration-100 origin-[var(--radix-dropdown-menu-content-transform-origin)] data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+        "duration-100 origin-[var(--radix-dropdown-menu-content-transform-origin)] radix-side-bottom:slide-in-from-top-2 radix-side-left:slide-in-from-right-2 radix-side-right:slide-in-from-left-2 radix-side-top:slide-in-from-bottom-2",
         className,
       )}
       {...props}
@@ -322,18 +322,18 @@ function DropdownMenuSubContent({
 
 export {
   DropdownMenu,
-  DropdownMenuPortal,
-  DropdownMenuTrigger,
+  DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuGroup,
-  DropdownMenuLabel,
   DropdownMenuItem,
-  DropdownMenuCheckboxItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuSub,
-  DropdownMenuSubTrigger,
   DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
 };

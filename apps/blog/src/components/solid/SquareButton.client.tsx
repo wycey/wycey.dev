@@ -22,10 +22,10 @@ export const SquareButton = (props: SquareButtonProps) => {
       inline-flex=""
       items="center"
       justify="center"
-      text="primary-10 lg"
+      text="primary-fg-solid lg"
       p="4"
       rounded="2"
-      bg="primary-bg hover:primary-bg-hover active:primary-bg-active disabled:primary-bg-disabled"
+      bg="primary-bg hover:primary-bg-hover active:primary-bg-active disabled:primary-bg-subtle"
       cursor="disabled:not-allowed"
       classList={local.classList}
       {...(rest as ComponentProps<"a">)}
@@ -38,10 +38,10 @@ export const SquareButton = (props: SquareButtonProps) => {
       inline-flex=""
       items="center"
       justify="center"
-      text="primary-10 lg"
+      text="primary-fg-solid lg"
       p="4"
       rounded="2"
-      bg="primary-bg hover:primary-bg-hover active:primary-bg-active disabled:primary-bg-disabled"
+      bg="primary-bg hover:primary-bg-hover active:primary-bg-active disabled:primary-bg-subtle"
       cursor="disabled:not-allowed"
       classList={local.classList}
       {...(rest as ComponentProps<"button">)}
