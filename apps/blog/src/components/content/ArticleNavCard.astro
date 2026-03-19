@@ -25,16 +25,27 @@ const label = labelProp ?? (isPrev ? "前の記事" : "次の記事");
     { "flex-row-reverse": !isPrev },
   ]}
 >
-  <div
-    text="2xl primary-fg-solid"
-    transition="transform"
-    class:list={[
-      isPrev ? "i-lucide:chevron-left" : "i-lucide:chevron-right",
-      isPrev ? "translate-x-1" : "-translate-x-1",
-      "group-hover:translate-x-0 md:row-start-1 md:row-span-2 md:self-center",
-      isPrev ? "md:col-start-1" : "md:col-start-2",
-    ]}
-  />
+  {
+    isPrev
+      ? (
+        <div
+          text="2xl primary-fg-solid"
+          transition="transform"
+          translate-x="1 group-hover:0"
+          md="row-start-1 row-span-2 self-center col-start-1"
+          class="i-lucide:chevron-left"
+        />
+      )
+      : (
+        <div
+          text="2xl primary-fg-solid"
+          transition="transform"
+          translate-x="-1 group-hover:0"
+          md="row-start-1 row-span-2 self-center col-start-2"
+          class="i-lucide:chevron-right"
+        />
+      )
+  }
   <section
     flex="1"
     class:list={[

@@ -143,10 +143,18 @@ export default defineConfig({
   ],
   vite: {
     build: {
-      //cssMinify: "lightningcss", TODO: Enable when the build issue with LightningCSS is resolved
+      cssTarget: "es2022", // TODO Remove when Astro uses Vite 8, https://github.com/vitejs/vite/issues/21293
+      cssMinify: "lightningcss",
     },
     css: {
+      transformer: "lightningcss",
       lightningcss: {
+        customAtRules: {
+          screen: {
+            prelude: "<custom-ident>",
+            body: "style-block",
+          },
+        },
         targets: browserslistToTargets(browserslist()),
       },
     },

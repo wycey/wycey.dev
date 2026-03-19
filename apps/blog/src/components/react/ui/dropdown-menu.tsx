@@ -52,8 +52,12 @@ function DropdownMenuContent({
         ring="1 primary-10/10%"
         radix-open="animate-in fade-in-0 zoom-in-95"
         radix-closed="overflow-hidden animate-out fade-out-0 zoom-out-95"
+        radix-side-bottom="slide-in-from-t-2"
+        radix-side-left="slide-in-from-r-2"
+        radix-side-right="slide-in-from-l-2"
+        radix-side-top="slide-in-from-b-2"
         className={cn(
-          "duration-100 origin-[var(--radix-dropdown-menu-content-transform-origin)] radix-side-bottom:slide-in-from-top-2 radix-side-left:slide-in-from-right-2 radix-side-right:slide-in-from-left-2 radix-side-top:slide-in-from-bottom-2",
+          "duration-100 origin-[var(--radix-dropdown-menu-content-transform-origin)]",
           className,
         )}
         {...props}
@@ -311,8 +315,12 @@ function DropdownMenuSubContent({
       ring="1 primary-10/10%"
       radix-open="animate-in fade-in-0 zoom-in-95"
       radix-closed="overflow-hidden animate-out fade-out-0 zoom-out-95"
+      radix-side-bottom="slide-in-from-t-2"
+      radix-side-left="slide-in-from-r-2"
+      radix-side-right="slide-in-from-l-2"
+      radix-side-top="slide-in-from-b-2"
       className={cn(
-        "duration-100 origin-[var(--radix-dropdown-menu-content-transform-origin)] radix-side-bottom:slide-in-from-top-2 radix-side-left:slide-in-from-right-2 radix-side-right:slide-in-from-left-2 radix-side-top:slide-in-from-bottom-2",
+        "duration-100 origin-[var(--radix-dropdown-menu-content-transform-origin)]",
         className,
       )}
       {...props}

@@ -5,7 +5,7 @@
 /* CSS Reset and Base Styles */
 
 :where(html, :host) {
-  @apply leading-relaxed;
+  --at-apply: leading-relaxed;
 }
 
 :where(:root) {
@@ -25,7 +25,7 @@
 }
 
 :where(body) {
-  @apply min-block-[100dvb] focus-within:scroll-smooth;
+  --at-apply: "min-block-[100dvb] focus-within:scroll-smooth";
 }
 
 :where(search) {
@@ -137,33 +137,35 @@
 /* Custom Global Styles */
 
 body {
-  @apply bg-bg text-fg;
+  --at-apply: bg-bg text-fg;
 }
 
 *,
 *::before,
 *::after {
-  @apply border-border-subtle border-solid outline-transparent transition-outline-color duration-150 ease-in-out;
+  --at-apply: border-border-subtle border-solid outline-transparent
+    transition-outline-color duration-150 ease-in-out;
 
   &:focus-visible {
-    @apply 'outline-2 outline-solid outline-primary-focusRing/30%' 'rounded-sm';
+    --at-apply: "outline-2 outline-solid outline-primary-focusRing/30%"
+      "rounded-sm";
   }
 }
 
 *::placeholder {
-  @apply opacity-1 text-primary-border;
+  --at-apply: opacity-1 text-primary-border;
 }
 
 *::selection {
-  @apply 'bg-primary-bg-solid/30%';
+  --at-apply: "bg-primary-bg-solid/30%";
 }
 
 .brand-container {
-  @apply 'max-w-[75ch] w-full mx-auto px-4';
+  --at-apply: "max-w-[75ch] w-full mx-auto px-4";
 }
 
 .dashed-line {
-  @apply relative;
+  --at-apply: relative;
 
   &::before {
     content: "";
@@ -194,7 +196,7 @@ svg.typst-doc .typst-shape {
 }
 
 svg.typst-doc *::selection {
-  @apply 'bg-primary-bg-solid/30%';
+  --at-apply: "bg-primary-bg-solid/30%";
 }
 
 /* End of Custom Global Styles */

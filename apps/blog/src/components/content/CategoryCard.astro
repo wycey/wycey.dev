@@ -4,6 +4,8 @@ import IconChip from "../IconChip.astro";
 import TagItem from "../TagItem.astro";
 import PageHeaderCard from "./PageHeaderCard.astro";
 
+const STATIC_HASH_ICON = "i-lucide:hash"; // Workaround for "failed to load icon"
+
 interface Props {
   category: CollectionEntry<"categories">;
   articleCount: number;
@@ -20,7 +22,7 @@ const { category, articleCount, topTags } = Astro.props;
 
   {topTags.length > 0 && (
     <div flex items="center" mt="4">
-      <IconChip class="flex-wrap" icon="i-lucide:hash">
+      <IconChip class="flex-wrap" icon={STATIC_HASH_ICON}>
         {topTags.filter((_, i) => i < 5).map(({ name, count }, i, filteredTags) => (
           <>
             <TagItem>

@@ -95,8 +95,9 @@ const categories = allCategories.map((c) => ({
   </div>
 </header>
 
-<style is:global>
-  @screen lt-md {
+<style>
+  /* @screen lt-md */
+  @media (max-width: 48rem) {
     .breadcrumb-wrap [data-slot="breadcrumb-list"] > :first-child,
     .breadcrumb-wrap [data-slot="breadcrumb-list"] > :nth-child(2) {
       display: none;
