@@ -10,13 +10,11 @@ interface Props {
 
 const { prevUrl, nextUrl, currentPage, lastPage } = Astro.props;
 
-function getPageUrl(page: number): string {
-  return page === 1 ? "/" : `/${page}`;
-}
+const getPageUrl = (page: number) => page === 1 ? "/" : `/${page}`;
 
-function getVisiblePages(current: number, last: number): (number | "ellipsis")[] {
+const getVisiblePages = (current: number, last: number): (number | "ellipsis")[] => {
   if (last <= MAX_VISIBLE_PAGES) {
-    return Array.from({ length: last }, (_, i) => i + 1);
+    return [...Array(last).keys()].map(i => i + 1);
   }
 
   const pages: (number | "ellipsis")[] = [];
@@ -32,12 +30,17 @@ function getVisiblePages(current: number, last: number): (number | "ellipsis")[]
   if (current - half < 2) {
     end = Math.min(last - 1, MAX_VISIBLE_PAGES - 1);
   }
+
   if (current + half > last - 1) {
     start = Math.max(2, last - MAX_VISIBLE_PAGES + 2);
   }
 
   if (start > 2) pages.push("ellipsis");
-  for (let i = start; i <= end; i++) pages.push(i);
+
+  for (let i = start; i <= end; i++) {
+    pages.push(i);
+  }
+
   if (end < last - 1) pages.push("ellipsis");
 
   // Always show last page
