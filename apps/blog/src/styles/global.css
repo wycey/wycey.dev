@@ -129,8 +129,8 @@
     transition-outline-color duration-150 ease-in-out;
 
   &:focus-visible {
-    --at-apply: "outline-2 outline-solid outline-primary-focusRing/30%"
-      "rounded-sm";
+    --at-apply: outline-2 outline-solid "outline-primary-focusRing/30%"
+      "rounded-1";
   }
 }
 

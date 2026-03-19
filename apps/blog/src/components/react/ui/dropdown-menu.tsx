@@ -98,7 +98,8 @@ function DropdownMenuItem({
       text="sm"
       outline="none"
       select="none"
-      focus="bg-bg-subtle"
+      focus="bg-bg-hover"
+      transition="colors"
       radix-disabled="pointer-events-none opacity-50"
       className={cn("group/dropdown-menu-item", className)}
       {...props}
@@ -129,7 +130,8 @@ function DropdownMenuCheckboxItem({
       text="sm"
       outline="none"
       select="none"
-      focus="bg-bg-subtle"
+      focus="bg-bg-hover"
+      transition="colors"
       radix-disabled="pointer-events-none opacity-50"
       className={cn(className)}
       // biome-ignore lint/style/noNonNullAssertion: checked can be undefined, but Radix will treat it as false
@@ -187,7 +189,8 @@ function DropdownMenuRadioItem({
       text="sm"
       outline="none"
       select="none"
-      focus="bg-bg-subtle"
+      focus="bg-bg-hover"
+      transition="colors"
       radix-disabled="pointer-events-none opacity-50"
       className={cn(className)}
       {...props}
@@ -285,7 +288,8 @@ function DropdownMenuSubTrigger({
       text="sm"
       outline="none"
       select="none"
-      focus="bg-bg-subtle"
+      focus="bg-bg-hover"
+      transition="colors"
       radix-open="bg-bg-subtle"
       className={cn(className)}
       {...props}

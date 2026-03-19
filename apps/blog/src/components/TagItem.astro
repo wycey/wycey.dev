@@ -1,10 +1,31 @@
 ---
+interface Props {
+  href?: string;
+}
+
+const { href } = Astro.props;
 ---
-<span
-  class="hover:bg-bg-subtle px-2 py-1 rounded-2"
-  text="fg-muted hover:fg"
-  transition-colors
-  cursor="default"
->
-  <slot />
-</span>
+{href 
+  ? (
+    <a
+      href={href}
+      class="px-2 py-1 rounded-2"
+      bg="hover:primary-bg-hover"
+      text="fg-muted hover:fg"
+      transition-colors
+    >
+      <slot />
+    </a>
+  )
+  : (
+    <span
+      class="px-2 py-1 rounded-2"
+      bg="hover:primary-bg-hover"
+      text="fg-muted hover:fg"
+      transition-colors
+      cursor="default"
+    >
+      <slot />
+    </span>
+  )
+}

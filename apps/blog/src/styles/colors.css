@@ -1,4 +1,4 @@
-:root {
+:where(:root) {
   /* solid scale */
   --color-primary-1: light-dark(
     oklch(99.2% 0.0033 295),

@@ -20,7 +20,7 @@ const stats = [
   <h1 text="2xl" font="bold">アーカイブ</h1>
   <p text="fg-muted" mt="2">すべての記事を時系列で掲載しています</p>
 
-  <div flex items="center" gap="6" mt="4" flex-wrap="wrap">
+  <div flex items="center" gap="x-6 y-4" mt="4" flex-wrap>
     {stats.map(({ icon, value, label }) => (
       <div flex items="center" gap="1.5" text="sm">
         <IconChip icon={icon}>

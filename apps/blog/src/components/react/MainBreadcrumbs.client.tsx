@@ -118,7 +118,15 @@ const buildBlogMenuItems = (
       href: "/",
       rightText: "/",
       active: isHome,
-      icon: <span block size="4" shrink="0" className="i-lucide:pen-line" />,
+      icon: (
+        <span
+          block
+          text="fg-disabled"
+          size="4"
+          shrink="0"
+          className="i-lucide:pen-line"
+        />
+      ),
     },
     {
       type: "item",
@@ -126,7 +134,15 @@ const buildBlogMenuItems = (
       href: "/articles",
       rightText: "/articles",
       active: isArchive,
-      icon: <span block size="4" shrink="0" className="i-lucide:archive" />,
+      icon: (
+        <span
+          block
+          text="fg-disabled"
+          size="4"
+          shrink="0"
+          className="i-lucide:archive"
+        />
+      ),
     },
     { type: "separator" },
     { type: "label", label: "執筆者" },
@@ -161,13 +177,22 @@ const buildBlogMenuItems = (
     href: "/about",
     rightText: "/about",
     active: isAbout,
-    icon: <span block size="4" shrink="0" className="i-lucide:info" />,
+    icon: (
+      <span
+        block
+        text="fg-disabled"
+        size="4"
+        shrink="0"
+        className="i-lucide:info"
+      />
+    ),
   });
 
   return items;
 };
 
 const buildCategoryMenuItems = (
+  currentPath: string,
   categories: Category[],
 ): DropdownMenuItemDef[] => {
   const items: DropdownMenuItemDef[] = [{ type: "label", label: "カテゴリー" }];
@@ -179,7 +204,17 @@ const buildCategoryMenuItems = (
       type: "item" as const,
       label: category.name,
       href,
+      active: currentPath === href,
       rightText: `${category.articleCount}`,
+      icon: (
+        <span
+          block
+          text="fg-disabled"
+          size="4"
+          shrink="0"
+          className="i-lucide:folder"
+        />
+      ),
     });
   }
 
@@ -199,7 +234,15 @@ const buildTocMenuItems = (
       href: `#${heading.slug}`,
       active: heading.slug === activeSlug,
       indent: (heading.depth - 2) * 2,
-      icon: <span block size="4" shrink="0" className="i-lucide:hash" />,
+      icon: (
+        <span
+          block
+          text="fg-disabled"
+          size="4"
+          shrink="0"
+          className="i-lucide:hash"
+        />
+      ),
     });
   }
 
@@ -237,8 +280,8 @@ export const MainBreadcrumbs = ({
   );
 
   const categoryMenuItems = useMemo(
-    () => buildCategoryMenuItems(categories),
-    [categories],
+    () => buildCategoryMenuItems(currentPath, categories),
+    [currentPath, categories],
   );
 
   const headingSlugs = useMemo(

@@ -1,14 +1,17 @@
 ---
 interface Props {
   class?: string;
+  applyGap?: boolean;
   icon: string;
 }
 
-const { class: className, icon } = Astro.props;
+const { class: className, icon, applyGap = true } = Astro.props;
+
+const gapClass = applyGap ? "gap-4" : "gap-0";
 ---
-<div class={className} flex items="center" gap="4">
-  <p class="p-2 bg-primary-bg rounded-2">
-    <span class={`block text-primary-fg-solid ${icon}`} />
+<div flex items="center" class:list={[className, gapClass]}>
+  <p bg="primary-bg" class="p-2 rounded-2">
+    <span text="primary-fg-solid" class={`block ${icon}`} />
   </p>
   <slot />
 </div>

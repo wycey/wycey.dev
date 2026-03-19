@@ -107,7 +107,7 @@ const { words, minutesText } = await getReadingTime(article.body);
       <section
         flex
         flex-wrap
-        gap="8"
+        gap="x-6 y-4"
         mb="8"
       >
         <a
@@ -130,13 +130,17 @@ const { words, minutesText } = await getReadingTime(article.body);
           <p class="whitespace-nowrap">{author.data.name}</p>
         </a>
         <div w="px" min-h="0" bg="border" rounded="full" />
-        <IconChip class="text-fg-muted" icon="i-lucide:folder">
-          {category.data.name}
+        <IconChip class="text-fg-muted" icon="i-lucide:folder" applyGap={false}>
+          <div ml="2">
+            <TagItem href={`/articles/${category.id}`}>
+              {category.data.name}
+            </TagItem>
+          </div>
         </IconChip>
         {
           tags.length > 0 &&
-            <IconChip class="text-fg-muted" icon="i-lucide:hash">
-              <div flex items="center" gap="4">
+            <IconChip class="text-fg-muted" icon="i-lucide:hash" applyGap={false}>
+              <div flex items="center" gap="4" ml="2">
                 {tags.map(
                   tag => (
                     <TagItem>
@@ -148,7 +152,7 @@ const { words, minutesText } = await getReadingTime(article.body);
             </IconChip>
         }
         <div flex-auto />
-        <div flex flex-wrap items="center" gap="3" text="fg-muted" grid-col="4">
+        <div flex flex-wrap items="center" gap="x-6 y-4" text="fg-muted" grid-col="4">
           {(!publishedAt || formatDate(publishedAt) !== formatDate(updatedAt)) && (
             <IconChip icon="i-lucide:calendar-sync">
               <time datetime={updatedAt.toISOString()}>{formatDate(updatedAt)}</time>
