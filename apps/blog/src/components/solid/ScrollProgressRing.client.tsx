@@ -39,7 +39,8 @@ export const ScrollProgressRing = (props: { children: JSX.Element }) => {
   return (
     <span class="relative inline-flex items-center justify-center size-[1em]">
       <svg
-        class="absolute left-1/2 top-1/2 pointer-events-none"
+        class="absolute left-1/2 top-1/2"
+        pointer-events="none"
         width={SVG_SIZE}
         height={SVG_SIZE}
         viewBox={`0 0 ${SVG_SIZE} ${SVG_SIZE}`}
