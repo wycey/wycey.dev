@@ -48,8 +48,8 @@ export const ThemeSwitcher = () => {
         relative
         class={
           isSystem()
-            ? "bg-primary-bg-solid text-border hover:bg-primary-bg-solid-hover"
-            : "bg-primary-bg text-fg-muted hover:bg-primary-bg-hover hover:text-fg active:bg-primary-bg-active"
+            ? "bg-primary-bg-solid text-fg"
+            : "bg-primary-bg text-fg-muted hover:bg-primary-bg-hover hover:text-fg"
         }
       >
         <span block class="i-lucide:monitor" />
