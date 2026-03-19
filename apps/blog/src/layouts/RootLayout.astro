@@ -50,7 +50,7 @@ const {
   jsonLd: maybeJsonLd,
 } = Astro.props.frontmatter || Astro.props;
 
-const ogImage = maybeOgImage ? new URL(maybeOgImage, Astro.site).href : new URL("/og/default.png", Astro.site).href;
+const ogImage = maybeOgImage ? new URL(maybeOgImage, Astro.site).href : new URL("/assets/og/default.png", Astro.site).href;
 
 const jsonLd = {
   "@context": "https://schema.org",

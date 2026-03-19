@@ -26,7 +26,7 @@ const ARTICLES_DIR = resolve(CONTENT_DIR, "articles");
 const AUTHORS_DIR = resolve(CONTENT_DIR, "authors");
 const CATEGORIES_DIR = resolve(CONTENT_DIR, "categories");
 
-const OUTPUT_DIR = resolve(import.meta.dir, "../dist/client/og");
+const OUTPUT_DIR = resolve(import.meta.dir, "../dist/client/assets/og");
 
 const createDefaultImageResources = async (): Promise<ImageResources> => ({
   logoLight: await Bun.file(
