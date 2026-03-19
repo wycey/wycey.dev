@@ -16,7 +16,6 @@ import sentry from "@sentry/astro";
 import { defineConfig, envField, sharpImageService } from "astro/config";
 import expressiveCode from "astro-expressive-code";
 import minifyHtml from "astro-minify-html-swc";
-import robotsTxt from "astro-robots-txt";
 import browserslist from "browserslist";
 import { browserslistToTargets } from "lightningcss";
 import rehypeAutolinkHeadings, {
@@ -111,15 +110,6 @@ export default defineConfig({
     }),
     minifyHtml(),
     sitemap(),
-    robotsTxt({
-      policy: [
-        {
-          userAgent: "*",
-          allow: "/",
-          disallow: ["/search"],
-        },
-      ],
-    }),
     process.env.SENTRY_AUTH_TOKEN
       ? sentry({
           telemetry: false,
