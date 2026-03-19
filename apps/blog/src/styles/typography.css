@@ -314,7 +314,7 @@
   }
 
   [data-footnote-backref] {
-    --at-apply: decoration-none;
+    --at-apply: decoration-none ml-2;
   }
 
   /* rehype-og-card */
