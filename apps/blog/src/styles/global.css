@@ -4,10 +4,6 @@
 
 /* CSS Reset and Base Styles */
 
-:where(html, :host) {
-  --at-apply: leading-relaxed;
-}
-
 :where(:root) {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -15,17 +11,11 @@
   text-spacing-trim: trim-start;
   text-autospace: normal;
   line-break: strict;
-  overflow-x: hidden;
   overflow-wrap: anywhere;
   scrollbar-gutter: stable both-edges;
   interpolate-size: allow-keywords;
-  scroll-behavior: smooth;
   /* biome-ignore lint/a11y/useGenericFontNames: -apple-system-body is a special value to support Dynamic Type in macOS / iOS. */
   font: -apple-system-body;
-}
-
-:where(body) {
-  --at-apply: "min-block-[100dvb] focus-within:scroll-smooth";
 }
 
 :where(search) {
@@ -118,10 +108,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html:focus-within {
-    scroll-behavior: auto;
-  }
-
   *,
   *::before,
   *::after {
@@ -135,10 +121,6 @@
 /* End of CSS Reset and Base Styles */
 
 /* Custom Global Styles */
-
-body {
-  --at-apply: bg-bg text-fg;
-}
 
 *,
 *::before,

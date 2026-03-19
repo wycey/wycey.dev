@@ -57,7 +57,7 @@ const jsonLd = {
   "@graph": maybeJsonLd ? [maybeJsonLd].flat() : [createWebSiteSchema()],
 } satisfies Graph;
 ---
-<html lang="ja" bg="bg" style={{ "overflow-x": "hidden" }}>
+<html lang="ja" bg="bg" text="fg">
 <head prefix={`og: https://ogp.me/ns# article: https://ogp.me/ns/article#`}>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
@@ -109,7 +109,7 @@ const jsonLd = {
 
   <slot name="head" />
 </head>
-<body flex flex-col>
+<body flex flex-col min-block="100dvb" focus-within="scroll-smooth">
   <Header breadcrumbs={breadcrumbs} headings={headings} />
 
   <main flex-auto flex flex-col>
@@ -124,3 +124,23 @@ const jsonLd = {
   <Footer />
 </body>
 </html>
+
+<style>
+  html {
+    line-height: 1.75;
+    scroll-behavior: smooth;
+    color-scheme: light dark;
+
+    &[data-theme="light"] {
+      color-scheme: light;
+    }
+
+    &[data-theme="dark"] {
+      color-scheme: dark;
+    }
+    
+    @media (prefers-reduced-motion: reduce) {
+      scroll-behavior: auto;
+    }
+  }
+</style>
