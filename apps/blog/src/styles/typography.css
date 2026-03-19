@@ -1,6 +1,8 @@
 .prose {
   @apply flex flex-col gap-4;
 
+  ruby-align: space-around;
+
   section {
     @apply flex flex-col gap-2;
   }
