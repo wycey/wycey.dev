@@ -66,10 +66,7 @@ export function BreadcrumbDropdownItem({
           {triggerLabel}
           <span block className="i-lucide:chevron-down size-3.5" />
         </DropdownMenuTrigger>
-        <DropdownMenuContent
-          align="start"
-          onCloseAutoFocus={(e) => e.preventDefault()}
-        >
+        <DropdownMenuContent align="start">
           <DropdownMenuGroup>
             {items.map((item, i) => {
               if (item.type === "separator") {
@@ -124,16 +121,19 @@ export function BreadcrumbDropdownItem({
               }
 
               return (
-                <DropdownMenuItem key={`item-${i}`} asChild>
-                  <a
-                    href={item.href}
-                    className={cn(
-                      item.active && "bg-primary-bg text-primary-fg",
-                    )}
-                  >
-                    {content}
-                  </a>
-                </DropdownMenuItem>
+                <DropdownMenuItem
+                  key={`item-${i}`}
+                  render={
+                    <a
+                      href={item.href}
+                      className={cn(
+                        item.active && "bg-primary-bg text-primary-fg",
+                      )}
+                    >
+                      {content}
+                    </a>
+                  }
+                />
               );
             })}
           </DropdownMenuGroup>

@@ -5,7 +5,6 @@ import Footer from "@/components/layout/Footer.astro";
 import Header from "@/components/layout/Header.astro";
 import ThemeScript from "@/components/scripts/ThemeScript.astro";
 import { ColorSchemeWatcher } from "@/components/solid/ColorSchemeWatcher.client";
-import { RadixPointerEventFix } from "@/components/solid/RadixPointerEventFix.client";
 import { SentryUserResolver } from "@/components/solid/SentryUserResolver.client";
 import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/constants";
 import { createWebSiteSchema } from "@/lib/content/json-ld";
@@ -109,7 +108,7 @@ const jsonLd = {
 
   <slot name="head" />
 </head>
-<body flex flex-col min-block="100dvb" focus-within="scroll-smooth">
+<body relative flex flex-col min-block="100dvb" focus-within="scroll-smooth" isolate>
   <Header breadcrumbs={breadcrumbs} headings={headings} />
 
   <main flex-auto flex flex-col>
@@ -117,7 +116,6 @@ const jsonLd = {
   </main>
 
   <ColorSchemeWatcher client:load />
-  <RadixPointerEventFix client:load />
 
   <SentryUserResolver client:idle />
 

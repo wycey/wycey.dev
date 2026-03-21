@@ -1,4 +1,5 @@
-import { Slot } from "radix-ui";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
 import type { ComponentProps } from "react";
 import { cn } from "@/lib/utils/classnames";
 
@@ -42,23 +43,28 @@ function BreadcrumbItem({ className, ...props }: ComponentProps<"li">) {
 }
 
 function BreadcrumbLink({
-  asChild,
   className,
+  render,
   ...props
-}: ComponentProps<"a"> & {
+}: useRender.ComponentProps<"a"> & {
   asChild?: boolean;
 }) {
-  const Comp = asChild ? Slot.Root : "a";
-
-  return (
-    <Comp
-      data-slot="breadcrumb-link"
-      transition="colors"
-      text="hover:fg print:fg"
-      className={cn(className)}
-      {...props}
-    />
-  );
+  return useRender({
+    defaultTagName: "a",
+    props: mergeProps<"a">(
+      {
+        className: cn(
+          "transition-colors hover:text-fg print:text-fg",
+          className,
+        ),
+      },
+      props,
+    ),
+    render,
+    state: {
+      slot: "breadcrumb-link",
+    },
+  });
 }
 
 function BreadcrumbPage({ className, ...props }: ComponentProps<"span">) {
@@ -111,10 +117,10 @@ function BreadcrumbEllipsis({ className, ...props }: ComponentProps<"span">) {
 
 export {
   Breadcrumb,
-  BreadcrumbList,
+  BreadcrumbEllipsis,
   BreadcrumbItem,
   BreadcrumbLink,
+  BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-  BreadcrumbEllipsis,
 };

@@ -12,7 +12,7 @@ import {
 } from "unocss";
 import { presetAnimations } from "unocss-preset-animations";
 
-const RADIX_PREFIX = "radix-";
+const BASE_PREFIX = "base-";
 
 const SCALES = [
   "primary",
@@ -146,24 +146,32 @@ export default defineConfig({
   ],
   transformers: [transformerDirectives(), transformerAttributifyJsx()],
   variants: [
-    createDataVariant(RADIX_PREFIX, "open", "[data-state='open']"),
-    createDataVariant(RADIX_PREFIX, "closed", "[data-state='closed']"),
+    createDataVariant(BASE_PREFIX, "open", "[data-open]"),
+    createDataVariant(BASE_PREFIX, "closed", "[data-closed]"),
+    createDataVariant(BASE_PREFIX, "popup-open", "[data-popup-open]"),
     createDataVariant(
-      RADIX_PREFIX,
+      BASE_PREFIX,
       "horizontal",
       "[createData-orientation='horizontal']",
     ),
+    createDataVariant(BASE_PREFIX, "vertical", "[data-orientation='vertical']"),
+    createDataVariant(BASE_PREFIX, "disabled", "[data-disabled]"),
+    createDataVariant(BASE_PREFIX, "enabled", ":not([data-disabled])"),
+    createDataVariant(BASE_PREFIX, "side-top", "[data-side='top']"),
+    createDataVariant(BASE_PREFIX, "side-left", "[data-side='left']"),
+    createDataVariant(BASE_PREFIX, "side-right", "[data-side='right']"),
+    createDataVariant(BASE_PREFIX, "side-bottom", "[data-side='bottom']"),
     createDataVariant(
-      RADIX_PREFIX,
-      "vertical",
-      "[data-orientation='vertical']",
+      BASE_PREFIX,
+      "side-inline-start",
+      "[data-side='inline-start']",
     ),
-    createDataVariant(RADIX_PREFIX, "disabled", "[data-disabled]"),
-    createDataVariant(RADIX_PREFIX, "enabled", ":not([data-disabled])"),
-    createDataVariant(RADIX_PREFIX, "side-top", "[data-side='top']"),
-    createDataVariant(RADIX_PREFIX, "side-left", "[data-side='left']"),
-    createDataVariant(RADIX_PREFIX, "side-right", "[data-side='right']"),
-    createDataVariant(RADIX_PREFIX, "side-bottom", "[data-side='bottom']"),
+    createDataVariant(
+      BASE_PREFIX,
+      "side-inline-end",
+      "[data-side='inline-end']",
+    ),
+    createDataVariant(BASE_PREFIX, "inset", "[data-inset]"),
   ],
   extendTheme: (theme: any) => {
     for (const color of SCALES) {

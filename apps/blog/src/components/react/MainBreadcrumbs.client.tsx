@@ -346,13 +346,13 @@ export const MainBreadcrumbs = ({
     <BreadcrumbComponent>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink asChild>
-            {/*
-            <a href="https://wycey.dev" aria-label="Wycey メインページへ">
-              {children}
-            </a>
-            */}
+          <BreadcrumbLink>
             {children}
+            {/*
+              <a href="https://wycey.dev" aria-label="Wycey メインページへ">
+                {children}
+              </a>
+            */}
           </BreadcrumbLink>
         </BreadcrumbItem>
 
