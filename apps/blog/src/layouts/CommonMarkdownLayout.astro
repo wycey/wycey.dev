@@ -1,0 +1,36 @@
+---
+import RootLayout from "@/layouts/RootLayout.astro";
+import { replacePlaceholder } from "@/lib/content/placeholder";
+import { createAboutPageSchema } from "@/lib/content/json-ld";
+
+import type { MarkdownLayoutProps } from "astro";
+import type { Thing } from "schema-dts";
+
+import "@/styles/typography.css";
+
+type Props = MarkdownLayoutProps<{
+  title: string;
+  description: string;
+}>
+
+const mapUrlToJsonLd = (pathname: string | undefined = Astro.url.pathname): Thing | readonly Thing[] | undefined => {
+  if (pathname === "/about") {
+    return createAboutPageSchema();
+  }
+}
+
+const { frontmatter, url, headings } = Astro.props;
+const title = replacePlaceholder(frontmatter.title);
+const jsonLd = mapUrlToJsonLd(url);
+---
+<RootLayout
+  title={title}
+  description={replacePlaceholder(frontmatter.description)}
+  headings={headings}
+  {...(jsonLd && { jsonLd })}
+>
+  <article flex-auto class="brand-container prose">
+    <h1>{title}</h1>
+    <slot />
+  </article>
+</RootLayout>

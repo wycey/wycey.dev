@@ -65,12 +65,12 @@ export const createAuthorSchema = async ({
             "@id": `${SITE_URL}/${createAuthorUrl(id)}#avatar`,
             "@type": "ImageObject",
             url: new URL(avatarImage.src, SITE_URL).href,
-            ...(avatarImage.options.width != null
-              ? { width: avatarImage.options.width }
-              : {}),
-            ...(avatarImage.options.height != null
-              ? { height: avatarImage.options.height }
-              : {}),
+            ...(avatarImage.options.width == null
+              ? {}
+              : { width: avatarImage.options.width }),
+            ...(avatarImage.options.height == null
+              ? {}
+              : { height: avatarImage.options.height }),
           },
         }
       : {}),
@@ -300,7 +300,7 @@ export const createAboutPageSchema = (): [AboutPage, WebSite] => [
     "@id": `${SITE_URL}/about`,
     name: `${SITE_NAME} について`,
     url: `${SITE_URL}/about`,
-    description: `${SITE_NAME} についてのページです。`,
+    description: "当サイトについての情報を掲載しています。",
     inLanguage: "ja",
     isPartOf: { "@id": `${SITE_URL}/#website` },
   },
