@@ -32,8 +32,44 @@ export const insertQuarterEmSpaces = (text: string): string => {
   return result.join("");
 };
 
-export const processTitle = (title: string): string[] => {
-  const spaced = insertQuarterEmSpaces(title);
+const splitTextIntoLines = (
+  text: string,
+  lineClamp: number,
+  maxCharsPerLine: number,
+) => {
+  const parsedText = budouxParser.parse(text);
+  const lines = [];
+  let currentLine = "";
 
-  return budouxParser.parse(spaced);
+  parsedText.forEach((segment) => {
+    if (currentLine.length + segment.length <= maxCharsPerLine) {
+      currentLine += segment;
+    } else {
+      lines.push(currentLine);
+
+      currentLine = segment;
+    }
+  });
+
+  if (currentLine) {
+    lines.push(currentLine);
+  }
+
+  if (lines.length > lineClamp) {
+    lines[lineClamp - 1] =
+      `${lines[lineClamp - 1].slice(0, maxCharsPerLine - 3)}…`;
+
+    lines.length = lineClamp;
+  }
+
+  return lines;
 };
+
+export const processTitle = (
+  title: string,
+  lineClamp: number,
+  maxCharsPerLine: number,
+) =>
+  splitTextIntoLines(title, lineClamp, maxCharsPerLine).map(
+    insertQuarterEmSpaces,
+  );

@@ -40,6 +40,8 @@ const colors = {
   },
 } as const;
 
+const TITLE_FONT_SIZE = 48;
+
 const TagItem = ({ children }: PropsWithChildren) => (
   <div
     style={{
@@ -91,7 +93,9 @@ export const createArticleOg = async ({
   tags,
   images,
 }: ArticleOgImageProps) => {
-  const titleChunks = processTitle(title);
+  const titleWidth = OG_WIDTH * 0.618 - 48 * 2 - 16 - 32 - 16;
+  const maxCharsPerLine = Math.floor(titleWidth / TITLE_FONT_SIZE);
+  const titleLines = processTitle(title, 4, maxCharsPerLine);
   const imageRegistry = new ImageRegistry(images);
 
   return (
@@ -147,18 +151,27 @@ export const createArticleOg = async ({
         {/* Article Title */}
         <div
           style={{
-            display: "block",
             flexShrink: 1,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+            justifyContent: "flex-start",
             minHeight: "0",
-            wordBreak: "break-word",
-            fontSize: "48px",
-            lineHeight: "1.4",
-            fontWeight: 700,
-            textOverflow: "ellipsis",
-            lineClamp: "4",
           }}
         >
-          {titleChunks.join("\u200b")}
+          {titleLines.map((line, index) => (
+            <div
+              key={index}
+              style={{
+                fontSize: `${TITLE_FONT_SIZE}px`,
+                lineHeight: "1.4",
+                textAlign: "left",
+                fontWeight: 700,
+              }}
+            >
+              {line}
+            </div>
+          ))}
         </div>
         {/* Spacer */}
         <div style={{ flexGrow: "1" }} />
@@ -495,7 +508,9 @@ export const createPerPageOg = async ({
   description,
   images,
 }: PerPageOgImageProps) => {
-  const titleChunks = processTitle(title);
+  const titleWidth = OG_WIDTH - 96 * 2 - 16 - 32 - 16;
+  const maxCharsPerLine = Math.floor(titleWidth / TITLE_FONT_SIZE);
+  const titleLines = processTitle(title, 3, maxCharsPerLine);
   const imageRegistry = new ImageRegistry(images);
 
   return (
@@ -524,16 +539,25 @@ export const createPerPageOg = async ({
         {/* Page Title */}
         <div
           style={{
-            display: "block",
-            wordBreak: "break-word",
-            fontSize: "48px",
-            fontWeight: 700,
-            textAlign: "center",
-            textOverflow: "ellipsis",
-            lineClamp: "3",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
-          {titleChunks.join("\u200b")}
+          {titleLines.map((line, index) => (
+            <div
+              key={index}
+              style={{
+                fontSize: `${TITLE_FONT_SIZE}px`,
+                lineHeight: "1.4",
+                textAlign: "center",
+                fontWeight: 700,
+              }}
+            >
+              {line}
+            </div>
+          ))}
         </div>
         {/* Separator */}
         <div
@@ -550,7 +574,6 @@ export const createPerPageOg = async ({
             marginRight: "24px",
             display: "block",
             color: colors.dark.base11,
-            wordBreak: "break-word",
             fontSize: "26px",
             textAlign: "center",
             textOverflow: "ellipsis",
@@ -581,7 +604,6 @@ export const createPerPageOg = async ({
             style={{
               display: "block",
               color: colors.dark.base8,
-              wordBreak: "break-word",
               fontSize: "16px",
               textAlign: "center",
               textOverflow: "ellipsis",
@@ -594,7 +616,6 @@ export const createPerPageOg = async ({
             style={{
               display: "block",
               color: colors.dark.base10,
-              wordBreak: "break-word",
               fontSize: "20px",
               textAlign: "center",
               textOverflow: "ellipsis",
@@ -637,7 +658,6 @@ export const createDefaultOg = async ({ images }: OgImageProps) => {
         style={{
           display: "block",
           color: colors.dark.base10,
-          wordBreak: "break-word",
           fontSize: "20px",
           textAlign: "center",
           textOverflow: "ellipsis",
