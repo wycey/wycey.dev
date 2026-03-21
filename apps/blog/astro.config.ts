@@ -44,12 +44,14 @@ import unoCSS from "unocss/astro";
 import removeConsole from "vite-plugin-remove-console";
 import {
   type RehypeBudouxOptions,
+  type RemarkRevertTextDirectiveOptions,
   rehypeBudoux,
   rehypeFancybox,
   rehypeRecordHeadings,
   rehypeTypstMathDisplay,
   remarkHeading1ToTitle,
   remarkLastModified,
+  remarkRevertTextDirective,
 } from "./src/lib/content/unified";
 import {
   cacheSaveIntegration,
@@ -172,6 +174,12 @@ export default defineConfig({
     remarkPlugins: [
       remarkBreaks,
       remarkDirective,
+      [
+        remarkRevertTextDirective,
+        {
+          allowedNames: ["ruby"],
+        } satisfies RemarkRevertTextDirectiveOptions,
+      ],
       remarkRubyDirective,
       remarkNormalizeHeadings,
       remarkHeading1ToTitle,

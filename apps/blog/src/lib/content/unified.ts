@@ -11,8 +11,9 @@ import { EXIT, visit } from "unist-util-visit";
 
 const budouxParser = loadDefaultJapaneseParser();
 
-export const remarkHeading1ToTitle: Plugin<[], mdast.Root> = () => {
-  return (tree, { data }) => {
+export const remarkHeading1ToTitle: Plugin<[], mdast.Root> =
+  () =>
+  (tree, { data }) => {
     visit(tree, "heading", (node, index, parent) => {
       if (node.depth === 1) {
         const title = mdastToString(node);
@@ -36,10 +37,9 @@ export const remarkHeading1ToTitle: Plugin<[], mdast.Root> = () => {
       }
     });
   };
-};
 
-export const remarkLastModified: Plugin<[], mdast.Root> = () => {
-  return async (_, file) => {
+export const remarkLastModified: Plugin<[], mdast.Root> =
+  () => async (_, file) => {
     if (!file.data.astro?.frontmatter) {
       return;
     }
@@ -64,25 +64,43 @@ export const remarkLastModified: Plugin<[], mdast.Root> = () => {
         }),
     );
   };
-};
 
-export const rehypeFancybox: Plugin<[], hast.Root> = () => {
-  return (tree) => {
-    visit(tree, "element", (node, _, parent) => {
-      if (node.tagName !== "img") return;
-      if (
-        parent?.type === "element" &&
-        (parent.tagName === "a" || parent.tagName === "p")
-      ) {
+export interface RemarkRevertTextDirectiveOptions {
+  allowedNames?: string[];
+}
+
+export const remarkRevertTextDirective: Plugin<
+  [RemarkRevertTextDirectiveOptions],
+  mdast.Root
+> =
+  ({ allowedNames = [] }) =>
+  (tree) => {
+    visit(tree, "textDirective", (node, index, parent) => {
+      if (allowedNames.includes(node.name) || index === undefined || !parent)
         return;
-      }
 
-      node.properties = {
-        ...node.properties,
-        "data-fancybox": "article-gallery",
-      };
+      parent.children.splice(index, 1, {
+        type: "text",
+        value: `:${node.name}`,
+      });
     });
   };
+
+export const rehypeFancybox: Plugin<[], hast.Root> = () => (tree) => {
+  visit(tree, "element", (node, _, parent) => {
+    if (node.tagName !== "img") return;
+    if (
+      parent?.type === "element" &&
+      (parent.tagName === "a" || parent.tagName === "p")
+    ) {
+      return;
+    }
+
+    node.properties = {
+      ...node.properties,
+      "data-fancybox": "article-gallery",
+    };
+  });
 };
 
 export const rehypeTypstMathDisplay: Plugin<[], hast.Root> = () => {
