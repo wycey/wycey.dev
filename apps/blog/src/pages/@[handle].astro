@@ -25,7 +25,7 @@ const articles = await getSortedArticles({ sortPinned: false, filterPredicate: a
   description={`${author.data.name}さんが執筆した記事の一覧です。`}
   jsonLd={await createAuthorArticlesSchema(author, articles)}
 >
-  <section flex-auto class="brand-container">
+  <section flex-auto class="brand-container" data-pagefind-body>
     <AuthorCard author={author} articleCount={articles.length} />
     <ArticleTimeline {articles} />
   </section>

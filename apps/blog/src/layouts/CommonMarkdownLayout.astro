@@ -29,7 +29,7 @@ const jsonLd = mapUrlToJsonLd(url);
   headings={headings}
   {...(jsonLd && { jsonLd })}
 >
-  <article flex-auto class="brand-container prose">
+  <article flex-auto class="brand-container prose" data-pagefind-body>
     <h1 data-budoux><BudouX text={title} /></h1>
     <slot />
   </article>

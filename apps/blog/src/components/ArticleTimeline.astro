@@ -49,7 +49,7 @@ const groups = Object.keys(groupedKeyValue)
   }))
   .toSorted((a, b) => b.year - a.year);
 ---
-<div p="x-8 y-6">
+<div p="x-8 y-6" data-pagefind-ignore="all">
   {groups.map(({year, articles}) => (
     <>
       <div flex items="center" w="full" h="15">

@@ -104,7 +104,7 @@ const { words, minutesText } = await getReadingTime(article.body);
 >
   <section flex-auto flex flex-col h="full" class="relative brand-container">
     <article id="article" flex-auto>
-      <h1 line-height="relaxed" font="bold" text="4xl" mb="2" data-budoux><BudouX text={article.data.title} /></h1>
+      <h1 line-height="relaxed" font="bold" text="4xl" mb="2" data-pagefind-body data-budoux><BudouX text={article.data.title} /></h1>
       <section
         flex
         flex-wrap
@@ -172,7 +172,7 @@ const { words, minutesText } = await getReadingTime(article.body);
           </IconChip>
         </div>
       </section>
-      <section id="article-body" class="prose">
+      <section id="article-body" class="prose" data-pagefind-body>
         <Content />
 
         <script is:inline src="https://platform.twitter.com/widgets.js" charset="utf-8" defer />

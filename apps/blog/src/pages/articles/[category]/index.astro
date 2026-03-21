@@ -44,7 +44,7 @@ const topTags = [...tagCounts.entries()]
   ]}
   jsonLd={createCategoriesSchema(category, articles)}
 >
-  <section flex-auto class="brand-container">
+  <section flex-auto class="brand-container" data-pagefind-body>
     <CategoryCard category={category} articleCount={articles.length} topTags={topTags} />
     <ArticleTimeline {articles} />
   </section>
