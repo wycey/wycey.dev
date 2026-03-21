@@ -5,6 +5,7 @@ import type { GetStaticPaths } from "astro";
 import ArticleNavCard from "@/components/content/ArticleNavCard.astro";
 import IconChip from "@/components/IconChip.astro";
 import { ArticleActionButtons } from "@/components/solid/ArticleActionButtons.client";
+import { FancyboxLoader } from "@/components/solid/FancyboxLoader.client";
 import TagItem from "@/components/TagItem.astro";
 import RootLayout from "@/layouts/RootLayout.astro";
 import { SITE_NAME } from "@/lib/constants";
@@ -19,7 +20,6 @@ import {
 import { truncateString } from "@/lib/utils/strings";
 
 import "@/styles/typography.css";
-import { FancyboxLoader } from "@/components/solid/FancyboxLoader.client";
 
 export const getStaticPaths = (async () => {
   const articles = await getSortedArticles();

@@ -22,20 +22,22 @@ const { category, articleCount, topTags } = Astro.props;
 
   {topTags.length > 0 && (
     <div flex items="center" mt="4">
-      <IconChip class="flex-wrap" icon={STATIC_HASH_ICON}>
-        {topTags.filter((_, i) => i < 5).map(({ name, count }, i, filteredTags) => (
-          <>
-            <TagItem>
-              {name}
-              {count > 1 && (
-                <span text="xs fg-muted" ml="1">({count})</span>
+      <IconChip class="text-fg-muted" icon={STATIC_HASH_ICON} applyGap={false}>
+        <div flex flex-wrap items="center" gap="4" ml="2">
+          {topTags.filter((_, i) => i < 5).map(({ name, count }, i, filteredTags) => (
+            <>
+              <TagItem>
+                {name}
+                {count > 1 && (
+                  <span text="xs fg-muted" ml="1">({count})</span>
+                )}
+              </TagItem>
+              {filteredTags.length > 5 && i === 4 && (
+                <span text="xs fg-muted" ml="1">他{filteredTags.length - 5}件</span>
               )}
-            </TagItem>
-            {filteredTags.length > 5 && i === 4 && (
-              <span text="xs fg-muted" ml="1">他 {filteredTags.length - 5} 件</span>
-            )}
-          </>
-        ))}
+            </>
+          ))}
+        </div>
       </IconChip>
     </div>
   )}

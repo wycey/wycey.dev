@@ -103,6 +103,7 @@
 
   /* TODO Use :heading when it comes in Newly Available */
 
+  h1,
   h2,
   h3,
   h4,
@@ -114,6 +115,7 @@
     text-wrap: balance;
   }
 
+  h1,
   h2,
   h3,
   h4,
@@ -137,6 +139,10 @@
     &:hover a[data-autolink] span.icon {
       --at-apply: opacity-100;
     }
+  }
+
+  h1 {
+    --at-apply: text-3xl mb-3 b-border b-b;
   }
 
   h2 {

@@ -9,7 +9,7 @@ const { href } = Astro.props;
   ? (
     <a
       href={href}
-      class="px-2 py-1 rounded-2"
+      class="block px-2 py-1 rounded-2"
       bg="hover:primary-bg-hover"
       text="fg-muted hover:fg"
       transition-colors
@@ -20,7 +20,7 @@ const { href } = Astro.props;
   : (
     <span
       class="px-2 py-1 rounded-2"
-      bg="hover:primary-bg-hover"
+      bg="hover:bg-hover"
       text="fg-muted hover:fg"
       transition-colors
       cursor="default"

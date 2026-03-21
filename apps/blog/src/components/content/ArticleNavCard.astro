@@ -41,7 +41,7 @@ const label = labelProp ?? (isPrev ? "前の記事" : "次の記事");
           text="2xl primary-fg-solid"
           transition="transform"
           translate-x="-1 group-hover:0"
-          md="row-start-1 row-span-2 self-center col-start-2"
+          md="row-start-1 row-span-2 self-center col-start-3"
           class="i-lucide:chevron-right"
         />
       )
@@ -57,7 +57,7 @@ const label = labelProp ?? (isPrev ? "前の記事" : "次の記事");
       text="sm fg-muted"
       class:list={[
         "md:row-start-1 md:self-end",
-        isPrev ? "md:col-start-2 md:text-start" : "md:col-start-1 md:text-end",
+        isPrev ? "md:col-start-2 md:text-start" : "md:col-start-2 md:text-end",
       ]}
     >
       {label}
@@ -68,7 +68,7 @@ const label = labelProp ?? (isPrev ? "前の記事" : "次の記事");
       font="medium"
       class:list={[
         "md:row-start-2 md:self-start",
-        isPrev ? "md:col-start-2 md:text-start" : "md:col-start-1 md:text-end",
+        isPrev ? "md:col-start-2 md:text-start" : "md:col-start-2 md:text-end",
       ]}
     >
       {title}
