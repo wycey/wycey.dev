@@ -35,6 +35,15 @@ export const GET: APIRoute = async (context) => {
           ...(article.data.publishedAt && {
             pubDate: parseDate(article.data.publishedAt).toDate(),
           }),
+          customData: `<language>ja</language>`,
+          enclosure: {
+            url: new URL(
+              `/assets/og/${article.data.category.id}/${article.id}.png`,
+              context.site,
+            ).href,
+            type: "image/png",
+            length: 0,
+          },
         };
       }),
     ),
