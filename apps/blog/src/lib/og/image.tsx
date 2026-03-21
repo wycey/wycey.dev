@@ -1,7 +1,9 @@
-/** biome-ignore-all lint/suspicious/noArrayIndexKey: Items are static and won't change order */
+/** @jsxRuntime automatic */
+/** @jsxImportSource satori/jsx */
+/** biome-ignore-all lint/correctness/useJsxKeyInIterable: Items are static and won't change order */
 /** biome-ignore-all lint/a11y/noSvgWithoutTitle: OG images are not used in HTML context */
 
-import type { PropsWithChildren } from "react";
+import type { JSXNode } from "satori/jsx";
 import { SITE_DESCRIPTION } from "@/lib/constants";
 import { ImageRegistry, type ImageResources } from "@/lib/og/image-registry";
 import { processTitle } from "./text";
@@ -42,7 +44,7 @@ const colors = {
 
 const TITLE_FONT_SIZE = 48;
 
-const TagItem = ({ children }: PropsWithChildren) => (
+const TagItem = ({ children }: { children: JSXNode }) => (
   <div
     style={{
       height: "100%",
@@ -159,9 +161,8 @@ export const createArticleOg = async ({
             minHeight: "0",
           }}
         >
-          {titleLines.map((line, index) => (
+          {titleLines.map((line) => (
             <div
-              key={index}
               style={{
                 fontSize: `${TITLE_FONT_SIZE}px`,
                 lineHeight: "1.4",
@@ -245,7 +246,7 @@ export const createArticleOg = async ({
               }}
             >
               {tags.slice(0, 2).map((tag) => (
-                <TagItem key={tag.slug}>{`#${tag.name}`}</TagItem>
+                <TagItem>{`#${tag.name}`}</TagItem>
               ))}
               {/* Tags Overflow Ellipsis */}
               {tags.length > 2 && (
@@ -545,9 +546,8 @@ export const createPerPageOg = async ({
             justifyContent: "center",
           }}
         >
-          {titleLines.map((line, index) => (
+          {titleLines.map((line) => (
             <div
-              key={index}
               style={{
                 fontSize: `${TITLE_FONT_SIZE}px`,
                 lineHeight: "1.4",
