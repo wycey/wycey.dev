@@ -2,6 +2,9 @@
 import type { CollectionEntry } from "astro:content";
 import { parseDate } from "@/lib/content/date";
 
+// Custom article timeline based on Fuwari Astro theme
+// MIT License, Copyright (c) 2024 saicaca
+
 interface Props {
   articles: CollectionEntry<"articles">[];
 }
@@ -50,9 +53,7 @@ const groups = Object.keys(groupedKeyValue)
   {groups.map(({year, articles}) => (
     <>
       <div flex items="center" w="full" h="15">
-        <h2 w="20% md:15%" transition text="3xl right" font="bold" tabular-nums>
-          {year}
-        </h2>
+        <h2 w="20% md:15%" transition text="3xl right" font="bold" tabular-nums>{year}</h2>
         <div w="20% md:15%">
           <div
             h="3"
