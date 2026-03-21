@@ -5,5 +5,5 @@ export const footerLinks = [
   },
   { name: "GitHub", href: "https://github.com/wycey" },
   { name: "RSS", href: "/rss.xml" },
-  { name: "Sitemap", href: "/sitemap.xml" },
+  { name: "Sitemap", href: "/sitemap-index.xml" },
 ] as const;
