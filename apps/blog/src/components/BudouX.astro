@@ -1,0 +1,21 @@
+---
+import { loadDefaultJapaneseParser } from "budoux";
+
+interface Props {
+  text: string;
+}
+
+const parser = loadDefaultJapaneseParser();
+
+const { text } = Astro.props;
+---
+<>
+  {
+    parser
+      .parse(text)
+      .flatMap((value, index) => [
+        ...(index > 0 ? [<wbr />] : []),
+        <>{value}</>,
+      ])
+  }
+</>

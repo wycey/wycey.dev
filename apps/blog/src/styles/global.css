@@ -142,6 +142,11 @@
   --at-apply: "bg-primary-bg-solid/30%";
 }
 
+[data-budoux] {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
 .brand-container {
   --at-apply: "max-w-[75ch] w-full mx-auto px-4";
 }

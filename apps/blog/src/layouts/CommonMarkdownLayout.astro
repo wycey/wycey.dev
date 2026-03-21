@@ -1,10 +1,10 @@
 ---
-import RootLayout from "@/layouts/RootLayout.astro";
-import { replacePlaceholder } from "@/lib/content/placeholder";
-import { createAboutPageSchema } from "@/lib/content/json-ld";
-
 import type { MarkdownLayoutProps } from "astro";
 import type { Thing } from "schema-dts";
+import BudouX from "@/components/BudouX.astro";
+import RootLayout from "@/layouts/RootLayout.astro";
+import { createAboutPageSchema } from "@/lib/content/json-ld";
+import { replacePlaceholder } from "@/lib/content/placeholder";
 
 import "@/styles/typography.css";
 
@@ -30,7 +30,14 @@ const jsonLd = mapUrlToJsonLd(url);
   {...(jsonLd && { jsonLd })}
 >
   <article flex-auto class="brand-container prose">
-    <h1>{title}</h1>
+    <h1 data-budoux><BudouX text={title} /></h1>
     <slot />
   </article>
 </RootLayout>
+
+<style>
+  h1 {
+    font-kerning: normal;
+    font-variant-east-asian: proportional-width;
+  }
+</style>
