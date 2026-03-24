@@ -11,6 +11,7 @@ import {
   type Variant,
 } from "unocss";
 import { presetAnimations } from "unocss-preset-animations";
+import { presetScrollbarHide } from "unocss-preset-scrollbar-hide";
 
 const BASE_PREFIX = "base-";
 
@@ -143,6 +144,7 @@ export default defineConfig({
           import("@iconify-json/lucide/icons.json").then((i) => i.default),
       },
     }),
+    presetScrollbarHide(),
   ],
   transformers: [transformerDirectives(), transformerAttributifyJsx()],
   variants: [
