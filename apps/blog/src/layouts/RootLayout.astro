@@ -1,5 +1,6 @@
 ---
 import { SEO } from "astro-seo";
+import {link} from "astro-typed-links/link";
 import type { Graph, Thing } from "schema-dts";
 import Footer from "@/components/layout/Footer.astro";
 import Header from "@/components/layout/Header.astro";
@@ -107,7 +108,7 @@ const jsonLd = {
     }}
   />
 
-  <link rel="alternate" type="application/rss+xml" title={SITE_NAME} href={new URL("/rss.xml", Astro.site)} />
+  <link rel="alternate" type="application/rss+xml" title={SITE_NAME} href={new URL(link("/rss.xml"), Astro.site)} />
   <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
   
   <ThemeScript />
