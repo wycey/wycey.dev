@@ -1,8 +1,16 @@
 import { fileTypeFromBuffer } from "file-type";
+import sharp from "sharp";
 
 export interface ImageResources {
   [key: string]: ArrayBuffer;
 }
+
+const SATORI_SUPPORTED_MIMES = new Set([
+  "image/png",
+  "image/jpeg",
+  "image/gif",
+  "image/svg+xml",
+]);
 
 export class ImageRegistry {
   readonly #registry: ImageResources;
@@ -22,9 +30,16 @@ export class ImageRegistry {
       throw new Error(`Image "${name}" not found`);
     }
 
-    const dataTypedArray = new Uint8Array(data);
+    let dataTypedArray = new Uint8Array(data);
+    let { mime } = (await fileTypeFromBuffer(dataTypedArray)) ?? {};
 
-    const { mime } = (await fileTypeFromBuffer(dataTypedArray)) ?? {};
+    if (mime && !SATORI_SUPPORTED_MIMES.has(mime)) {
+      dataTypedArray = new Uint8Array(
+        await sharp(dataTypedArray).png().toBuffer(),
+      );
+
+      mime = "image/png";
+    }
 
     const base64String = btoa(
       new Uint8Array(dataTypedArray).reduce(
