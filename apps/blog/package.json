@@ -47,12 +47,12 @@
     "astro": "^6.0.8",
     "astro-expressive-code": "^0.41.7",
     "astro-seo": "^1.1.0",
-    "astro-typed-links": "^1.1.5",
+    "astro-typed-links": "^1.2.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
     "dayjs": "^1.11.20",
-    "file-type": "^21.3.3",
+    "file-type": "^21.3.4",
     "gsap": "^3.14.2",
     "mermaid": "^11.13.0",
     "nanostores": "^1.2.0",
@@ -117,7 +117,7 @@
     "remark-ruby-directive": "^0.3.0",
     "remark-sectionize": "^2.1.0",
     "satori": "^0.26.0",
-    "schema-dts": "^1.1.5",
+    "schema-dts": "^2.0.0",
     "sharp": "^0.34.5",
     "sudachi-synonyms-dictionary": "^17.0.0",
     "textlint": "^15.5.2",
@@ -141,6 +141,6 @@
     "unocss-preset-radix": "^2.8.2",
     "unocss-preset-scrollbar-hide": "^1.0.1",
     "vite-plugin-remove-console": "^2.2.0",
-    "wrangler": "^4.76.0"
+    "wrangler": "^4.77.0"
   }
 }
