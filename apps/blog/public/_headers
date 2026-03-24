@@ -1,5 +1,5 @@
 /*
-  Content-Security-Policy: img-src 'self' data:; frame-ancestors 'none'; object-src 'none'; base-uri 'none'; form-action 'none';
+  Content-Security-Policy: img-src 'self' data: blob: static.wycey.dev; frame-ancestors 'none'; object-src 'none'; base-uri 'none'; form-action 'none';
   Cross-Origin-Embedder-Policy: require-corp
   Cross-Origin-Opener-Policy: same-origin
   Cross-Origin-Resource-Policy: same-origin
