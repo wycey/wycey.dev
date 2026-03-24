@@ -30,9 +30,6 @@ export const ThemeSwitcher = () => {
           class={
             isDark() ? "i-lucide:moon rotate-0" : "i-lucide:sun rotate-180"
           }
-          style={{
-            transform: isDark() ? "rotate(0deg)" : "rotate(360deg)",
-          }}
         />
       </button>
       <button

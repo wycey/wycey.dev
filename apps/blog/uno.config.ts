@@ -154,7 +154,7 @@ export default defineConfig({
     createDataVariant(
       BASE_PREFIX,
       "horizontal",
-      "[createData-orientation='horizontal']",
+      "[data-orientation='horizontal']",
     ),
     createDataVariant(BASE_PREFIX, "vertical", "[data-orientation='vertical']"),
     createDataVariant(BASE_PREFIX, "disabled", "[data-disabled]"),
