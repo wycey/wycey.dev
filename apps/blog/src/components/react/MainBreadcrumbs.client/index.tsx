@@ -17,7 +17,7 @@ import {
 import {
   BreadcrumbDropdownItem,
   type DropdownMenuItemDef,
-} from "./BreadcrumbDropdownItem.client";
+} from "./BreadcrumbDropdownItem";
 
 interface Author {
   id: string;

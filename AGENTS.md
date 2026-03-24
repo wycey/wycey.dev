@@ -54,9 +54,9 @@ To run blog-specific scripts, execute `bun run <script>` inside the `apps/blog` 
   - Dark mode: toggled via `.dark` class
   - Caveat: `opacity="0"` and some attributes which cause TypeScript errors does not work in attributify mode; use `class="..."` instead in those cases
 - **UI components**: Astro, shadcn/ui (radix-nova style, React-based), Solid.js for own components as possible
-  - Astro component path: `@/components`
-  - shadcn/ui-related component path: `@/components/react/ui`
-  - Own component path: `@/components/solid`
+  - Astro component path: `@/components/astro`
+  - React & shadcn/ui-related component path: `@/components/react` (Make sure to suffix with `.client.tsx` if the component is used in Astro files)
+  - Own component path: `@/components/solid` (Make sure to suffix with `.client.tsx` with same reason as React components)
 
 ## Color System
 
