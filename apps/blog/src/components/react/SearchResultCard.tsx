@@ -12,10 +12,13 @@ export interface SearchResultCardProps {
   wordCount: number;
 }
 
-const IconChip = ({ icon, children }: PropsWithChildren<{ icon: string }>) => (
+const IconChip = ({
+  className,
+  children,
+}: PropsWithChildren<{ className: string }>) => (
   <div flex items="center" gap="1.5">
     <span p="1" bg="primary-bg" rounded="1.5">
-      <span block text="xs primary-fg-solid" className={icon} />
+      <span block text="xs primary-fg-solid" className={className} />
     </span>
     {children}
   </div>
@@ -145,12 +148,12 @@ export const SearchResultCard = ({
           <span text="xs">{author}</span>
         </div>
       )}
-      <IconChip icon="i-lucide:calendar">
+      <IconChip className="i-lucide:calendar">
         <time dateTime={publishedAt} text="xs">
           {publishedAt}
         </time>
       </IconChip>
-      <IconChip icon="i-lucide:text">
+      <IconChip className="i-lucide:text">
         <span text="xs">{wordCount}字</span>
       </IconChip>
     </div>
