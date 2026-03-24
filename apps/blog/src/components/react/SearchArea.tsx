@@ -221,7 +221,7 @@ const SearchAreaInner = ({
         {results.map((result) => (
           <SearchResultCard
             key={result.url}
-            url={result.url}
+            url={result.url.replace(/\/+$/, "")}
             title={result.meta.title}
             excerpt={result.excerpt}
             category={result.filters.category?.[0]}
