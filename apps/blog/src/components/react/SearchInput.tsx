@@ -62,7 +62,7 @@ export const SearchInput = ({
     } else {
       setCount(0);
     }
-  }, [filters, sort, query]);
+  }, [filters, sort, query, status]);
 
   return (
     <>
