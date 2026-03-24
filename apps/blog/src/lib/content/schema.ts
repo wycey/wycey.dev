@@ -78,6 +78,10 @@ export const articlesSchema = z.object({
 export const pagefindMetaSchema = z.object({
   title: z.string(),
   image: z.string().exactOptional(),
+  publishedAt: z.string(),
+  avatar: z.string(),
+  readingTime: z.string(),
+  wordCount: z.string(),
 });
 
 export type PagefindMeta = z.infer<typeof pagefindMetaSchema>;

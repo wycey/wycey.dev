@@ -1,4 +1,4 @@
-import { type ComponentProps, useEffect, useRef, useState } from "react";
+import { type ComponentProps, useEffect, useState } from "react";
 import { usePublicImport } from "@/hooks/react/usePublicImport";
 import type {
   PagefindFilter,

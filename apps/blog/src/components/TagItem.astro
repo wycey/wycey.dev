@@ -1,10 +1,9 @@
 ---
 interface Props {
   href?: string;
-  pagefindFilter?: string;
 }
 
-const { href, pagefindFilter } = Astro.props;
+const { href } = Astro.props;
 ---
 {href 
   ? (
@@ -14,7 +13,6 @@ const { href, pagefindFilter } = Astro.props;
       bg="hover:primary-bg-hover"
       text="fg-muted hover:fg"
       transition-colors
-      data-pagefind-filter={pagefindFilter}
     >
       <slot />
     </a>
@@ -26,7 +24,6 @@ const { href, pagefindFilter } = Astro.props;
       text="fg-muted hover:fg"
       transition-colors
       cursor="default"
-      data-pagefind-filter={pagefindFilter}
     >
       <slot />
     </span>

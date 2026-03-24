@@ -1,5 +1,3 @@
-import type { PagefindFilter } from "@/lib/content/schema";
-
 export interface PagefindIndexOptions {
   basePath?: string;
   baseUrl?: string;

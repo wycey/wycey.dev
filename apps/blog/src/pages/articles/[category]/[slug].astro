@@ -105,6 +105,25 @@ const { words, minutesText } = await getReadingTime(article.body);
   <section flex-auto flex flex-col h="full" class="relative brand-container">
     <article id="article" flex-auto>
       <h1 line-height="relaxed" font="bold" text="4xl" mb="2" data-pagefind-meta="title" data-budoux><BudouX text={article.data.title} /></h1>
+      <span hidden data-pagefind-meta="avatar">{avatar}</span>
+      {publishedAt && (
+        <time
+          hidden
+          datetime={publishedAt.toISOString()}
+          data-pagefind-meta="publishedAt"
+          data-pagefind-sort="publishedAt[datetime]"
+        >
+          {formatDate(publishedAt)}
+        </time>
+      )}
+      <time
+        hidden
+        datetime={updatedAt.toISOString()}
+        data-pagefind-meta="updatedAt"
+        data-pagefind-sort="updatedAt[datetime]"
+      >
+        {formatDate(updatedAt)}
+      </time>
       <section
         flex
         flex-wrap
@@ -133,18 +152,21 @@ const { words, minutesText } = await getReadingTime(article.body);
         <div w="px" min-h="0" bg="border" rounded="full" />
         <IconChip class="text-fg-muted" icon="i-lucide:folder" applyGap={false}>
           <div ml="2">
-            <TagItem href={`/articles/${category.id}`} pagefindFilter="category">{category.data.name}</TagItem>
+            <TagItem href={`/articles/${category.id}`}>
+              <span data-pagefind-filter="category">{category.data.name}</span>
+            </TagItem>
           </div>
         </IconChip>
         {
           tags.length > 0 &&
             <IconChip class="text-fg-muted" icon="i-lucide:hash" applyGap={false}>
               <div flex items="center" gap="4" ml="2">
-                {tags.map(
-                  tag => (
-                    <TagItem pagefindFilter="tags">{tag.name}</TagItem>
-                  )
-                )}
+                {tags.map(tag => (
+                  <>
+                    <span data-pagefind-filter="tags">{tag.name}</span>
+                    <TagItem>{tag.name}</TagItem>
+                  </>
+                ))}
               </div>
             </IconChip>
         }
@@ -156,7 +178,6 @@ const { words, minutesText } = await getReadingTime(article.body);
           gap="x-6 y-4"
           text="fg-muted"
           grid-col="4"
-          data-pagefind-sort={`updatedAt:${updatedAt.format("YYYY-MM-DD")}`}
         >
           {(!publishedAt || formatDate(publishedAt) !== formatDate(updatedAt)) && (
             <IconChip icon="i-lucide:calendar-sync">
@@ -165,17 +186,14 @@ const { words, minutesText } = await getReadingTime(article.body);
           )}
           {publishedAt && (
             <IconChip icon="i-lucide:calendar">
-              <time
-                datetime={publishedAt.toISOString()}
-                data-pagefind-sort={`publishedAt:${publishedAt.format("YYYY-MM-DD")}`}
-              >{formatDate(publishedAt)}</time>
+              <time datetime={publishedAt.toISOString()}>{formatDate(publishedAt)}</time>
             </IconChip>
           )}
           <IconChip icon="i-lucide:clock">
-            <span>{minutesText}</span>
+            <span data-pagefind-meta="readingTime">{minutesText}</span>
           </IconChip>
           <IconChip icon="i-lucide:text">
-            <span>{words}字</span>
+            <span data-pagefind-meta={`words:${words}`}>{words}字</span>
           </IconChip>
         </div>
       </section>

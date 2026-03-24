@@ -31,8 +31,8 @@ const allTags = rawCategories
   description="ブログ内を検索できます。"
   isPrivate={true}
 >
-  <section flex-auto class="brand-container prose">
-    <h1 text="center" border="none">検索</h1>
+  <section flex-auto class="brand-container">
+    <h1 mb="6" text="center 3xl" font="bold" border="none">検索</h1>
     <SearchArea pathname={Astro.url.pathname} {allAuthors} {allCategories} {allTags} client:load />
   </section>
 </RootLayout>
