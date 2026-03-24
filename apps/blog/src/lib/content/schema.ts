@@ -89,7 +89,7 @@ export type PagefindMeta = z.infer<typeof pagefindMetaSchema>;
 export const pagefindFilterSchema = z.object({
   author: z.tuple([z.string()]),
   category: z.tuple([z.string()]),
-  tag: z.array(z.string()).default([]),
+  tags: z.array(z.string()).default([]),
 });
 
 export type PagefindFilter = z.infer<typeof pagefindFilterSchema>;
