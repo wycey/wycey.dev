@@ -33,6 +33,6 @@ const allTags = rawCategories
 >
   <section flex-auto class="brand-container">
     <h1 mb="6" text="center 3xl" font="bold" border="none">検索</h1>
-    <SearchArea pathname={Astro.url.pathname} {allAuthors} {allCategories} {allTags} client:load />
+    <SearchArea pathname={Astro.url.pathname} {allAuthors} {allCategories} {allTags} client:only="react" />
   </section>
 </RootLayout>

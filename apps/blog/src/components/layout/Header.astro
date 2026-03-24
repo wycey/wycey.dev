@@ -65,9 +65,24 @@ const categories = allCategories.map((c) => ({
   <ul
     flex
     items="center"
-    gap="4"
+    gap="2"
     class="md:order-1"
   >
+    <li>
+      <a
+        href="/search"
+        aria-label="サイト内検索"
+        block
+        bg="hover:bg-hover"
+        text="lg fg-muted hover:fg"
+        p="2.5"
+        rounded="2"
+        transition="colors"
+        class:list={[Astro.url.pathname === "/search" && "hidden"]}
+      >
+        <span block class="i-lucide:search" />
+      </a>
+    </li>
     <li print="hidden">
       <ThemeSwitcher client:only="solid-js">
         <section slot="fallback" flex items="center" aria-hidden="true" invisible>
