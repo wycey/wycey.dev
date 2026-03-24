@@ -29,7 +29,7 @@ import type {
   PagefindSearchResult,
   PagefindSortOrder,
 } from "@/lib/utils/pagefind";
-import styles from "./SearchArea.module.css";
+import styles from "./styles.module.css";
 
 const RESULTS_PER_PAGE = 10;
 
@@ -260,7 +260,7 @@ const SearchAreaInner = ({
         rounded="2"
         border="1 border-subtle"
         bg="bg-subtle"
-        className={cn("group/search-filter", styles.searchFilterDetails)}
+        className={cn("group/search-filter", styles.details)}
       >
         <summary
           flex

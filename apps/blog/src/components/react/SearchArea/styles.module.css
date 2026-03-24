@@ -1,0 +1,8 @@
+.details {
+  &::details-content {
+    transition:
+      height 0.4s,
+      opacity 0.4s,
+      content-visibility 0.4s allow-discrete;
+  }
+}
