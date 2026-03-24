@@ -11,7 +11,7 @@ import { FancyboxLoader } from "@/components/solid/FancyboxLoader.client";
 import TagItem from "@/components/TagItem.astro";
 import RootLayout from "@/layouts/RootLayout.astro";
 import { SITE_NAME } from "@/lib/constants";
-import { createAuthorUrl, getArticle, getSortedArticles } from "@/lib/content";
+import { getArticle, getSortedArticles } from "@/lib/content";
 import { getAvatarUrl } from "@/lib/content/avatar";
 import { dateNow, formatDate, parseDate } from "@/lib/content/date";
 import { createArticleSchema } from "@/lib/content/json-ld";
@@ -139,7 +139,13 @@ const { words, minutesText } = await getReadingTime(article.body);
         mb="8"
       >
         <a
-          href={createAuthorUrl(author.id)}
+          href={
+            link("/@[handle]", {
+              params: {
+                handle: author.id
+              }
+            })
+          }
           flex
           items="center"
           gap="2"
