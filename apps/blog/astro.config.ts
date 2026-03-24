@@ -12,7 +12,6 @@ import remarkEmbedder, {
 import oEmbedTransformer, {
   type Config as OEmbedTransformerConfig,
 } from "@remark-embedder/transformer-oembed";
-import sentry from "@sentry/astro";
 import { defineConfig, envField, sharpImageService } from "astro/config";
 import expressiveCode from "astro-expressive-code";
 import minifyHtml from "astro-minify-html-swc";
@@ -74,9 +73,6 @@ export default defineConfig({
       build: "compile",
       runtime: "cloudflare-binding",
     },
-    // https://annzeyvf.blogspot.com/?page=en-git-withastro-astro-1773552299403
-    // https://github.com/martinsilha/astro-cloudflare-sentry-prerender-bug
-    prerenderEnvironment: import.meta.env.PROD ? "node" : "workerd",
   }),
   trailingSlash: "never",
   build: {
@@ -118,11 +114,15 @@ export default defineConfig({
     }),
     minifyHtml(),
     sitemap(),
+    // https://annzeyvf.blogspot.com/?page=en-git-withastro-astro-1773552299403
+    // https://github.com/martinsilha/astro-cloudflare-sentry-prerender-bug
+    /*
     process.env.SENTRY_AUTH_TOKEN
       ? sentry({
           telemetry: false,
         })
       : undefined,
+   */
     unoCSS({
       injectReset: true,
     }),
