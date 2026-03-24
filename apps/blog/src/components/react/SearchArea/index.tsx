@@ -93,7 +93,7 @@ const SearchAreaInner = ({
   );
 
   const [tags, setTags] = useQueryState(
-    "tag",
+    "tags",
     parseAsNativeArrayOf(
       parseAsStringLiteral(
         Object.values(allCategories).flatMap(
@@ -135,11 +135,13 @@ const SearchAreaInner = ({
     const selectedCategoryIds =
       categories.length > 0 ? categories : Object.keys(allCategories);
 
-    return selectedCategoryIds.flatMap((catId) => {
-      const cat = allCategories[catId];
-      if (!cat) return [];
+    return selectedCategoryIds.flatMap((categoryId) => {
+      const category = allCategories[categoryId];
+
+      if (!category) return [];
+
       return (
-        cat.data.tags?.map((tag) => ({
+        category.data.tags?.map((tag) => ({
           value: tag.slug,
           label: tag.name,
         })) ?? []
@@ -178,7 +180,7 @@ const SearchAreaInner = ({
           .filter(Boolean)
           .map((category) => category.data.name),
       },
-      tag: {
+      tags: {
         [tagMatching]: tags.map((tag) => allTags[tag]).filter(Boolean),
       },
     }),
