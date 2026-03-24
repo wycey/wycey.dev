@@ -2,6 +2,7 @@
 import { getImage } from "astro:assets";
 import { getCollection } from "astro:content";
 import type { MarkdownHeading } from "astro";
+import { link } from "astro-typed-links/link";
 import WyceyLogo from "@/assets/images/wycey-full.svg";
 import { ThemeSwitcher } from "@/components/solid/ThemeSwitcher.client";
 import { getSortedArticles } from "@/lib/content";
@@ -70,7 +71,7 @@ const categories = allCategories.map((c) => ({
   >
     <li>
       <a
-        href="/search"
+        href={link("/search")}
         aria-label="サイト内検索"
         block
         bg="hover:bg-hover"

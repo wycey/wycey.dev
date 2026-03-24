@@ -7,8 +7,6 @@ import {
 import { dateNow, parseDate } from "@/lib/content/date";
 import { isDev } from "@/lib/utils/env";
 
-export const createAuthorUrl = (handle: string) => `/@${handle}`;
-
 interface GetSortedArticlesOptions {
   sortPinned?: boolean;
   filterPredicate?: (article: CollectionEntry<"articles">) => boolean;

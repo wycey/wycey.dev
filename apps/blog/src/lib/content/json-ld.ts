@@ -1,5 +1,6 @@
 import { getImage } from "astro:assets";
 import { type CollectionEntry, getEntry } from "astro:content";
+import { link } from "astro-typed-links/link";
 import type { Dayjs } from "dayjs";
 import type {
   AboutPage,
@@ -14,7 +15,6 @@ import type {
   WebSite,
 } from "schema-dts";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/constants";
-import { createAuthorUrl } from "@/lib/content";
 import { parseDate } from "@/lib/content/date";
 import { markdownToReadableString } from "@/lib/content/markdown";
 import { truncateString } from "@/lib/utils/strings";
@@ -26,7 +26,7 @@ export const createPublisherSchema = (): Organization => ({
   url: "https://wycey.dev",
   logo: {
     "@type": "ImageObject",
-    url: `${SITE_URL}/logo.svg`,
+    url: new URL("/logo.svg", SITE_URL).href,
   },
 });
 
@@ -53,7 +53,14 @@ export const createAuthorSchema = async ({
   return {
     "@type": "Person",
     name: author.name,
-    url: `${SITE_URL}/${createAuthorUrl(id)}`,
+    url: new URL(
+      link("/@[handle]", {
+        params: {
+          handle: id,
+        },
+      }),
+      SITE_URL,
+    ).href,
     ...(author.bio
       ? {
           description: author.bio,
@@ -62,7 +69,13 @@ export const createAuthorSchema = async ({
     ...(author.avatar && avatarImage
       ? {
           image: {
-            "@id": `${SITE_URL}/${createAuthorUrl(id)}#avatar`,
+            "@id": new URL(
+              link("/@[handle]", {
+                params: { handle: id },
+                hash: "avatar",
+              }),
+              SITE_URL,
+            ).href,
             "@type": "ImageObject",
             url: new URL(avatarImage.src, SITE_URL).href,
             ...(avatarImage.options.width == null
@@ -104,7 +117,15 @@ export const createArticleListSchema = (
     (article, i): ListItem => ({
       "@type": "ListItem",
       position: i + 1,
-      url: `${SITE_URL}/articles/${article.data.category.id}/${article.id}`,
+      url: new URL(
+        link("/articles/[category]/[slug]", {
+          params: {
+            category: article.data.category.id,
+            slug: article.id,
+          },
+        }),
+        SITE_URL,
+      ).href,
       name: article.data.title,
     }),
   ),
@@ -113,83 +134,23 @@ export const createArticleListSchema = (
 export const createAuthorArticlesSchema = async (
   author: CollectionEntry<"authors">,
   articles: CollectionEntry<"articles">[],
-): Promise<[Person, CollectionPage, BreadcrumbList, WebSite]> => [
-  await createAuthorSchema(author),
-  {
-    "@type": "CollectionPage",
-    name: `${author.data.name}の執筆記事一覧`,
-    description: `${author.data.name}が執筆した記事の一覧です。`,
-    url: `${SITE_URL}/${createAuthorUrl(author.id)}`,
-    ...(articles
-      ? {
-          mainEntity: createArticleListSchema(articles),
-        }
-      : {}),
-  },
-  {
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "ホーム",
-        item: `${SITE_URL}/`,
+): Promise<[Person, CollectionPage, BreadcrumbList, WebSite]> => {
+  const authorUrl = new URL(
+    link("/@[handle]", {
+      params: {
+        handle: author.id,
       },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: `${author.data.name} (@${author.id})`,
-        item: `${SITE_URL}/${createAuthorUrl(author.id)}`,
-      },
-    ],
-  },
-  createWebSiteSchema(),
-];
+    }),
+    SITE_URL,
+  ).href;
 
-export const createArchiveArticlesSchema = (
-  articles: CollectionEntry<"articles">[],
-): [CollectionPage, BreadcrumbList, WebSite] => [
-  {
-    "@type": "CollectionPage",
-    name: `アーカイブ`,
-    description: `全ての記事の一覧です。`,
-    url: `${SITE_URL}/articles`,
-    ...(articles
-      ? {
-          mainEntity: createArticleListSchema(articles),
-        }
-      : {}),
-  },
-  {
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "ホーム",
-        item: `${SITE_URL}/`,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "記事",
-        item: `${SITE_URL}/articles`,
-      },
-    ],
-  },
-  createWebSiteSchema(),
-];
-
-export const createCategoriesSchema = (
-  { id, data: category }: CollectionEntry<"categories">,
-  articles?: CollectionEntry<"articles">[],
-): [CollectionPage, BreadcrumbList, WebSite] => {
   return [
+    await createAuthorSchema(author),
     {
       "@type": "CollectionPage",
-      name: `${category.name}の記事一覧`,
-      description: `${category.name}に関する記事の一覧です。`,
-      url: `${SITE_URL}/articles/${id}`,
+      name: `${author.data.name}の執筆記事一覧`,
+      description: `${author.data.name}が執筆した記事の一覧です。`,
+      url: authorUrl,
       ...(articles
         ? {
             mainEntity: createArticleListSchema(articles),
@@ -203,13 +164,103 @@ export const createCategoriesSchema = (
           "@type": "ListItem",
           position: 1,
           name: "ホーム",
-          item: `${SITE_URL}/`,
+          item: SITE_URL,
         },
         {
           "@type": "ListItem",
           position: 2,
+          name: `${author.data.name} (@${author.id})`,
+          item: authorUrl,
+        },
+      ],
+    },
+    createWebSiteSchema(),
+  ];
+};
+
+export const createArchiveArticlesSchema = (
+  articles: CollectionEntry<"articles">[],
+): [CollectionPage, BreadcrumbList, WebSite] => {
+  const articlesUrl = new URL(link("/articles"), SITE_URL).href;
+
+  return [
+    {
+      "@type": "CollectionPage",
+      name: `アーカイブ`,
+      description: `全ての記事の一覧です。`,
+      url: articlesUrl,
+      ...(articles
+        ? {
+            mainEntity: createArticleListSchema(articles),
+          }
+        : {}),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "ホーム",
+          item: SITE_URL,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "記事",
+          item: articlesUrl,
+        },
+      ],
+    },
+    createWebSiteSchema(),
+  ];
+};
+
+export const createCategoriesSchema = (
+  { id, data: category }: CollectionEntry<"categories">,
+  articles?: CollectionEntry<"articles">[],
+): [CollectionPage, BreadcrumbList, WebSite] => {
+  const categoryUrl = new URL(
+    link("/articles/[category]", {
+      params: {
+        category: id,
+      },
+    }),
+    SITE_URL,
+  ).href;
+
+  return [
+    {
+      "@type": "CollectionPage",
+      name: `${category.name}の記事一覧`,
+      description: `${category.name}に関する記事の一覧です。`,
+      url: categoryUrl,
+      ...(articles
+        ? {
+            mainEntity: createArticleListSchema(articles),
+          }
+        : {}),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "ホーム",
+          item: SITE_URL,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "記事",
+          item: new URL(link("/articles"), SITE_URL).href,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
           name: category.name,
-          item: `${SITE_URL}/articles/${id}`,
+          item: categoryUrl,
         },
       ],
     },
@@ -233,7 +284,15 @@ export const createArticleSchema = async (
     );
   }
 
-  const articleUrl = `${SITE_URL}/articles/${article.category.id}/${id}`;
+  const articleUrl = new URL(
+    link("/articles/[category]/[slug]", {
+      params: {
+        category: article.category.id,
+        slug: id,
+      },
+    }),
+    SITE_URL,
+  ).href;
 
   return [
     {
@@ -255,7 +314,7 @@ export const createArticleSchema = async (
       publisher: { "@id": `${SITE_URL}/#organization` },
       image: {
         "@type": "ImageObject",
-        url: `${SITE_URL}/og/${article.category.id}/${id}.png`,
+        url: new URL(`/og/${article.category.id}/${id}.png`, SITE_URL).href,
         width: "1200px",
         height: "630px",
       },
@@ -273,17 +332,30 @@ export const createArticleSchema = async (
           "@type": "ListItem",
           position: 1,
           name: "ホーム",
-          item: `${SITE_URL}/`,
+          item: SITE_URL,
         },
         {
           "@type": "ListItem",
           position: 2,
-          name: category.data.name,
-          item: `${SITE_URL}/articles/${article.category.id}`,
+          name: "記事",
+          item: new URL(link("/articles"), SITE_URL).href,
         },
         {
           "@type": "ListItem",
           position: 3,
+          name: category.data.name,
+          item: new URL(
+            link("/articles/[category]", {
+              params: {
+                category: id,
+              },
+            }),
+            SITE_URL,
+          ).href,
+        },
+        {
+          "@type": "ListItem",
+          position: 4,
           name: article.title,
           item: articleUrl,
         },
@@ -294,30 +366,45 @@ export const createArticleSchema = async (
   ] as const;
 };
 
-export const createAboutPageSchema = (): [AboutPage, WebSite] => [
-  {
-    "@type": "AboutPage",
-    "@id": `${SITE_URL}/about`,
-    name: `${SITE_NAME} について`,
-    url: `${SITE_URL}/about`,
-    description: "当サイトについての情報を掲載しています。",
-    inLanguage: "ja",
-    isPartOf: { "@id": `${SITE_URL}/#website` },
-  },
-  createWebSiteSchema(),
-];
+export const createAboutPageSchema = (): [AboutPage, WebSite] => {
+  const aboutUrl = new URL(link("/about"), SITE_URL).href;
+
+  return [
+    {
+      "@type": "AboutPage",
+      "@id": aboutUrl,
+      name: `${SITE_NAME} について`,
+      url: aboutUrl,
+      description: "当サイトについての情報を掲載しています。",
+      inLanguage: "ja",
+      isPartOf: { "@id": `${SITE_URL}/#website` },
+    },
+    createWebSiteSchema(),
+  ];
+};
 
 export const createHomePageSchema = (
   currentPage: number,
-): [WebPage, WebSite] => [
-  {
-    "@type": "WebPage",
-    "@id": currentPage === 1 ? `${SITE_URL}/` : `${SITE_URL}/${currentPage}`,
-    name: SITE_NAME,
-    url: currentPage === 1 ? `${SITE_URL}/` : `${SITE_URL}/${currentPage}`,
-    description: SITE_DESCRIPTION,
-    inLanguage: "ja",
-    isPartOf: { "@id": `${SITE_URL}/#website` },
-  },
-  createWebSiteSchema(),
-];
+): [WebPage, WebSite] => {
+  const pageUrl =
+    currentPage === 1
+      ? SITE_URL
+      : link("/[...page]", {
+          params: {
+            page: `${currentPage}`,
+          },
+        });
+
+  return [
+    {
+      "@type": "WebPage",
+      "@id": pageUrl,
+      name: SITE_NAME,
+      url: pageUrl,
+      description: SITE_DESCRIPTION,
+      inLanguage: "ja",
+      isPartOf: { "@id": `${SITE_URL}/#website` },
+    },
+    createWebSiteSchema(),
+  ];
+};

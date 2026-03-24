@@ -7,6 +7,7 @@ const CONSTANTS_MAPPING: { [key: string]: string } = {
 };
 
 export const replacePlaceholder = (text: string) =>
-  text.replace(/{{\s*([A-Z_]+)\s*}}/g, (_, key: string) => {
-    return CONSTANTS_MAPPING[key] || `{{${key}}}`;
-  });
+  text.replace(
+    /{{\s*([A-Z_]+)\s*}}/g,
+    (_, key: string) => CONSTANTS_MAPPING[key] || `{{${key}}}`,
+  );

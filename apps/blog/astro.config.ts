@@ -15,6 +15,7 @@ import oEmbedTransformer, {
 import { defineConfig, envField, sharpImageService } from "astro/config";
 import expressiveCode from "astro-expressive-code";
 import minifyHtml from "astro-minify-html-swc";
+import typedLinks from "astro-typed-links";
 import browserslist from "browserslist";
 import { browserslistToTargets } from "lightningcss";
 import rehypeAutolinkHeadings, {
@@ -114,6 +115,7 @@ export default defineConfig({
     }),
     minifyHtml(),
     sitemap(),
+    typedLinks(),
     // https://annzeyvf.blogspot.com/?page=en-git-withastro-astro-1773552299403
     // https://github.com/martinsilha/astro-cloudflare-sentry-prerender-bug
     /*

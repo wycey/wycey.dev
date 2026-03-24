@@ -1,4 +1,5 @@
 import type { MarkdownHeading } from "astro";
+import { link } from "astro-typed-links/link";
 import {
   type ReactNode,
   useCallback,
@@ -48,16 +49,16 @@ const resolveBlogTriggerLabel = (
   currentPath: string,
   authors: Author[],
 ): string => {
-  if (currentPath === "/articles") return "Archive";
+  if (currentPath === link("/articles")) return "Archive";
 
   if (
     currentPath === "/" ||
     currentPath.match(/^\/\d+\/?$/) ||
-    currentPath.startsWith("/articles/")
+    currentPath.startsWith(`${link("/articles")}/`)
   )
     return "Blog";
 
-  if (currentPath.startsWith("/about")) return "About";
+  if (currentPath.startsWith(link("/about"))) return "About";
 
   const authorMatch = currentPath.match(/^\/@(.+?)(?:\/|$)/);
 
@@ -108,8 +109,8 @@ const buildBlogMenuItems = (
   authors: Author[],
 ): DropdownMenuItemDef[] => {
   const isHome = currentPath === "/";
-  const isArchive = currentPath === "/articles";
-  const isAbout = currentPath === "/about";
+  const isArchive = currentPath === link("/articles");
+  const isAbout = currentPath === link("/about");
 
   const items: DropdownMenuItemDef[] = [
     {
@@ -131,8 +132,8 @@ const buildBlogMenuItems = (
     {
       type: "item",
       label: "Archive",
-      href: "/articles",
-      rightText: "/articles",
+      href: link("/articles"),
+      rightText: link("/articles"),
       active: isArchive,
       icon: (
         <span
@@ -149,14 +150,17 @@ const buildBlogMenuItems = (
   ];
 
   for (const author of authors) {
-    const authorPath = `/@${author.id}`;
-    const isAuthorActive = currentPath === authorPath;
+    const href = link("/@[handle]", {
+      params: { handle: author.id },
+    });
+
+    const isAuthorActive = currentPath === href;
 
     items.push({
       type: "item",
       label: author.name,
-      href: authorPath,
-      rightText: authorPath,
+      href,
+      rightText: href,
       active: isAuthorActive,
       icon: (
         <img
@@ -174,8 +178,8 @@ const buildBlogMenuItems = (
   items.push({
     type: "item",
     label: "About",
-    href: "/about",
-    rightText: "/about",
+    href: link("/about"),
+    rightText: link("/about"),
     active: isAbout,
     icon: (
       <span
@@ -198,7 +202,11 @@ const buildCategoryMenuItems = (
   const items: DropdownMenuItemDef[] = [{ type: "label", label: "カテゴリー" }];
 
   for (const category of categories) {
-    const href = `/articles/${category.id}`;
+    const href = link("/articles/[category]", {
+      params: {
+        category: category.id,
+      },
+    });
 
     items.push({
       type: "item" as const,

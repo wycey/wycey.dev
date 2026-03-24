@@ -2,6 +2,7 @@
 import { Picture } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import { getEntry } from "astro:content";
+import { link  } from "astro-typed-links/link";
 import { getAvatarUrl } from "@/lib/content/avatar";
 import { formatDate, parseDate } from "@/lib/content/date";
 import { getReadingTime } from "@/lib/content/markdown";
@@ -24,10 +25,16 @@ const tags = tagSlugs
 const avatar = await getAvatarUrl(author.data.name, author.data.avatar);
 
 const date = publishedAt ? formatDate(parseDate(publishedAt)) : undefined;
-const href = `/articles/${categoryRef.id}/${article.id}`;
 ---
 <a
-  href={href}
+  href={
+    link("/articles/[category]/[slug]", {
+      params: {
+        category: category.id,
+        slug: article.id,
+      }
+    })
+  }
   data-astro-prefetch="viewport"
   grid
   rounded="2"

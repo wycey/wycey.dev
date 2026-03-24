@@ -1,5 +1,6 @@
 ---
 import type { MarkdownLayoutProps } from "astro";
+import { link } from "astro-typed-links/link";
 import type { Thing } from "schema-dts";
 import BudouX from "@/components/BudouX.astro";
 import RootLayout from "@/layouts/RootLayout.astro";
@@ -14,7 +15,7 @@ type Props = MarkdownLayoutProps<{
 }>
 
 const mapUrlToJsonLd = (pathname: string | undefined = Astro.url.pathname): Thing | readonly Thing[] | undefined => {
-  if (pathname === "/about") {
+  if (pathname === link("/about")) {
     return createAboutPageSchema();
   }
 }

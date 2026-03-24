@@ -1,6 +1,7 @@
 import { getEntry } from "astro:content";
 import rss from "@astrojs/rss";
 import type { APIRoute } from "astro";
+import { link } from "astro-typed-links/link";
 import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/constants";
 import { getSortedArticles } from "@/lib/content";
 import { parseDate } from "@/lib/content/date";
@@ -31,7 +32,12 @@ export const GET: APIRoute = async (context) => {
             await markdownToReadableString(article.body),
           ),
           categories: [category.data.name],
-          link: `/articles/${article.data.category.id}/${article.id}`,
+          link: link("/articles/[category]/[slug]", {
+            params: {
+              category: article.data.category.id,
+              slug: article.id,
+            },
+          }),
           ...(article.data.publishedAt && {
             pubDate: parseDate(article.data.publishedAt).toDate(),
           }),

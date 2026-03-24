@@ -14,6 +14,7 @@ const { name, bio, socialLinks = [] } = author.data;
 const avatar = await getAvatarUrl(author.data.name, author.data.avatar)
 
 const socialIcons: Record<string, { icon: string; label: string; href: string }> = {};
+
 for (const link of socialLinks) {
   if (link.type === "website") {
     socialIcons.website = { icon: "i-lucide:globe", label: "ウェブサイト", href: link.url };

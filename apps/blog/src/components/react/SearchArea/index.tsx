@@ -1,4 +1,5 @@
 import type { CollectionEntry } from "astro:content";
+import { link } from "astro-typed-links/link";
 import {
   createParser,
   parseAsNativeArrayOf,
@@ -493,7 +494,7 @@ const SearchAreaInner = ({
 };
 
 export const SearchArea = ({ pathname, ...props }: SearchAreaProps) => {
-  if (pathname && pathname !== "/search") {
+  if (pathname && pathname !== link("/search")) {
     throw new Error(
       "SearchArea component should only be rendered on the /search page",
     );

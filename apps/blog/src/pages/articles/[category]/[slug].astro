@@ -2,6 +2,7 @@
 import { Picture } from "astro:assets";
 import { getEntry, render } from "astro:content";
 import type { GetStaticPaths } from "astro";
+import { link } from "astro-typed-links/link"
 import BudouX from "@/components/BudouX.astro";
 import ArticleNavCard from "@/components/content/ArticleNavCard.astro";
 import IconChip from "@/components/IconChip.astro";
@@ -89,7 +90,14 @@ const { words, minutesText } = await getReadingTime(article.body);
   description={truncateString(await markdownToReadableString(article.body))}
   jsonLd={await createArticleSchema(article, updatedAt)}
   breadcrumbs={[
-    { name: category.data.name, href: `/articles/${category.id}` },
+    {
+      name: category.data.name,
+      href: link("/articles/[category]", {
+        params: {
+          category: category.id,
+        }
+      })
+    },
   ]}
   headings={headings}
   ogImage={ogImageUrl}
@@ -152,7 +160,13 @@ const { words, minutesText } = await getReadingTime(article.body);
         <div w="px" min-h="0" bg="border" rounded="full" />
         <IconChip class="text-fg-muted" icon="i-lucide:folder" applyGap={false}>
           <div ml="2">
-            <TagItem href={`/articles/${category.id}`}>
+            <TagItem
+              href={
+                link("/articles/[category]", {
+                  params: { category: category.id}
+                })
+              }
+            >
               <span data-pagefind-filter="category">{category.data.name}</span>
             </TagItem>
           </div>
@@ -205,13 +219,35 @@ const { words, minutesText } = await getReadingTime(article.body);
     </article>
     <nav w="full" mt="4" grid grid-cols="1 md:2" grid-rows="md:[auto_auto]" gap="4 md:y-0">
       {
-        article.data.prevId && prevTitle
-        ? <ArticleNavCard href={`/articles/${prevCategory}/${article.data.prevId}`} title={prevTitle} direction="prev" />
+        article.data.prevId && prevCategory && prevTitle
+        ? <ArticleNavCard
+            href={
+              link("/articles/[category]/[slug]", {
+                params: {
+                  category: prevCategory,
+                  slug: article.data.prevId,
+                }
+              })
+            }
+            title={prevTitle}
+            direction="prev"
+          />
         : <div md="row-span-2" />
       }
       {
-        article.data.nextId && nextTitle
-        ? <ArticleNavCard href={`/articles/${nextCategory}/${article.data.nextId}`} title={nextTitle} direction="next" />
+        article.data.nextId && nextCategory &&  nextTitle
+        ? <ArticleNavCard
+            href={
+              link("/articles/[category]/[slug]", {
+                params: {
+                  category: nextCategory,
+                  slug: article.data.nextId,
+                }
+              })
+            }
+            title={nextTitle}
+            direction="next"
+          />
         : <div md="row-span-2" />
       }
     </nav>
