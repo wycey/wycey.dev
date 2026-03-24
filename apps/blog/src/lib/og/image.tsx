@@ -1,4 +1,4 @@
-/** @jsxRuntime automatic */
+/** @jsx react-jsx */
 /** @jsxImportSource satori/jsx */
 /** biome-ignore-all lint/correctness/useJsxKeyInIterable: Items are static and won't change order */
 /** biome-ignore-all lint/a11y/noSvgWithoutTitle: OG images are not used in HTML context */

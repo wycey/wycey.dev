@@ -1,8 +1,8 @@
 ---
 import type { GetStaticPaths } from "astro";
 import WyceyLogo from "@/assets/images/wycey-full.svg";
-import ArticleCard from "@/components/content/ArticleCard.astro";
-import Pagination from "@/components/content/Pagination.astro";
+import ArticleCard from "@/components/astro/article/ArticleCard.astro";
+import Pagination from "@/components/astro/common/Pagination.astro";
 import RootLayout from "@/layouts/RootLayout.astro";
 import { PAGE_SIZE, SITE_DESCRIPTION } from "@/lib/constants";
 import { getSortedArticles } from "@/lib/content";

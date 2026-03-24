@@ -1,8 +1,7 @@
 /** biome-ignore-all lint/suspicious/noArrayIndexKey: Items are static and won't change order */
 
 import type { ReactNode } from "react";
-import { cn } from "@/lib/utils/classnames";
-import { BreadcrumbItem } from "./ui/breadcrumb";
+import { BreadcrumbItem } from "@/components/react/ui/breadcrumb";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,7 +10,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "./ui/dropdown-menu";
+} from "@/components/react/ui/dropdown-menu";
+import { cn } from "@/lib/utils/classnames";
 
 export interface DropdownMenuItemDef {
   type: "item" | "separator" | "label";

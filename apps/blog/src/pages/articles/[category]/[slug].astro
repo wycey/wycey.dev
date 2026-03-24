@@ -3,12 +3,12 @@ import { Picture } from "astro:assets";
 import { getEntry, render } from "astro:content";
 import type { GetStaticPaths } from "astro";
 import { link } from "astro-typed-links/link"
-import BudouX from "@/components/BudouX.astro";
-import ArticleNavCard from "@/components/content/ArticleNavCard.astro";
-import IconChip from "@/components/IconChip.astro";
+import ArticleNavCard from "@/components/astro/article/ArticleNavCard.astro";
+import BudouX from "@/components/astro/common/BudouX.astro";
+import IconChip from "@/components/astro/common/IconChip.astro";
+import TagItem from "@/components/astro/common/TagItem.astro";
 import { ArticleActionButtons } from "@/components/solid/ArticleActionButtons.client";
-import { FancyboxLoader } from "@/components/solid/FancyboxLoader.client";
-import TagItem from "@/components/TagItem.astro";
+import { FancyboxLoader } from "@/components/solid/client-scripts/FancyboxLoader.client";
 import RootLayout from "@/layouts/RootLayout.astro";
 import { SITE_NAME } from "@/lib/constants";
 import { getArticle, getSortedArticles } from "@/lib/content";

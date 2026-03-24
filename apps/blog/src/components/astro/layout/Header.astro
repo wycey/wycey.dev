@@ -4,11 +4,10 @@ import { getCollection } from "astro:content";
 import type { MarkdownHeading } from "astro";
 import { link } from "astro-typed-links/link";
 import WyceyLogo from "@/assets/images/wycey-full.svg";
+import { type BreadcrumbEntry, MainBreadcrumbs } from "@/components/react/MainBreadcrumbs.client";
 import { ThemeSwitcher } from "@/components/solid/ThemeSwitcher.client";
 import { getSortedArticles } from "@/lib/content";
 import { getAvatarUrl } from "@/lib/content/avatar";
-import type { BreadcrumbEntry } from "../react/MainBreadcrumbs.client";
-import { MainBreadcrumbs } from "../react/MainBreadcrumbs.client";
 
 interface Props {
   breadcrumbs?: BreadcrumbEntry[];

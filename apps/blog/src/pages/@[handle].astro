@@ -1,11 +1,12 @@
 ---
 import { getCollection } from "astro:content";
 import type { GetStaticPaths } from "astro";
-import ArticleTimeline from "@/components/ArticleTimeline.astro";
-import AuthorCard from "@/components/content/AuthorCard.astro";
+import ArticleTimeline from "@/components/astro/article/ArticleTimeline.astro";
+import AuthorCard from "@/components/astro/page-header/AuthorCard.astro";
 import RootLayout from "@/layouts/RootLayout.astro";
 import { getSortedArticles } from "@/lib/content";
 import { createAuthorArticlesSchema } from "@/lib/content/json-ld";
+
 export const getStaticPaths = (async () => {
   const authors = await getCollection("authors");
 

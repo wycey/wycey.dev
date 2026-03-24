@@ -1,4 +1,9 @@
 import { type ComponentProps, useEffect, useState } from "react";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/components/react/ui/input-group";
 import { usePublicImport } from "@/hooks/react/usePublicImport";
 import type {
   PagefindFilter,
@@ -11,7 +16,6 @@ import type {
   PagefindSearchResult,
   PagefindSortOrder,
 } from "@/lib/utils/pagefind";
-import { InputGroup, InputGroupAddon, InputGroupInput } from "./ui/input-group";
 
 export type SearchInputProps = {
   filters?: PagefindFilterQuery<PagefindFilter>;

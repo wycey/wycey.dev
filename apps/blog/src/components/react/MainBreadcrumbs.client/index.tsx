@@ -8,16 +8,16 @@ import {
   useState,
 } from "react";
 import {
-  BreadcrumbDropdownItem,
-  type DropdownMenuItemDef,
-} from "./BreadcrumbDropdownItem.client";
-import {
   Breadcrumb as BreadcrumbComponent,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbSeparator,
-} from "./ui/breadcrumb";
+} from "@/components/react/ui/breadcrumb";
+import {
+  BreadcrumbDropdownItem,
+  type DropdownMenuItemDef,
+} from "./BreadcrumbDropdownItem.client";
 
 interface Author {
   id: string;

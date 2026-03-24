@@ -8,9 +8,6 @@ import {
 } from "nuqs";
 import { NuqsAdapter } from "nuqs/adapters/react";
 import { useCallback, useMemo, useState } from "react";
-import { MultiSelect } from "@/components/react/MultiSelect";
-import { SearchInput } from "@/components/react/SearchInput";
-import { SearchResultCard } from "@/components/react/SearchResultCard";
 import { Button } from "@/components/react/ui/button";
 import { Field, FieldGroup, FieldTitle } from "@/components/react/ui/field";
 import {
@@ -30,6 +27,9 @@ import type {
   PagefindSearchResult,
   PagefindSortOrder,
 } from "@/lib/utils/pagefind";
+import { MultiSelect } from "../input/MultiSelect.client";
+import { SearchInput } from "./SearchInput";
+import { SearchResultCard } from "./SearchResultCard";
 import styles from "./styles.module.css";
 
 const RESULTS_PER_PAGE = 10;

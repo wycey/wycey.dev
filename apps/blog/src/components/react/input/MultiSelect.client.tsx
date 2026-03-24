@@ -1,5 +1,6 @@
 import { Command as CommandPrimitive } from "cmdk";
 import {
+  type CSSProperties,
   type KeyboardEvent,
   type MouseEventHandler,
   useCallback,
@@ -9,8 +10,12 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 
-import { Badge } from "./ui/badge";
-import { Command, CommandGroup, CommandItem } from "./ui/command";
+import { Badge } from "@/components/react/ui/badge";
+import {
+  Command,
+  CommandGroup,
+  CommandItem,
+} from "@/components/react/ui/command";
 
 interface Item {
   value: string;
@@ -34,7 +39,7 @@ export const MultiSelect = ({
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  const [dropdownStyle, setDropdownStyle] = useState<React.CSSProperties>({});
+  const [dropdownStyle, setDropdownStyle] = useState<CSSProperties>({});
 
   useEffect(() => {
     if (!(open && wrapperRef.current)) return;

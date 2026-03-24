@@ -1,8 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 import { link } from "astro-typed-links/link";
-import ArticleTimeline from "@/components/ArticleTimeline.astro";
-import CategoryCard from "@/components/content/CategoryCard.astro";
+import ArticleTimeline from "@/components/astro/article/ArticleTimeline.astro";
+import CategoryCard from "@/components/astro/page-header/CategoryCard.astro";
 import RootLayout from "@/layouts/RootLayout.astro";
 import { getSortedArticles } from "@/lib/content";
 import { createCategoriesSchema } from "@/lib/content/json-ld";
