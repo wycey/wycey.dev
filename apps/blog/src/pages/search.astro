@@ -1,0 +1,38 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import { SearchArea } from "@/components/react/SearchArea";
+import RootLayout from "@/layouts/RootLayout.astro";
+
+import "@/styles/typography.css";
+
+const allAuthors = (await getCollection("authors")).reduce((acc, author) => {
+  acc[author.id] = author;
+
+  return acc;
+}, {} as { [key: string]: CollectionEntry<"authors"> });
+
+const rawCategories = await getCollection("categories");
+const allCategories = rawCategories.reduce((acc, category) => {
+  acc[category.id] = category;
+
+  return acc;
+}, {} as { [key: string]: CollectionEntry<"categories"> });
+
+const allTags = rawCategories
+  .flatMap(category => category.data.tags ?? [])
+  .reduce((acc, tag) => {
+    acc[tag.slug] = tag.name;
+
+    return acc;
+  }, {} as { [key: string]: string });
+---
+<RootLayout
+  title="検索"
+  description="ブログ内を検索できます。"
+  isPrivate={true}
+>
+  <section flex-auto class="brand-container prose">
+    <h1 text="center" border="none">検索</h1>
+    <SearchArea pathname={Astro.url.pathname} {allAuthors} {allCategories} {allTags} client:load />
+  </section>
+</RootLayout>

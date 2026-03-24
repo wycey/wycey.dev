@@ -104,7 +104,7 @@ const { words, minutesText } = await getReadingTime(article.body);
 >
   <section flex-auto flex flex-col h="full" class="relative brand-container">
     <article id="article" flex-auto>
-      <h1 line-height="relaxed" font="bold" text="4xl" mb="2" data-pagefind-body data-budoux><BudouX text={article.data.title} /></h1>
+      <h1 line-height="relaxed" font="bold" text="4xl" mb="2" data-pagefind-meta="title" data-budoux><BudouX text={article.data.title} /></h1>
       <section
         flex
         flex-wrap
@@ -128,14 +128,12 @@ const { words, minutesText } = await getReadingTime(article.body);
             priority={true}
             class="w-6 h-6 rounded-full object-contain"
           />
-          <p class="whitespace-nowrap">{author.data.name}</p>
+          <p class="whitespace-nowrap" data-pagefind-filter="author">{author.data.name}</p>
         </a>
         <div w="px" min-h="0" bg="border" rounded="full" />
         <IconChip class="text-fg-muted" icon="i-lucide:folder" applyGap={false}>
           <div ml="2">
-            <TagItem href={`/articles/${category.id}`}>
-              {category.data.name}
-            </TagItem>
+            <TagItem href={`/articles/${category.id}`} pagefindFilter="category">{category.data.name}</TagItem>
           </div>
         </IconChip>
         {
@@ -144,16 +142,22 @@ const { words, minutesText } = await getReadingTime(article.body);
               <div flex items="center" gap="4" ml="2">
                 {tags.map(
                   tag => (
-                    <TagItem>
-                      {tag.name}
-                    </TagItem>
+                    <TagItem pagefindFilter="tags">{tag.name}</TagItem>
                   )
                 )}
               </div>
             </IconChip>
         }
         <div flex-auto />
-        <div flex flex-wrap items="center" gap="x-6 y-4" text="fg-muted" grid-col="4">
+        <div
+          flex
+          flex-wrap
+          items="center"
+          gap="x-6 y-4"
+          text="fg-muted"
+          grid-col="4"
+          data-pagefind-sort={`updatedAt:${updatedAt.format("YYYY-MM-DD")}`}
+        >
           {(!publishedAt || formatDate(publishedAt) !== formatDate(updatedAt)) && (
             <IconChip icon="i-lucide:calendar-sync">
               <time datetime={updatedAt.toISOString()}>{formatDate(updatedAt)}</time>
@@ -161,7 +165,10 @@ const { words, minutesText } = await getReadingTime(article.body);
           )}
           {publishedAt && (
             <IconChip icon="i-lucide:calendar">
-              <time datetime={publishedAt.toISOString()}>{formatDate(publishedAt)}</time>
+              <time
+                datetime={publishedAt.toISOString()}
+                data-pagefind-sort={`publishedAt:${publishedAt.format("YYYY-MM-DD")}`}
+              >{formatDate(publishedAt)}</time>
             </IconChip>
           )}
           <IconChip icon="i-lucide:clock">

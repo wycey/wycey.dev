@@ -30,7 +30,7 @@ const jsonLd = mapUrlToJsonLd(url);
   {...(jsonLd && { jsonLd })}
 >
   <article flex-auto class="brand-container prose" data-pagefind-body>
-    <h1 data-budoux><BudouX text={title} /></h1>
+    <h1 data-pagefind-meta="title" data-budoux><BudouX text={title} /></h1>
     <slot />
   </article>
 </RootLayout>

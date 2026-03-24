@@ -163,7 +163,7 @@
   }
 
   a {
-    --at-apply: "text-primary-fg-solid font-medium underline transition-colors decoration-transparent hover:decoration-current focus:decoration-current";
+    --at-apply: "text-primary-fg-solid font-medium underline underline-offset-4 transition-colors decoration-transparent hover:decoration-current focus:decoration-current";
 
     word-break: keep-all;
     text-justify: inter-character;

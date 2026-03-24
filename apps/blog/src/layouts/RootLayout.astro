@@ -17,6 +17,7 @@ type Twitter = Parameters<typeof SEO>[0]["twitter"];
 type InnerProps = {
   title?: string;
   description?: string;
+  isPrivate?: boolean;
   breadcrumbs?: {
     name: string;
     href: string;
@@ -40,6 +41,7 @@ type Props = InnerProps & {
 const {
   title,
   description,
+  isPrivate = false,
   breadcrumbs = [],
   headings = [],
   ogType,
@@ -75,6 +77,10 @@ const jsonLd = {
     titleTemplate={`%s · ${SITE_NAME}`}
     description={SITE_DESCRIPTION}
     removeTrailingSlashForRoot={true}
+    noindex={isPrivate}
+    nofollow={isPrivate}
+    noarchive={isPrivate}
+    nocache={isPrivate}
     openGraph={{
       basic: {
         title: title ?? "ホーム",

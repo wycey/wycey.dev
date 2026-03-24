@@ -74,3 +74,25 @@ export const articlesSchema = z.object({
   prevId: z.string().default(""),
   nextId: z.string().default(""),
 });
+
+export const pagefindMetaSchema = z.object({
+  title: z.string(),
+  image: z.string().exactOptional(),
+});
+
+export type PagefindMeta = z.infer<typeof pagefindMetaSchema>;
+
+export const pagefindFilterSchema = z.object({
+  author: z.tuple([z.string()]),
+  category: z.tuple([z.string()]),
+  tag: z.array(z.string()).default([]),
+});
+
+export type PagefindFilter = z.infer<typeof pagefindFilterSchema>;
+
+export const pagefindSortSchema = z.union([
+  z.literal("publishedAt"),
+  z.literal("updatedAt"),
+]);
+
+export type PagefindSort = z.infer<typeof pagefindSortSchema>;
