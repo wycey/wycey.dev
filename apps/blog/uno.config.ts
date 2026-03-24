@@ -51,7 +51,7 @@ const createAccentColorVars = (color: string, theme: any) => {
     active: `var(--color-${color}-bg-active)`,
     solid: {
       DEFAULT: `var(--color-${color}-bg-solid)`,
-      hover: `var(--color-${color}-bg-hover)`,
+      hover: `var(--color-${color}-bg-solid-hover)`,
     },
   };
 

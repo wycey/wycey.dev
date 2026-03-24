@@ -35,7 +35,9 @@ export class ImageRegistry {
     }
 
     let dataTypedArray = new Uint8Array(data);
-    let { mime } = (await fileTypeFromBuffer(dataTypedArray)) ?? {};
+    const fileTypeResult = await fileTypeFromBuffer(dataTypedArray);
+
+    let mime = fileTypeResult?.mime ?? "image/png";
 
     if (mime && !SATORI_SUPPORTED_MIMES.has(mime)) {
       dataTypedArray = new Uint8Array(
@@ -45,12 +47,7 @@ export class ImageRegistry {
       mime = "image/png";
     }
 
-    const base64String = btoa(
-      new Uint8Array(dataTypedArray).reduce(
-        (data, byte) => data + String.fromCharCode(byte),
-        "",
-      ),
-    );
+    const base64String = Buffer.from(dataTypedArray).toString("base64");
 
     const result = `data:${mime};base64,${base64String}`;
     this.#base64Cache.set(name, result);

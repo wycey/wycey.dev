@@ -14,7 +14,7 @@ export const GET: APIRoute = async (context) => {
   return rss({
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
-    site: context.site ?? new URL(context.url, "/"),
+    site: context.site ?? new URL(context.url).origin,
     trailingSlash: false,
     items: await Promise.all(
       articles.map(async (article) => {
