@@ -14,6 +14,7 @@ const SATORI_SUPPORTED_MIMES = new Set([
 
 export class ImageRegistry {
   readonly #registry: ImageResources;
+  readonly #base64Cache = new Map<string, string>();
 
   constructor(initialRegistry: ImageResources = {}) {
     this.#registry = initialRegistry;
@@ -24,6 +25,9 @@ export class ImageRegistry {
   }
 
   async getBase64(name: string): Promise<string> {
+    const cached = this.#base64Cache.get(name);
+    if (cached) return cached;
+
     const data = this.#registry[name];
 
     if (!data) {
@@ -48,6 +52,9 @@ export class ImageRegistry {
       ),
     );
 
-    return `data:${mime};base64,${base64String}`;
+    const result = `data:${mime};base64,${base64String}`;
+    this.#base64Cache.set(name, result);
+
+    return result;
   }
 }
