@@ -15,7 +15,7 @@ const { text } = Astro.props;
       .parse(text)
       .flatMap((value, index) => [
         ...(index > 0 ? [<wbr />] : []),
-        <>{value}</>,
+        value,
       ])
   }
 </>
