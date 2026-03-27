@@ -183,8 +183,9 @@ const { words, minutesText } = await getReadingTime(article.body);
               <div flex items="center" gap="4" ml="2">
                 {tags.map(tag => (
                   <>
-                    <span data-pagefind-filter="tags">{tag.name}</span>
-                    <TagItem>{tag.name}</TagItem>
+                    <TagItem>
+                      <span data-pagefind-filter="tags">{tag.name}</span>
+                    </TagItem>
                   </>
                 ))}
               </div>
