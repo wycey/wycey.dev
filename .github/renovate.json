@@ -3,5 +3,12 @@
   "extends": ["github>wycey/renovate-conf"],
   "git-submodules": {
     "enabled": true
-  }
+  },
+  "packageRules": [
+    {
+      "description": "Group Expressive Code packages",
+      "matchDatasources": ["npm"],
+      "matchPackageNames": ["astro-expressive-code", "@expressive-code/*"]
+    }
+  ]
 }
