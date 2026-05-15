@@ -3,7 +3,6 @@ import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import solid from "@astrojs/solid-js";
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
-import { pluginCodeCaption } from "@fujocoded/expressive-code-caption";
 import rehypeFigureCaption from "@ljoss/rehype-figure-caption";
 import rehypeTypst from "@myriaddreamin/rehype-typst";
 import remarkEmbedder, {
@@ -12,7 +11,12 @@ import remarkEmbedder, {
 import oEmbedTransformer, {
   type Config as OEmbedTransformerConfig,
 } from "@remark-embedder/transformer-oembed";
-import { defineConfig, envField, sharpImageService } from "astro/config";
+import {
+  defineConfig,
+  envField,
+  sharpImageService,
+  svgoOptimizer,
+} from "astro/config";
 import expressiveCode from "astro-expressive-code";
 import minifyHtml from "astro-minify-html-swc";
 import typedLinks from "astro-typed-links";
@@ -76,6 +80,7 @@ export default defineConfig({
     },
   }),
   trailingSlash: "never",
+  compressHTML: "jsx",
   build: {
     assets: "_assets",
     inlineStylesheets: "always",
@@ -129,7 +134,7 @@ export default defineConfig({
       injectReset: true,
     }),
     expressiveCode({
-      plugins: [pluginLineNumbers(), pluginCodeCaption()],
+      plugins: [pluginLineNumbers()],
       themes: ["catppuccin-mocha", "catppuccin-latte"],
       useDarkModeMediaQuery: true,
       themeCssSelector: (theme) => `[data-theme='${theme.type}']`,
@@ -394,7 +399,7 @@ export default defineConfig({
   },
   experimental: {
     contentIntellisense: true,
-    svgo: true,
+    svgOptimizer: svgoOptimizer(),
     clientPrerender: true,
   },
 });
