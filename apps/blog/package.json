@@ -69,7 +69,7 @@
   "devDependencies": {
     "@astrojs/check": "0.9.9",
     "@astrojs/sitemap": "^3.7.2",
-    "@astrojs/ts-plugin": "1.10.8",
+    "@astrojs/ts-plugin": "1.10.9",
     "@iconify-json/lucide": "^1.2.107",
     "@ljoss/rehype-figure-caption": "^1.0.0",
     "@myriaddreamin/rehype-typst": "^0.7.0-rc2",
