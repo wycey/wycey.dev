@@ -27,8 +27,8 @@
     "extends @wycey/browserslist-config"
   ],
   "dependencies": {
-    "@astrojs/cloudflare": "13.6.0",
-    "@astrojs/react": "5.0.6",
+    "@astrojs/cloudflare": "13.6.1",
+    "@astrojs/react": "5.0.7",
     "@astrojs/rss": "^4.0.18",
     "@astrojs/solid-js": "6.0.1",
     "@base-ui/react": "^1.4.1",
@@ -43,7 +43,7 @@
     "@sentry/astro": "^10.53.1",
     "@sentry/cloudflare": "^10.53.1",
     "@solid-primitives/media": "^2.3.5",
-    "astro": "6.4.2",
+    "astro": "6.4.3",
     "astro-expressive-code": "^0.42.0",
     "astro-seo": "^1.1.0",
     "astro-typed-links": "^2.0.0",
