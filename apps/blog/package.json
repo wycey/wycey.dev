@@ -34,7 +34,7 @@
     "@base-ui/react": "^1.5.0",
     "@dicebear/collection": "^9.4.2",
     "@dicebear/core": "^9.4.2",
-    "@expressive-code/plugin-line-numbers": "^0.42.0",
+    "@expressive-code/plugin-line-numbers": "^0.43.0",
     "@fancyapps/ui": "^6.1.14",
     "@iconify/utils": "^3.1.3",
     "@nanostores/persistent": "^1.3.4",
