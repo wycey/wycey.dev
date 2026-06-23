@@ -22,7 +22,7 @@
     "@biomejs/biome": "^2.4.10",
     "@cloudflare/workers-types": "^4.20260405.1",
     "@solid-primitives/event-listener": "^2.4.5",
-    "@types/node": "^25.5.2",
+    "@types/node": "^26.0.0",
     "@wycey/biome-config": "workspace:*",
     "lefthook": "^2.1.5",
     "npm-run-all2": "^9.0.0",
