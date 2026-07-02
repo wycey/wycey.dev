@@ -44,7 +44,7 @@
     "@sentry/cloudflare": "^10.55.0",
     "@solid-primitives/media": "^2.3.5",
     "astro": "7.0.3",
-    "astro-expressive-code": "^0.43.0",
+    "astro-expressive-code": "^0.44.0",
     "astro-seo": "^1.1.0",
     "astro-typed-links": "^2.0.0",
     "class-variance-authority": "^0.7.1",
