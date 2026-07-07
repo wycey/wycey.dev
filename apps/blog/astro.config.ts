@@ -1,4 +1,5 @@
 import cloudflare from "@astrojs/cloudflare";
+import { unified } from "@astrojs/markdown-remark";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import solid from "@astrojs/solid-js";
@@ -14,6 +15,7 @@ import oEmbedTransformer, {
 import {
   defineConfig,
   envField,
+  memoryCache,
   sharpImageService,
   svgoOptimizer,
 } from "astro/config";
@@ -95,8 +97,8 @@ export default defineConfig({
     layout: "constrained",
     service: sharpImageService({ kernel: "mks2021" }),
   },
-  devToolbar: {
-    enabled: false,
+  cache: {
+    provider: memoryCache(),
   },
   prefetch: {
     prefetchAll: true,
@@ -178,224 +180,226 @@ export default defineConfig({
     ],
   },
   markdown: {
-    remarkPlugins: [
-      remarkBreaks,
-      remarkDirective,
-      [
-        remarkRevertTextDirective,
-        {
-          allowedNames: ["ruby"],
-        } satisfies RemarkRevertTextDirectiveOptions,
-      ],
-      remarkRubyDirective,
-      remarkNormalizeHeadings,
-      remarkHeading1ToTitle,
-      remarkLastModified,
-      [
-        remarkEmoji,
-        {
-          accessible: true,
-        } satisfies RemarkEmojiOptions,
-      ],
-      remarkMath,
-      [
-        // @ts-expect-error remarkEmbedder without .default causes type error, but with .default it works. This might be an issue with the type definitions of remarkEmbedder
-        remarkEmbedder.default,
-        {
-          cache: remarkEmbedderCache,
-          transformers: [
-            [
-              // @ts-expect-error Same as above regarding .default
-              oEmbedTransformer.default,
-              {
-                params: {
-                  lang: "ja",
-                  omit_script: true,
-                  dnt: true,
-                },
-              } satisfies OEmbedTransformerConfig,
+    processor: unified({
+      remarkPlugins: [
+        remarkBreaks,
+        remarkDirective,
+        [
+          remarkRevertTextDirective,
+          {
+            allowedNames: ["ruby"],
+          } satisfies RemarkRevertTextDirectiveOptions,
+        ],
+        remarkRubyDirective,
+        remarkNormalizeHeadings,
+        remarkHeading1ToTitle,
+        remarkLastModified,
+        [
+          remarkEmoji,
+          {
+            accessible: true,
+          } satisfies RemarkEmojiOptions,
+        ],
+        remarkMath,
+        [
+          // @ts-expect-error remarkEmbedder without .default causes type error, but with .default it works. This might be an issue with the type definitions of remarkEmbedder
+          remarkEmbedder.default,
+          {
+            cache: remarkEmbedderCache,
+            transformers: [
+              [
+                // @ts-expect-error Same as above regarding .default
+                oEmbedTransformer.default,
+                {
+                  params: {
+                    lang: "ja",
+                    omit_script: true,
+                    dnt: true,
+                  },
+                } satisfies OEmbedTransformerConfig,
+              ],
             ],
-          ],
-        } satisfies RemarkEmbedderOptions,
+          } satisfies RemarkEmbedderOptions,
+        ],
+        remarkCjkFriendly,
+        remarkGfmStrikethroughCjkFriendly,
+        remarkSectionize,
       ],
-      remarkCjkFriendly,
-      remarkGfmStrikethroughCjkFriendly,
-      remarkSectionize,
-    ],
-    remarkRehype: {
-      footnoteLabel: "脚注",
-      footnoteLabelProperties: {
-        "data-footnote-label": "",
+      remarkRehype: {
+        footnoteLabel: "脚注",
+        footnoteLabelProperties: {
+          "data-footnote-label": "",
+        },
+        footnoteBackContent: "↩\u{FE0E}",
       },
-      footnoteBackContent: "↩\u{FE0E}",
-    },
-    rehypePlugins: [
-      rehypeSlug,
-      rehypeRecordHeadings,
-      [
-        rehypeOGCard,
-        {
-          buildCache: true,
-          buildCachePath: "./node_modules/.astro",
-          enableSameTextURLConversion: true,
-          serverCache: true,
-          openInNewTab: true,
-          serverCachePath: "./public",
-        } satisfies RehypeOGCardOptions,
-      ],
-      [
-        rehypeExternalLinks,
-        {
-          target: "_blank",
-          rel: ["nofollow", "noreferrer"],
-          content: {
-            type: "element",
-            tagName: "span",
-            properties: {
-              "aria-hidden": "true",
-              "data-external-link-icon": "",
+      rehypePlugins: [
+        rehypeSlug,
+        rehypeRecordHeadings,
+        [
+          rehypeOGCard,
+          {
+            buildCache: true,
+            buildCachePath: "./node_modules/.astro",
+            enableSameTextURLConversion: true,
+            serverCache: true,
+            openInNewTab: true,
+            serverCachePath: "./public",
+          } satisfies RehypeOGCardOptions,
+        ],
+        [
+          rehypeExternalLinks,
+          {
+            target: "_blank",
+            rel: ["nofollow", "noreferrer"],
+            content: {
+              type: "element",
+              tagName: "span",
+              properties: {
+                "aria-hidden": "true",
+                "data-external-link-icon": "",
+              },
+              children: [],
             },
-            children: [],
-          },
-          test: (el, index, parent) => {
-            if (
-              parent &&
-              parent.type === "element" &&
-              parent.tagName === "div" &&
-              parent.children.length === 1 &&
-              (
-                (parent.properties.className as string[] | undefined) ?? []
-              ).includes("og-card-container") &&
-              index === 0
-            ) {
-              return false;
-            }
+            test: (el, index, parent) => {
+              if (
+                parent &&
+                parent.type === "element" &&
+                parent.tagName === "div" &&
+                parent.children.length === 1 &&
+                (
+                  (parent.properties.className as string[] | undefined) ?? []
+                ).includes("og-card-container") &&
+                index === 0
+              ) {
+                return false;
+              }
 
-            return el.tagName === "a";
-          },
-        } satisfies RehypeExternalLinksOptions,
-      ],
-      [
-        rehypeAutolinkHeadings,
-        {
-          properties: {
-            ariaHidden: "true",
-            tabIndex: -1,
-            dataAutolink: "",
-          },
-          content: {
-            type: "element",
-            tagName: "span",
+              return el.tagName === "a";
+            },
+          } satisfies RehypeExternalLinksOptions,
+        ],
+        [
+          rehypeAutolinkHeadings,
+          {
             properties: {
-              className: ["icon"],
+              ariaHidden: "true",
+              tabIndex: -1,
+              dataAutolink: "",
             },
-            children: [],
-          },
-        } satisfies RehypeAutolinkHeadingsOptions,
+            content: {
+              type: "element",
+              tagName: "span",
+              properties: {
+                className: ["icon"],
+              },
+              children: [],
+            },
+          } satisfies RehypeAutolinkHeadingsOptions,
+        ],
+        rehypeFigureCaption,
+        rehypeFancybox,
+        [
+          rehypeCallouts,
+          {
+            theme: "obsidian",
+            callouts: {
+              note: {
+                title: "ノート",
+              },
+              abstract: {
+                title: "概要",
+              },
+              summary: {
+                title: "要約",
+              },
+              tldr: {
+                title: "TL;DR",
+              },
+              info: {
+                title: "情報",
+              },
+              todo: {
+                title: "ToDo",
+              },
+              tip: {
+                title: "ヒント",
+              },
+              hint: {
+                title: "ヒント",
+              },
+              important: {
+                title: "重要",
+              },
+              success: {
+                title: "成功",
+              },
+              check: {
+                title: "チェック",
+              },
+              done: {
+                title: "完了",
+              },
+              question: {
+                title: "質問",
+              },
+              faq: {
+                title: "FAQ",
+              },
+              warning: {
+                title: "警告",
+              },
+              attention: {
+                title: "注意",
+              },
+              caution: {
+                title: "注意",
+              },
+              failure: {
+                title: "失敗",
+              },
+              missing: {
+                title: "不足",
+              },
+              fail: {
+                title: "失敗",
+              },
+              danger: {
+                title: "危険",
+              },
+              error: {
+                title: "エラー",
+              },
+              bug: {
+                title: "バグ",
+              },
+              example: {
+                title: "例",
+              },
+              quote: {
+                title: "引用",
+              },
+              cite: {
+                title: "引用",
+              },
+            },
+          } satisfies RehypeCalloutsOptions,
+        ],
+        [
+          rehypeBudoux,
+          {
+            include: ["h1", "h2", "h3", "h4", "h5", "h6", "figcaption"],
+          } satisfies RehypeBudouxOptions,
+        ],
+        [
+          rehypeMermaid,
+          {
+            strategy: "pre-mermaid",
+          } satisfies RehypeMermaidOptions,
+        ],
+        rehypeTypst,
+        rehypeTypstMathDisplay,
       ],
-      rehypeFigureCaption,
-      rehypeFancybox,
-      [
-        rehypeCallouts,
-        {
-          theme: "obsidian",
-          callouts: {
-            note: {
-              title: "ノート",
-            },
-            abstract: {
-              title: "概要",
-            },
-            summary: {
-              title: "要約",
-            },
-            tldr: {
-              title: "TL;DR",
-            },
-            info: {
-              title: "情報",
-            },
-            todo: {
-              title: "ToDo",
-            },
-            tip: {
-              title: "ヒント",
-            },
-            hint: {
-              title: "ヒント",
-            },
-            important: {
-              title: "重要",
-            },
-            success: {
-              title: "成功",
-            },
-            check: {
-              title: "チェック",
-            },
-            done: {
-              title: "完了",
-            },
-            question: {
-              title: "質問",
-            },
-            faq: {
-              title: "FAQ",
-            },
-            warning: {
-              title: "警告",
-            },
-            attention: {
-              title: "注意",
-            },
-            caution: {
-              title: "注意",
-            },
-            failure: {
-              title: "失敗",
-            },
-            missing: {
-              title: "不足",
-            },
-            fail: {
-              title: "失敗",
-            },
-            danger: {
-              title: "危険",
-            },
-            error: {
-              title: "エラー",
-            },
-            bug: {
-              title: "バグ",
-            },
-            example: {
-              title: "例",
-            },
-            quote: {
-              title: "引用",
-            },
-            cite: {
-              title: "引用",
-            },
-          },
-        } satisfies RehypeCalloutsOptions,
-      ],
-      [
-        rehypeBudoux,
-        {
-          include: ["h1", "h2", "h3", "h4", "h5", "h6", "figcaption"],
-        } satisfies RehypeBudouxOptions,
-      ],
-      [
-        rehypeMermaid,
-        {
-          strategy: "pre-mermaid",
-        } satisfies RehypeMermaidOptions,
-      ],
-      rehypeTypst,
-      rehypeTypstMathDisplay,
-    ],
+    }),
   },
   experimental: {
     contentIntellisense: true,
