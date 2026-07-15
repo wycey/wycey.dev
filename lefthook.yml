@@ -4,10 +4,10 @@ pre-commit:
   commands:
     check:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      run: bun biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
+      run: aubr biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
       stage_fixed: true
       
     textlint:
       root: ./apps/blog
-      run: bun lint --fix {staged_files}
+      run: aubr lint --fix {staged_files}
       stage_fixed: true

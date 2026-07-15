@@ -28,10 +28,10 @@ Base `tsconfig.json` with presets used by [`apps/*`](apps).
 Run on **the root directory**:
 
 ```bash
-$ bun install
+$ aube install
 
 # Open dev environment on all apps
-$ bun dev
+$ aube dev
 ```
 
 ## Build All
@@ -39,7 +39,7 @@ $ bun dev
 Run on **the root directory**:
 
 ```bash
-$ bun run build
+$ aube build
 ```
 
 ## Lint / Format
@@ -48,11 +48,11 @@ Run on **the root directory**:
 
 ```bash
 # Lint
-$ bun lint
+$ aube lint
 
 # If you want to fix errors, run following:
-$ bun lint.fix
+$ aube lint.fix
 
 # Format
-$ bun fmt
+$ aube fmt
 ```
