@@ -39,10 +39,6 @@
       "name": "node",
       "version": "^24.18.0",
       "onFail": "download"
-    },
-    "packageManager": {
-      "name": "aube",
-      "version": "^1.27"
     }
   },
   "aube": {
@@ -53,5 +49,14 @@
       "lefthook": true,
       "workerd": true
     }
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@sentry/cli",
+      "esbuild",
+      "sharp",
+      "lefthook",
+      "workerd"
+    ]
   }
 }
