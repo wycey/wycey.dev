@@ -13,7 +13,7 @@ importers:
         version: 2.5.3
       '@cloudflare/workers-types':
         specifier: ^5.0.0
-        version: 5.20260713.1
+        version: 5.20260714.1
       '@solid-primitives/event-listener':
         specifier: ^2.4.5
         version: 2.4.6(solid-js@1.9.14)
@@ -22,7 +22,7 @@ importers:
         version: 26.1.1
       '@wycey/biome-config':
         specifier: workspace:*
-        version: 0.0.1
+        version: link:packages/biome-config
       lefthook:
         specifier: ^2.1.5
         version: 2.1.10
@@ -32,9 +32,6 @@ importers:
       rimraf:
         specifier: ^6.1.3
         version: 6.1.3
-      solid-js:
-        specifier: ^1.6.12
-        version: 1.9.14
       tslib:
         specifier: ^2.8.1
         version: 2.8.1
@@ -53,22 +50,19 @@ importers:
     dependencies:
       '@astrojs/cloudflare':
         specifier: 14.1.2
-        version: 14.1.2(astro@7.0.7(@astrojs/markdown-remark@7.2.1))(wrangler@4.110.0(@cloudflare/workers-types@5.20260713.1))
+        version: 14.1.2(@types/node@26.1.1)(astro@7.0.7(@astrojs/markdown-remark@7.2.1)(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@26.1.1)(jiti@2.7.0)(yaml@2.9.0))(esbuild@0.28.1)(jiti@2.7.0)(workerd@1.20260708.1)(wrangler@4.110.0(@cloudflare/workers-types@5.20260714.1))(yaml@2.9.0)
       '@astrojs/react':
         specifier: 6.0.1
-        version: 6.0.1(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))
+        version: 6.0.1(@types/node@26.1.1)(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(esbuild@0.28.1)(jiti@2.7.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(yaml@2.9.0)
       '@astrojs/rss':
         specifier: 4.0.19
         version: 4.0.19
       '@astrojs/solid-js':
         specifier: 7.0.1
-        version: 7.0.1(solid-js@1.9.14)
+        version: 7.0.1(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(solid-js@1.9.14)(yaml@2.9.0)
       '@base-ui/react':
         specifier: ^1.6.0
-        version: 1.6.0(@types/react@19.2.17)(react@19.2.7)(react-dom@19.2.7(react@19.2.7))
-      '@cloudflare/workers-types':
-        specifier: ^4.x
-        version: 5.20260713.1
+        version: 1.6.0(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@dicebear/collection':
         specifier: ^9.4.2
         version: 9.4.2(@dicebear/core@9.4.3)
@@ -95,31 +89,25 @@ importers:
         version: 1.1.1(nanostores@1.4.0)(solid-js@1.9.14)
       '@sentry/astro':
         specifier: ^10.63.0
-        version: 10.65.0(astro@7.0.7(@astrojs/markdown-remark@7.2.1))
+        version: 10.65.0(@opentelemetry/core@2.9.0(@opentelemetry/api@1.9.1))(astro@7.0.7(@astrojs/markdown-remark@7.2.1)(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@26.1.1)(jiti@2.7.0)(yaml@2.9.0))
       '@sentry/cloudflare':
         specifier: ^10.63.0
-        version: 10.65.0
+        version: 10.65.0(@cloudflare/workers-types@5.20260714.1)(@opentelemetry/core@2.9.0(@opentelemetry/api@1.9.1))
       '@solid-primitives/media':
         specifier: ^2.3.6
         version: 2.3.6(solid-js@1.9.14)
-      '@types/node':
-        specifier: '*'
-        version: 26.1.1
-      '@unocss/preset-wind3':
-        specifier: '>=0.56.0 < 101'
-        version: 66.7.5
       astro:
         specifier: 7.0.7
-        version: 7.0.7(@astrojs/markdown-remark@7.2.1)
+        version: 7.0.7(@astrojs/markdown-remark@7.2.1)(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@26.1.1)(jiti@2.7.0)(yaml@2.9.0)
       astro-expressive-code:
         specifier: ^0.44.0
-        version: 0.44.0(astro@7.0.7(@astrojs/markdown-remark@7.2.1))
+        version: 0.44.0(astro@7.0.7(@astrojs/markdown-remark@7.2.1)(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@26.1.1)(jiti@2.7.0)(yaml@2.9.0))
       astro-seo:
         specifier: ^1.1.0
-        version: 1.1.0(typescript@6.0.2)
+        version: 1.1.0(prettier@3.9.5)(typescript@6.0.2)
       astro-typed-links:
         specifier: ^2.0.0
-        version: 2.0.0(astro@7.0.7(@astrojs/markdown-remark@7.2.1))
+        version: 2.0.0(astro@7.0.7(@astrojs/markdown-remark@7.2.1)(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@26.1.1)(jiti@2.7.0)(yaml@2.9.0))
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -128,7 +116,7 @@ importers:
         version: 2.1.1
       cmdk:
         specifier: ^1.1.1
-        version: 1.1.1(react@19.2.7)(react-dom@19.2.7(react@19.2.7))
+        version: 1.1.1(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       dayjs:
         specifier: ^1.11.21
         version: 1.11.21
@@ -171,16 +159,13 @@ importers:
       tw-animate-css:
         specifier: ^1.4.0
         version: 1.4.0
-      vite:
-        specifier: ^5.0.0-0 || ^6.0.0-0 || ^7.0.0-0 || ^8.0.0-0
-        version: 8.1.4(@types/node@26.1.1)
       zod:
         specifier: ^4.4.3
         version: 4.4.3
     devDependencies:
       '@astrojs/check':
         specifier: 0.9.9
-        version: 0.9.9(typescript@6.0.2)
+        version: 0.9.9(prettier@3.9.5)(typescript@6.0.2)
       '@astrojs/markdown-remark':
         specifier: ^7.2.1
         version: 7.2.1
@@ -234,7 +219,7 @@ importers:
         version: 19.2.3(@types/react@19.2.17)
       '@unocss/astro':
         specifier: ^66.7.5
-        version: 66.7.5(vite@8.1.4(@types/node@26.1.1))
+        version: 66.7.5(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))
       '@unocss/preset-attributify':
         specifier: ^66.7.5
         version: 66.7.5
@@ -246,10 +231,10 @@ importers:
         version: 66.7.5
       '@wycey/browserslist-config':
         specifier: workspace:*
-        version: 0.0.1
+        version: link:../../packages/browserslist-config
       '@wycey/tsconfig':
         specifier: workspace:*
-        version: 0.0.1
+        version: link:../../packages/tsconfig
       astro-minify-html-swc:
         specifier: ^0.1.12
         version: 0.1.12
@@ -303,10 +288,10 @@ importers:
         version: 4.0.0
       remark-cjk-friendly:
         specifier: ^2.3.1
-        version: 2.3.1(@types/mdast@4.0.4)(unified@11.0.5)
+        version: 2.3.1(@types/mdast@4.0.4)(micromark-util-types@2.0.2)(micromark@4.0.2)(unified@11.0.5)
       remark-cjk-friendly-gfm-strikethrough:
         specifier: ^2.3.1
-        version: 2.3.1(@types/mdast@4.0.4)(unified@11.0.5)
+        version: 2.3.1(@types/mdast@4.0.4)(micromark-util-types@2.0.2)(micromark@4.0.2)(unified@11.0.5)
       remark-directive:
         specifier: ^4.0.0
         version: 4.0.0
@@ -390,22 +375,22 @@ importers:
         version: 5.1.0
       unocss:
         specifier: ^66.7.5
-        version: 66.7.5(@unocss/astro@66.7.5(vite@8.1.4(@types/node@26.1.1)))
+        version: 66.7.5(@unocss/astro@66.7.5(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)))(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))
       unocss-preset-animations:
         specifier: ^1.3.0
-        version: 1.3.0(@unocss/preset-wind3@66.7.5)(unocss@66.7.5(@unocss/astro@66.7.5(vite@8.1.4(@types/node@26.1.1))))
+        version: 1.3.0(@unocss/preset-wind3@66.7.5)(unocss@66.7.5(@unocss/astro@66.7.5(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)))(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)))
       unocss-preset-radix:
         specifier: ^2.8.2
         version: 2.8.2
       unocss-preset-scrollbar-hide:
         specifier: ^1.0.1
-        version: 1.0.1
+        version: 1.0.1(unocss@66.7.5(@unocss/astro@66.7.5(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)))(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)))
       vite-plugin-remove-console:
         specifier: ^2.2.0
         version: 2.2.0
       wrangler:
         specifier: ^4.107.0
-        version: 4.110.0(@cloudflare/workers-types@5.20260713.1)
+        version: 4.110.0(@cloudflare/workers-types@5.20260714.1)
 
   packages/biome-config: {}
 
@@ -943,8 +928,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@cloudflare/workers-types@5.20260713.1':
-    resolution: {integrity: sha512-4YZE9YIzr3iP9eRUV4ekZozLLsYQFFKxmMJfAcsteCuzKJ7RJrLqcCxm1aMzTE9uFcy+D6A89WE+cjJadF2c9g==}
+  '@cloudflare/workers-types@5.20260714.1':
+    resolution: {integrity: sha512-HGCTQVIQwzqAMLrZBCgLDrWKMgOdi6yn+S0Do1rF6z7t8tVvNprQfa53V6EDRRwsVO92uN5gviX2SxASDINZfA==}
 
   '@cspotcode/source-map-support@0.8.1':
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
@@ -1776,7 +1761,6 @@ packages:
     peerDependenciesMeta:
       '@cfworker/json-schema':
         optional: true
-      zod: {}
 
   '@myriaddreamin/rehype-typst@0.7.0':
     resolution: {integrity: sha512-FS8GQrJMRwWRcni/qjrp8FGA21PTMeQzswvreEXv12j/AyxThF/jaSAAeliBWCPvHX3VrZ7k31VRHbT7N21kyg==}
@@ -2416,36 +2400,42 @@ packages:
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@rolldown/binding-linux-arm64-musl@1.1.5':
     resolution: {integrity: sha512-lAryqH7IteztmCXQXk0etKj4wBQ7Gx5S6LjKhsgp9zb8I5bsuvU/2llH1hDQcjsFeqIsovMVN339/8pUDDBXxA==}
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@rolldown/binding-linux-ppc64-gnu@1.1.5':
     resolution: {integrity: sha512-fsK/sNBnxzBlL4O1JNrZakVQxPspqpED5dLtNsZS9oOKmtSpdNIzxH2kkol5HYTWJN47sE20ztMJPxfZ89qGOg==}
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [ppc64]
     os: [linux]
+    libc: [glibc]
 
   '@rolldown/binding-linux-s390x-gnu@1.1.5':
     resolution: {integrity: sha512-gLYb4BIadlfTOYT5gO503n8zQjXflgzpD0FcyKh0Mzx3rqCZKnHoJWV9xe1KXUJ5lx2JfcSHr/mhzS0PC/McAA==}
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [s390x]
     os: [linux]
+    libc: [glibc]
 
   '@rolldown/binding-linux-x64-gnu@1.1.5':
     resolution: {integrity: sha512-FjcpEKUyJygHgs1o50VYNvkt5+7Le/VEdYt0AkRpkL33MnyQfwr8l5mXwMmfmTbyMPr5vJLC+8/Gd9gXnwU1QQ==}
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@rolldown/binding-linux-x64-musl@1.1.5':
     resolution: {integrity: sha512-Me+PfPI2TMeOQk0gYWfLQZtTktrmzbr8cDboqX83XKc7UrgAi55gF+2dUkWdxd19n55Essp2yeca+O9N5rBxHg==}
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@rolldown/binding-openharmony-arm64@1.1.5':
     resolution: {integrity: sha512-yc5WrLzXks6zCQfn9Oxr8pORKyl/pF+QjHmW/Qx3qu0oyrrNC+y2JLTU1E2rcWYAmzlnqngWXHQjy51VzW70Vw==}
@@ -5399,24 +5389,28 @@ packages:
     engines: {node: '>= 12.0.0'}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   lightningcss-linux-arm64-musl@1.32.0:
     resolution: {integrity: sha512-UpQkoenr4UJEzgVIYpI80lDFvRmPVg6oqboNHfoH4CQIfNA+HOrZ7Mo7KZP02dC6LjghPQJeBsvXhJod/wnIBg==}
     engines: {node: '>= 12.0.0'}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   lightningcss-linux-x64-gnu@1.32.0:
     resolution: {integrity: sha512-V7Qr52IhZmdKPVr+Vtw8o+WLsQJYCTd8loIfpDaMRWGUZfBOYEJeyJIkqGIDMZPwPx24pUMfwSxxI8phr/MbOA==}
     engines: {node: '>= 12.0.0'}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   lightningcss-linux-x64-musl@1.32.0:
     resolution: {integrity: sha512-bYcLp+Vb0awsiXg/80uCRezCYHNg1/l3mt0gzHnWV9XP1W5sKa5/TCdGWaR/zBM2PeF/HbsQv/j2URNOiVuxWg==}
     engines: {node: '>= 12.0.0'}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   lightningcss-win32-arm64-msvc@1.32.0:
     resolution: {integrity: sha512-8SbC8BR40pS6baCM8sbtYDSwEVQd4JlFTOlaD3gWGHfThTcABnNDBda6eTZeqbofalIJhFx0qKzgHJmcPTnGdw==}
@@ -5957,120 +5951,120 @@ packages:
     resolution:
       type: variations
       variants:
-      - resolution:
-          archive: tarball
-          bin:
-            node: bin/node
-          integrity: sha256-ZGOiNzn2sjAOvsXM1gJ14TjjhY/Br8bo+bxOT2pLdvo=
-          type: binary
-          url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-aix-ppc64.tar.gz
-        targets:
-        - cpu: ppc64
-          os: aix
-      - resolution:
-          archive: tarball
-          bin:
-            node: bin/node
-          integrity: sha256-4al+FMmcgD6WxzOUAyguoFpJnDL42D3v6e9exm+XntE=
-          type: binary
-          url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-darwin-arm64.tar.gz
-        targets:
-        - cpu: arm64
-          os: darwin
-      - resolution:
-          archive: tarball
-          bin:
-            node: bin/node
-          integrity: sha256-39Db0+chUDQ033tyBecZ9hs6OjGyvPlym4uR/qJA8IA=
-          type: binary
-          url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-darwin-x64.tar.gz
-        targets:
-        - cpu: x64
-          os: darwin
-      - resolution:
-          archive: tarball
-          bin:
-            node: bin/node
-          integrity: sha256-a0SEwhkCdBdd+aqPKOLXWKgZyxwf5qtIHi+VtGOrhQg=
-          type: binary
-          url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-linux-arm64.tar.gz
-        targets:
-        - cpu: arm64
-          os: linux
-      - resolution:
-          archive: tarball
-          bin:
-            node: bin/node
-          integrity: sha256-/hM4ly95KDxrwh5h2/RXa76MBa3tKZnUHIZDrTAmUUI=
-          type: binary
-          url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-linux-ppc64le.tar.gz
-        targets:
-        - cpu: ppc64le
-          os: linux
-      - resolution:
-          archive: tarball
-          bin:
-            node: bin/node
-          integrity: sha256-Nx68E5RfwWlJPnUvLdr6+rbs2My0Ubz/RuCfacXdjHo=
-          type: binary
-          url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-linux-s390x.tar.gz
-        targets:
-        - cpu: s390x
-          os: linux
-      - resolution:
-          archive: tarball
-          bin:
-            node: bin/node
-          integrity: sha256-eDEwmElj23upy9AQierywu+wVcfBaTyUMXS5Z7MFDLg=
-          type: binary
-          url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-linux-x64.tar.gz
-        targets:
-        - cpu: x64
-          os: linux
-      - resolution:
-          archive: zip
-          bin:
-            node: node.exe
-          integrity: sha256-8nRmmtuTsf0Pv48h/QeGCencyEMz1PJxjS3eP5oWGgE=
-          prefix: node-v24.18.0-win-arm64
-          type: binary
-          url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-win-arm64.zip
-        targets:
-        - cpu: arm64
-          os: win32
-      - resolution:
-          archive: zip
-          bin:
-            node: node.exe
-          integrity: sha256-CuaEBrQtdyVmHal5sUA+yZJtogXGdwgn8zqsnY8m6CE=
-          prefix: node-v24.18.0-win-x64
-          type: binary
-          url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-win-x64.zip
-        targets:
-        - cpu: x64
-          os: win32
-      - resolution:
-          archive: tarball
-          bin:
-            node: bin/node
-          integrity: sha256-scbC3DG0bdj7IyL0/nWwfndcUSC8NyUd7uoo9SnUVns=
-          type: binary
-          url: https://unofficial-builds.nodejs.org/download/release/v24.18.0/node-v24.18.0-linux-arm64-musl.tar.gz
-        targets:
-        - cpu: arm64
-          libc: musl
-          os: linux
-      - resolution:
-          archive: tarball
-          bin:
-            node: bin/node
-          integrity: sha256-6lhAmRHhQexrGdkXjvotkYWhMpUAWxy/VSGzFX7tHZU=
-          type: binary
-          url: https://unofficial-builds.nodejs.org/download/release/v24.18.0/node-v24.18.0-linux-x64-musl.tar.gz
-        targets:
-        - cpu: x64
-          libc: musl
-          os: linux
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-ZGOiNzn2sjAOvsXM1gJ14TjjhY/Br8bo+bxOT2pLdvo=
+            type: binary
+            url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-aix-ppc64.tar.gz
+          targets:
+            - cpu: ppc64
+              os: aix
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-4al+FMmcgD6WxzOUAyguoFpJnDL42D3v6e9exm+XntE=
+            type: binary
+            url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-darwin-arm64.tar.gz
+          targets:
+            - cpu: arm64
+              os: darwin
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-39Db0+chUDQ033tyBecZ9hs6OjGyvPlym4uR/qJA8IA=
+            type: binary
+            url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-darwin-x64.tar.gz
+          targets:
+            - cpu: x64
+              os: darwin
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-a0SEwhkCdBdd+aqPKOLXWKgZyxwf5qtIHi+VtGOrhQg=
+            type: binary
+            url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-linux-arm64.tar.gz
+          targets:
+            - cpu: arm64
+              os: linux
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-/hM4ly95KDxrwh5h2/RXa76MBa3tKZnUHIZDrTAmUUI=
+            type: binary
+            url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-linux-ppc64le.tar.gz
+          targets:
+            - cpu: ppc64le
+              os: linux
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-Nx68E5RfwWlJPnUvLdr6+rbs2My0Ubz/RuCfacXdjHo=
+            type: binary
+            url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-linux-s390x.tar.gz
+          targets:
+            - cpu: s390x
+              os: linux
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-eDEwmElj23upy9AQierywu+wVcfBaTyUMXS5Z7MFDLg=
+            type: binary
+            url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-linux-x64.tar.gz
+          targets:
+            - cpu: x64
+              os: linux
+        - resolution:
+            archive: zip
+            bin:
+              node: node.exe
+            integrity: sha256-8nRmmtuTsf0Pv48h/QeGCencyEMz1PJxjS3eP5oWGgE=
+            prefix: node-v24.18.0-win-arm64
+            type: binary
+            url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-win-arm64.zip
+          targets:
+            - cpu: arm64
+              os: win32
+        - resolution:
+            archive: zip
+            bin:
+              node: node.exe
+            integrity: sha256-CuaEBrQtdyVmHal5sUA+yZJtogXGdwgn8zqsnY8m6CE=
+            prefix: node-v24.18.0-win-x64
+            type: binary
+            url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-win-x64.zip
+          targets:
+            - cpu: x64
+              os: win32
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-scbC3DG0bdj7IyL0/nWwfndcUSC8NyUd7uoo9SnUVns=
+            type: binary
+            url: https://unofficial-builds.nodejs.org/download/release/v24.18.0/node-v24.18.0-linux-arm64-musl.tar.gz
+          targets:
+            - cpu: arm64
+              os: linux
+              libc: musl
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-6lhAmRHhQexrGdkXjvotkYWhMpUAWxy/VSGzFX7tHZU=
+            type: binary
+            url: https://unofficial-builds.nodejs.org/download/release/v24.18.0/node-v24.18.0-linux-x64-musl.tar.gz
+          targets:
+            - cpu: x64
+              os: linux
+              libc: musl
     version: 24.18.0
     hasBin: true
 
@@ -8102,9 +8096,9 @@ snapshots:
 
   '@ark/util@0.56.2': {}
 
-  '@astrojs/check@0.9.9(typescript@6.0.2)':
+  '@astrojs/check@0.9.9(prettier@3.9.5)(typescript@6.0.2)':
     dependencies:
-      '@astrojs/language-server': 2.16.12
+      '@astrojs/language-server': 2.16.12(prettier@3.9.5)(typescript@6.0.2)
       chokidar: 4.0.3
       kleur: 4.1.5
       typescript: 6.0.2
@@ -8113,16 +8107,17 @@ snapshots:
       - prettier
       - prettier-plugin-astro
 
-  '@astrojs/cloudflare@14.1.2(astro@7.0.7(@astrojs/markdown-remark@7.2.1))(wrangler@4.110.0(@cloudflare/workers-types@5.20260713.1))':
+  '@astrojs/cloudflare@14.1.2(@types/node@26.1.1)(astro@7.0.7(@astrojs/markdown-remark@7.2.1)(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@26.1.1)(jiti@2.7.0)(yaml@2.9.0))(esbuild@0.28.1)(jiti@2.7.0)(workerd@1.20260708.1)(wrangler@4.110.0(@cloudflare/workers-types@5.20260714.1))(yaml@2.9.0)':
     dependencies:
       '@astrojs/internal-helpers': 0.10.1
       '@astrojs/underscore-redirects': 1.0.3
-      '@cloudflare/vite-plugin': 1.44.0(vite@8.1.4(@types/node@26.1.1))(wrangler@4.110.0(@cloudflare/workers-types@5.20260713.1))
-      astro: 7.0.7(@astrojs/markdown-remark@7.2.1)
+      '@cloudflare/vite-plugin': 1.44.0(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))(workerd@1.20260708.1)(wrangler@4.110.0(@cloudflare/workers-types@5.20260714.1))
+      astro: 7.0.7(@astrojs/markdown-remark@7.2.1)(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@26.1.1)(jiti@2.7.0)(yaml@2.9.0)
       piccolore: 0.1.3
-      vite: 8.1.4(@types/node@26.1.1)
-      wrangler: 4.110.0(@cloudflare/workers-types@5.20260713.1)
+      vite: 8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)
+      wrangler: 4.110.0(@cloudflare/workers-types@5.20260714.1)
     transitivePeerDependencies:
+      - '@types/node'
       - '@vitejs/devtools'
       - bufferutil
       - esbuild
@@ -8159,6 +8154,9 @@ snapshots:
   '@astrojs/compiler-binding-wasm32-wasi@0.3.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)':
     dependencies:
       '@napi-rs/wasm-runtime': 1.1.6(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)
+    transitivePeerDependencies:
+      - '@emnapi/core'
+      - '@emnapi/runtime'
     optional: true
 
   '@astrojs/compiler-binding-win32-arm64-msvc@0.3.1':
@@ -8178,10 +8176,16 @@ snapshots:
       '@astrojs/compiler-binding-wasm32-wasi': 0.3.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)
       '@astrojs/compiler-binding-win32-arm64-msvc': 0.3.1
       '@astrojs/compiler-binding-win32-x64-msvc': 0.3.1
+    transitivePeerDependencies:
+      - '@emnapi/core'
+      - '@emnapi/runtime'
 
   '@astrojs/compiler-rs@0.3.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)':
     dependencies:
       '@astrojs/compiler-binding': 0.3.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)
+    transitivePeerDependencies:
+      - '@emnapi/core'
+      - '@emnapi/runtime'
 
   '@astrojs/compiler@2.13.1': {}
 
@@ -8196,7 +8200,7 @@ snapshots:
       smol-toml: 1.7.0
       unified: 11.0.5
 
-  '@astrojs/language-server@2.16.12':
+  '@astrojs/language-server@2.16.12(prettier@3.9.5)(typescript@6.0.2)':
     dependencies:
       '@astrojs/compiler': 2.13.1
       '@astrojs/yaml2ts': 0.2.4
@@ -8210,14 +8214,16 @@ snapshots:
       volar-service-css: 0.0.71(@volar/language-service@2.4.28)
       volar-service-emmet: 0.0.71(@volar/language-service@2.4.28)
       volar-service-html: 0.0.71(@volar/language-service@2.4.28)
-      volar-service-prettier: 0.0.71(@volar/language-service@2.4.28)
+      volar-service-prettier: 0.0.71(@volar/language-service@2.4.28)(prettier@3.9.5)
       volar-service-typescript: 0.0.71(@volar/language-service@2.4.28)
       volar-service-typescript-twoslash-queries: 0.0.71(@volar/language-service@2.4.28)
       volar-service-yaml: 0.0.71(@volar/language-service@2.4.28)
       vscode-html-languageservice: 5.6.2
       vscode-uri: 3.1.0
+    optionalDependencies:
+      prettier: 3.9.5
     transitivePeerDependencies:
-      - prettier
+      - typescript
 
   '@astrojs/markdown-remark@7.2.1':
     dependencies:
@@ -8252,18 +8258,19 @@ snapshots:
     dependencies:
       prismjs: 1.30.0
 
-  '@astrojs/react@6.0.1(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))':
+  '@astrojs/react@6.0.1(@types/node@26.1.1)(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(esbuild@0.28.1)(jiti@2.7.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(yaml@2.9.0)':
     dependencies:
       '@astrojs/internal-helpers': 0.10.1
       '@types/react': 19.2.17
       '@types/react-dom': 19.2.3(@types/react@19.2.17)
-      '@vitejs/plugin-react': 5.2.0(vite@8.1.4(@types/node@26.1.1))
+      '@vitejs/plugin-react': 5.2.0(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))
       devalue: 5.8.1
       react: 19.2.7
       react-dom: 19.2.7(react@19.2.7)
       ultrahtml: 1.7.0
-      vite: 8.1.4(@types/node@26.1.1)
+      vite: 8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)
     transitivePeerDependencies:
+      - '@types/node'
       - '@vitejs/devtools'
       - esbuild
       - jiti
@@ -8289,13 +8296,14 @@ snapshots:
       stream-replace-string: 2.0.0
       zod: 4.4.3
 
-  '@astrojs/solid-js@7.0.1(solid-js@1.9.14)':
+  '@astrojs/solid-js@7.0.1(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(solid-js@1.9.14)(yaml@2.9.0)':
     dependencies:
       solid-js: 1.9.14
-      vite: 8.1.4(@types/node@26.1.1)
-      vite-plugin-solid: 2.11.12(solid-js@1.9.14)(vite@8.1.4(@types/node@26.1.1))
+      vite: 8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)
+      vite-plugin-solid: 2.11.12(solid-js@1.9.14)(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))
     transitivePeerDependencies:
       - '@testing-library/jest-dom'
+      - '@types/node'
       - '@vitejs/devtools'
       - esbuild
       - jiti
@@ -8540,26 +8548,28 @@ snapshots:
       '@babel/helper-string-parser': 7.29.7
       '@babel/helper-validator-identifier': 7.29.7
 
-  '@base-ui/react@1.6.0(@types/react@19.2.17)(react@19.2.7)(react-dom@19.2.7(react@19.2.7))':
+  '@base-ui/react@1.6.0(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
     dependencies:
       '@babel/runtime': 7.29.7
-      '@base-ui/utils': 0.3.1(@types/react@19.2.17)(react@19.2.7)(react-dom@19.2.7(react@19.2.7))
-      '@floating-ui/react-dom': 2.1.9(react@19.2.7)(react-dom@19.2.7(react@19.2.7))
+      '@base-ui/utils': 0.3.1(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      '@floating-ui/react-dom': 2.1.9(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@floating-ui/utils': 0.2.12
-      '@types/react': 19.2.17
       react: 19.2.7
       react-dom: 19.2.7(react@19.2.7)
       use-sync-external-store: 1.6.0(react@19.2.7)
+    optionalDependencies:
+      '@types/react': 19.2.17
 
-  '@base-ui/utils@0.3.1(@types/react@19.2.17)(react@19.2.7)(react-dom@19.2.7(react@19.2.7))':
+  '@base-ui/utils@0.3.1(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
     dependencies:
       '@babel/runtime': 7.29.7
       '@floating-ui/utils': 0.2.12
-      '@types/react': 19.2.17
       react: 19.2.7
       react-dom: 19.2.7(react@19.2.7)
       reselect: 5.2.0
       use-sync-external-store: 1.6.0(react@19.2.7)
+    optionalDependencies:
+      '@types/react': 19.2.17
 
   '@biomejs/biome@2.5.3':
     optionalDependencies:
@@ -8663,22 +8673,19 @@ snapshots:
 
   '@cloudflare/kv-asset-handler@0.5.0': {}
 
-  '@cloudflare/unenv-preset@2.16.1(unenv@2.0.0-rc.24)':
-    dependencies:
-      unenv: 2.0.0-rc.24
-
   '@cloudflare/unenv-preset@2.16.1(unenv@2.0.0-rc.24)(workerd@1.20260708.1)':
     dependencies:
       unenv: 2.0.0-rc.24
+    optionalDependencies:
       workerd: 1.20260708.1
 
-  '@cloudflare/vite-plugin@1.44.0(vite@8.1.4(@types/node@26.1.1))(wrangler@4.110.0(@cloudflare/workers-types@5.20260713.1))':
+  '@cloudflare/vite-plugin@1.44.0(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))(workerd@1.20260708.1)(wrangler@4.110.0(@cloudflare/workers-types@5.20260714.1))':
     dependencies:
-      '@cloudflare/unenv-preset': 2.16.1(unenv@2.0.0-rc.24)
+      '@cloudflare/unenv-preset': 2.16.1(unenv@2.0.0-rc.24)(workerd@1.20260708.1)
       miniflare: 4.20260708.1
       unenv: 2.0.0-rc.24
-      vite: 8.1.4(@types/node@26.1.1)
-      wrangler: 4.110.0(@cloudflare/workers-types@5.20260713.1)
+      vite: 8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)
+      wrangler: 4.110.0(@cloudflare/workers-types@5.20260714.1)
       ws: 8.21.0
     transitivePeerDependencies:
       - bufferutil
@@ -8700,7 +8707,7 @@ snapshots:
   '@cloudflare/workerd-windows-64@1.20260708.1':
     optional: true
 
-  '@cloudflare/workers-types@5.20260713.1': {}
+  '@cloudflare/workers-types@5.20260714.1': {}
 
   '@cspotcode/source-map-support@0.8.1':
     dependencies:
@@ -9070,7 +9077,7 @@ snapshots:
       '@floating-ui/core': 1.8.0
       '@floating-ui/utils': 0.2.12
 
-  '@floating-ui/react-dom@2.1.9(react@19.2.7)(react-dom@19.2.7(react@19.2.7))':
+  '@floating-ui/react-dom@2.1.9(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
     dependencies:
       '@floating-ui/dom': 1.8.0
       react: 19.2.7
@@ -9645,121 +9652,136 @@ snapshots:
 
   '@radix-ui/react-compose-refs@1.1.3(@types/react@19.2.17)(react@19.2.7)':
     dependencies:
-      '@types/react': 19.2.17
       react: 19.2.7
+    optionalDependencies:
+      '@types/react': 19.2.17
 
   '@radix-ui/react-context@1.2.0(@types/react@19.2.17)(react@19.2.7)':
     dependencies:
-      '@types/react': 19.2.17
       react: 19.2.7
+    optionalDependencies:
+      '@types/react': 19.2.17
 
-  '@radix-ui/react-dialog@1.1.19(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))':
+  '@radix-ui/react-dialog@1.1.19(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
     dependencies:
       '@radix-ui/primitive': 1.1.5
       '@radix-ui/react-compose-refs': 1.1.3(@types/react@19.2.17)(react@19.2.7)
       '@radix-ui/react-context': 1.2.0(@types/react@19.2.17)(react@19.2.7)
-      '@radix-ui/react-dismissable-layer': 1.1.15(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))
+      '@radix-ui/react-dismissable-layer': 1.1.15(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@radix-ui/react-focus-guards': 1.1.4(@types/react@19.2.17)(react@19.2.7)
-      '@radix-ui/react-focus-scope': 1.1.12(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))
+      '@radix-ui/react-focus-scope': 1.1.12(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@radix-ui/react-id': 1.1.2(@types/react@19.2.17)(react@19.2.7)
-      '@radix-ui/react-portal': 1.1.13(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))
-      '@radix-ui/react-presence': 1.1.7(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))
-      '@radix-ui/react-primitive': 2.1.7(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))
+      '@radix-ui/react-portal': 1.1.13(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      '@radix-ui/react-presence': 1.1.7(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      '@radix-ui/react-primitive': 2.1.7(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@radix-ui/react-slot': 1.3.0(@types/react@19.2.17)(react@19.2.7)
       '@radix-ui/react-use-controllable-state': 1.2.3(@types/react@19.2.17)(react@19.2.7)
-      '@types/react': 19.2.17
-      '@types/react-dom': 19.2.3(@types/react@19.2.17)
       aria-hidden: 1.2.6
       react: 19.2.7
       react-dom: 19.2.7(react@19.2.7)
       react-remove-scroll: 2.7.2(@types/react@19.2.17)(react@19.2.7)
+    optionalDependencies:
+      '@types/react': 19.2.17
+      '@types/react-dom': 19.2.3(@types/react@19.2.17)
 
-  '@radix-ui/react-dismissable-layer@1.1.15(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))':
+  '@radix-ui/react-dismissable-layer@1.1.15(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
     dependencies:
       '@radix-ui/primitive': 1.1.5
       '@radix-ui/react-compose-refs': 1.1.3(@types/react@19.2.17)(react@19.2.7)
-      '@radix-ui/react-primitive': 2.1.7(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))
+      '@radix-ui/react-primitive': 2.1.7(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@radix-ui/react-use-callback-ref': 1.1.2(@types/react@19.2.17)(react@19.2.7)
       '@radix-ui/react-use-effect-event': 0.0.3(@types/react@19.2.17)(react@19.2.7)
-      '@types/react': 19.2.17
-      '@types/react-dom': 19.2.3(@types/react@19.2.17)
       react: 19.2.7
       react-dom: 19.2.7(react@19.2.7)
+    optionalDependencies:
+      '@types/react': 19.2.17
+      '@types/react-dom': 19.2.3(@types/react@19.2.17)
 
   '@radix-ui/react-focus-guards@1.1.4(@types/react@19.2.17)(react@19.2.7)':
     dependencies:
-      '@types/react': 19.2.17
       react: 19.2.7
+    optionalDependencies:
+      '@types/react': 19.2.17
 
-  '@radix-ui/react-focus-scope@1.1.12(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))':
+  '@radix-ui/react-focus-scope@1.1.12(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
     dependencies:
       '@radix-ui/react-compose-refs': 1.1.3(@types/react@19.2.17)(react@19.2.7)
-      '@radix-ui/react-primitive': 2.1.7(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))
+      '@radix-ui/react-primitive': 2.1.7(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@radix-ui/react-use-callback-ref': 1.1.2(@types/react@19.2.17)(react@19.2.7)
-      '@types/react': 19.2.17
-      '@types/react-dom': 19.2.3(@types/react@19.2.17)
       react: 19.2.7
       react-dom: 19.2.7(react@19.2.7)
+    optionalDependencies:
+      '@types/react': 19.2.17
+      '@types/react-dom': 19.2.3(@types/react@19.2.17)
 
   '@radix-ui/react-id@1.1.2(@types/react@19.2.17)(react@19.2.7)':
     dependencies:
       '@radix-ui/react-use-layout-effect': 1.1.2(@types/react@19.2.17)(react@19.2.7)
-      '@types/react': 19.2.17
       react: 19.2.7
-
-  '@radix-ui/react-portal@1.1.13(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))':
-    dependencies:
-      '@radix-ui/react-primitive': 2.1.7(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))
-      '@radix-ui/react-use-layout-effect': 1.1.2(@types/react@19.2.17)(react@19.2.7)
+    optionalDependencies:
       '@types/react': 19.2.17
-      '@types/react-dom': 19.2.3(@types/react@19.2.17)
+
+  '@radix-ui/react-portal@1.1.13(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
+    dependencies:
+      '@radix-ui/react-primitive': 2.1.7(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      '@radix-ui/react-use-layout-effect': 1.1.2(@types/react@19.2.17)(react@19.2.7)
       react: 19.2.7
       react-dom: 19.2.7(react@19.2.7)
-
-  '@radix-ui/react-presence@1.1.7(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))':
-    dependencies:
-      '@radix-ui/react-use-layout-effect': 1.1.2(@types/react@19.2.17)(react@19.2.7)
+    optionalDependencies:
       '@types/react': 19.2.17
       '@types/react-dom': 19.2.3(@types/react@19.2.17)
+
+  '@radix-ui/react-presence@1.1.7(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
+    dependencies:
+      '@radix-ui/react-use-layout-effect': 1.1.2(@types/react@19.2.17)(react@19.2.7)
       react: 19.2.7
       react-dom: 19.2.7(react@19.2.7)
+    optionalDependencies:
+      '@types/react': 19.2.17
+      '@types/react-dom': 19.2.3(@types/react@19.2.17)
 
-  '@radix-ui/react-primitive@2.1.7(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))':
+  '@radix-ui/react-primitive@2.1.7(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
     dependencies:
       '@radix-ui/react-slot': 1.3.0(@types/react@19.2.17)(react@19.2.7)
-      '@types/react': 19.2.17
-      '@types/react-dom': 19.2.3(@types/react@19.2.17)
       react: 19.2.7
       react-dom: 19.2.7(react@19.2.7)
+    optionalDependencies:
+      '@types/react': 19.2.17
+      '@types/react-dom': 19.2.3(@types/react@19.2.17)
 
   '@radix-ui/react-slot@1.3.0(@types/react@19.2.17)(react@19.2.7)':
     dependencies:
       '@radix-ui/react-compose-refs': 1.1.3(@types/react@19.2.17)(react@19.2.7)
-      '@types/react': 19.2.17
       react: 19.2.7
+    optionalDependencies:
+      '@types/react': 19.2.17
 
   '@radix-ui/react-use-callback-ref@1.1.2(@types/react@19.2.17)(react@19.2.7)':
     dependencies:
-      '@types/react': 19.2.17
       react: 19.2.7
+    optionalDependencies:
+      '@types/react': 19.2.17
 
   '@radix-ui/react-use-controllable-state@1.2.3(@types/react@19.2.17)(react@19.2.7)':
     dependencies:
       '@radix-ui/react-use-effect-event': 0.0.3(@types/react@19.2.17)(react@19.2.7)
       '@radix-ui/react-use-layout-effect': 1.1.2(@types/react@19.2.17)(react@19.2.7)
-      '@types/react': 19.2.17
       react: 19.2.7
+    optionalDependencies:
+      '@types/react': 19.2.17
 
   '@radix-ui/react-use-effect-event@0.0.3(@types/react@19.2.17)(react@19.2.7)':
     dependencies:
       '@radix-ui/react-use-layout-effect': 1.1.2(@types/react@19.2.17)(react@19.2.7)
-      '@types/react': 19.2.17
       react: 19.2.7
+    optionalDependencies:
+      '@types/react': 19.2.17
 
   '@radix-ui/react-use-layout-effect@1.1.2(@types/react@19.2.17)(react@19.2.7)':
     dependencies:
-      '@types/react': 19.2.17
       react: 19.2.7
+    optionalDependencies:
+      '@types/react': 19.2.17
 
   '@remark-embedder/core@3.0.3':
     dependencies:
@@ -9888,14 +9910,14 @@ snapshots:
 
   '@sec-ant/readable-stream@0.4.1': {}
 
-  '@sentry/astro@10.65.0(astro@7.0.7(@astrojs/markdown-remark@7.2.1))':
+  '@sentry/astro@10.65.0(@opentelemetry/core@2.9.0(@opentelemetry/api@1.9.1))(astro@7.0.7(@astrojs/markdown-remark@7.2.1)(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@26.1.1)(jiti@2.7.0)(yaml@2.9.0))':
     dependencies:
       '@sentry/browser': 10.65.0
       '@sentry/conventions': 0.15.1
       '@sentry/core': 10.65.0
       '@sentry/node': 10.65.0(@opentelemetry/core@2.9.0(@opentelemetry/api@1.9.1))
       '@sentry/vite-plugin': 5.4.0
-      astro: 7.0.7(@astrojs/markdown-remark@7.2.1)
+      astro: 7.0.7(@astrojs/markdown-remark@7.2.1)(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@26.1.1)(jiti@2.7.0)(yaml@2.9.0)
     transitivePeerDependencies:
       - '@opentelemetry/core'
       - '@opentelemetry/exporter-trace-otlp-http'
@@ -9975,12 +9997,14 @@ snapshots:
       - encoding
       - supports-color
 
-  '@sentry/cloudflare@10.65.0':
+  '@sentry/cloudflare@10.65.0(@cloudflare/workers-types@5.20260714.1)(@opentelemetry/core@2.9.0(@opentelemetry/api@1.9.1))':
     dependencies:
       '@opentelemetry/api': 1.9.1
       '@sentry/core': 10.65.0
       '@sentry/node': 10.65.0(@opentelemetry/core@2.9.0(@opentelemetry/api@1.9.1))
       '@sentry/server-utils': 10.65.0
+    optionalDependencies:
+      '@cloudflare/workers-types': 5.20260714.1
     transitivePeerDependencies:
       - '@opentelemetry/core'
       - '@opentelemetry/exporter-trace-otlp-http'
@@ -9996,15 +10020,17 @@ snapshots:
     dependencies:
       '@sentry/core': 10.65.0
 
-  '@sentry/node-core@10.65.0(@opentelemetry/api@1.9.1)(@opentelemetry/instrumentation@0.220.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-trace-base@2.9.0(@opentelemetry/api@1.9.1))':
+  '@sentry/node-core@10.65.0(@opentelemetry/api@1.9.1)(@opentelemetry/core@2.9.0(@opentelemetry/api@1.9.1))(@opentelemetry/instrumentation@0.220.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-trace-base@2.9.0(@opentelemetry/api@1.9.1))':
     dependencies:
-      '@opentelemetry/api': 1.9.1
-      '@opentelemetry/instrumentation': 0.220.0(@opentelemetry/api@1.9.1)
-      '@opentelemetry/sdk-trace-base': 2.9.0(@opentelemetry/api@1.9.1)
       '@sentry/conventions': 0.15.1
       '@sentry/core': 10.65.0
       '@sentry/opentelemetry': 10.65.0(@opentelemetry/api@1.9.1)(@opentelemetry/core@2.9.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-trace-base@2.9.0(@opentelemetry/api@1.9.1))
       import-in-the-middle: 3.3.1
+    optionalDependencies:
+      '@opentelemetry/api': 1.9.1
+      '@opentelemetry/core': 2.9.0(@opentelemetry/api@1.9.1)
+      '@opentelemetry/instrumentation': 0.220.0(@opentelemetry/api@1.9.1)
+      '@opentelemetry/sdk-trace-base': 2.9.0(@opentelemetry/api@1.9.1)
 
   '@sentry/node@10.65.0(@opentelemetry/core@2.9.0(@opentelemetry/api@1.9.1))':
     dependencies:
@@ -10013,7 +10039,7 @@ snapshots:
       '@opentelemetry/sdk-trace-base': 2.9.0(@opentelemetry/api@1.9.1)
       '@sentry/conventions': 0.15.1
       '@sentry/core': 10.65.0
-      '@sentry/node-core': 10.65.0(@opentelemetry/api@1.9.1)(@opentelemetry/instrumentation@0.220.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-trace-base@2.9.0(@opentelemetry/api@1.9.1))
+      '@sentry/node-core': 10.65.0(@opentelemetry/api@1.9.1)(@opentelemetry/core@2.9.0(@opentelemetry/api@1.9.1))(@opentelemetry/instrumentation@0.220.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-trace-base@2.9.0(@opentelemetry/api@1.9.1))
       '@sentry/opentelemetry': 10.65.0(@opentelemetry/api@1.9.1)(@opentelemetry/core@2.9.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-trace-base@2.9.0(@opentelemetry/api@1.9.1))
       '@sentry/server-utils': 10.65.0
       import-in-the-middle: 3.3.1
@@ -10735,12 +10761,13 @@ snapshots:
 
   '@ungap/structured-clone@1.3.3': {}
 
-  '@unocss/astro@66.7.5(vite@8.1.4(@types/node@26.1.1))':
+  '@unocss/astro@66.7.5(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))':
     dependencies:
       '@unocss/core': 66.7.5
       '@unocss/reset': 66.7.5
-      '@unocss/vite': 66.7.5(vite@8.1.4(@types/node@26.1.1))
-      vite: 8.1.4(@types/node@26.1.1)
+      '@unocss/vite': 66.7.5(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))
+    optionalDependencies:
+      vite: 8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)
 
   '@unocss/cli@66.7.5':
     dependencies:
@@ -10867,7 +10894,7 @@ snapshots:
     dependencies:
       '@unocss/core': 66.7.5
 
-  '@unocss/vite@66.7.5(vite@8.1.4(@types/node@26.1.1))':
+  '@unocss/vite@66.7.5(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))':
     dependencies:
       '@jridgewell/remapping': 2.3.5
       '@unocss/config': 66.7.5
@@ -10878,14 +10905,14 @@ snapshots:
       pathe: 2.0.3
       tinyglobby: 0.2.17
       unplugin-utils: 0.3.2
-      vite: 8.1.4(@types/node@26.1.1)
+      vite: 8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)
 
   '@upsetjs/venn.js@2.0.0':
     optionalDependencies:
       d3-selection: 3.0.0
       d3-transition: 3.0.1(d3-selection@3.0.0)
 
-  '@vitejs/plugin-react@5.2.0(vite@8.1.4(@types/node@26.1.1))':
+  '@vitejs/plugin-react@5.2.0(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))':
     dependencies:
       '@babel/core': 7.29.7
       '@babel/plugin-transform-react-jsx-self': 7.29.7(@babel/core@7.29.7)
@@ -10893,7 +10920,7 @@ snapshots:
       '@rolldown/pluginutils': 1.0.0-rc.3
       '@types/babel__core': 7.20.5
       react-refresh: 0.18.0
-      vite: 8.1.4(@types/node@26.1.1)
+      vite: 8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -10963,15 +10990,15 @@ snapshots:
   agent-base@7.1.4: {}
 
   ajv-draft-04@1.0.0(ajv@8.20.0):
-    dependencies:
+    optionalDependencies:
       ajv: 8.20.0
 
   ajv-formats@2.1.1(ajv@8.20.0):
-    dependencies:
+    optionalDependencies:
       ajv: 8.20.0
 
   ajv-formats@3.0.1(ajv@8.20.0):
-    dependencies:
+    optionalDependencies:
       ajv: 8.20.0
 
   ajv-i18n@4.2.0(ajv@8.20.0):
@@ -11067,9 +11094,9 @@ snapshots:
 
   astring@1.9.0: {}
 
-  astro-expressive-code@0.44.0(astro@7.0.7(@astrojs/markdown-remark@7.2.1)):
+  astro-expressive-code@0.44.0(astro@7.0.7(@astrojs/markdown-remark@7.2.1)(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@26.1.1)(jiti@2.7.0)(yaml@2.9.0)):
     dependencies:
-      astro: 7.0.7(@astrojs/markdown-remark@7.2.1)
+      astro: 7.0.7(@astrojs/markdown-remark@7.2.1)(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@26.1.1)(jiti@2.7.0)(yaml@2.9.0)
       rehype-expressive-code: 0.44.0
       url-extras: 0.1.0
 
@@ -11079,22 +11106,22 @@ snapshots:
       '@swc/html': 1.15.43
       fast-glob: 3.3.3
 
-  astro-seo@1.1.0(typescript@6.0.2):
+  astro-seo@1.1.0(prettier@3.9.5)(typescript@6.0.2):
     dependencies:
-      '@astrojs/check': 0.9.9(typescript@6.0.2)
+      '@astrojs/check': 0.9.9(prettier@3.9.5)(typescript@6.0.2)
     transitivePeerDependencies:
       - prettier
       - prettier-plugin-astro
+      - typescript
 
-  astro-typed-links@2.0.0(astro@7.0.7(@astrojs/markdown-remark@7.2.1)):
+  astro-typed-links@2.0.0(astro@7.0.7(@astrojs/markdown-remark@7.2.1)(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@26.1.1)(jiti@2.7.0)(yaml@2.9.0)):
     dependencies:
-      astro: 7.0.7(@astrojs/markdown-remark@7.2.1)
+      astro: 7.0.7(@astrojs/markdown-remark@7.2.1)(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@26.1.1)(jiti@2.7.0)(yaml@2.9.0)
 
-  astro@7.0.7(@astrojs/markdown-remark@7.2.1):
+  astro@7.0.7(@astrojs/markdown-remark@7.2.1)(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@26.1.1)(jiti@2.7.0)(yaml@2.9.0):
     dependencies:
       '@astrojs/compiler-rs': 0.3.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)
       '@astrojs/internal-helpers': 0.10.1
-      '@astrojs/markdown-remark': 7.2.1
       '@astrojs/markdown-satteri': 0.3.3
       '@astrojs/telemetry': 3.3.3
       '@capsizecss/unpack': 4.0.1
@@ -11141,12 +11168,13 @@ snapshots:
       ultrahtml: 1.7.0
       unifont: 0.7.4
       unstorage: 1.17.5
-      vite: 8.1.4(@types/node@26.1.1)(esbuild@0.28.1)
-      vitefu: 1.1.3(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1))
+      vite: 8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)
+      vitefu: 1.1.3(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))
       xxhash-wasm: 1.1.0
       yargs-parser: 22.0.0
       zod: 4.4.3
     optionalDependencies:
+      '@astrojs/markdown-remark': 7.2.1
       sharp: 0.35.3(@types/node@26.1.1)
     transitivePeerDependencies:
       - '@azure/app-configuration'
@@ -11157,8 +11185,11 @@ snapshots:
       - '@azure/storage-blob'
       - '@capacitor/preferences'
       - '@deno/kv'
+      - '@emnapi/core'
+      - '@emnapi/runtime'
       - '@netlify/blobs'
       - '@planetscale/database'
+      - '@types/node'
       - '@upstash/redis'
       - '@vercel/blob'
       - '@vercel/functions'
@@ -11207,6 +11238,7 @@ snapshots:
     dependencies:
       '@babel/core': 7.29.7
       babel-plugin-jsx-dom-expressions: 0.40.7(@babel/core@7.29.7)
+    optionalDependencies:
       solid-js: 1.9.14
 
   bail@1.0.5: {}
@@ -11410,14 +11442,17 @@ snapshots:
 
   clsx@2.1.1: {}
 
-  cmdk@1.1.1(react@19.2.7)(react-dom@19.2.7(react@19.2.7)):
+  cmdk@1.1.1(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7):
     dependencies:
       '@radix-ui/react-compose-refs': 1.1.3(@types/react@19.2.17)(react@19.2.7)
-      '@radix-ui/react-dialog': 1.1.19(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))
+      '@radix-ui/react-dialog': 1.1.19(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@radix-ui/react-id': 1.1.2(@types/react@19.2.17)(react@19.2.7)
-      '@radix-ui/react-primitive': 2.1.7(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))
+      '@radix-ui/react-primitive': 2.1.7(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       react: 19.2.7
       react-dom: 19.2.7(react@19.2.7)
+    transitivePeerDependencies:
+      - '@types/react'
+      - '@types/react-dom'
 
   code-block-writer@13.0.3: {}
 
@@ -11497,6 +11532,7 @@ snapshots:
       import-fresh: 3.3.1
       js-yaml: 4.3.0
       parse-json: 5.2.0
+    optionalDependencies:
       typescript: 6.0.2
 
   cross-spawn@7.0.6:
@@ -12247,7 +12283,7 @@ snapshots:
       format: 0.2.2
 
   fdir@6.5.0(picomatch@4.0.5):
-    dependencies:
+    optionalDependencies:
       picomatch: 4.0.5
 
   fetch-blob@3.2.0:
@@ -13488,23 +13524,25 @@ snapshots:
       unist-util-visit: 5.1.0
       vfile: 6.0.3
 
-  mdast-util-to-markdown-cjk-friendly-gfm-strikethrough@1.0.0(@types/mdast@4.0.4):
+  mdast-util-to-markdown-cjk-friendly-gfm-strikethrough@1.0.0(@types/mdast@4.0.4)(micromark-util-types@2.0.2):
     dependencies:
-      '@types/mdast': 4.0.4
       mdast-util-gfm-strikethrough: 2.0.0
       mdast-util-to-markdown: 2.1.2
-      micromark-extension-cjk-friendly-util: 3.0.1
+      micromark-extension-cjk-friendly-util: 3.0.1(micromark-util-types@2.0.2)
       micromark-util-symbol: 2.0.1
+    optionalDependencies:
+      '@types/mdast': 4.0.4
     transitivePeerDependencies:
       - micromark-util-types
       - supports-color
 
-  mdast-util-to-markdown-cjk-friendly@1.0.0(@types/mdast@4.0.4):
+  mdast-util-to-markdown-cjk-friendly@1.0.0(@types/mdast@4.0.4)(micromark-util-types@2.0.2):
     dependencies:
-      '@types/mdast': 4.0.4
       mdast-util-to-markdown: 2.1.2
-      micromark-extension-cjk-friendly-util: 3.0.1
+      micromark-extension-cjk-friendly-util: 3.0.1(micromark-util-types@2.0.2)
       micromark-util-symbol: 2.0.1
+    optionalDependencies:
+      '@types/mdast': 4.0.4
     transitivePeerDependencies:
       - micromark-util-types
 
@@ -13560,6 +13598,7 @@ snapshots:
       '@fortawesome/fontawesome-free': 6.7.2
       katex: 0.16.47
       mermaid: 11.16.0
+    optionalDependencies:
       playwright: 1.61.1
 
   mermaid@11.16.0:
@@ -13605,35 +13644,37 @@ snapshots:
       micromark-util-symbol: 2.0.1
       micromark-util-types: 2.0.2
 
-  micromark-extension-cjk-friendly-gfm-strikethrough@2.0.1(micromark@4.0.2):
+  micromark-extension-cjk-friendly-gfm-strikethrough@2.0.1(micromark-util-types@2.0.2)(micromark@4.0.2):
     dependencies:
       devlop: 1.1.0
       get-east-asian-width: 1.6.0
       micromark: 4.0.2
-      micromark-extension-cjk-friendly-util: 3.0.1
+      micromark-extension-cjk-friendly-util: 3.0.1(micromark-util-types@2.0.2)
       micromark-util-character: 2.1.1
       micromark-util-chunked: 2.0.1
       micromark-util-resolve-all: 2.0.1
       micromark-util-symbol: 2.0.1
-    transitivePeerDependencies:
-      - micromark-util-types
+    optionalDependencies:
+      micromark-util-types: 2.0.2
 
-  micromark-extension-cjk-friendly-util@3.0.1:
+  micromark-extension-cjk-friendly-util@3.0.1(micromark-util-types@2.0.2):
     dependencies:
       get-east-asian-width: 1.6.0
       micromark-util-character: 2.1.1
       micromark-util-symbol: 2.0.1
+    optionalDependencies:
+      micromark-util-types: 2.0.2
 
-  micromark-extension-cjk-friendly@2.0.1(micromark@4.0.2):
+  micromark-extension-cjk-friendly@2.0.1(micromark-util-types@2.0.2)(micromark@4.0.2):
     dependencies:
       devlop: 1.1.0
       micromark: 4.0.2
-      micromark-extension-cjk-friendly-util: 3.0.1
+      micromark-extension-cjk-friendly-util: 3.0.1(micromark-util-types@2.0.2)
       micromark-util-chunked: 2.0.1
       micromark-util-resolve-all: 2.0.1
       micromark-util-symbol: 2.0.1
-    transitivePeerDependencies:
-      - micromark-util-types
+    optionalDependencies:
+      micromark-util-types: 2.0.2
 
   micromark-extension-directive@4.0.0:
     dependencies:
@@ -14459,27 +14500,30 @@ snapshots:
 
   react-remove-scroll-bar@2.3.8(@types/react@19.2.17)(react@19.2.7):
     dependencies:
-      '@types/react': 19.2.17
       react: 19.2.7
       react-style-singleton: 2.2.3(@types/react@19.2.17)(react@19.2.7)
       tslib: 2.8.1
+    optionalDependencies:
+      '@types/react': 19.2.17
 
   react-remove-scroll@2.7.2(@types/react@19.2.17)(react@19.2.7):
     dependencies:
-      '@types/react': 19.2.17
       react: 19.2.7
       react-remove-scroll-bar: 2.3.8(@types/react@19.2.17)(react@19.2.7)
       react-style-singleton: 2.2.3(@types/react@19.2.17)(react@19.2.7)
       tslib: 2.8.1
       use-callback-ref: 1.3.3(@types/react@19.2.17)(react@19.2.7)
       use-sidecar: 1.1.3(@types/react@19.2.17)(react@19.2.7)
+    optionalDependencies:
+      '@types/react': 19.2.17
 
   react-style-singleton@2.2.3(@types/react@19.2.17)(react@19.2.7):
     dependencies:
-      '@types/react': 19.2.17
       get-nonce: 1.0.1
       react: 19.2.7
       tslib: 2.8.1
+    optionalDependencies:
+      '@types/react': 19.2.17
 
   react@19.2.7: {}
 
@@ -14595,11 +14639,12 @@ snapshots:
       hast-util-to-text: 4.0.2
       mermaid-isomorphic: 3.1.0(playwright@1.61.1)
       mini-svg-data-uri: 1.4.4
-      playwright: 1.61.1
       space-separated-tokens: 2.0.2
       unified: 11.0.5
       unist-util-visit-parents: 6.0.2
       vfile: 6.0.3
+    optionalDependencies:
+      playwright: 1.61.1
 
   rehype-og-card@3.1.12:
     dependencies:
@@ -14643,23 +14688,27 @@ snapshots:
       mdast-util-newline-to-break: 2.0.0
       unified: 11.0.5
 
-  remark-cjk-friendly-gfm-strikethrough@2.3.1(@types/mdast@4.0.4)(unified@11.0.5):
+  remark-cjk-friendly-gfm-strikethrough@2.3.1(@types/mdast@4.0.4)(micromark-util-types@2.0.2)(micromark@4.0.2)(unified@11.0.5):
     dependencies:
-      '@types/mdast': 4.0.4
-      mdast-util-to-markdown-cjk-friendly-gfm-strikethrough: 1.0.0(@types/mdast@4.0.4)
-      micromark-extension-cjk-friendly-gfm-strikethrough: 2.0.1(micromark@4.0.2)
+      mdast-util-to-markdown-cjk-friendly-gfm-strikethrough: 1.0.0(@types/mdast@4.0.4)(micromark-util-types@2.0.2)
+      micromark-extension-cjk-friendly-gfm-strikethrough: 2.0.1(micromark-util-types@2.0.2)(micromark@4.0.2)
       unified: 11.0.5
+    optionalDependencies:
+      '@types/mdast': 4.0.4
     transitivePeerDependencies:
+      - micromark
       - micromark-util-types
       - supports-color
 
-  remark-cjk-friendly@2.3.1(@types/mdast@4.0.4)(unified@11.0.5):
+  remark-cjk-friendly@2.3.1(@types/mdast@4.0.4)(micromark-util-types@2.0.2)(micromark@4.0.2)(unified@11.0.5):
     dependencies:
-      '@types/mdast': 4.0.4
-      mdast-util-to-markdown-cjk-friendly: 1.0.0(@types/mdast@4.0.4)
-      micromark-extension-cjk-friendly: 2.0.1(micromark@4.0.2)
+      mdast-util-to-markdown-cjk-friendly: 1.0.0(@types/mdast@4.0.4)(micromark-util-types@2.0.2)
+      micromark-extension-cjk-friendly: 2.0.1(micromark-util-types@2.0.2)(micromark@4.0.2)
       unified: 11.0.5
+    optionalDependencies:
+      '@types/mdast': 4.0.4
     transitivePeerDependencies:
+      - micromark
       - micromark-util-types
 
   remark-directive@4.0.0:
@@ -14967,6 +15016,8 @@ snapshots:
   schema-dts@2.0.0(typescript@6.0.2):
     dependencies:
       schema-dts-lib: 1.0.0(typescript@6.0.2)
+    transitivePeerDependencies:
+      - typescript
 
   section-matter@1.0.0:
     dependencies:
@@ -15077,6 +15128,7 @@ snapshots:
       - '@cfworker/json-schema'
       - babel-plugin-macros
       - supports-color
+      - typescript
 
   sharp@0.34.5:
     dependencies:
@@ -15112,7 +15164,6 @@ snapshots:
   sharp@0.35.3(@types/node@26.1.1):
     dependencies:
       '@img/colour': 1.1.0
-      '@types/node': 26.1.1
       detect-libc: 2.1.2
       semver: 7.8.5
     optionalDependencies:
@@ -15141,6 +15192,7 @@ snapshots:
       '@img/sharp-win32-arm64': 0.35.3
       '@img/sharp-win32-ia32': 0.35.3
       '@img/sharp-win32-x64': 0.35.3
+      '@types/node': 26.1.1
 
   shebang-command@2.0.0:
     dependencies:
@@ -15879,6 +15931,7 @@ snapshots:
 
   unified@8.4.2:
     dependencies:
+      '@types/unist': 2.0.11
       bail: 1.0.5
       extend: 3.0.2
       is-plain-obj: 2.1.0
@@ -15887,6 +15940,7 @@ snapshots:
 
   unified@9.2.2:
     dependencies:
+      '@types/unist': 2.0.11
       bail: 1.0.5
       extend: 3.0.2
       is-buffer: 2.0.5
@@ -15987,10 +16041,11 @@ snapshots:
 
   universalify@2.0.1: {}
 
-  unocss-preset-animations@1.3.0(@unocss/preset-wind3@66.7.5)(unocss@66.7.5(@unocss/astro@66.7.5(vite@8.1.4(@types/node@26.1.1)))):
+  unocss-preset-animations@1.3.0(@unocss/preset-wind3@66.7.5)(unocss@66.7.5(@unocss/astro@66.7.5(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)))(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))):
     dependencies:
+      unocss: 66.7.5(@unocss/astro@66.7.5(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)))(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))
+    optionalDependencies:
       '@unocss/preset-wind3': 66.7.5
-      unocss: 66.7.5(@unocss/astro@66.7.5(vite@8.1.4(@types/node@26.1.1)))
 
   unocss-preset-radix@2.8.2:
     dependencies:
@@ -15998,11 +16053,12 @@ snapshots:
       '@unocss/core': 65.5.0
       '@unocss/rule-utils': 65.5.0
 
-  unocss-preset-scrollbar-hide@1.0.1: {}
+  unocss-preset-scrollbar-hide@1.0.1(unocss@66.7.5(@unocss/astro@66.7.5(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)))(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))):
+    optionalDependencies:
+      unocss: 66.7.5(@unocss/astro@66.7.5(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)))(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))
 
-  unocss@66.7.5(@unocss/astro@66.7.5(vite@8.1.4(@types/node@26.1.1))):
+  unocss@66.7.5(@unocss/astro@66.7.5(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)))(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)):
     dependencies:
-      '@unocss/astro': 66.7.5(vite@8.1.4(@types/node@26.1.1))
       '@unocss/cli': 66.7.5
       '@unocss/core': 66.7.5
       '@unocss/preset-attributify': 66.7.5
@@ -16019,7 +16075,11 @@ snapshots:
       '@unocss/transformer-compile-class': 66.7.5
       '@unocss/transformer-directives': 66.7.5
       '@unocss/transformer-variant-group': 66.7.5
-      '@unocss/vite': 66.7.5(vite@8.1.4(@types/node@26.1.1))
+      '@unocss/vite': 66.7.5(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))
+    optionalDependencies:
+      '@unocss/astro': 66.7.5(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))
+    transitivePeerDependencies:
+      - vite
 
   unpipe@1.0.0: {}
 
@@ -16058,16 +16118,18 @@ snapshots:
 
   use-callback-ref@1.3.3(@types/react@19.2.17)(react@19.2.7):
     dependencies:
-      '@types/react': 19.2.17
       react: 19.2.7
       tslib: 2.8.1
+    optionalDependencies:
+      '@types/react': 19.2.17
 
   use-sidecar@1.1.3(@types/react@19.2.17)(react@19.2.7):
     dependencies:
-      '@types/react': 19.2.17
       detect-node-es: 1.1.0
       react: 19.2.7
       tslib: 2.8.1
+    optionalDependencies:
+      '@types/react': 19.2.17
 
   use-sync-external-store@1.6.0(react@19.2.7):
     dependencies:
@@ -16117,7 +16179,7 @@ snapshots:
 
   vite-plugin-remove-console@2.2.0: {}
 
-  vite-plugin-solid@2.11.12(solid-js@1.9.14)(vite@8.1.4(@types/node@26.1.1)):
+  vite-plugin-solid@2.11.12(solid-js@1.9.14)(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)):
     dependencies:
       '@babel/core': 7.29.7
       '@types/babel__core': 7.20.5
@@ -16125,85 +16187,84 @@ snapshots:
       merge-anything: 5.1.7
       solid-js: 1.9.14
       solid-refresh: 0.6.3(solid-js@1.9.14)
-      vite: 8.1.4(@types/node@26.1.1)
-      vitefu: 1.1.3(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1))
+      vite: 8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)
+      vitefu: 1.1.3(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))
     transitivePeerDependencies:
       - supports-color
 
-  vite@8.1.4(@types/node@26.1.1):
+  vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0):
     dependencies:
-      '@types/node': 26.1.1
       lightningcss: 1.32.0
       picomatch: 4.0.5
       postcss: 8.5.19
       rolldown: 1.1.5
       tinyglobby: 0.2.17
     optionalDependencies:
-      fsevents: 2.3.3
-
-  vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1):
-    dependencies:
       '@types/node': 26.1.1
       esbuild: 0.28.1
-      lightningcss: 1.32.0
-      picomatch: 4.0.5
-      postcss: 8.5.19
-      rolldown: 1.1.5
-      tinyglobby: 0.2.17
-    optionalDependencies:
       fsevents: 2.3.3
+      jiti: 2.7.0
+      yaml: 2.9.0
 
-  vitefu@1.1.3(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)):
-    dependencies:
-      vite: 8.1.4(@types/node@26.1.1)(esbuild@0.28.1)
+  vitefu@1.1.3(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)):
+    optionalDependencies:
+      vite: 8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)
 
   volar-service-css@0.0.71(@volar/language-service@2.4.28):
     dependencies:
-      '@volar/language-service': 2.4.28
       vscode-css-languageservice: 6.3.10
       vscode-languageserver-textdocument: 1.0.12
       vscode-uri: 3.1.0
+    optionalDependencies:
+      '@volar/language-service': 2.4.28
 
   volar-service-emmet@0.0.71(@volar/language-service@2.4.28):
     dependencies:
       '@emmetio/css-parser': 0.4.1
       '@emmetio/html-matcher': 1.3.0
-      '@volar/language-service': 2.4.28
       '@vscode/emmet-helper': 2.11.0
       vscode-uri: 3.1.0
+    optionalDependencies:
+      '@volar/language-service': 2.4.28
 
   volar-service-html@0.0.71(@volar/language-service@2.4.28):
     dependencies:
-      '@volar/language-service': 2.4.28
       vscode-html-languageservice: 5.6.2
       vscode-languageserver-textdocument: 1.0.12
       vscode-uri: 3.1.0
-
-  volar-service-prettier@0.0.71(@volar/language-service@2.4.28):
-    dependencies:
+    optionalDependencies:
       '@volar/language-service': 2.4.28
+
+  volar-service-prettier@0.0.71(@volar/language-service@2.4.28)(prettier@3.9.5):
+    dependencies:
       vscode-uri: 3.1.0
+    optionalDependencies:
+      '@volar/language-service': 2.4.28
+      prettier: 3.9.5
 
   volar-service-typescript-twoslash-queries@0.0.71(@volar/language-service@2.4.28):
     dependencies:
-      '@volar/language-service': 2.4.28
       vscode-uri: 3.1.0
+    optionalDependencies:
+      '@volar/language-service': 2.4.28
 
   volar-service-typescript@0.0.71(@volar/language-service@2.4.28):
     dependencies:
-      '@volar/language-service': 2.4.28
       path-browserify: 1.0.1
       semver: 7.8.5
       typescript-auto-import-cache: 0.3.6
       vscode-languageserver-textdocument: 1.0.12
       vscode-nls: 5.2.0
       vscode-uri: 3.1.0
+    optionalDependencies:
+      '@volar/language-service': 2.4.28
 
   volar-service-yaml@0.0.71(@volar/language-service@2.4.28):
     dependencies:
-      '@volar/language-service': 2.4.28
       vscode-uri: 3.1.0
       yaml-language-server: 1.23.0
+    optionalDependencies:
+      '@volar/language-service': 2.4.28
 
   vscode-css-languageservice@6.3.10:
     dependencies:
@@ -16339,11 +16400,10 @@ snapshots:
       '@cloudflare/workerd-linux-arm64': 1.20260708.1
       '@cloudflare/workerd-windows-64': 1.20260708.1
 
-  wrangler@4.110.0(@cloudflare/workers-types@5.20260713.1):
+  wrangler@4.110.0(@cloudflare/workers-types@5.20260714.1):
     dependencies:
       '@cloudflare/kv-asset-handler': 0.5.0
       '@cloudflare/unenv-preset': 2.16.1(unenv@2.0.0-rc.24)(workerd@1.20260708.1)
-      '@cloudflare/workers-types': 5.20260713.1
       blake3-wasm: 2.1.5
       esbuild: 0.28.1
       miniflare: 4.20260708.1
@@ -16351,6 +16411,7 @@ snapshots:
       unenv: 2.0.0-rc.24
       workerd: 1.20260708.1
     optionalDependencies:
+      '@cloudflare/workers-types': 5.20260714.1
       fsevents: 2.3.3
     transitivePeerDependencies:
       - bufferutil
