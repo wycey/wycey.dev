@@ -104,7 +104,7 @@ importers:
         version: 0.44.0(astro@7.0.7(@astrojs/markdown-remark@7.2.1(supports-color@10.2.2))(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@26.1.1)(jiti@2.7.0)(yaml@2.9.0))
       astro-seo:
         specifier: ^1.1.0
-        version: 1.1.0(prettier@3.9.5)(typescript@6.0.2)
+        version: 1.1.0(prettier@3.9.5)(typescript@7.0.2)
       astro-typed-links:
         specifier: ^2.0.0
         version: 2.0.0(astro@7.0.7(@astrojs/markdown-remark@7.2.1(supports-color@10.2.2))(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@26.1.1)(jiti@2.7.0)(yaml@2.9.0))
@@ -146,7 +146,7 @@ importers:
         version: 15.0.1(supports-color@10.2.2)
       shadcn:
         specifier: ^4.13.0
-        version: 4.13.0(supports-color@10.2.2)(typescript@6.0.2)
+        version: 4.13.0(supports-color@10.2.2)(typescript@7.0.2)
       solid-js:
         specifier: ^1.9.14
         version: 1.9.14
@@ -165,7 +165,7 @@ importers:
     devDependencies:
       '@astrojs/check':
         specifier: 0.9.9
-        version: 0.9.9(prettier@3.9.5)(typescript@6.0.2)
+        version: 0.9.9(prettier@3.9.5)(typescript@7.0.2)
       '@astrojs/markdown-remark':
         specifier: ^7.2.1
         version: 7.2.1(supports-color@10.2.2)
@@ -315,7 +315,7 @@ importers:
         version: 0.26.0
       schema-dts:
         specifier: ^2.0.0
-        version: 2.0.0(typescript@6.0.2)
+        version: 2.0.0(typescript@7.0.2)
       sharp:
         specifier: ^0.35.3
         version: 0.35.3(@types/node@26.1.1)
@@ -362,8 +362,8 @@ importers:
         specifier: ^2.12.2
         version: 2.12.2
       typescript:
-        specifier: 6.0.2
-        version: 6.0.2
+        specifier: 7.0.2
+        version: 7.0.2
       unified:
         specifier: ^11.0.5
         version: 11.0.5
@@ -7378,11 +7378,6 @@ packages:
   typescript-auto-import-cache@0.3.6:
     resolution: {integrity: sha512-RpuHXrknHdVdK7wv/8ug3Fr0WNsNi5l5aB8MYYuXhq2UH5lnEB1htJ1smhtD5VeCsGr2p8mUDtd83LCQDFVgjQ==}
 
-  typescript@6.0.2:
-    resolution: {integrity: sha512-bGdAIrZ0wiGDo5l8c++HWtbaNCWTS4UTv7RaTH/ThVIgjkveJt83m74bBHMJkuCbslY8ixgLBVZJIOiQlQTjfQ==}
-    engines: {node: '>=14.17'}
-    hasBin: true
-
   typescript@7.0.2:
     resolution: {integrity: sha512-8FYau96o3NKOhbjKi/qNvG/W5jhzxkbdm5sj9AbZ/5T5sWqn3hJgLfGx27sRKZWTvyzCP8dLRBTf5tBTSRVUNA==}
     engines: {node: '>=16.20.0'}
@@ -8096,12 +8091,12 @@ snapshots:
 
   '@ark/util@0.56.2': {}
 
-  '@astrojs/check@0.9.9(prettier@3.9.5)(typescript@6.0.2)':
+  '@astrojs/check@0.9.9(prettier@3.9.5)(typescript@7.0.2)':
     dependencies:
-      '@astrojs/language-server': 2.16.12(prettier@3.9.5)(typescript@6.0.2)
+      '@astrojs/language-server': 2.16.12(prettier@3.9.5)(typescript@7.0.2)
       chokidar: 4.0.3
       kleur: 4.1.5
-      typescript: 6.0.2
+      typescript: 7.0.2
       yargs: 17.7.3
     transitivePeerDependencies:
       - prettier
@@ -8200,12 +8195,12 @@ snapshots:
       smol-toml: 1.7.0
       unified: 11.0.5
 
-  '@astrojs/language-server@2.16.12(prettier@3.9.5)(typescript@6.0.2)':
+  '@astrojs/language-server@2.16.12(prettier@3.9.5)(typescript@7.0.2)':
     dependencies:
       '@astrojs/compiler': 2.13.1
       '@astrojs/yaml2ts': 0.2.4
       '@jridgewell/sourcemap-codec': 1.5.5
-      '@volar/kit': 2.4.28(typescript@6.0.2)
+      '@volar/kit': 2.4.28(typescript@7.0.2)
       '@volar/language-core': 2.4.28
       '@volar/language-server': 2.4.28
       '@volar/language-service': 2.4.28
@@ -10924,12 +10919,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@volar/kit@2.4.28(typescript@6.0.2)':
+  '@volar/kit@2.4.28(typescript@7.0.2)':
     dependencies:
       '@volar/language-service': 2.4.28
       '@volar/typescript': 2.4.28
       typesafe-path: 0.2.2
-      typescript: 6.0.2
+      typescript: 7.0.2
       vscode-languageserver-textdocument: 1.0.12
       vscode-uri: 3.1.0
 
@@ -11106,9 +11101,9 @@ snapshots:
       '@swc/html': 1.15.43
       fast-glob: 3.3.3
 
-  astro-seo@1.1.0(prettier@3.9.5)(typescript@6.0.2):
+  astro-seo@1.1.0(prettier@3.9.5)(typescript@7.0.2):
     dependencies:
-      '@astrojs/check': 0.9.9(prettier@3.9.5)(typescript@6.0.2)
+      '@astrojs/check': 0.9.9(prettier@3.9.5)(typescript@7.0.2)
     transitivePeerDependencies:
       - prettier
       - prettier-plugin-astro
@@ -11526,14 +11521,14 @@ snapshots:
     dependencies:
       layout-base: 2.0.1
 
-  cosmiconfig@9.0.2(typescript@6.0.2):
+  cosmiconfig@9.0.2(typescript@7.0.2):
     dependencies:
       env-paths: 2.2.1
       import-fresh: 3.3.1
       js-yaml: 4.3.0
       parse-json: 5.2.0
     optionalDependencies:
-      typescript: 6.0.2
+      typescript: 7.0.2
 
   cross-spawn@7.0.6:
     dependencies:
@@ -15011,13 +15006,13 @@ snapshots:
 
   scheduler@0.27.0: {}
 
-  schema-dts-lib@1.0.0(typescript@6.0.2):
+  schema-dts-lib@1.0.0(typescript@7.0.2):
     dependencies:
-      typescript: 6.0.2
+      typescript: 7.0.2
 
-  schema-dts@2.0.0(typescript@6.0.2):
+  schema-dts@2.0.0(typescript@7.0.2):
     dependencies:
-      schema-dts-lib: 1.0.0(typescript@6.0.2)
+      schema-dts-lib: 1.0.0(typescript@7.0.2)
     transitivePeerDependencies:
       - typescript
 
@@ -15092,7 +15087,7 @@ snapshots:
 
   setprototypeof@1.2.0: {}
 
-  shadcn@4.13.0(supports-color@10.2.2)(typescript@6.0.2):
+  shadcn@4.13.0(supports-color@10.2.2)(typescript@7.0.2):
     dependencies:
       '@babel/core': 7.29.7(supports-color@10.2.2)
       '@babel/parser': 7.29.7
@@ -15103,7 +15098,7 @@ snapshots:
       '@types/validate-npm-package-name': 4.0.2
       browserslist: 4.28.6
       commander: 14.0.3
-      cosmiconfig: 9.0.2(typescript@6.0.2)
+      cosmiconfig: 9.0.2(typescript@7.0.2)
       dedent: 1.7.2
       deepmerge: 4.3.1
       diff: 8.0.4
@@ -15844,8 +15839,6 @@ snapshots:
   typescript-auto-import-cache@0.3.6:
     dependencies:
       semver: 7.8.5
-
-  typescript@6.0.2: {}
 
   typescript@7.0.2:
     optionalDependencies:
