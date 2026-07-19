@@ -25,7 +25,7 @@ importers:
         version: 26.1.1
       '@wycey/biome-config':
         specifier: workspace:*
-        version: 0.0.1
+        version: link:packages/biome-config
       lefthook:
         specifier: ^2.1.5
         version: 2.1.10
@@ -35,9 +35,6 @@ importers:
       rimraf:
         specifier: ^6.1.3
         version: 6.1.3
-      solid-js:
-        specifier: ^1.6.12
-        version: 1.9.14
       tslib:
         specifier: ^2.8.1
         version: 2.8.1
@@ -56,22 +53,19 @@ importers:
     dependencies:
       '@astrojs/cloudflare':
         specifier: 14.1.2
-        version: 14.1.2(astro@7.0.7(@astrojs/markdown-remark@7.2.1))(wrangler@4.110.0(@cloudflare/workers-types@5.20260716.1))
+        version: 14.1.2(@types/node@26.1.1)(astro@7.0.7(@astrojs/markdown-remark@7.2.1(supports-color@10.2.2))(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@26.1.1)(jiti@2.7.0)(yaml@2.9.0))(esbuild@0.28.1)(jiti@2.7.0)(workerd@1.20260708.1)(wrangler@4.110.0(@cloudflare/workers-types@5.20260716.1))(yaml@2.9.0)
       '@astrojs/react':
         specifier: 6.0.1
-        version: 6.0.1(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))
+        version: 6.0.1(@types/node@26.1.1)(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(esbuild@0.28.1)(jiti@2.7.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(supports-color@10.2.2)(yaml@2.9.0)
       '@astrojs/rss':
         specifier: 4.0.19
         version: 4.0.19
       '@astrojs/solid-js':
         specifier: 7.0.1
-        version: 7.0.1(solid-js@1.9.14)
+        version: 7.0.1(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(solid-js@1.9.14)(supports-color@10.2.2)(yaml@2.9.0)
       '@base-ui/react':
         specifier: ^1.6.0
-        version: 1.6.0(@types/react@19.2.17)(react@19.2.7)(react-dom@19.2.7(react@19.2.7))
-      '@cloudflare/workers-types':
-        specifier: ^4.x
-        version: 5.20260716.1
+        version: 1.6.0(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@dicebear/collection':
         specifier: ^9.4.2
         version: 9.4.2(@dicebear/core@9.4.3)
@@ -98,31 +92,25 @@ importers:
         version: 1.1.1(nanostores@1.4.0)(solid-js@1.9.14)
       '@sentry/astro':
         specifier: ^10.63.0
-        version: 10.65.0(astro@7.0.7(@astrojs/markdown-remark@7.2.1))
+        version: 10.65.0(@opentelemetry/core@2.9.0(@opentelemetry/api@1.9.1))(astro@7.0.7(@astrojs/markdown-remark@7.2.1(supports-color@10.2.2))(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@26.1.1)(jiti@2.7.0)(yaml@2.9.0))(supports-color@10.2.2)
       '@sentry/cloudflare':
         specifier: ^10.63.0
-        version: 10.65.0
+        version: 10.65.0(@cloudflare/workers-types@5.20260716.1)(@opentelemetry/core@2.9.0(@opentelemetry/api@1.9.1))(supports-color@10.2.2)
       '@solid-primitives/media':
         specifier: ^2.3.6
         version: 2.3.6(solid-js@1.9.14)
-      '@types/node':
-        specifier: '*'
-        version: 26.1.1
-      '@unocss/preset-wind3':
-        specifier: '>=0.56.0 < 101'
-        version: 66.7.5
       astro:
         specifier: 7.0.7
-        version: 7.0.7(@astrojs/markdown-remark@7.2.1)
+        version: 7.0.7(@astrojs/markdown-remark@7.2.1(supports-color@10.2.2))(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@26.1.1)(jiti@2.7.0)(yaml@2.9.0)
       astro-expressive-code:
         specifier: ^0.44.0
-        version: 0.44.0(astro@7.0.7(@astrojs/markdown-remark@7.2.1))
+        version: 0.44.0(astro@7.0.7(@astrojs/markdown-remark@7.2.1(supports-color@10.2.2))(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@26.1.1)(jiti@2.7.0)(yaml@2.9.0))
       astro-seo:
         specifier: ^1.1.0
-        version: 1.1.0(typescript@6.0.2)
+        version: 1.1.0(prettier@3.9.5)(typescript@6.0.3)
       astro-typed-links:
         specifier: ^2.0.0
-        version: 2.0.0(astro@7.0.7(@astrojs/markdown-remark@7.2.1))
+        version: 2.0.0(astro@7.0.7(@astrojs/markdown-remark@7.2.1(supports-color@10.2.2))(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@26.1.1)(jiti@2.7.0)(yaml@2.9.0))
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -131,7 +119,7 @@ importers:
         version: 2.1.1
       cmdk:
         specifier: ^1.1.1
-        version: 1.1.1(react@19.2.7)(react-dom@19.2.7(react@19.2.7))
+        version: 1.1.1(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       dayjs:
         specifier: ^1.11.21
         version: 1.11.21
@@ -161,7 +149,7 @@ importers:
         version: 15.0.1(supports-color@10.2.2)
       shadcn:
         specifier: ^4.13.0
-        version: 4.13.0(supports-color@10.2.2)(typescript@6.0.2)
+        version: 4.13.0(supports-color@10.2.2)(typescript@6.0.3)
       solid-js:
         specifier: ^1.9.14
         version: 1.9.14
@@ -174,19 +162,13 @@ importers:
       tw-animate-css:
         specifier: ^1.4.0
         version: 1.4.0
-      typescript:
-        specifier: ^5.0.0 || ^6.0.0
-        version: 6.0.2
-      vite:
-        specifier: ^5.0.0-0 || ^6.0.0-0 || ^7.0.0-0 || ^8.0.0-0
-        version: 8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)
       zod:
         specifier: ^4.4.3
         version: 4.4.3
     devDependencies:
       '@astrojs/check':
         specifier: 0.9.9
-        version: 0.9.9(typescript@6.0.2)
+        version: 0.9.9(prettier@3.9.5)(typescript@6.0.3)
       '@astrojs/markdown-remark':
         specifier: ^7.2.1
         version: 7.2.1(supports-color@10.2.2)
@@ -252,10 +234,10 @@ importers:
         version: 66.7.5
       '@wycey/browserslist-config':
         specifier: workspace:*
-        version: 0.0.1
+        version: link:../../packages/browserslist-config
       '@wycey/tsconfig':
         specifier: workspace:*
-        version: 0.0.1
+        version: link:../../packages/tsconfig
       astro-minify-html-swc:
         specifier: ^0.1.12
         version: 0.1.12
@@ -309,10 +291,10 @@ importers:
         version: 4.0.0
       remark-cjk-friendly:
         specifier: ^2.3.1
-        version: 2.3.1(@types/mdast@4.0.4)(unified@11.0.5)
+        version: 2.3.1(@types/mdast@4.0.4)(micromark-util-types@2.0.2)(micromark@4.0.2(supports-color@10.2.2))(unified@11.0.5)
       remark-cjk-friendly-gfm-strikethrough:
         specifier: ^2.3.1
-        version: 2.3.1(@types/mdast@4.0.4)(unified@11.0.5)
+        version: 2.3.1(@types/mdast@4.0.4)(micromark-util-types@2.0.2)(micromark@4.0.2(supports-color@10.2.2))(supports-color@10.2.2)(unified@11.0.5)
       remark-directive:
         specifier: ^4.0.0
         version: 4.0.0(supports-color@10.2.2)
@@ -336,7 +318,7 @@ importers:
         version: 0.26.0
       schema-dts:
         specifier: ^2.0.0
-        version: 2.0.0(typescript@6.0.2)
+        version: 2.0.0(typescript@6.0.3)
       sharp:
         specifier: ^0.35.3
         version: 0.35.3(@types/node@26.1.1)
@@ -348,13 +330,13 @@ importers:
         version: 15.7.1(supports-color@10.2.2)
       textlint-filter-rule-allowlist:
         specifier: ^4.0.0
-        version: 4.0.0(textlint@15.7.1)
+        version: 4.0.0(textlint@15.7.1(supports-color@10.2.2))
       textlint-filter-rule-comments:
         specifier: ^1.3.0
         version: 1.3.0
       textlint-rule-doubled-spaces:
         specifier: ^1.0.2
-        version: 1.0.2(textlint@15.7.1)
+        version: 1.0.2(textlint@15.7.1(supports-color@10.2.2))
       textlint-rule-ja-space-after-exclamation:
         specifier: ^3.0.2
         version: 3.0.2
@@ -372,7 +354,7 @@ importers:
         version: 1.0.1
       textlint-rule-period-in-header:
         specifier: ^0.1.2
-        version: 0.1.2(textlint@15.7.1)
+        version: 0.1.2(textlint@15.7.1(supports-color@10.2.2))
       textlint-rule-preset-ja-technical-writing:
         specifier: ^12.0.2
         version: 12.0.2(supports-color@10.2.2)
@@ -393,16 +375,16 @@ importers:
         version: 5.1.0
       unocss:
         specifier: ^66.7.5
-        version: 66.7.5(@unocss/astro@66.7.5(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)))
+        version: 66.7.5(@unocss/astro@66.7.5(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)))(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))
       unocss-preset-animations:
         specifier: ^1.3.0
-        version: 1.3.0(@unocss/preset-wind3@66.7.5)(unocss@66.7.5(@unocss/astro@66.7.5(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))))
+        version: 1.3.0(@unocss/preset-wind3@66.7.5)(unocss@66.7.5(@unocss/astro@66.7.5(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)))(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)))
       unocss-preset-radix:
         specifier: ^2.8.2
         version: 2.8.2
       unocss-preset-scrollbar-hide:
         specifier: ^1.0.1
-        version: 1.0.1
+        version: 1.0.1(unocss@66.7.5(@unocss/astro@66.7.5(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)))(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)))
       vite-plugin-remove-console:
         specifier: ^2.2.0
         version: 2.2.0
@@ -5498,7 +5480,7 @@ packages:
     resolution: {integrity: sha512-1ePVfB4P/vz3xSsm6H3D32r6VYGErxclnuLLFK02/2ReF+UdEKm7caulK6Vm0LBIp5gPRtB2Z1OYDznCkX3k2w==}
     engines: {node: '>=18'}
     peerDependencies:
-      '@types/mdast': '*'
+      '@types/mdast': ^4.0.4
     peerDependenciesMeta:
       '@types/mdast':
         optional: true
@@ -5507,7 +5489,7 @@ packages:
     resolution: {integrity: sha512-BoaAm8mlJ+LAYz0Qs532Y3ciTuQYgBUPZcSFbvC/ZKmEMAKgulw84YvQK1gI34t/vL2euSfuaWlqczkTBgamkw==}
     engines: {node: '>=18'}
     peerDependencies:
-      '@types/mdast': '*'
+      '@types/mdast': ^4.0.4
     peerDependenciesMeta:
       '@types/mdast':
         optional: true
@@ -5846,120 +5828,120 @@ packages:
     resolution:
       type: variations
       variants:
-      - resolution:
-          archive: tarball
-          bin:
-            node: bin/node
-          integrity: sha256-ZGOiNzn2sjAOvsXM1gJ14TjjhY/Br8bo+bxOT2pLdvo=
-          type: binary
-          url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-aix-ppc64.tar.gz
-        targets:
-        - cpu: ppc64
-          os: aix
-      - resolution:
-          archive: tarball
-          bin:
-            node: bin/node
-          integrity: sha256-4al+FMmcgD6WxzOUAyguoFpJnDL42D3v6e9exm+XntE=
-          type: binary
-          url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-darwin-arm64.tar.gz
-        targets:
-        - cpu: arm64
-          os: darwin
-      - resolution:
-          archive: tarball
-          bin:
-            node: bin/node
-          integrity: sha256-39Db0+chUDQ033tyBecZ9hs6OjGyvPlym4uR/qJA8IA=
-          type: binary
-          url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-darwin-x64.tar.gz
-        targets:
-        - cpu: x64
-          os: darwin
-      - resolution:
-          archive: tarball
-          bin:
-            node: bin/node
-          integrity: sha256-a0SEwhkCdBdd+aqPKOLXWKgZyxwf5qtIHi+VtGOrhQg=
-          type: binary
-          url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-linux-arm64.tar.gz
-        targets:
-        - cpu: arm64
-          os: linux
-      - resolution:
-          archive: tarball
-          bin:
-            node: bin/node
-          integrity: sha256-/hM4ly95KDxrwh5h2/RXa76MBa3tKZnUHIZDrTAmUUI=
-          type: binary
-          url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-linux-ppc64le.tar.gz
-        targets:
-        - cpu: ppc64le
-          os: linux
-      - resolution:
-          archive: tarball
-          bin:
-            node: bin/node
-          integrity: sha256-Nx68E5RfwWlJPnUvLdr6+rbs2My0Ubz/RuCfacXdjHo=
-          type: binary
-          url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-linux-s390x.tar.gz
-        targets:
-        - cpu: s390x
-          os: linux
-      - resolution:
-          archive: tarball
-          bin:
-            node: bin/node
-          integrity: sha256-eDEwmElj23upy9AQierywu+wVcfBaTyUMXS5Z7MFDLg=
-          type: binary
-          url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-linux-x64.tar.gz
-        targets:
-        - cpu: x64
-          os: linux
-      - resolution:
-          archive: zip
-          bin:
-            node: node.exe
-          integrity: sha256-8nRmmtuTsf0Pv48h/QeGCencyEMz1PJxjS3eP5oWGgE=
-          prefix: node-v24.18.0-win-arm64
-          type: binary
-          url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-win-arm64.zip
-        targets:
-        - cpu: arm64
-          os: win32
-      - resolution:
-          archive: zip
-          bin:
-            node: node.exe
-          integrity: sha256-CuaEBrQtdyVmHal5sUA+yZJtogXGdwgn8zqsnY8m6CE=
-          prefix: node-v24.18.0-win-x64
-          type: binary
-          url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-win-x64.zip
-        targets:
-        - cpu: x64
-          os: win32
-      - resolution:
-          archive: tarball
-          bin:
-            node: bin/node
-          integrity: sha256-scbC3DG0bdj7IyL0/nWwfndcUSC8NyUd7uoo9SnUVns=
-          type: binary
-          url: https://unofficial-builds.nodejs.org/download/release/v24.18.0/node-v24.18.0-linux-arm64-musl.tar.gz
-        targets:
-        - cpu: arm64
-          libc: musl
-          os: linux
-      - resolution:
-          archive: tarball
-          bin:
-            node: bin/node
-          integrity: sha256-6lhAmRHhQexrGdkXjvotkYWhMpUAWxy/VSGzFX7tHZU=
-          type: binary
-          url: https://unofficial-builds.nodejs.org/download/release/v24.18.0/node-v24.18.0-linux-x64-musl.tar.gz
-        targets:
-        - cpu: x64
-          libc: musl
-          os: linux
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-ZGOiNzn2sjAOvsXM1gJ14TjjhY/Br8bo+bxOT2pLdvo=
+            type: binary
+            url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-aix-ppc64.tar.gz
+          targets:
+            - cpu: ppc64
+              os: aix
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-4al+FMmcgD6WxzOUAyguoFpJnDL42D3v6e9exm+XntE=
+            type: binary
+            url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-darwin-arm64.tar.gz
+          targets:
+            - cpu: arm64
+              os: darwin
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-39Db0+chUDQ033tyBecZ9hs6OjGyvPlym4uR/qJA8IA=
+            type: binary
+            url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-darwin-x64.tar.gz
+          targets:
+            - cpu: x64
+              os: darwin
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-a0SEwhkCdBdd+aqPKOLXWKgZyxwf5qtIHi+VtGOrhQg=
+            type: binary
+            url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-linux-arm64.tar.gz
+          targets:
+            - cpu: arm64
+              os: linux
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-/hM4ly95KDxrwh5h2/RXa76MBa3tKZnUHIZDrTAmUUI=
+            type: binary
+            url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-linux-ppc64le.tar.gz
+          targets:
+            - cpu: ppc64le
+              os: linux
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-Nx68E5RfwWlJPnUvLdr6+rbs2My0Ubz/RuCfacXdjHo=
+            type: binary
+            url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-linux-s390x.tar.gz
+          targets:
+            - cpu: s390x
+              os: linux
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-eDEwmElj23upy9AQierywu+wVcfBaTyUMXS5Z7MFDLg=
+            type: binary
+            url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-linux-x64.tar.gz
+          targets:
+            - cpu: x64
+              os: linux
+        - resolution:
+            archive: zip
+            bin:
+              node: node.exe
+            integrity: sha256-8nRmmtuTsf0Pv48h/QeGCencyEMz1PJxjS3eP5oWGgE=
+            prefix: node-v24.18.0-win-arm64
+            type: binary
+            url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-win-arm64.zip
+          targets:
+            - cpu: arm64
+              os: win32
+        - resolution:
+            archive: zip
+            bin:
+              node: node.exe
+            integrity: sha256-CuaEBrQtdyVmHal5sUA+yZJtogXGdwgn8zqsnY8m6CE=
+            prefix: node-v24.18.0-win-x64
+            type: binary
+            url: https://nodejs.org/download/release/v24.18.0/node-v24.18.0-win-x64.zip
+          targets:
+            - cpu: x64
+              os: win32
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-scbC3DG0bdj7IyL0/nWwfndcUSC8NyUd7uoo9SnUVns=
+            type: binary
+            url: https://unofficial-builds.nodejs.org/download/release/v24.18.0/node-v24.18.0-linux-arm64-musl.tar.gz
+          targets:
+            - cpu: arm64
+              os: linux
+              libc: musl
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-6lhAmRHhQexrGdkXjvotkYWhMpUAWxy/VSGzFX7tHZU=
+            type: binary
+            url: https://unofficial-builds.nodejs.org/download/release/v24.18.0/node-v24.18.0-linux-x64-musl.tar.gz
+          targets:
+            - cpu: x64
+              os: linux
+              libc: musl
     version: 24.18.0
     hasBin: true
 
@@ -6534,7 +6516,7 @@ packages:
     resolution: {integrity: sha512-JE3TGgouk/sy92SemNMEUhO5mNP4on04cmzOV3s3R5Dbk160ewmpM4tgPiinKKvoJ5UW2fTu7FOYsjVbusSA9w==}
     engines: {node: '>=18'}
     peerDependencies:
-      '@types/mdast': ^4.0.0
+      '@types/mdast': ^4.0.4
       unified: ^11.0.0
     peerDependenciesMeta:
       '@types/mdast':
@@ -6544,7 +6526,7 @@ packages:
     resolution: {integrity: sha512-f+pKZRxCRwNEGFBKNRAZAqU91GIK1SAo3ZyFHWRUgC9zcxRR0BXKd6YwqgSsxtW0rNpUDtONj7H5nje2WL3fcA==}
     engines: {node: '>=18'}
     peerDependencies:
-      '@types/mdast': ^4.0.0
+      '@types/mdast': ^4.0.4
       unified: ^11.0.0
     peerDependenciesMeta:
       '@types/mdast':
@@ -7273,11 +7255,6 @@ packages:
   typescript-auto-import-cache@0.3.6:
     resolution: {integrity: sha512-RpuHXrknHdVdK7wv/8ug3Fr0WNsNi5l5aB8MYYuXhq2UH5lnEB1htJ1smhtD5VeCsGr2p8mUDtd83LCQDFVgjQ==}
 
-  typescript@6.0.2:
-    resolution: {integrity: sha512-bGdAIrZ0wiGDo5l8c++HWtbaNCWTS4UTv7RaTH/ThVIgjkveJt83m74bBHMJkuCbslY8ixgLBVZJIOiQlQTjfQ==}
-    engines: {node: '>=14.17'}
-    hasBin: true
-
   typescript@6.0.3:
     resolution: {integrity: sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw==}
     engines: {node: '>=14.17'}
@@ -7982,6 +7959,8 @@ snapshots:
       '@apm-js-collab/code-transformer': 0.15.0
       debug: 4.4.3(supports-color@10.2.2)
       module-details-from-path: 1.0.4
+    transitivePeerDependencies:
+      - supports-color
 
   '@ark/schema@0.56.2':
     dependencies:
@@ -7989,28 +7968,32 @@ snapshots:
 
   '@ark/util@0.56.2': {}
 
-  '@astrojs/check@0.9.9(typescript@6.0.2)':
+  '@astrojs/check@0.9.9(prettier@3.9.5)(typescript@6.0.3)':
     dependencies:
-      '@astrojs/language-server': 2.16.12(prettier@3.9.5)
+      '@astrojs/language-server': 2.16.12(prettier@3.9.5)(typescript@6.0.3)
       chokidar: 4.0.3
       kleur: 4.1.5
-      typescript: 6.0.2
+      typescript: 6.0.3
       yargs: 17.7.3
     transitivePeerDependencies:
+      - prettier
       - prettier-plugin-astro
 
-  '@astrojs/cloudflare@14.1.2(astro@7.0.7(@astrojs/markdown-remark@7.2.1))(wrangler@4.110.0(@cloudflare/workers-types@5.20260716.1))':
+  '@astrojs/cloudflare@14.1.2(@types/node@26.1.1)(astro@7.0.7(@astrojs/markdown-remark@7.2.1(supports-color@10.2.2))(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@26.1.1)(jiti@2.7.0)(yaml@2.9.0))(esbuild@0.28.1)(jiti@2.7.0)(workerd@1.20260708.1)(wrangler@4.110.0(@cloudflare/workers-types@5.20260716.1))(yaml@2.9.0)':
     dependencies:
       '@astrojs/internal-helpers': 0.10.1
       '@astrojs/underscore-redirects': 1.0.3
-      '@cloudflare/vite-plugin': 1.44.0(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))(wrangler@4.110.0(@cloudflare/workers-types@5.20260716.1))
-      astro: 7.0.7(@astrojs/markdown-remark@7.2.1)
+      '@cloudflare/vite-plugin': 1.44.0(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))(workerd@1.20260708.1)(wrangler@4.110.0(@cloudflare/workers-types@5.20260716.1))
+      astro: 7.0.7(@astrojs/markdown-remark@7.2.1(supports-color@10.2.2))(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@26.1.1)(jiti@2.7.0)(yaml@2.9.0)
       piccolore: 0.1.3
       vite: 8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)
       wrangler: 4.110.0(@cloudflare/workers-types@5.20260716.1)
     transitivePeerDependencies:
+      - '@types/node'
       - '@vitejs/devtools'
       - bufferutil
+      - esbuild
+      - jiti
       - less
       - sass
       - sass-embedded
@@ -8019,6 +8002,8 @@ snapshots:
       - terser
       - tsx
       - utf-8-validate
+      - workerd
+      - yaml
 
   '@astrojs/compiler-binding-darwin-arm64@0.3.1':
     optional: true
@@ -8041,6 +8026,9 @@ snapshots:
   '@astrojs/compiler-binding-wasm32-wasi@0.3.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)':
     dependencies:
       '@napi-rs/wasm-runtime': 1.1.6(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)
+    transitivePeerDependencies:
+      - '@emnapi/core'
+      - '@emnapi/runtime'
     optional: true
 
   '@astrojs/compiler-binding-win32-arm64-msvc@0.3.1':
@@ -8060,10 +8048,16 @@ snapshots:
       '@astrojs/compiler-binding-wasm32-wasi': 0.3.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)
       '@astrojs/compiler-binding-win32-arm64-msvc': 0.3.1
       '@astrojs/compiler-binding-win32-x64-msvc': 0.3.1
+    transitivePeerDependencies:
+      - '@emnapi/core'
+      - '@emnapi/runtime'
 
   '@astrojs/compiler-rs@0.3.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)':
     dependencies:
       '@astrojs/compiler-binding': 0.3.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)
+    transitivePeerDependencies:
+      - '@emnapi/core'
+      - '@emnapi/runtime'
 
   '@astrojs/compiler@2.13.1': {}
 
@@ -8078,12 +8072,12 @@ snapshots:
       smol-toml: 1.7.0
       unified: 11.0.5
 
-  '@astrojs/language-server@2.16.12(prettier@3.9.5)':
+  '@astrojs/language-server@2.16.12(prettier@3.9.5)(typescript@6.0.3)':
     dependencies:
       '@astrojs/compiler': 2.13.1
       '@astrojs/yaml2ts': 0.2.4
       '@jridgewell/sourcemap-codec': 1.5.5
-      '@volar/kit': 2.4.28(typescript@6.0.2)
+      '@volar/kit': 2.4.28(typescript@6.0.3)
       '@volar/language-core': 2.4.28
       '@volar/language-server': 2.4.28
       '@volar/language-service': 2.4.28
@@ -8100,6 +8094,8 @@ snapshots:
       vscode-uri: 3.1.0
     optionalDependencies:
       prettier: 3.9.5
+    transitivePeerDependencies:
+      - typescript
 
   '@astrojs/markdown-remark@7.2.1(supports-color@10.2.2)':
     dependencies:
@@ -8120,6 +8116,8 @@ snapshots:
       unist-util-visit: 5.1.0
       unist-util-visit-parents: 6.0.2
       vfile: 6.0.3
+    transitivePeerDependencies:
+      - supports-color
 
   '@astrojs/markdown-satteri@0.3.3':
     dependencies:
@@ -8132,26 +8130,31 @@ snapshots:
     dependencies:
       prismjs: 1.30.0
 
-  '@astrojs/react@6.0.1(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))':
+  '@astrojs/react@6.0.1(@types/node@26.1.1)(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(esbuild@0.28.1)(jiti@2.7.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(supports-color@10.2.2)(yaml@2.9.0)':
     dependencies:
       '@astrojs/internal-helpers': 0.10.1
       '@types/react': 19.2.17
       '@types/react-dom': 19.2.3(@types/react@19.2.17)
-      '@vitejs/plugin-react': 5.2.0(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))
+      '@vitejs/plugin-react': 5.2.0(supports-color@10.2.2)(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))
       devalue: 5.8.1
       react: 19.2.7
       react-dom: 19.2.7(react@19.2.7)
       ultrahtml: 1.7.0
       vite: 8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)
     transitivePeerDependencies:
+      - '@types/node'
       - '@vitejs/devtools'
+      - esbuild
+      - jiti
       - less
       - sass
       - sass-embedded
       - stylus
       - sugarss
+      - supports-color
       - terser
       - tsx
+      - yaml
 
   '@astrojs/rss@4.0.19':
     dependencies:
@@ -8165,21 +8168,26 @@ snapshots:
       stream-replace-string: 2.0.0
       zod: 4.4.3
 
-  '@astrojs/solid-js@7.0.1(solid-js@1.9.14)':
+  '@astrojs/solid-js@7.0.1(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(solid-js@1.9.14)(supports-color@10.2.2)(yaml@2.9.0)':
     dependencies:
       solid-js: 1.9.14
       vite: 8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)
-      vite-plugin-solid: 2.11.12(solid-js@1.9.14)(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))
+      vite-plugin-solid: 2.11.12(solid-js@1.9.14)(supports-color@10.2.2)(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))
     transitivePeerDependencies:
       - '@testing-library/jest-dom'
+      - '@types/node'
       - '@vitejs/devtools'
+      - esbuild
+      - jiti
       - less
       - sass
       - sass-embedded
       - stylus
       - sugarss
+      - supports-color
       - terser
       - tsx
+      - yaml
 
   '@astrojs/telemetry@3.3.3':
     dependencies:
@@ -8223,7 +8231,7 @@ snapshots:
       '@babel/code-frame': 7.29.7
       '@babel/generator': 7.29.7
       '@babel/helper-compilation-targets': 7.29.7
-      '@babel/helper-module-transforms': 7.29.7(@babel/core@7.29.7)
+      '@babel/helper-module-transforms': 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
       '@babel/helpers': 7.29.7
       '@babel/parser': 7.29.7
       '@babel/template': 7.29.7
@@ -8235,6 +8243,8 @@ snapshots:
       gensync: 1.0.0-beta.2
       json5: 2.2.3
       semver: 6.3.1
+    transitivePeerDependencies:
+      - supports-color
 
   '@babel/generator@7.29.7':
     dependencies:
@@ -8256,16 +8266,18 @@ snapshots:
       lru-cache: 5.1.1
       semver: 6.3.1
 
-  '@babel/helper-create-class-features-plugin@7.29.7(@babel/core@7.29.7)':
+  '@babel/helper-create-class-features-plugin@7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)':
     dependencies:
       '@babel/core': 7.29.7(supports-color@10.2.2)
       '@babel/helper-annotate-as-pure': 7.29.7
       '@babel/helper-member-expression-to-functions': 7.29.7(supports-color@10.2.2)
       '@babel/helper-optimise-call-expression': 7.29.7
-      '@babel/helper-replace-supers': 7.29.7(@babel/core@7.29.7)
+      '@babel/helper-replace-supers': 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
       '@babel/helper-skip-transparent-expression-wrappers': 7.29.7(supports-color@10.2.2)
       '@babel/traverse': 7.29.7(supports-color@10.2.2)
       semver: 6.3.1
+    transitivePeerDependencies:
+      - supports-color
 
   '@babel/helper-globals@7.29.7': {}
 
@@ -8273,6 +8285,8 @@ snapshots:
     dependencies:
       '@babel/traverse': 7.29.7(supports-color@10.2.2)
       '@babel/types': 7.29.7
+    transitivePeerDependencies:
+      - supports-color
 
   '@babel/helper-module-imports@7.18.6':
     dependencies:
@@ -8282,13 +8296,17 @@ snapshots:
     dependencies:
       '@babel/traverse': 7.29.7(supports-color@10.2.2)
       '@babel/types': 7.29.7
+    transitivePeerDependencies:
+      - supports-color
 
-  '@babel/helper-module-transforms@7.29.7(@babel/core@7.29.7)':
+  '@babel/helper-module-transforms@7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)':
     dependencies:
       '@babel/core': 7.29.7(supports-color@10.2.2)
       '@babel/helper-module-imports': 7.29.7(supports-color@10.2.2)
       '@babel/helper-validator-identifier': 7.29.7
       '@babel/traverse': 7.29.7(supports-color@10.2.2)
+    transitivePeerDependencies:
+      - supports-color
 
   '@babel/helper-optimise-call-expression@7.29.7':
     dependencies:
@@ -8296,17 +8314,21 @@ snapshots:
 
   '@babel/helper-plugin-utils@7.29.7': {}
 
-  '@babel/helper-replace-supers@7.29.7(@babel/core@7.29.7)':
+  '@babel/helper-replace-supers@7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)':
     dependencies:
       '@babel/core': 7.29.7(supports-color@10.2.2)
       '@babel/helper-member-expression-to-functions': 7.29.7(supports-color@10.2.2)
       '@babel/helper-optimise-call-expression': 7.29.7
       '@babel/traverse': 7.29.7(supports-color@10.2.2)
+    transitivePeerDependencies:
+      - supports-color
 
   '@babel/helper-skip-transparent-expression-wrappers@7.29.7(supports-color@10.2.2)':
     dependencies:
       '@babel/traverse': 7.29.7(supports-color@10.2.2)
       '@babel/types': 7.29.7
+    transitivePeerDependencies:
+      - supports-color
 
   '@babel/helper-string-parser@7.29.7': {}
 
@@ -8323,49 +8345,55 @@ snapshots:
     dependencies:
       '@babel/types': 7.29.7
 
-  '@babel/plugin-syntax-jsx@7.29.7(@babel/core@7.29.7)':
+  '@babel/plugin-syntax-jsx@7.29.7(@babel/core@7.29.7(supports-color@10.2.2))':
     dependencies:
       '@babel/core': 7.29.7(supports-color@10.2.2)
       '@babel/helper-plugin-utils': 7.29.7
 
-  '@babel/plugin-syntax-typescript@7.29.7(@babel/core@7.29.7)':
+  '@babel/plugin-syntax-typescript@7.29.7(@babel/core@7.29.7(supports-color@10.2.2))':
     dependencies:
       '@babel/core': 7.29.7(supports-color@10.2.2)
       '@babel/helper-plugin-utils': 7.29.7
 
-  '@babel/plugin-transform-modules-commonjs@7.29.7(@babel/core@7.29.7)':
+  '@babel/plugin-transform-modules-commonjs@7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)':
     dependencies:
       '@babel/core': 7.29.7(supports-color@10.2.2)
-      '@babel/helper-module-transforms': 7.29.7(@babel/core@7.29.7)
+      '@babel/helper-module-transforms': 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
       '@babel/helper-plugin-utils': 7.29.7
+    transitivePeerDependencies:
+      - supports-color
 
-  '@babel/plugin-transform-react-jsx-self@7.29.7(@babel/core@7.29.7)':
-    dependencies:
-      '@babel/core': 7.29.7(supports-color@10.2.2)
-      '@babel/helper-plugin-utils': 7.29.7
-
-  '@babel/plugin-transform-react-jsx-source@7.29.7(@babel/core@7.29.7)':
+  '@babel/plugin-transform-react-jsx-self@7.29.7(@babel/core@7.29.7(supports-color@10.2.2))':
     dependencies:
       '@babel/core': 7.29.7(supports-color@10.2.2)
       '@babel/helper-plugin-utils': 7.29.7
 
-  '@babel/plugin-transform-typescript@7.29.7(@babel/core@7.29.7)':
+  '@babel/plugin-transform-react-jsx-source@7.29.7(@babel/core@7.29.7(supports-color@10.2.2))':
+    dependencies:
+      '@babel/core': 7.29.7(supports-color@10.2.2)
+      '@babel/helper-plugin-utils': 7.29.7
+
+  '@babel/plugin-transform-typescript@7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)':
     dependencies:
       '@babel/core': 7.29.7(supports-color@10.2.2)
       '@babel/helper-annotate-as-pure': 7.29.7
-      '@babel/helper-create-class-features-plugin': 7.29.7(@babel/core@7.29.7)
+      '@babel/helper-create-class-features-plugin': 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
       '@babel/helper-plugin-utils': 7.29.7
       '@babel/helper-skip-transparent-expression-wrappers': 7.29.7(supports-color@10.2.2)
-      '@babel/plugin-syntax-typescript': 7.29.7(@babel/core@7.29.7)
+      '@babel/plugin-syntax-typescript': 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))
+    transitivePeerDependencies:
+      - supports-color
 
-  '@babel/preset-typescript@7.29.7(@babel/core@7.29.7)':
+  '@babel/preset-typescript@7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)':
     dependencies:
       '@babel/core': 7.29.7(supports-color@10.2.2)
       '@babel/helper-plugin-utils': 7.29.7
       '@babel/helper-validator-option': 7.29.7
-      '@babel/plugin-syntax-jsx': 7.29.7(@babel/core@7.29.7)
-      '@babel/plugin-transform-modules-commonjs': 7.29.7(@babel/core@7.29.7)
-      '@babel/plugin-transform-typescript': 7.29.7(@babel/core@7.29.7)
+      '@babel/plugin-syntax-jsx': 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))
+      '@babel/plugin-transform-modules-commonjs': 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
+      '@babel/plugin-transform-typescript': 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
+    transitivePeerDependencies:
+      - supports-color
 
   '@babel/runtime@7.29.7': {}
 
@@ -8384,17 +8412,19 @@ snapshots:
       '@babel/template': 7.29.7
       '@babel/types': 7.29.7
       debug: 4.4.3(supports-color@10.2.2)
+    transitivePeerDependencies:
+      - supports-color
 
   '@babel/types@7.29.7':
     dependencies:
       '@babel/helper-string-parser': 7.29.7
       '@babel/helper-validator-identifier': 7.29.7
 
-  '@base-ui/react@1.6.0(@types/react@19.2.17)(react@19.2.7)(react-dom@19.2.7(react@19.2.7))':
+  '@base-ui/react@1.6.0(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
     dependencies:
       '@babel/runtime': 7.29.7
-      '@base-ui/utils': 0.3.1(@types/react@19.2.17)(react@19.2.7)(react-dom@19.2.7(react@19.2.7))
-      '@floating-ui/react-dom': 2.1.9(react@19.2.7)(react-dom@19.2.7(react@19.2.7))
+      '@base-ui/utils': 0.3.1(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      '@floating-ui/react-dom': 2.1.9(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@floating-ui/utils': 0.2.12
       react: 19.2.7
       react-dom: 19.2.7(react@19.2.7)
@@ -8402,7 +8432,7 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.17
 
-  '@base-ui/utils@0.3.1(@types/react@19.2.17)(react@19.2.7)(react-dom@19.2.7(react@19.2.7))':
+  '@base-ui/utils@0.3.1(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
     dependencies:
       '@babel/runtime': 7.29.7
       '@floating-ui/utils': 0.2.12
@@ -8521,7 +8551,7 @@ snapshots:
     optionalDependencies:
       workerd: 1.20260708.1
 
-  '@cloudflare/vite-plugin@1.44.0(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))(wrangler@4.110.0(@cloudflare/workers-types@5.20260716.1))':
+  '@cloudflare/vite-plugin@1.44.0(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))(workerd@1.20260708.1)(wrangler@4.110.0(@cloudflare/workers-types@5.20260716.1))':
     dependencies:
       '@cloudflare/unenv-preset': 2.16.1(unenv@2.0.0-rc.24)(workerd@1.20260708.1)
       miniflare: 4.20260708.1
@@ -8532,6 +8562,7 @@ snapshots:
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
+      - workerd
 
   '@cloudflare/workerd-darwin-64@1.20260708.1':
     optional: true
@@ -8918,7 +8949,7 @@ snapshots:
       '@floating-ui/core': 1.8.0
       '@floating-ui/utils': 0.2.12
 
-  '@floating-ui/react-dom@2.1.9(react@19.2.7)(react-dom@19.2.7(react@19.2.7))':
+  '@floating-ui/react-dom@2.1.9(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
     dependencies:
       '@floating-ui/dom': 1.8.0
       react: 19.2.7
@@ -9209,7 +9240,7 @@ snapshots:
     dependencies:
       '@chevrotain/types': 11.1.2
 
-  '@modelcontextprotocol/sdk@1.29.0(zod@3.25.76)':
+  '@modelcontextprotocol/sdk@1.29.0(supports-color@10.2.2)(zod@3.25.76)':
     dependencies:
       '@hono/node-server': 1.19.14(hono@4.12.30)
       ajv: 8.20.0
@@ -9220,7 +9251,7 @@ snapshots:
       eventsource: 3.0.7
       eventsource-parser: 3.1.0
       express: 5.2.1(supports-color@10.2.2)
-      express-rate-limit: 8.5.2(express@5.2.1)
+      express-rate-limit: 8.5.2(express@5.2.1(supports-color@10.2.2))
       hono: 4.12.30
       jose: 6.2.3
       json-schema-typed: 8.0.2
@@ -9228,6 +9259,8 @@ snapshots:
       raw-body: 3.0.2
       zod: 3.25.76
       zod-to-json-schema: 3.25.2(zod@3.25.76)
+    transitivePeerDependencies:
+      - supports-color
 
   '@myriaddreamin/rehype-typst@0.7.0(supports-color@10.2.2)':
     dependencies:
@@ -9239,6 +9272,8 @@ snapshots:
       https-proxy-agent: 7.0.6(supports-color@10.2.2)
       unist-util-visit-parents: 6.0.2
       vfile: 6.0.3
+    transitivePeerDependencies:
+      - supports-color
 
   '@myriaddreamin/typst-ts-node-compiler-android-arm-eabi@0.7.0':
     optional: true
@@ -9342,12 +9377,14 @@ snapshots:
       '@opentelemetry/api': 1.9.1
       '@opentelemetry/semantic-conventions': 1.43.0
 
-  '@opentelemetry/instrumentation@0.220.0(@opentelemetry/api@1.9.1)':
+  '@opentelemetry/instrumentation@0.220.0(@opentelemetry/api@1.9.1)(supports-color@10.2.2)':
     dependencies:
       '@opentelemetry/api': 1.9.1
       '@opentelemetry/api-logs': 0.220.0
       import-in-the-middle: 3.3.1
       require-in-the-middle: 8.0.1(supports-color@10.2.2)
+    transitivePeerDependencies:
+      - supports-color
 
   '@opentelemetry/resources@2.9.0(@opentelemetry/api@1.9.1)':
     dependencies:
@@ -9497,18 +9534,18 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.17
 
-  '@radix-ui/react-dialog@1.1.19(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))':
+  '@radix-ui/react-dialog@1.1.19(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
     dependencies:
       '@radix-ui/primitive': 1.1.5
       '@radix-ui/react-compose-refs': 1.1.3(@types/react@19.2.17)(react@19.2.7)
       '@radix-ui/react-context': 1.2.0(@types/react@19.2.17)(react@19.2.7)
-      '@radix-ui/react-dismissable-layer': 1.1.15(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))
+      '@radix-ui/react-dismissable-layer': 1.1.15(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@radix-ui/react-focus-guards': 1.1.4(@types/react@19.2.17)(react@19.2.7)
-      '@radix-ui/react-focus-scope': 1.1.12(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))
+      '@radix-ui/react-focus-scope': 1.1.12(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@radix-ui/react-id': 1.1.2(@types/react@19.2.17)(react@19.2.7)
-      '@radix-ui/react-portal': 1.1.13(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))
-      '@radix-ui/react-presence': 1.1.7(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))
-      '@radix-ui/react-primitive': 2.1.7(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))
+      '@radix-ui/react-portal': 1.1.13(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      '@radix-ui/react-presence': 1.1.7(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      '@radix-ui/react-primitive': 2.1.7(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@radix-ui/react-slot': 1.3.0(@types/react@19.2.17)(react@19.2.7)
       '@radix-ui/react-use-controllable-state': 1.2.3(@types/react@19.2.17)(react@19.2.7)
       aria-hidden: 1.2.6
@@ -9519,11 +9556,11 @@ snapshots:
       '@types/react': 19.2.17
       '@types/react-dom': 19.2.3(@types/react@19.2.17)
 
-  '@radix-ui/react-dismissable-layer@1.1.15(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))':
+  '@radix-ui/react-dismissable-layer@1.1.15(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
     dependencies:
       '@radix-ui/primitive': 1.1.5
       '@radix-ui/react-compose-refs': 1.1.3(@types/react@19.2.17)(react@19.2.7)
-      '@radix-ui/react-primitive': 2.1.7(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))
+      '@radix-ui/react-primitive': 2.1.7(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@radix-ui/react-use-callback-ref': 1.1.2(@types/react@19.2.17)(react@19.2.7)
       '@radix-ui/react-use-effect-event': 0.0.3(@types/react@19.2.17)(react@19.2.7)
       react: 19.2.7
@@ -9538,10 +9575,10 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.17
 
-  '@radix-ui/react-focus-scope@1.1.12(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))':
+  '@radix-ui/react-focus-scope@1.1.12(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
     dependencies:
       '@radix-ui/react-compose-refs': 1.1.3(@types/react@19.2.17)(react@19.2.7)
-      '@radix-ui/react-primitive': 2.1.7(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))
+      '@radix-ui/react-primitive': 2.1.7(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@radix-ui/react-use-callback-ref': 1.1.2(@types/react@19.2.17)(react@19.2.7)
       react: 19.2.7
       react-dom: 19.2.7(react@19.2.7)
@@ -9556,9 +9593,9 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.17
 
-  '@radix-ui/react-portal@1.1.13(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))':
+  '@radix-ui/react-portal@1.1.13(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
     dependencies:
-      '@radix-ui/react-primitive': 2.1.7(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))
+      '@radix-ui/react-primitive': 2.1.7(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@radix-ui/react-use-layout-effect': 1.1.2(@types/react@19.2.17)(react@19.2.7)
       react: 19.2.7
       react-dom: 19.2.7(react@19.2.7)
@@ -9566,7 +9603,7 @@ snapshots:
       '@types/react': 19.2.17
       '@types/react-dom': 19.2.3(@types/react@19.2.17)
 
-  '@radix-ui/react-presence@1.1.7(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))':
+  '@radix-ui/react-presence@1.1.7(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
     dependencies:
       '@radix-ui/react-use-layout-effect': 1.1.2(@types/react@19.2.17)(react@19.2.7)
       react: 19.2.7
@@ -9575,7 +9612,7 @@ snapshots:
       '@types/react': 19.2.17
       '@types/react-dom': 19.2.3(@types/react@19.2.17)
 
-  '@radix-ui/react-primitive@2.1.7(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))':
+  '@radix-ui/react-primitive@2.1.7(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
     dependencies:
       '@radix-ui/react-slot': 1.3.0(@types/react@19.2.17)(react@19.2.7)
       react: 19.2.7
@@ -9745,18 +9782,20 @@ snapshots:
 
   '@sec-ant/readable-stream@0.4.1': {}
 
-  '@sentry/astro@10.65.0(astro@7.0.7(@astrojs/markdown-remark@7.2.1))':
+  '@sentry/astro@10.65.0(@opentelemetry/core@2.9.0(@opentelemetry/api@1.9.1))(astro@7.0.7(@astrojs/markdown-remark@7.2.1(supports-color@10.2.2))(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@26.1.1)(jiti@2.7.0)(yaml@2.9.0))(supports-color@10.2.2)':
     dependencies:
       '@sentry/browser': 10.65.0
       '@sentry/conventions': 0.15.1
       '@sentry/core': 10.65.0
       '@sentry/node': 10.65.0(@opentelemetry/core@2.9.0(@opentelemetry/api@1.9.1))(supports-color@10.2.2)
-      '@sentry/vite-plugin': 5.4.0
-      astro: 7.0.7(@astrojs/markdown-remark@7.2.1)
+      '@sentry/vite-plugin': 5.4.0(supports-color@10.2.2)
+      astro: 7.0.7(@astrojs/markdown-remark@7.2.1(supports-color@10.2.2))(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@26.1.1)(jiti@2.7.0)(yaml@2.9.0)
     transitivePeerDependencies:
+      - '@opentelemetry/core'
       - '@opentelemetry/exporter-trace-otlp-http'
       - encoding
       - rollup
+      - supports-color
       - webpack
 
   '@sentry/browser-utils@10.65.0':
@@ -9773,7 +9812,7 @@ snapshots:
       '@sentry/replay': 10.65.0
       '@sentry/replay-canvas': 10.65.0
 
-  '@sentry/bundler-plugins@10.65.0':
+  '@sentry/bundler-plugins@10.65.0(supports-color@10.2.2)':
     dependencies:
       '@babel/core': 7.29.7(supports-color@10.2.2)
       '@sentry/cli': 2.58.6(supports-color@10.2.2)
@@ -9784,6 +9823,7 @@ snapshots:
       magic-string: 0.30.21
     transitivePeerDependencies:
       - encoding
+      - supports-color
 
   '@sentry/cli-darwin@2.58.6':
     optional: true
@@ -9827,8 +9867,9 @@ snapshots:
       '@sentry/cli-win32-x64': 2.58.6
     transitivePeerDependencies:
       - encoding
+      - supports-color
 
-  '@sentry/cloudflare@10.65.0':
+  '@sentry/cloudflare@10.65.0(@cloudflare/workers-types@5.20260716.1)(@opentelemetry/core@2.9.0(@opentelemetry/api@1.9.1))(supports-color@10.2.2)':
     dependencies:
       '@opentelemetry/api': 1.9.1
       '@sentry/core': 10.65.0
@@ -9837,7 +9878,9 @@ snapshots:
     optionalDependencies:
       '@cloudflare/workers-types': 5.20260716.1
     transitivePeerDependencies:
+      - '@opentelemetry/core'
       - '@opentelemetry/exporter-trace-otlp-http'
+      - supports-color
 
   '@sentry/conventions@0.15.1': {}
 
@@ -9849,7 +9892,7 @@ snapshots:
     dependencies:
       '@sentry/core': 10.65.0
 
-  '@sentry/node-core@10.65.0(@opentelemetry/api@1.9.1)(@opentelemetry/core@2.9.0(@opentelemetry/api@1.9.1))(@opentelemetry/instrumentation@0.220.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-trace-base@2.9.0(@opentelemetry/api@1.9.1))':
+  '@sentry/node-core@10.65.0(@opentelemetry/api@1.9.1)(@opentelemetry/core@2.9.0(@opentelemetry/api@1.9.1))(@opentelemetry/instrumentation@0.220.0(@opentelemetry/api@1.9.1)(supports-color@10.2.2))(@opentelemetry/sdk-trace-base@2.9.0(@opentelemetry/api@1.9.1))':
     dependencies:
       '@sentry/conventions': 0.15.1
       '@sentry/core': 10.65.0
@@ -9858,22 +9901,24 @@ snapshots:
     optionalDependencies:
       '@opentelemetry/api': 1.9.1
       '@opentelemetry/core': 2.9.0(@opentelemetry/api@1.9.1)
-      '@opentelemetry/instrumentation': 0.220.0(@opentelemetry/api@1.9.1)
+      '@opentelemetry/instrumentation': 0.220.0(@opentelemetry/api@1.9.1)(supports-color@10.2.2)
       '@opentelemetry/sdk-trace-base': 2.9.0(@opentelemetry/api@1.9.1)
 
   '@sentry/node@10.65.0(@opentelemetry/core@2.9.0(@opentelemetry/api@1.9.1))(supports-color@10.2.2)':
     dependencies:
       '@opentelemetry/api': 1.9.1
-      '@opentelemetry/instrumentation': 0.220.0(@opentelemetry/api@1.9.1)
+      '@opentelemetry/instrumentation': 0.220.0(@opentelemetry/api@1.9.1)(supports-color@10.2.2)
       '@opentelemetry/sdk-trace-base': 2.9.0(@opentelemetry/api@1.9.1)
       '@sentry/conventions': 0.15.1
       '@sentry/core': 10.65.0
-      '@sentry/node-core': 10.65.0(@opentelemetry/api@1.9.1)(@opentelemetry/core@2.9.0(@opentelemetry/api@1.9.1))(@opentelemetry/instrumentation@0.220.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-trace-base@2.9.0(@opentelemetry/api@1.9.1))
+      '@sentry/node-core': 10.65.0(@opentelemetry/api@1.9.1)(@opentelemetry/core@2.9.0(@opentelemetry/api@1.9.1))(@opentelemetry/instrumentation@0.220.0(@opentelemetry/api@1.9.1)(supports-color@10.2.2))(@opentelemetry/sdk-trace-base@2.9.0(@opentelemetry/api@1.9.1))
       '@sentry/opentelemetry': 10.65.0(@opentelemetry/api@1.9.1)(@opentelemetry/core@2.9.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-trace-base@2.9.0(@opentelemetry/api@1.9.1))
       '@sentry/server-utils': 10.65.0(supports-color@10.2.2)
       import-in-the-middle: 3.3.1
     transitivePeerDependencies:
+      - '@opentelemetry/core'
       - '@opentelemetry/exporter-trace-otlp-http'
+      - supports-color
 
   '@sentry/opentelemetry@10.65.0(@opentelemetry/api@1.9.1)(@opentelemetry/core@2.9.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-trace-base@2.9.0(@opentelemetry/api@1.9.1))':
     dependencies:
@@ -9901,13 +9946,16 @@ snapshots:
       '@sentry/conventions': 0.15.1
       '@sentry/core': 10.65.0
       magic-string: 0.30.21
+    transitivePeerDependencies:
+      - supports-color
 
-  '@sentry/vite-plugin@5.4.0':
+  '@sentry/vite-plugin@5.4.0(supports-color@10.2.2)':
     dependencies:
-      '@sentry/bundler-plugins': 10.65.0
+      '@sentry/bundler-plugins': 10.65.0(supports-color@10.2.2)
     transitivePeerDependencies:
       - encoding
       - rollup
+      - supports-color
       - webpack
 
   '@shikijs/core@4.3.1':
@@ -10070,11 +10118,15 @@ snapshots:
     dependencies:
       '@textlint/ast-node-types': 13.4.1
       debug: 4.4.3(supports-color@10.2.2)
+    transitivePeerDependencies:
+      - supports-color
 
   '@textlint/ast-tester@15.7.1(supports-color@10.2.2)':
     dependencies:
       '@textlint/ast-node-types': 15.7.1
       debug: 4.4.3(supports-color@10.2.2)
+    transitivePeerDependencies:
+      - supports-color
 
   '@textlint/ast-traverse@13.4.1':
     dependencies:
@@ -10093,6 +10145,8 @@ snapshots:
       '@textlint/utils': 15.7.1
       debug: 4.4.3(supports-color@10.2.2)
       rc-config-loader: 4.1.4(supports-color@10.2.2)
+    transitivePeerDependencies:
+      - supports-color
 
   '@textlint/feature-flag@13.4.1': {}
 
@@ -10109,6 +10163,8 @@ snapshots:
       string-width: 4.2.3
       strip-ansi: 6.0.1
       text-table: 0.2.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@textlint/get-config-base-dir@2.0.0': {}
 
@@ -10124,6 +10180,8 @@ snapshots:
       debug: 4.4.3(supports-color@10.2.2)
       fast-equals: 4.0.3
       structured-source: 4.0.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@textlint/kernel@15.7.1(supports-color@10.2.2)':
     dependencies:
@@ -10137,6 +10195,8 @@ snapshots:
       debug: 4.4.3(supports-color@10.2.2)
       fast-equals: 4.0.3
       structured-source: 4.0.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@textlint/linter-formatter@15.7.1(supports-color@10.2.2)':
     dependencies:
@@ -10154,6 +10214,8 @@ snapshots:
       strip-ansi: 6.0.1
       table: 6.9.0
       text-table: 0.2.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@textlint/markdown-to-ast@13.4.1(supports-color@10.2.2)':
     dependencies:
@@ -10166,6 +10228,8 @@ snapshots:
       remark-parse: 9.0.0(supports-color@10.2.2)
       traverse: 0.6.11
       unified: 9.2.2
+    transitivePeerDependencies:
+      - supports-color
 
   '@textlint/markdown-to-ast@15.7.1(supports-color@10.2.2)':
     dependencies:
@@ -10179,6 +10243,8 @@ snapshots:
       remark-parse: 9.0.0(supports-color@10.2.2)
       structured-source: 4.0.0
       unified: 9.2.2
+    transitivePeerDependencies:
+      - supports-color
 
   '@textlint/module-interop@14.8.4': {}
 
@@ -10206,11 +10272,15 @@ snapshots:
     dependencies:
       '@textlint/types': 13.4.1
       debug: 4.4.3(supports-color@10.2.2)
+    transitivePeerDependencies:
+      - supports-color
 
   '@textlint/source-code-fixer@15.7.1(supports-color@10.2.2)':
     dependencies:
       '@textlint/types': 15.7.1
       debug: 4.4.3(supports-color@10.2.2)
+    transitivePeerDependencies:
+      - supports-color
 
   '@textlint/text-to-ast@13.4.1':
     dependencies:
@@ -10223,11 +10293,15 @@ snapshots:
   '@textlint/textlint-plugin-markdown@13.4.1(supports-color@10.2.2)':
     dependencies:
       '@textlint/markdown-to-ast': 13.4.1(supports-color@10.2.2)
+    transitivePeerDependencies:
+      - supports-color
 
   '@textlint/textlint-plugin-markdown@15.7.1(supports-color@10.2.2)':
     dependencies:
       '@textlint/markdown-to-ast': 15.7.1(supports-color@10.2.2)
       '@textlint/types': 15.7.1
+    transitivePeerDependencies:
+      - supports-color
 
   '@textlint/textlint-plugin-text@13.4.1':
     dependencies:
@@ -10254,6 +10328,8 @@ snapshots:
     dependencies:
       debug: 4.4.3(supports-color@10.2.2)
       token-types: 6.1.2
+    transitivePeerDependencies:
+      - supports-color
 
   '@tokenizer/token@0.3.0': {}
 
@@ -10644,22 +10720,24 @@ snapshots:
       d3-selection: 3.0.0
       d3-transition: 3.0.1(d3-selection@3.0.0)
 
-  '@vitejs/plugin-react@5.2.0(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))':
+  '@vitejs/plugin-react@5.2.0(supports-color@10.2.2)(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))':
     dependencies:
       '@babel/core': 7.29.7(supports-color@10.2.2)
-      '@babel/plugin-transform-react-jsx-self': 7.29.7(@babel/core@7.29.7)
-      '@babel/plugin-transform-react-jsx-source': 7.29.7(@babel/core@7.29.7)
+      '@babel/plugin-transform-react-jsx-self': 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))
+      '@babel/plugin-transform-react-jsx-source': 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))
       '@rolldown/pluginutils': 1.0.0-rc.3
       '@types/babel__core': 7.20.5
       react-refresh: 0.18.0
       vite: 8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)
+    transitivePeerDependencies:
+      - supports-color
 
-  '@volar/kit@2.4.28(typescript@6.0.2)':
+  '@volar/kit@2.4.28(typescript@6.0.3)':
     dependencies:
       '@volar/language-service': 2.4.28
       '@volar/typescript': 2.4.28
       typesafe-path: 0.2.2
-      typescript: 6.0.2
+      typescript: 6.0.3
       vscode-languageserver-textdocument: 1.0.12
       vscode-uri: 3.1.0
 
@@ -10714,6 +10792,8 @@ snapshots:
   agent-base@6.0.2(supports-color@10.2.2):
     dependencies:
       debug: 4.4.3(supports-color@10.2.2)
+    transitivePeerDependencies:
+      - supports-color
 
   agent-base@7.1.4: {}
 
@@ -10822,9 +10902,9 @@ snapshots:
 
   astring@1.9.0: {}
 
-  astro-expressive-code@0.44.0(astro@7.0.7(@astrojs/markdown-remark@7.2.1)):
+  astro-expressive-code@0.44.0(astro@7.0.7(@astrojs/markdown-remark@7.2.1(supports-color@10.2.2))(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@26.1.1)(jiti@2.7.0)(yaml@2.9.0)):
     dependencies:
-      astro: 7.0.7(@astrojs/markdown-remark@7.2.1)
+      astro: 7.0.7(@astrojs/markdown-remark@7.2.1(supports-color@10.2.2))(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@26.1.1)(jiti@2.7.0)(yaml@2.9.0)
       rehype-expressive-code: 0.44.0
       url-extras: 0.1.0
 
@@ -10834,17 +10914,19 @@ snapshots:
       '@swc/html': 1.15.43
       fast-glob: 3.3.3
 
-  astro-seo@1.1.0(typescript@6.0.2):
+  astro-seo@1.1.0(prettier@3.9.5)(typescript@6.0.3):
     dependencies:
-      '@astrojs/check': 0.9.9(typescript@6.0.2)
+      '@astrojs/check': 0.9.9(prettier@3.9.5)(typescript@6.0.3)
     transitivePeerDependencies:
+      - prettier
       - prettier-plugin-astro
+      - typescript
 
-  astro-typed-links@2.0.0(astro@7.0.7(@astrojs/markdown-remark@7.2.1)):
+  astro-typed-links@2.0.0(astro@7.0.7(@astrojs/markdown-remark@7.2.1(supports-color@10.2.2))(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@26.1.1)(jiti@2.7.0)(yaml@2.9.0)):
     dependencies:
-      astro: 7.0.7(@astrojs/markdown-remark@7.2.1)
+      astro: 7.0.7(@astrojs/markdown-remark@7.2.1(supports-color@10.2.2))(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@26.1.1)(jiti@2.7.0)(yaml@2.9.0)
 
-  astro@7.0.7(@astrojs/markdown-remark@7.2.1):
+  astro@7.0.7(@astrojs/markdown-remark@7.2.1(supports-color@10.2.2))(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@26.1.1)(jiti@2.7.0)(yaml@2.9.0):
     dependencies:
       '@astrojs/compiler-rs': 0.3.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)
       '@astrojs/internal-helpers': 0.10.1
@@ -10911,8 +10993,11 @@ snapshots:
       - '@azure/storage-blob'
       - '@capacitor/preferences'
       - '@deno/kv'
+      - '@emnapi/core'
+      - '@emnapi/runtime'
       - '@netlify/blobs'
       - '@planetscale/database'
+      - '@types/node'
       - '@upstash/redis'
       - '@vercel/blob'
       - '@vercel/functions'
@@ -10922,6 +11007,7 @@ snapshots:
       - db0
       - idb-keyval
       - ioredis
+      - jiti
       - less
       - rollup
       - sass
@@ -10931,6 +11017,7 @@ snapshots:
       - terser
       - tsx
       - uploadthing
+      - yaml
 
   async-function@1.0.0: {}
 
@@ -10946,19 +11033,19 @@ snapshots:
 
   axobject-query@4.1.0: {}
 
-  babel-plugin-jsx-dom-expressions@0.40.7(@babel/core@7.29.7):
+  babel-plugin-jsx-dom-expressions@0.40.7(@babel/core@7.29.7(supports-color@10.2.2)):
     dependencies:
       '@babel/core': 7.29.7(supports-color@10.2.2)
       '@babel/helper-module-imports': 7.18.6
-      '@babel/plugin-syntax-jsx': 7.29.7(@babel/core@7.29.7)
+      '@babel/plugin-syntax-jsx': 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))
       '@babel/types': 7.29.7
       html-entities: 2.3.3
       parse5: 7.3.0
 
-  babel-preset-solid@1.9.12(@babel/core@7.29.7)(solid-js@1.9.14):
+  babel-preset-solid@1.9.12(@babel/core@7.29.7(supports-color@10.2.2))(solid-js@1.9.14):
     dependencies:
       '@babel/core': 7.29.7(supports-color@10.2.2)
-      babel-plugin-jsx-dom-expressions: 0.40.7(@babel/core@7.29.7)
+      babel-plugin-jsx-dom-expressions: 0.40.7(@babel/core@7.29.7(supports-color@10.2.2))
     optionalDependencies:
       solid-js: 1.9.14
 
@@ -10991,6 +11078,8 @@ snapshots:
       qs: 6.15.3
       raw-body: 3.0.2
       type-is: 2.1.0
+    transitivePeerDependencies:
+      - supports-color
 
   boolbase@1.0.0: {}
 
@@ -11022,6 +11111,7 @@ snapshots:
     transitivePeerDependencies:
       - canvas
       - encoding
+      - supports-color
 
   buffer-equal-constant-time@1.0.1: {}
 
@@ -11160,14 +11250,17 @@ snapshots:
 
   clsx@2.1.1: {}
 
-  cmdk@1.1.1(react@19.2.7)(react-dom@19.2.7(react@19.2.7)):
+  cmdk@1.1.1(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7):
     dependencies:
       '@radix-ui/react-compose-refs': 1.1.3(@types/react@19.2.17)(react@19.2.7)
-      '@radix-ui/react-dialog': 1.1.19(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))
+      '@radix-ui/react-dialog': 1.1.19(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@radix-ui/react-id': 1.1.2(@types/react@19.2.17)(react@19.2.7)
-      '@radix-ui/react-primitive': 2.1.7(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(react@19.2.7)(react-dom@19.2.7(react@19.2.7))
+      '@radix-ui/react-primitive': 2.1.7(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       react: 19.2.7
       react-dom: 19.2.7(react@19.2.7)
+    transitivePeerDependencies:
+      - '@types/react'
+      - '@types/react-dom'
 
   code-block-writer@13.0.3: {}
 
@@ -11241,14 +11334,14 @@ snapshots:
     dependencies:
       layout-base: 2.0.1
 
-  cosmiconfig@9.0.2(typescript@6.0.2):
+  cosmiconfig@9.0.2(typescript@6.0.3):
     dependencies:
       env-paths: 2.2.1
       import-fresh: 3.3.1
       js-yaml: 4.3.0
       parse-json: 5.2.0
     optionalDependencies:
-      typescript: 6.0.2
+      typescript: 6.0.3
 
   cross-spawn@7.0.6:
     dependencies:
@@ -11895,7 +11988,7 @@ snapshots:
     dependencies:
       clone-regexp: 2.2.0
 
-  express-rate-limit@8.5.2(express@5.2.1):
+  express-rate-limit@8.5.2(express@5.2.1(supports-color@10.2.2)):
     dependencies:
       express: 5.2.1(supports-color@10.2.2)
       ip-address: 10.2.0
@@ -11930,6 +12023,8 @@ snapshots:
       statuses: 2.0.2
       type-is: 2.1.0
       vary: 1.1.2
+    transitivePeerDependencies:
+      - supports-color
 
   expressive-code@0.44.0:
     dependencies:
@@ -12022,6 +12117,8 @@ snapshots:
       strtok3: 10.3.5
       token-types: 6.1.2
       uint8array-extras: 1.5.0
+    transitivePeerDependencies:
+      - supports-color
 
   fill-range@7.1.1:
     dependencies:
@@ -12035,6 +12132,8 @@ snapshots:
       on-finished: 2.4.1
       parseurl: 1.3.3
       statuses: 2.0.2
+    transitivePeerDependencies:
+      - supports-color
 
   find-up-simple@1.0.1: {}
 
@@ -12118,6 +12217,7 @@ snapshots:
       uuid: 9.0.1
     transitivePeerDependencies:
       - encoding
+      - supports-color
 
   gcp-metadata@6.1.1(supports-color@10.2.2):
     dependencies:
@@ -12126,6 +12226,7 @@ snapshots:
       json-bigint: 1.0.0
     transitivePeerDependencies:
       - encoding
+      - supports-color
 
   generator-function@2.0.1: {}
 
@@ -12198,6 +12299,7 @@ snapshots:
       yargs: 17.7.3
     transitivePeerDependencies:
       - encoding
+      - supports-color
 
   google-auth-library@9.15.1(supports-color@10.2.2):
     dependencies:
@@ -12209,6 +12311,7 @@ snapshots:
       jws: 4.0.1
     transitivePeerDependencies:
       - encoding
+      - supports-color
 
   google-logging-utils@0.0.2: {}
 
@@ -12231,6 +12334,7 @@ snapshots:
       jws: 4.0.1
     transitivePeerDependencies:
       - encoding
+      - supports-color
 
   gzip-size@6.0.0:
     dependencies:
@@ -12462,11 +12566,15 @@ snapshots:
     dependencies:
       agent-base: 6.0.2(supports-color@10.2.2)
       debug: 4.4.3(supports-color@10.2.2)
+    transitivePeerDependencies:
+      - supports-color
 
   https-proxy-agent@7.0.6(supports-color@10.2.2):
     dependencies:
       agent-base: 7.1.4
       debug: 4.4.3(supports-color@10.2.2)
+    transitivePeerDependencies:
+      - supports-color
 
   human-signals@2.1.0: {}
 
@@ -13050,6 +13158,8 @@ snapshots:
       parse-entities: 4.0.2
       stringify-entities: 4.0.4
       unist-util-visit-parents: 6.0.2
+    transitivePeerDependencies:
+      - supports-color
 
   mdast-util-find-and-replace@1.1.1:
     dependencies:
@@ -13068,6 +13178,8 @@ snapshots:
     dependencies:
       mdast-util-to-markdown: 0.6.5
       micromark: 2.11.4(supports-color@10.2.2)
+    transitivePeerDependencies:
+      - supports-color
 
   mdast-util-from-markdown@0.8.5(supports-color@10.2.2):
     dependencies:
@@ -13076,6 +13188,8 @@ snapshots:
       micromark: 2.11.4(supports-color@10.2.2)
       parse-entities: 2.0.0
       unist-util-stringify-position: 2.0.3
+    transitivePeerDependencies:
+      - supports-color
 
   mdast-util-from-markdown@2.0.3(supports-color@10.2.2):
     dependencies:
@@ -13091,6 +13205,8 @@ snapshots:
       micromark-util-symbol: 2.0.1
       micromark-util-types: 2.0.2
       unist-util-stringify-position: 4.0.0
+    transitivePeerDependencies:
+      - supports-color
 
   mdast-util-frontmatter@0.2.0:
     dependencies:
@@ -13101,6 +13217,8 @@ snapshots:
       ccount: 1.1.0
       mdast-util-find-and-replace: 1.1.1
       micromark: 2.11.4(supports-color@10.2.2)
+    transitivePeerDependencies:
+      - supports-color
 
   mdast-util-gfm-autolink-literal@2.0.1:
     dependencies:
@@ -13117,6 +13235,8 @@ snapshots:
       mdast-util-from-markdown: 2.0.3(supports-color@10.2.2)
       mdast-util-to-markdown: 2.1.2
       micromark-util-normalize-identifier: 2.0.1
+    transitivePeerDependencies:
+      - supports-color
 
   mdast-util-gfm-strikethrough@0.2.3:
     dependencies:
@@ -13127,6 +13247,8 @@ snapshots:
       '@types/mdast': 4.0.4
       mdast-util-from-markdown: 2.0.3(supports-color@10.2.2)
       mdast-util-to-markdown: 2.1.2
+    transitivePeerDependencies:
+      - supports-color
 
   mdast-util-gfm-table@0.1.6:
     dependencies:
@@ -13140,6 +13262,8 @@ snapshots:
       markdown-table: 3.0.4
       mdast-util-from-markdown: 2.0.3(supports-color@10.2.2)
       mdast-util-to-markdown: 2.1.2
+    transitivePeerDependencies:
+      - supports-color
 
   mdast-util-gfm-task-list-item@0.1.6:
     dependencies:
@@ -13151,6 +13275,8 @@ snapshots:
       devlop: 1.1.0
       mdast-util-from-markdown: 2.0.3(supports-color@10.2.2)
       mdast-util-to-markdown: 2.1.2
+    transitivePeerDependencies:
+      - supports-color
 
   mdast-util-gfm@0.1.2(supports-color@10.2.2):
     dependencies:
@@ -13159,6 +13285,8 @@ snapshots:
       mdast-util-gfm-table: 0.1.6
       mdast-util-gfm-task-list-item: 0.1.6
       mdast-util-to-markdown: 0.6.5
+    transitivePeerDependencies:
+      - supports-color
 
   mdast-util-gfm@3.1.0(supports-color@10.2.2):
     dependencies:
@@ -13169,6 +13297,8 @@ snapshots:
       mdast-util-gfm-table: 2.0.0(supports-color@10.2.2)
       mdast-util-gfm-task-list-item: 2.0.0(supports-color@10.2.2)
       mdast-util-to-markdown: 2.1.2
+    transitivePeerDependencies:
+      - supports-color
 
   mdast-util-math@3.0.0(supports-color@10.2.2):
     dependencies:
@@ -13179,6 +13309,8 @@ snapshots:
       mdast-util-from-markdown: 2.0.3(supports-color@10.2.2)
       mdast-util-to-markdown: 2.1.2
       unist-util-remove-position: 5.0.0
+    transitivePeerDependencies:
+      - supports-color
 
   mdast-util-newline-to-break@2.0.0:
     dependencies:
@@ -13202,7 +13334,7 @@ snapshots:
       unist-util-visit: 5.1.0
       vfile: 6.0.3
 
-  mdast-util-to-markdown-cjk-friendly-gfm-strikethrough@1.0.0(@types/mdast@4.0.4):
+  mdast-util-to-markdown-cjk-friendly-gfm-strikethrough@1.0.0(@types/mdast@4.0.4)(micromark-util-types@2.0.2)(supports-color@10.2.2):
     dependencies:
       mdast-util-gfm-strikethrough: 2.0.0(supports-color@10.2.2)
       mdast-util-to-markdown: 2.1.2
@@ -13210,14 +13342,19 @@ snapshots:
       micromark-util-symbol: 2.0.1
     optionalDependencies:
       '@types/mdast': 4.0.4
+    transitivePeerDependencies:
+      - micromark-util-types
+      - supports-color
 
-  mdast-util-to-markdown-cjk-friendly@1.0.0(@types/mdast@4.0.4):
+  mdast-util-to-markdown-cjk-friendly@1.0.0(@types/mdast@4.0.4)(micromark-util-types@2.0.2):
     dependencies:
       mdast-util-to-markdown: 2.1.2
       micromark-extension-cjk-friendly-util: 3.0.1(micromark-util-types@2.0.2)
       micromark-util-symbol: 2.0.1
     optionalDependencies:
       '@types/mdast': 4.0.4
+    transitivePeerDependencies:
+      - micromark-util-types
 
   mdast-util-to-markdown@0.6.5:
     dependencies:
@@ -13317,7 +13454,7 @@ snapshots:
       micromark-util-symbol: 2.0.1
       micromark-util-types: 2.0.2
 
-  micromark-extension-cjk-friendly-gfm-strikethrough@2.0.1(micromark@4.0.2)(micromark-util-types@2.0.2):
+  micromark-extension-cjk-friendly-gfm-strikethrough@2.0.1(micromark-util-types@2.0.2)(micromark@4.0.2(supports-color@10.2.2)):
     dependencies:
       devlop: 1.1.0
       get-east-asian-width: 1.6.0
@@ -13338,7 +13475,7 @@ snapshots:
     optionalDependencies:
       micromark-util-types: 2.0.2
 
-  micromark-extension-cjk-friendly@2.0.1(micromark@4.0.2)(micromark-util-types@2.0.2):
+  micromark-extension-cjk-friendly@2.0.1(micromark-util-types@2.0.2)(micromark@4.0.2(supports-color@10.2.2)):
     dependencies:
       devlop: 1.1.0
       micromark: 4.0.2(supports-color@10.2.2)
@@ -13362,6 +13499,8 @@ snapshots:
   micromark-extension-footnote@0.3.2(supports-color@10.2.2):
     dependencies:
       micromark: 2.11.4(supports-color@10.2.2)
+    transitivePeerDependencies:
+      - supports-color
 
   micromark-extension-frontmatter@0.2.2:
     dependencies:
@@ -13370,6 +13509,8 @@ snapshots:
   micromark-extension-gfm-autolink-literal@0.5.7(supports-color@10.2.2):
     dependencies:
       micromark: 2.11.4(supports-color@10.2.2)
+    transitivePeerDependencies:
+      - supports-color
 
   micromark-extension-gfm-autolink-literal@2.1.0:
     dependencies:
@@ -13392,6 +13533,8 @@ snapshots:
   micromark-extension-gfm-strikethrough@0.6.5(supports-color@10.2.2):
     dependencies:
       micromark: 2.11.4(supports-color@10.2.2)
+    transitivePeerDependencies:
+      - supports-color
 
   micromark-extension-gfm-strikethrough@2.1.0:
     dependencies:
@@ -13405,6 +13548,8 @@ snapshots:
   micromark-extension-gfm-table@0.4.3(supports-color@10.2.2):
     dependencies:
       micromark: 2.11.4(supports-color@10.2.2)
+    transitivePeerDependencies:
+      - supports-color
 
   micromark-extension-gfm-table@2.1.1:
     dependencies:
@@ -13423,6 +13568,8 @@ snapshots:
   micromark-extension-gfm-task-list-item@0.3.3(supports-color@10.2.2):
     dependencies:
       micromark: 2.11.4(supports-color@10.2.2)
+    transitivePeerDependencies:
+      - supports-color
 
   micromark-extension-gfm-task-list-item@2.1.0:
     dependencies:
@@ -13440,6 +13587,8 @@ snapshots:
       micromark-extension-gfm-table: 0.4.3(supports-color@10.2.2)
       micromark-extension-gfm-tagfilter: 0.3.0
       micromark-extension-gfm-task-list-item: 0.3.3(supports-color@10.2.2)
+    transitivePeerDependencies:
+      - supports-color
 
   micromark-extension-gfm@3.0.0:
     dependencies:
@@ -13558,6 +13707,8 @@ snapshots:
     dependencies:
       debug: 4.4.3(supports-color@10.2.2)
       parse-entities: 2.0.0
+    transitivePeerDependencies:
+      - supports-color
 
   micromark@4.0.2(supports-color@10.2.2):
     dependencies:
@@ -13578,6 +13729,8 @@ snapshots:
       micromark-util-subtokenize: 2.1.0
       micromark-util-symbol: 2.0.1
       micromark-util-types: 2.0.2
+    transitivePeerDependencies:
+      - supports-color
 
   micromatch@4.0.8:
     dependencies:
@@ -14145,6 +14298,8 @@ snapshots:
       js-yaml: 4.3.0
       json5: 2.2.3
       require-from-string: 2.0.2
+    transitivePeerDependencies:
+      - supports-color
 
   react-dom@19.2.7(react@19.2.7):
     dependencies:
@@ -14343,21 +14498,28 @@ snapshots:
       mdast-util-newline-to-break: 2.0.0
       unified: 11.0.5
 
-  remark-cjk-friendly-gfm-strikethrough@2.3.1(@types/mdast@4.0.4)(unified@11.0.5):
+  remark-cjk-friendly-gfm-strikethrough@2.3.1(@types/mdast@4.0.4)(micromark-util-types@2.0.2)(micromark@4.0.2(supports-color@10.2.2))(supports-color@10.2.2)(unified@11.0.5):
     dependencies:
-      mdast-util-to-markdown-cjk-friendly-gfm-strikethrough: 1.0.0(@types/mdast@4.0.4)
-      micromark-extension-cjk-friendly-gfm-strikethrough: 2.0.1(micromark@4.0.2)(micromark-util-types@2.0.2)
+      mdast-util-to-markdown-cjk-friendly-gfm-strikethrough: 1.0.0(@types/mdast@4.0.4)(micromark-util-types@2.0.2)(supports-color@10.2.2)
+      micromark-extension-cjk-friendly-gfm-strikethrough: 2.0.1(micromark-util-types@2.0.2)(micromark@4.0.2(supports-color@10.2.2))
       unified: 11.0.5
     optionalDependencies:
       '@types/mdast': 4.0.4
+    transitivePeerDependencies:
+      - micromark
+      - micromark-util-types
+      - supports-color
 
-  remark-cjk-friendly@2.3.1(@types/mdast@4.0.4)(unified@11.0.5):
+  remark-cjk-friendly@2.3.1(@types/mdast@4.0.4)(micromark-util-types@2.0.2)(micromark@4.0.2(supports-color@10.2.2))(unified@11.0.5):
     dependencies:
-      mdast-util-to-markdown-cjk-friendly: 1.0.0(@types/mdast@4.0.4)
-      micromark-extension-cjk-friendly: 2.0.1(micromark@4.0.2)(micromark-util-types@2.0.2)
+      mdast-util-to-markdown-cjk-friendly: 1.0.0(@types/mdast@4.0.4)(micromark-util-types@2.0.2)
+      micromark-extension-cjk-friendly: 2.0.1(micromark-util-types@2.0.2)(micromark@4.0.2(supports-color@10.2.2))
       unified: 11.0.5
     optionalDependencies:
       '@types/mdast': 4.0.4
+    transitivePeerDependencies:
+      - micromark
+      - micromark-util-types
 
   remark-directive@4.0.0(supports-color@10.2.2):
     dependencies:
@@ -14365,6 +14527,8 @@ snapshots:
       mdast-util-directive: 3.1.0(supports-color@10.2.2)
       micromark-extension-directive: 4.0.0
       unified: 11.0.5
+    transitivePeerDependencies:
+      - supports-color
 
   remark-emoji@5.0.2:
     dependencies:
@@ -14378,6 +14542,8 @@ snapshots:
     dependencies:
       mdast-util-footnote: 0.1.7(supports-color@10.2.2)
       micromark-extension-footnote: 0.3.2(supports-color@10.2.2)
+    transitivePeerDependencies:
+      - supports-color
 
   remark-frontmatter@3.0.0:
     dependencies:
@@ -14388,6 +14554,8 @@ snapshots:
     dependencies:
       mdast-util-gfm: 0.1.2(supports-color@10.2.2)
       micromark-extension-gfm: 0.3.3(supports-color@10.2.2)
+    transitivePeerDependencies:
+      - supports-color
 
   remark-gfm@4.0.1(supports-color@10.2.2):
     dependencies:
@@ -14397,6 +14565,8 @@ snapshots:
       remark-parse: 11.0.0(supports-color@10.2.2)
       remark-stringify: 11.0.0
       unified: 11.0.5
+    transitivePeerDependencies:
+      - supports-color
 
   remark-math@6.0.0(supports-color@10.2.2):
     dependencies:
@@ -14404,6 +14574,8 @@ snapshots:
       mdast-util-math: 3.0.0(supports-color@10.2.2)
       micromark-extension-math: 3.1.0
       unified: 11.0.5
+    transitivePeerDependencies:
+      - supports-color
 
   remark-normalize-headings@4.0.0:
     dependencies:
@@ -14416,10 +14588,14 @@ snapshots:
       mdast-util-from-markdown: 2.0.3(supports-color@10.2.2)
       micromark-util-types: 2.0.2
       unified: 11.0.5
+    transitivePeerDependencies:
+      - supports-color
 
   remark-parse@9.0.0(supports-color@10.2.2):
     dependencies:
       mdast-util-from-markdown: 0.8.5(supports-color@10.2.2)
+    transitivePeerDependencies:
+      - supports-color
 
   remark-rehype@11.1.2:
     dependencies:
@@ -14458,6 +14634,8 @@ snapshots:
       remark-parse: 11.0.0(supports-color@10.2.2)
       remark-stringify: 11.0.0
       unified: 11.0.5
+    transitivePeerDependencies:
+      - supports-color
 
   repeat-string@1.6.1: {}
 
@@ -14473,6 +14651,8 @@ snapshots:
     dependencies:
       debug: 4.4.3(supports-color@10.2.2)
       module-details-from-path: 1.0.4
+    transitivePeerDependencies:
+      - supports-color
 
   reselect@5.2.0: {}
 
@@ -14556,6 +14736,8 @@ snapshots:
       is-promise: 4.0.0
       parseurl: 1.3.3
       path-to-regexp: 8.4.2
+    transitivePeerDependencies:
+      - supports-color
 
   run-applescript@7.1.0: {}
 
@@ -14637,13 +14819,15 @@ snapshots:
 
   scheduler@0.27.0: {}
 
-  schema-dts-lib@1.0.0(typescript@6.0.2):
+  schema-dts-lib@1.0.0(typescript@6.0.3):
     dependencies:
-      typescript: 6.0.2
+      typescript: 6.0.3
 
-  schema-dts@2.0.0(typescript@6.0.2):
+  schema-dts@2.0.0(typescript@6.0.3):
     dependencies:
-      schema-dts-lib: 1.0.0(typescript@6.0.2)
+      schema-dts-lib: 1.0.0(typescript@6.0.3)
+    transitivePeerDependencies:
+      - typescript
 
   section-matter@1.0.0:
     dependencies:
@@ -14669,6 +14853,8 @@ snapshots:
       on-finished: 2.4.1
       range-parser: 1.3.0
       statuses: 2.0.2
+    transitivePeerDependencies:
+      - supports-color
 
   sentence-splitter@5.0.1:
     dependencies:
@@ -14687,6 +14873,8 @@ snapshots:
       escape-html: 1.0.3
       parseurl: 1.3.3
       send: 1.2.1(supports-color@10.2.2)
+    transitivePeerDependencies:
+      - supports-color
 
   set-function-length@1.2.2:
     dependencies:
@@ -14712,18 +14900,18 @@ snapshots:
 
   setprototypeof@1.2.0: {}
 
-  shadcn@4.13.0(supports-color@10.2.2)(typescript@6.0.2):
+  shadcn@4.13.0(supports-color@10.2.2)(typescript@6.0.3):
     dependencies:
       '@babel/core': 7.29.7(supports-color@10.2.2)
       '@babel/parser': 7.29.7
-      '@babel/plugin-transform-typescript': 7.29.7(@babel/core@7.29.7)
-      '@babel/preset-typescript': 7.29.7(@babel/core@7.29.7)
+      '@babel/plugin-transform-typescript': 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
+      '@babel/preset-typescript': 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
       '@dotenvx/dotenvx': 1.75.1
-      '@modelcontextprotocol/sdk': 1.29.0(zod@3.25.76)
+      '@modelcontextprotocol/sdk': 1.29.0(supports-color@10.2.2)(zod@3.25.76)
       '@types/validate-npm-package-name': 4.0.2
       browserslist: 4.28.6
       commander: 14.0.3
-      cosmiconfig: 9.0.2(typescript@6.0.2)
+      cosmiconfig: 9.0.2(typescript@6.0.3)
       dedent: 1.7.2
       deepmerge: 4.3.1
       diff: 8.0.4
@@ -14749,6 +14937,8 @@ snapshots:
     transitivePeerDependencies:
       - '@cfworker/json-schema'
       - babel-plugin-macros
+      - supports-color
+      - typescript
 
   sharp@0.34.5:
     dependencies:
@@ -14900,12 +15090,14 @@ snapshots:
       seroval: 1.5.5
       seroval-plugins: 1.5.5(seroval@1.5.5)
 
-  solid-refresh@0.6.3(solid-js@1.9.14):
+  solid-refresh@0.6.3(solid-js@1.9.14)(supports-color@10.2.2):
     dependencies:
       '@babel/generator': 7.29.7
       '@babel/helper-module-imports': 7.29.7(supports-color@10.2.2)
       '@babel/types': 7.29.7
       solid-js: 1.9.14
+    transitivePeerDependencies:
+      - supports-color
 
   source-map-js@1.2.1: {}
 
@@ -15059,7 +15251,7 @@ snapshots:
 
   text-table@0.2.0: {}
 
-  textlint-filter-rule-allowlist@4.0.0(textlint@15.7.1):
+  textlint-filter-rule-allowlist@4.0.0(textlint@15.7.1(supports-color@10.2.2)):
     dependencies:
       '@textlint/ast-node-types': 12.6.1
       '@textlint/get-config-base-dir': 2.0.0
@@ -15069,7 +15261,7 @@ snapshots:
 
   textlint-filter-rule-comments@1.3.0: {}
 
-  textlint-rule-doubled-spaces@1.0.2(textlint@15.7.1):
+  textlint-rule-doubled-spaces@1.0.2(textlint@15.7.1(supports-color@10.2.2)):
     dependencies:
       '@textlint/regexp-string-matcher': 2.0.2
       textlint: 15.7.1(supports-color@10.2.2)
@@ -15183,6 +15375,8 @@ snapshots:
     dependencies:
       textlint-rule-helper: 2.5.0
       textlint-tester: 13.4.1(supports-color@10.2.2)
+    transitivePeerDependencies:
+      - supports-color
 
   textlint-rule-no-kangxi-radicals@0.2.2:
     dependencies:
@@ -15202,7 +15396,7 @@ snapshots:
 
   textlint-rule-no-zero-width-spaces@1.0.1: {}
 
-  textlint-rule-period-in-header@0.1.2(textlint@15.7.1):
+  textlint-rule-period-in-header@0.1.2(textlint@15.7.1(supports-color@10.2.2)):
     dependencies:
       check-ends-with-period: 3.0.2
       textlint: 15.7.1(supports-color@10.2.2)
@@ -15233,6 +15427,8 @@ snapshots:
       textlint-rule-no-zero-width-spaces: 1.0.1
       textlint-rule-preset-jtf-style: 3.0.3
       textlint-rule-sentence-length: 5.2.1
+    transitivePeerDependencies:
+      - supports-color
 
   textlint-rule-preset-jtf-style@3.0.3:
     dependencies:
@@ -15271,6 +15467,8 @@ snapshots:
       '@textlint/kernel': 13.4.1(supports-color@10.2.2)
       '@textlint/textlint-plugin-markdown': 13.4.1(supports-color@10.2.2)
       '@textlint/textlint-plugin-text': 13.4.1
+    transitivePeerDependencies:
+      - supports-color
 
   textlint-util-to-string@3.3.4:
     dependencies:
@@ -15281,7 +15479,7 @@ snapshots:
 
   textlint@15.7.1(supports-color@10.2.2):
     dependencies:
-      '@modelcontextprotocol/sdk': 1.29.0(zod@3.25.76)
+      '@modelcontextprotocol/sdk': 1.29.0(supports-color@10.2.2)(zod@3.25.76)
       '@textlint/ast-node-types': 15.7.1
       '@textlint/ast-traverse': 15.7.1
       '@textlint/config-loader': 15.7.1(supports-color@10.2.2)
@@ -15307,6 +15505,7 @@ snapshots:
       zod: 3.25.76
     transitivePeerDependencies:
       - '@cfworker/json-schema'
+      - supports-color
 
   tiny-inflate@1.0.3: {}
 
@@ -15453,8 +15652,6 @@ snapshots:
   typescript-auto-import-cache@0.3.6:
     dependencies:
       semver: 7.8.5
-
-  typescript@6.0.2: {}
 
   typescript@6.0.3: {}
 
@@ -15631,9 +15828,9 @@ snapshots:
 
   universalify@2.0.1: {}
 
-  unocss-preset-animations@1.3.0(@unocss/preset-wind3@66.7.5)(unocss@66.7.5(@unocss/astro@66.7.5(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)))):
+  unocss-preset-animations@1.3.0(@unocss/preset-wind3@66.7.5)(unocss@66.7.5(@unocss/astro@66.7.5(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)))(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))):
     dependencies:
-      unocss: 66.7.5(@unocss/astro@66.7.5(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)))
+      unocss: 66.7.5(@unocss/astro@66.7.5(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)))(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))
     optionalDependencies:
       '@unocss/preset-wind3': 66.7.5
 
@@ -15643,11 +15840,11 @@ snapshots:
       '@unocss/core': 65.5.0
       '@unocss/rule-utils': 65.5.0
 
-  unocss-preset-scrollbar-hide@1.0.1:
+  unocss-preset-scrollbar-hide@1.0.1(unocss@66.7.5(@unocss/astro@66.7.5(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)))(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))):
     optionalDependencies:
-      unocss: 66.7.5(@unocss/astro@66.7.5(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)))
+      unocss: 66.7.5(@unocss/astro@66.7.5(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)))(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))
 
-  unocss@66.7.5(@unocss/astro@66.7.5(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))):
+  unocss@66.7.5(@unocss/astro@66.7.5(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)))(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)):
     dependencies:
       '@unocss/cli': 66.7.5
       '@unocss/core': 66.7.5
@@ -15668,6 +15865,8 @@ snapshots:
       '@unocss/vite': 66.7.5(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))
     optionalDependencies:
       '@unocss/astro': 66.7.5(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))
+    transitivePeerDependencies:
+      - vite
 
   unpipe@1.0.0: {}
 
@@ -15767,16 +15966,18 @@ snapshots:
 
   vite-plugin-remove-console@2.2.0: {}
 
-  vite-plugin-solid@2.11.12(solid-js@1.9.14)(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)):
+  vite-plugin-solid@2.11.12(solid-js@1.9.14)(supports-color@10.2.2)(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)):
     dependencies:
       '@babel/core': 7.29.7(supports-color@10.2.2)
       '@types/babel__core': 7.20.5
-      babel-preset-solid: 1.9.12(@babel/core@7.29.7)(solid-js@1.9.14)
+      babel-preset-solid: 1.9.12(@babel/core@7.29.7(supports-color@10.2.2))(solid-js@1.9.14)
       merge-anything: 5.1.7
       solid-js: 1.9.14
-      solid-refresh: 0.6.3(solid-js@1.9.14)
+      solid-refresh: 0.6.3(solid-js@1.9.14)(supports-color@10.2.2)
       vite: 8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)
       vitefu: 1.1.3(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0))
+    transitivePeerDependencies:
+      - supports-color
 
   vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0):
     dependencies:
