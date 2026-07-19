@@ -142,10 +142,5 @@
     "unocss-preset-scrollbar-hide": "^1.0.1",
     "vite-plugin-remove-console": "^2.2.0",
     "wrangler": "^4.107.0"
-  },
-  "pnpm": {
-    "overrides": {
-      "@types/mdast": "^4.0.4"
-    }
   }
 }

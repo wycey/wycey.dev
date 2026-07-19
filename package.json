@@ -51,6 +51,9 @@
     }
   },
   "pnpm": {
+    "overrides": {
+      "@types/mdast": "^4.0.4"
+    },
     "onlyBuiltDependencies": [
       "@sentry/cli",
       "esbuild",
