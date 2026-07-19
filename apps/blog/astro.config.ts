@@ -155,7 +155,6 @@ export default defineConfig({
   ],
   vite: {
     build: {
-      cssTarget: "es2022", // TODO Remove when Astro uses Vite 8, https://github.com/vitejs/vite/issues/21293
       cssMinify: "lightningcss",
     },
     css: {
