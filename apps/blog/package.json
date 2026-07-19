@@ -16,7 +16,7 @@
     "build": "wrangler types && astro check --tsconfig tsconfig.json && astro build",
     "deploy": "wrangler deploy",
     "build:pagefind": "pagefind --site ./dist/client",
-    "build:og": "bun run ./scripts/generate-og.ts",
+    "build:og": "tsx ./scripts/generate-og.ts",
     "postbuild": "run-p build:*",
     "typecheck": "wrangler types && astro check --tsconfig tsconfig.json",
     "lint": "textlint content/**/*.{md,mdx}",
@@ -131,6 +131,7 @@
     "textlint-rule-no-surrogate-pair": "^1.0.1",
     "textlint-rule-period-in-header": "^0.1.2",
     "textlint-rule-preset-ja-technical-writing": "^12.0.2",
+    "tsx": "^4.23.1",
     "type-fest": "^5.8.0",
     "typed-query-selector": "^2.12.2",
     "unified": "^11.0.5",
@@ -141,6 +142,7 @@
     "unocss-preset-radix": "^2.8.2",
     "unocss-preset-scrollbar-hide": "^1.0.1",
     "vite-plugin-remove-console": "^2.2.0",
-    "wrangler": "^4.107.0"
+    "wrangler": "^4.107.0",
+    "yaml": "^2.9.0"
   }
 }

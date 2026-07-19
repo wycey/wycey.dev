@@ -1,6 +1,9 @@
+import { glob, mkdir, readFile, writeFile } from "node:fs/promises";
 import { basename, dirname, resolve } from "node:path";
-import { Glob } from "bun";
+import { promisify } from "node:util";
+import { zstdDecompress } from "node:zlib";
 import matter from "gray-matter";
+import { parse as parseYaml } from "yaml";
 import { parseDate } from "@/lib/content/date";
 import { getFirstHeading, getReadingTime } from "@/lib/content/markdown";
 import {
@@ -16,28 +19,42 @@ import {
 import type { ImageResources } from "@/lib/og/image-registry";
 import { type FontData, renderOgImage } from "@/lib/og/render";
 
-const SRC_IMAGES_DIR = resolve(import.meta.dir, "../src/assets/images");
+const SRC_IMAGES_DIR = resolve(import.meta.dirname, "../src/assets/images");
 
-const FONTS_DIR = resolve(import.meta.dir, "../assets/fonts");
-const IMAGES_DIR = resolve(import.meta.dir, "../assets/images");
+const FONTS_DIR = resolve(import.meta.dirname, "../assets/fonts");
+const IMAGES_DIR = resolve(import.meta.dirname, "../assets/images");
 
-const CONTENT_DIR = resolve(import.meta.dir, "../content");
+const CONTENT_DIR = resolve(import.meta.dirname, "../content");
 const ARTICLES_DIR = resolve(CONTENT_DIR, "articles");
 const AUTHORS_DIR = resolve(CONTENT_DIR, "authors");
 const CATEGORIES_DIR = resolve(CONTENT_DIR, "categories");
 
-const OUTPUT_DIR = resolve(import.meta.dir, "../dist/client/assets/og");
+const OUTPUT_DIR = resolve(import.meta.dirname, "../dist/client/assets/og");
+
+const zstdDecompressAsync = promisify(zstdDecompress);
+
+const readArrayBuffer = async (path: string): Promise<ArrayBuffer> => {
+  const buffer = await readFile(path);
+
+  return buffer.buffer.slice(
+    buffer.byteOffset,
+    buffer.byteOffset + buffer.byteLength,
+  ) as ArrayBuffer;
+};
+
+const writeOutput = async (path: string, data: Uint8Array): Promise<void> => {
+  await mkdir(dirname(path), { recursive: true });
+  await writeFile(path, data);
+};
 
 const createDefaultImageResources = async (): Promise<ImageResources> => ({
-  logoLight: await Bun.file(
+  logoLight: await readArrayBuffer(
     resolve(SRC_IMAGES_DIR, "wycey-full-light.png"),
-  ).arrayBuffer(),
-  logoDark: await Bun.file(
+  ),
+  logoDark: await readArrayBuffer(
     resolve(SRC_IMAGES_DIR, "wycey-full-dark.png"),
-  ).arrayBuffer(),
-  ogGradient: await Bun.file(
-    resolve(IMAGES_DIR, "og-gradient.png"),
-  ).arrayBuffer(),
+  ),
+  ogGradient: await readArrayBuffer(resolve(IMAGES_DIR, "og-gradient.png")),
 });
 
 const loadFont = async (
@@ -45,9 +62,8 @@ const loadFont = async (
   name: string,
   weight: 400 | 700,
 ): Promise<FontData> => {
-  const file = Bun.file(path);
-  const compressedData = await file.arrayBuffer();
-  const dataBuffer = await Bun.zstdDecompress(compressedData);
+  const compressedData = await readFile(path);
+  const dataBuffer = await zstdDecompressAsync(compressedData);
   const data = dataBuffer.buffer.slice(
     dataBuffer.byteOffset,
     dataBuffer.byteOffset + dataBuffer.byteLength,
@@ -87,20 +103,18 @@ const getArticleData = async (content: string) => {
 
 const getAuthorData = async (authorId: string) => {
   const authorPath = resolve(AUTHORS_DIR, `${authorId}.yaml`);
-  const file = Bun.file(authorPath);
-  const content = await file.text();
+  const content = await readFile(authorPath, "utf-8");
 
-  const rawData = Bun.YAML.parse(content);
+  const rawData = parseYaml(content);
 
   return await authorsSchema.parseAsync(rawData);
 };
 
 const getCategoryData = async (categoryId: string) => {
   const categoryPath = resolve(CATEGORIES_DIR, `${categoryId}.yaml`);
-  const file = Bun.file(categoryPath);
-  const content = await file.text();
+  const content = await readFile(categoryPath, "utf-8");
 
-  const rawData = Bun.YAML.parse(content);
+  const rawData = parseYaml(content);
 
   return await categoriesSchema.parseAsync(rawData);
 };
@@ -110,7 +124,7 @@ const getArticleOgImageProps = async (
   articleId: string,
   images: ImageResources,
 ): Promise<ArticleOgImageProps | undefined> => {
-  const text = await Bun.file(articlePath).text();
+  const text = await readFile(articlePath, "utf-8");
   const article = await getArticleData(text);
   const { words } = await getReadingTime(text);
 
@@ -157,13 +171,13 @@ const renderArticles = async (
 ): Promise<Promise<void>[]> => {
   const promises: Promise<void>[] = [];
 
-  const articlesGlob = new Glob(resolve(ARTICLES_DIR, "**", "index.md"));
-  const allAuthorsGlob = new Glob(resolve(AUTHORS_DIR, "*.yaml"));
+  const articlesGlob = glob(resolve(ARTICLES_DIR, "**", "index.md"));
+  const allAuthorsGlob = glob(resolve(AUTHORS_DIR, "*.yaml"));
 
   // Resolve all author images first to avoid redundant fetches when multiple articles share the same author
   const authorImagePromises: Promise<void>[] = [];
 
-  for await (const authorPath of allAuthorsGlob.scan()) {
+  for await (const authorPath of allAuthorsGlob) {
     const authorId = basename(authorPath, ".yaml");
     const author = await getAuthorData(authorId);
     const authorKey = `avatar-${authorId}`;
@@ -185,7 +199,7 @@ const renderArticles = async (
 
   await Promise.all(authorImagePromises);
 
-  for await (const articlePath of articlesGlob.scan()) {
+  for await (const articlePath of articlesGlob) {
     const articleId = dirname(articlePath).split("/").pop();
 
     if (!articleId) {
@@ -208,7 +222,7 @@ const renderArticles = async (
             `${articleId}.png`,
           );
 
-          await Bun.write(outputPath, data);
+          await writeOutput(outputPath, data);
         },
       ),
     );
@@ -221,7 +235,7 @@ const renderDefault = async (images: ImageResources) => {
   const data = await renderOgImage(await createDefaultOg({ images }), FONTS);
   const outputPath = resolve(OUTPUT_DIR, "default.png");
 
-  await Bun.write(outputPath, data);
+  await writeOutput(outputPath, data);
 };
 
 console.info("Generating OG images...");
