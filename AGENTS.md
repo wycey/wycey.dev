@@ -28,7 +28,7 @@
 
 ## Monorepo Structure
 
-Bun workspaces + Turborepo monorepo. **Bun** is the only allowed package manager. npm/yarn/pnpm must not be used.
+Bun workspaces + Turborepo monorepo. Please use **aube** or **pnpm**.
 
 See [README.md](./README.md) for the overall project structure.
 
