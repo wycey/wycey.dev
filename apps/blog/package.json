@@ -133,7 +133,6 @@
     "textlint-rule-preset-ja-technical-writing": "^12.0.2",
     "type-fest": "^5.8.0",
     "typed-query-selector": "^2.12.2",
-    "typescript": "6.0.2",
     "unified": "^11.0.5",
     "unist-util-filter": "^5.0.1",
     "unist-util-visit": "^5.1.0",
@@ -143,5 +142,10 @@
     "unocss-preset-scrollbar-hide": "^1.0.1",
     "vite-plugin-remove-console": "^2.2.0",
     "wrangler": "^4.107.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "@types/mdast": "^4.0.4"
+    }
   }
 }
