@@ -49,17 +49,5 @@
       "lefthook": true,
       "workerd": true
     }
-  },
-  "pnpm": {
-    "overrides": {
-      "@types/mdast": "^4.0.4"
-    },
-    "onlyBuiltDependencies": [
-      "@sentry/cli",
-      "esbuild",
-      "sharp",
-      "lefthook",
-      "workerd"
-    ]
   }
 }
