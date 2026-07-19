@@ -129,6 +129,9 @@ const createDataVariant = (
   }));
 
 export default defineConfig({
+  content: {
+    filesystem: ["src/**/*.astro"],
+  },
   presets: [
     presetWind4({
       preflights: {

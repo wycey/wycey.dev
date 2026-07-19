@@ -15,7 +15,6 @@ import oEmbedTransformer, {
 import {
   defineConfig,
   envField,
-  memoryCache,
   sharpImageService,
   svgoOptimizer,
 } from "astro/config";
@@ -65,6 +64,8 @@ import {
 } from "./src/lib/integrations/cache";
 import unoConfig from "./uno.config";
 
+const isProd = import.meta.env.NODE_ENV === "production";
+
 const remarkEmbedderCache = createCache(
   "./node_modules/.astro/remark-embedder.json",
 );
@@ -96,9 +97,6 @@ export default defineConfig({
     responsiveStyles: true,
     layout: "constrained",
     service: sharpImageService({ kernel: "mks2021" }),
-  },
-  cache: {
-    provider: memoryCache(),
   },
   prefetch: {
     prefetchAll: true,
@@ -173,7 +171,7 @@ export default defineConfig({
       },
     },
     plugins: [
-      import.meta.env.PROD &&
+      isProd &&
         removeConsole({
           includes: ["log", "debug"],
         }),
