@@ -130,7 +130,7 @@ const createDataVariant = (
 
 export default defineConfig({
   content: {
-    filesystem: ["src/**/*.astro"],
+    filesystem: ["src/**/*.{astro,tsx,jsx,ts,js}"],
   },
   presets: [
     presetWind4({
