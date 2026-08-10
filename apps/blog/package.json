@@ -93,7 +93,7 @@
     "@wycey/tsconfig": "workspace:*",
     "astro-minify-html-swc": "^0.1.12",
     "browserslist": "^4.28.5",
-    "budoux": "^0.8.4",
+    "budoux": "^0.9.0",
     "gray-matter": "^4.0.3",
     "hastscript": "^9.0.1",
     "lightningcss": "^1.32.0",
