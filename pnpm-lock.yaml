@@ -201,7 +201,7 @@ importers:
         version: 2.6.2
       '@textlint-ja/textlint-rule-no-synonyms':
         specifier: ^1.3.0
-        version: 1.3.0(sudachi-synonyms-dictionary@18.0.0)
+        version: 1.3.0(sudachi-synonyms-dictionary@19.0.0)
       '@total-typescript/ts-reset':
         specifier: ^0.6.1
         version: 0.6.1
@@ -323,8 +323,8 @@ importers:
         specifier: ^0.35.3
         version: 0.35.3(@types/node@26.2.0)
       sudachi-synonyms-dictionary:
-        specifier: ^18.0.0
-        version: 18.0.0
+        specifier: ^19.0.0
+        version: 19.0.0
       textlint:
         specifier: ^15.7.1
         version: 15.8.0(supports-color@10.2.2)
@@ -7453,8 +7453,8 @@ packages:
   stylis@4.4.0:
     resolution: {integrity: sha512-5Z9ZpRzfuH6l/UAvCPAPUo3665Nk2wLaZU3x+TLHKVzIz33+sbJqbtrYoC3KD4/uVOr2Zp+L0LySezP9OHV9yA==}
 
-  sudachi-synonyms-dictionary@18.0.0:
-    resolution: {integrity: sha512-dVjrhGBCaM5QHn7Ys+L+vPdZib9aWR8F0uvYG0Ww3kEZ5C1pH/OwjLp7rWcgWYPE8io+f4UhpTCjVaoGDlcoWw==}
+  sudachi-synonyms-dictionary@19.0.0:
+    resolution: {integrity: sha512-GLqRxHTmfaF34vj6GD3wYkcfrWnQ2HihvsTtgmewR/yTlB4ePeA1GI/W8eDhDshVgbVmla+I9C09RK154OGe+g==}
 
   supports-color@10.2.2:
     resolution: {integrity: sha512-SS+jx45GF1QjgEXQx4NJZV9ImqmO2NPz5FNsIHrsDjh2YsHnawpan7SNQ1o8NuhrbHZy9AZhIoCUiCeaW/C80g==}
@@ -10860,9 +10860,9 @@ snapshots:
       '@swc/html-win32-ia32-msvc': 1.15.43
       '@swc/html-win32-x64-msvc': 1.15.43
 
-  '@textlint-ja/textlint-rule-no-synonyms@1.3.0(sudachi-synonyms-dictionary@18.0.0)':
+  '@textlint-ja/textlint-rule-no-synonyms@1.3.0(sudachi-synonyms-dictionary@19.0.0)':
     dependencies:
-      sudachi-synonyms-dictionary: 18.0.0
+      sudachi-synonyms-dictionary: 19.0.0
       textlint-rule-helper: 2.5.0
       tiny-segmenter: 0.2.0
 
@@ -16119,7 +16119,7 @@ snapshots:
 
   stylis@4.4.0: {}
 
-  sudachi-synonyms-dictionary@18.0.0: {}
+  sudachi-synonyms-dictionary@19.0.0: {}
 
   supports-color@10.2.2: {}
 
