@@ -107,7 +107,7 @@ importers:
         version: 0.44.2(astro@7.1.6(@astrojs/markdown-remark@7.2.4(supports-color@10.2.2))(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@26.4.1)(jiti@2.7.0)(tsx@4.23.12)(yaml@2.9.0))
       astro-seo:
         specifier: ^1.1.0
-        version: 1.1.0(prettier@3.9.5)(typescript@6.0.3)
+        version: 1.2.0
       astro-typed-links:
         specifier: ^2.0.0
         version: 2.0.0(astro@7.1.6(@astrojs/markdown-remark@7.2.4(supports-color@10.2.2))(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@26.4.1)(jiti@2.7.0)(tsx@4.23.12)(yaml@2.9.0))
@@ -3836,8 +3836,8 @@ packages:
   astro-minify-html-swc@0.1.12:
     resolution: {integrity: sha512-gPwMuOTE9hLjhTb4HwDnVllgwrwi01YNUmvZ8pe+Foi5DoNb6n64KXOLCX5TIisG/BvqCt4uBRe9crJQJfj98Q==}
 
-  astro-seo@1.1.0:
-    resolution: {integrity: sha512-G6LDNDyga30o+52v58jU7C35n3cORUzk7RSuY+xf/ZRbW6JiNplyaOO1VoYVKO+xzYNaBcxqNln2RFRR/wgJNQ==}
+  astro-seo@1.2.0:
+    resolution: {integrity: sha512-ZqS2ZLKJ9GZwcONho9W95xkGBWuPpikTsMBzjuq/6CKtKUEgMDbSZkoLwoZsmLVq/p52T4z7JwgjC3AtMg7Trg==}
 
   astro-typed-links@2.0.0:
     resolution: {integrity: sha512-LDngX5R2S9ltaVGJURKuFBWrcasvDEevO5vDqCmiRRjOCqUzVE0HquPkw6JUecSgwEBvJYCTT9d6hmtJEY+0Dg==}
@@ -11760,13 +11760,7 @@ snapshots:
       '@swc/html': 1.15.43
       fast-glob: 3.3.3
 
-  astro-seo@1.1.0(prettier@3.9.5)(typescript@6.0.3):
-    dependencies:
-      '@astrojs/check': 0.9.10(prettier@3.9.5)(typescript@6.0.3)
-    transitivePeerDependencies:
-      - prettier
-      - prettier-plugin-astro
-      - typescript
+  astro-seo@1.2.0: {}
 
   astro-typed-links@2.0.0(astro@7.1.6(@astrojs/markdown-remark@7.2.4(supports-color@10.2.2))(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@26.4.1)(jiti@2.7.0)(tsx@4.23.12)(yaml@2.9.0)):
     dependencies:
