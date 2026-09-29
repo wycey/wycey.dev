@@ -72,6 +72,9 @@ const remarkEmbedderCache = createCache(
 
 const unoCtx = await createGenerator(unoConfig);
 
+// Pages disallowed in robots.txt must not be listed in the sitemap
+const SITEMAP_EXCLUDED_PATHS = ["/search"];
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://blog.wycey.dev",
@@ -119,7 +122,10 @@ export default defineConfig({
       include: ["**/solid/*"],
     }),
     minifyHtml(),
-    sitemap(),
+    sitemap({
+      filter: (page) =>
+        !SITEMAP_EXCLUDED_PATHS.includes(new URL(page).pathname),
+    }),
     typedLinks(),
     // https://annzeyvf.blogspot.com/?page=en-git-withastro-astro-1773552299403
     // https://github.com/martinsilha/astro-cloudflare-sentry-prerender-bug

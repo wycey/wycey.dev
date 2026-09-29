@@ -140,7 +140,7 @@ const { words, minutesText } = await getReadingTime(article.body);
       >
         <a
           href={
-            link("/@[handle]", {
+            link("/authors/[handle]", {
               params: {
                 handle: author.id
               }

@@ -45,6 +45,8 @@ export interface MainBreadcrumbsProps {
   breadcrumbs?: BreadcrumbEntry[];
 }
 
+const AUTHOR_PATH_PATTERN = /^\/authors\/(.+?)(?:\/|$)/;
+
 const resolveBlogTriggerLabel = (
   currentPath: string,
   authors: Author[],
@@ -60,7 +62,7 @@ const resolveBlogTriggerLabel = (
 
   if (currentPath.startsWith(link("/about"))) return "About";
 
-  const authorMatch = currentPath.match(/^\/@(.+?)(?:\/|$)/);
+  const authorMatch = currentPath.match(AUTHOR_PATH_PATTERN);
 
   if (authorMatch) {
     const author = authors.find((a) => a.id === authorMatch[1]);
@@ -81,7 +83,7 @@ const resolveBlogTriggerIcon = (
   if (currentPath.startsWith("/about"))
     return <span block size="4" shrink="0" className="i-lucide:info" />;
 
-  const authorMatch = currentPath.match(/^\/@(.+?)(?:\/|$)/);
+  const authorMatch = currentPath.match(AUTHOR_PATH_PATTERN);
 
   if (authorMatch) {
     const author = authors.find((a) => a.id === authorMatch[1]);
@@ -150,7 +152,7 @@ const buildBlogMenuItems = (
   ];
 
   for (const author of authors) {
-    const href = link("/@[handle]", {
+    const href = link("/authors/[handle]", {
       params: { handle: author.id },
     });
 

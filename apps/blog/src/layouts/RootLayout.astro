@@ -76,7 +76,7 @@ const jsonLd = {
     {...(title && { title })}
     titleDefault={SITE_NAME}
     titleTemplate={`%s · ${SITE_NAME}`}
-    description={SITE_DESCRIPTION}
+    description={description ?? SITE_DESCRIPTION}
     removeTrailingSlashForRoot={true}
     noindex={isPrivate}
     nofollow={isPrivate}

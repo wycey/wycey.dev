@@ -54,7 +54,7 @@ export const createAuthorSchema = async ({
     "@type": "Person",
     name: author.name,
     url: new URL(
-      link("/@[handle]", {
+      link("/authors/[handle]", {
         params: {
           handle: id,
         },
@@ -70,7 +70,7 @@ export const createAuthorSchema = async ({
       ? {
           image: {
             "@id": new URL(
-              link("/@[handle]", {
+              link("/authors/[handle]", {
                 params: { handle: id },
                 hash: "avatar",
               }),
@@ -136,7 +136,7 @@ export const createAuthorArticlesSchema = async (
   articles: CollectionEntry<"articles">[],
 ): Promise<[Person, CollectionPage, BreadcrumbList, WebSite]> => {
   const authorUrl = new URL(
-    link("/@[handle]", {
+    link("/authors/[handle]", {
       params: {
         handle: author.id,
       },
