@@ -62,6 +62,7 @@ import {
   cacheSaveIntegration,
   createCache,
 } from "./src/lib/integrations/cache";
+import { createArticleLastmodSerializer } from "./src/lib/integrations/sitemap";
 import unoConfig from "./uno.config";
 
 const isProd = import.meta.env.NODE_ENV === "production";
@@ -74,6 +75,7 @@ const unoCtx = await createGenerator(unoConfig);
 
 // Pages disallowed in robots.txt must not be listed in the sitemap
 const SITEMAP_EXCLUDED_PATHS = ["/search"];
+const ARTICLES_CONTENT_DIR = "./content/articles";
 
 // https://astro.build/config
 export default defineConfig({
@@ -125,6 +127,7 @@ export default defineConfig({
     sitemap({
       filter: (page) =>
         !SITEMAP_EXCLUDED_PATHS.includes(new URL(page).pathname),
+      serialize: createArticleLastmodSerializer(ARTICLES_CONTENT_DIR),
     }),
     typedLinks(),
     // https://annzeyvf.blogspot.com/?page=en-git-withastro-astro-1773552299403
