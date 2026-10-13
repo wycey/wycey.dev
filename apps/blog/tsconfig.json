@@ -4,8 +4,7 @@
   "compilerOptions": {
     "paths": {
       "@/*": ["./src/*"]
-    },
-    "declaration": false
+    }
   },
   "include": [".astro/types.d.ts", "**/*"],
   "exclude": ["dist", "public"]

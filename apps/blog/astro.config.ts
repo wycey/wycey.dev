@@ -410,6 +410,7 @@ export default defineConfig({
   experimental: {
     contentIntellisense: true,
     svgOptimizer: svgoOptimizer(),
+    incrementalBuild: true,
     clientPrerender: true,
   },
 });

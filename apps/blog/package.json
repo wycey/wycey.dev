@@ -27,10 +27,12 @@
     "extends @wycey/browserslist-config"
   ],
   "dependencies": {
-    "@astrojs/cloudflare": "14.1.7",
-    "@astrojs/react": "6.0.2",
+    "@astrojs/cloudflare": "14.3.4",
+    "@astrojs/markdown-remark": "7.3.2",
+    "@astrojs/react": "7.0.1",
     "@astrojs/rss": "4.0.19",
-    "@astrojs/solid-js": "7.0.1",
+    "@astrojs/sitemap": "3.7.4",
+    "@astrojs/solid-js": "7.0.2",
     "@base-ui/react": "^1.6.0",
     "@dicebear/collection": "^9.4.2",
     "@dicebear/core": "^9.4.3",
@@ -43,7 +45,7 @@
     "@sentry/astro": "^10.63.0",
     "@sentry/cloudflare": "^10.63.0",
     "@solid-primitives/media": "^2.3.6",
-    "astro": "7.1.6",
+    "astro": "7.3.8",
     "astro-expressive-code": "^0.44.0",
     "astro-seo": "^1.1.0",
     "astro-typed-links": "^2.0.0",
@@ -68,8 +70,6 @@
   },
   "devDependencies": {
     "@astrojs/check": "0.9.10",
-    "@astrojs/markdown-remark": "^7.2.1",
-    "@astrojs/sitemap": "^3.7.3",
     "@astrojs/ts-plugin": "1.10.12",
     "@iconify-json/lucide": "^1.2.116",
     "@ljoss/rehype-figure-caption": "^1.0.0",
