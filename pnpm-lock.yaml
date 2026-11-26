@@ -74,10 +74,10 @@ importers:
         version: 1.9.0(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@dicebear/collection':
         specifier: ^9.4.2
-        version: 9.4.2(@dicebear/core@9.4.3)
+        version: 9.4.2(@dicebear/core@10.7.0)
       '@dicebear/core':
-        specifier: ^9.4.3
-        version: 9.4.3
+        specifier: ^10.0.0
+        version: 10.7.0
       '@expressive-code/plugin-line-numbers':
         specifier: ^0.44.0
         version: 0.44.2
@@ -174,7 +174,7 @@ importers:
     devDependencies:
       '@astrojs/check':
         specifier: 0.9.10
-        version: 0.9.10(@emnapi/runtime@1.11.1)(prettier@3.9.10)(typescript@6.0.3)
+        version: 0.9.10(@emnapi/runtime@1.11.3)(prettier@3.9.10)(typescript@6.0.3)
       '@astrojs/ts-plugin':
         specifier: 1.10.12
         version: 1.10.12
@@ -990,9 +990,9 @@ packages:
     peerDependencies:
       '@dicebear/core': ^9.0.0
 
-  '@dicebear/core@9.4.3':
-    resolution: {integrity: sha512-9ITrQI57k3p5hKuU8HZJ1d0kPdrmTKEJDOdlKQ8CpaChbtmnD1R+dtWmNz5IesYThXM8F64pJ0ZvJ2rsY8Hciw==}
-    engines: {node: '>=18.0.0'}
+  '@dicebear/core@10.7.0':
+    resolution: {integrity: sha512-JUOzKOd8RUByJJo8ZL+C7YE/pvEsWewfpbWUmR8OIQZWv/PvUQHnohdevySC3icyyxe6EIU/8B/rQgA42us1QA==}
+    engines: {node: '>=22.0.0'}
 
   '@dicebear/croodles-neutral@9.4.2':
     resolution: {integrity: sha512-oG5IeUdtiYshQ89gkAVcl5w3xAEi5UZX2fTzIyelpBPCG176l7VuuFzlxi2umnB3E6LVHYy06DXvUo/p+rXB2Q==}
@@ -1742,6 +1742,7 @@ packages:
   '@opentelemetry/sdk-trace-base@2.12.0':
     resolution: {integrity: sha512-JOERgZCxRM06FEJ5kEWxlSRChah6MmXDx3KwCruqEv/iEyLkTokCSemf2y1w8oIHtfrr8EVTpzebq/31vn2Cpg==}
     engines: {node: ^18.19.0 || >=20.6.0}
+    deprecated: Use @opentelemetry/sdk-trace package
     peerDependencies:
       '@opentelemetry/api': '>=1.3.0 <1.10.0'
 
@@ -2871,9 +2872,6 @@ packages:
 
   '@types/hast@3.0.5':
     resolution: {integrity: sha512-rp/ezSWaD1m44dPKICGhiskI13nVr7qTloFwDa/IYkhhf5nzwP+zIQcIJh3WIFSBOy/H1PzB40jPjMDksN4F+g==}
-
-  '@types/json-schema@7.0.15':
-    resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
   '@types/katex@0.16.8':
     resolution: {integrity: sha512-trgaNyfU+Xh2Tc+ABIb44a5AYUpicB3uwirOioeOkNPPbmgRNtcWyDeeFRzjPZENO9Vq8gvVqfhaaXWLlevVwg==}
@@ -5702,120 +5700,120 @@ packages:
     resolution:
       type: variations
       variants:
-      - resolution:
-          archive: tarball
-          bin:
-            node: bin/node
-          integrity: sha256-PHYkDAe58DV0pc+O2LoZ6NuJJxlDgXsaS5TeQ8l6nmY=
-          type: binary
-          url: https://nodejs.org/download/release/v24.18.1/node-v24.18.1-aix-ppc64.tar.gz
-        targets:
-        - cpu: ppc64
-          os: aix
-      - resolution:
-          archive: tarball
-          bin:
-            node: bin/node
-          integrity: sha256-6wL3+rltPWfeQMXshWYJb8tMICZyh4doOuWpfrYSuUE=
-          type: binary
-          url: https://nodejs.org/download/release/v24.18.1/node-v24.18.1-darwin-arm64.tar.gz
-        targets:
-        - cpu: arm64
-          os: darwin
-      - resolution:
-          archive: tarball
-          bin:
-            node: bin/node
-          integrity: sha256-b7IPzqy7FXwvlYJbgN9KRUoPbYHNzXu4HurpFH4Oduw=
-          type: binary
-          url: https://nodejs.org/download/release/v24.18.1/node-v24.18.1-darwin-x64.tar.gz
-        targets:
-        - cpu: x64
-          os: darwin
-      - resolution:
-          archive: tarball
-          bin:
-            node: bin/node
-          integrity: sha256-3yJFVaCDuRjkYmDMlpg4UBufmocUDBGV5blZe1bV2uI=
-          type: binary
-          url: https://nodejs.org/download/release/v24.18.1/node-v24.18.1-linux-arm64.tar.gz
-        targets:
-        - cpu: arm64
-          os: linux
-      - resolution:
-          archive: tarball
-          bin:
-            node: bin/node
-          integrity: sha256-SoxiCbo6WuqExAIB2JZiTtcGuXmabcVMvZZUM6Npo9A=
-          type: binary
-          url: https://nodejs.org/download/release/v24.18.1/node-v24.18.1-linux-ppc64le.tar.gz
-        targets:
-        - cpu: ppc64le
-          os: linux
-      - resolution:
-          archive: tarball
-          bin:
-            node: bin/node
-          integrity: sha256-Yq2FDv76mrQqPpAdjg3obXG/nIoMOJ2r7SSPHslZDFo=
-          type: binary
-          url: https://nodejs.org/download/release/v24.18.1/node-v24.18.1-linux-s390x.tar.gz
-        targets:
-        - cpu: s390x
-          os: linux
-      - resolution:
-          archive: tarball
-          bin:
-            node: bin/node
-          integrity: sha256-n162rCGEWmbEk8kaJTsdoy/WhOiem3IC1JNpgjNr5Mo=
-          type: binary
-          url: https://nodejs.org/download/release/v24.18.1/node-v24.18.1-linux-x64.tar.gz
-        targets:
-        - cpu: x64
-          os: linux
-      - resolution:
-          archive: zip
-          bin:
-            node: node.exe
-          integrity: sha256-/7x9PhuvaAT3Qx/5Txm5qIWmUFaMk+pMyxuwA49q+CU=
-          prefix: node-v24.18.1-win-arm64
-          type: binary
-          url: https://nodejs.org/download/release/v24.18.1/node-v24.18.1-win-arm64.zip
-        targets:
-        - cpu: arm64
-          os: win32
-      - resolution:
-          archive: zip
-          bin:
-            node: node.exe
-          integrity: sha256-7Fa4SnVRiTqyMk69/cSrl0pjtHgRYmALaKEpPMPlN2U=
-          prefix: node-v24.18.1-win-x64
-          type: binary
-          url: https://nodejs.org/download/release/v24.18.1/node-v24.18.1-win-x64.zip
-        targets:
-        - cpu: x64
-          os: win32
-      - resolution:
-          archive: tarball
-          bin:
-            node: bin/node
-          integrity: sha256-rhtkV+24df2YEws3yFPlGlOsDMQIUOzM1JC2HFo1WPo=
-          type: binary
-          url: https://unofficial-builds.nodejs.org/download/release/v24.18.1/node-v24.18.1-linux-arm64-musl.tar.gz
-        targets:
-        - cpu: arm64
-          libc: musl
-          os: linux
-      - resolution:
-          archive: tarball
-          bin:
-            node: bin/node
-          integrity: sha256-aWl5yu+SUFrXVmo2dMqak9hVjigvNOeJkYHAMhghrl8=
-          type: binary
-          url: https://unofficial-builds.nodejs.org/download/release/v24.18.1/node-v24.18.1-linux-x64-musl.tar.gz
-        targets:
-        - cpu: x64
-          libc: musl
-          os: linux
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-PHYkDAe58DV0pc+O2LoZ6NuJJxlDgXsaS5TeQ8l6nmY=
+            type: binary
+            url: https://nodejs.org/download/release/v24.18.1/node-v24.18.1-aix-ppc64.tar.gz
+          targets:
+            - cpu: ppc64
+              os: aix
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-6wL3+rltPWfeQMXshWYJb8tMICZyh4doOuWpfrYSuUE=
+            type: binary
+            url: https://nodejs.org/download/release/v24.18.1/node-v24.18.1-darwin-arm64.tar.gz
+          targets:
+            - cpu: arm64
+              os: darwin
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-b7IPzqy7FXwvlYJbgN9KRUoPbYHNzXu4HurpFH4Oduw=
+            type: binary
+            url: https://nodejs.org/download/release/v24.18.1/node-v24.18.1-darwin-x64.tar.gz
+          targets:
+            - cpu: x64
+              os: darwin
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-3yJFVaCDuRjkYmDMlpg4UBufmocUDBGV5blZe1bV2uI=
+            type: binary
+            url: https://nodejs.org/download/release/v24.18.1/node-v24.18.1-linux-arm64.tar.gz
+          targets:
+            - cpu: arm64
+              os: linux
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-SoxiCbo6WuqExAIB2JZiTtcGuXmabcVMvZZUM6Npo9A=
+            type: binary
+            url: https://nodejs.org/download/release/v24.18.1/node-v24.18.1-linux-ppc64le.tar.gz
+          targets:
+            - cpu: ppc64le
+              os: linux
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-Yq2FDv76mrQqPpAdjg3obXG/nIoMOJ2r7SSPHslZDFo=
+            type: binary
+            url: https://nodejs.org/download/release/v24.18.1/node-v24.18.1-linux-s390x.tar.gz
+          targets:
+            - cpu: s390x
+              os: linux
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-n162rCGEWmbEk8kaJTsdoy/WhOiem3IC1JNpgjNr5Mo=
+            type: binary
+            url: https://nodejs.org/download/release/v24.18.1/node-v24.18.1-linux-x64.tar.gz
+          targets:
+            - cpu: x64
+              os: linux
+        - resolution:
+            archive: zip
+            bin:
+              node: node.exe
+            integrity: sha256-/7x9PhuvaAT3Qx/5Txm5qIWmUFaMk+pMyxuwA49q+CU=
+            prefix: node-v24.18.1-win-arm64
+            type: binary
+            url: https://nodejs.org/download/release/v24.18.1/node-v24.18.1-win-arm64.zip
+          targets:
+            - cpu: arm64
+              os: win32
+        - resolution:
+            archive: zip
+            bin:
+              node: node.exe
+            integrity: sha256-7Fa4SnVRiTqyMk69/cSrl0pjtHgRYmALaKEpPMPlN2U=
+            prefix: node-v24.18.1-win-x64
+            type: binary
+            url: https://nodejs.org/download/release/v24.18.1/node-v24.18.1-win-x64.zip
+          targets:
+            - cpu: x64
+              os: win32
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-rhtkV+24df2YEws3yFPlGlOsDMQIUOzM1JC2HFo1WPo=
+            type: binary
+            url: https://unofficial-builds.nodejs.org/download/release/v24.18.1/node-v24.18.1-linux-arm64-musl.tar.gz
+          targets:
+            - cpu: arm64
+              os: linux
+              libc: musl
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-aWl5yu+SUFrXVmo2dMqak9hVjigvNOeJkYHAMhghrl8=
+            type: binary
+            url: https://unofficial-builds.nodejs.org/download/release/v24.18.1/node-v24.18.1-linux-x64-musl.tar.gz
+          targets:
+            - cpu: x64
+              os: linux
+              libc: musl
     version: 24.18.1
     hasBin: true
 
@@ -7570,16 +7568,22 @@ packages:
     resolution: {integrity: sha512-9K2k72s4n7rV9s4bX0MyjbX9iBribvKZbBJKuEmTCZfeWJXs6Yh7bGpY4eoc7UufAjvpheBqwyZCOIPBvxCv0A==}
     peerDependencies:
       '@volar/language-service': ~2.4.0
+      typescript: '*'
     peerDependenciesMeta:
       '@volar/language-service':
+        optional: true
+      typescript:
         optional: true
 
   volar-service-typescript@0.0.71:
     resolution: {integrity: sha512-yTtM/BVT6hoyEYnDtaCyAtNhdNeS/mhTTABlBOdw3NNiRBUin3IznFJpgfjer4c6RYopiPjjQjc9VFhxVl1mLw==}
     peerDependencies:
       '@volar/language-service': ~2.4.0
+      typescript: '*'
     peerDependenciesMeta:
       '@volar/language-service':
+        optional: true
+      typescript:
         optional: true
 
   volar-service-yaml@0.0.71:
@@ -7836,16 +7840,16 @@ snapshots:
 
   '@ark/util@0.56.7': {}
 
-  '@astrojs/astro2tsx@0.1.2(@emnapi/runtime@1.11.1)':
+  '@astrojs/astro2tsx@0.1.2(@emnapi/runtime@1.11.3)':
     dependencies:
       '@emnapi/core': 1.11.3
-      '@napi-rs/wasm-runtime': 1.2.4(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.1)
+      '@napi-rs/wasm-runtime': 1.2.4(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)
     transitivePeerDependencies:
       - '@emnapi/runtime'
 
-  '@astrojs/check@0.9.10(@emnapi/runtime@1.11.1)(prettier@3.9.10)(typescript@6.0.3)':
+  '@astrojs/check@0.9.10(@emnapi/runtime@1.11.3)(prettier@3.9.10)(typescript@6.0.3)':
     dependencies:
-      '@astrojs/language-server': 2.17.2(@emnapi/runtime@1.11.1)(prettier@3.9.10)(typescript@6.0.3)
+      '@astrojs/language-server': 2.17.2(@emnapi/runtime@1.11.3)(prettier@3.9.10)(typescript@6.0.3)
       chokidar: 4.0.3
       kleur: 4.1.5
       typescript: 6.0.3
@@ -7944,9 +7948,9 @@ snapshots:
       unified: 11.0.5
       yaml: 2.9.1
 
-  '@astrojs/language-server@2.17.2(@emnapi/runtime@1.11.1)(prettier@3.9.10)(typescript@6.0.3)':
+  '@astrojs/language-server@2.17.2(@emnapi/runtime@1.11.3)(prettier@3.9.10)(typescript@6.0.3)':
     dependencies:
-      '@astrojs/astro2tsx': 0.1.2(@emnapi/runtime@1.11.1)
+      '@astrojs/astro2tsx': 0.1.2(@emnapi/runtime@1.11.3)
       '@astrojs/yaml2ts': 0.2.4
       '@volar/kit': 2.4.28(typescript@6.0.3)
       '@volar/language-core': 2.4.28
@@ -7958,8 +7962,8 @@ snapshots:
       volar-service-emmet: 0.0.71(@volar/language-service@2.4.28)
       volar-service-html: 0.0.71(@volar/language-service@2.4.28)
       volar-service-prettier: 0.0.71(@volar/language-service@2.4.28)(prettier@3.9.10)
-      volar-service-typescript: 0.0.71(@volar/language-service@2.4.28)
-      volar-service-typescript-twoslash-queries: 0.0.71(@volar/language-service@2.4.28)
+      volar-service-typescript: 0.0.71(@volar/language-service@2.4.28)(typescript@6.0.3)
+      volar-service-typescript-twoslash-queries: 0.0.71(@volar/language-service@2.4.28)(typescript@6.0.3)
       volar-service-yaml: 0.0.71(@volar/language-service@2.4.28)
       vscode-html-languageservice: 5.6.2
       vscode-uri: 3.2.0
@@ -8459,168 +8463,166 @@ snapshots:
 
   '@ctrl/tinycolor@4.2.1': {}
 
-  '@dicebear/adventurer-neutral@9.4.2(@dicebear/core@9.4.3)':
+  '@dicebear/adventurer-neutral@9.4.2(@dicebear/core@10.7.0)':
     dependencies:
-      '@dicebear/core': 9.4.3
+      '@dicebear/core': 10.7.0
 
-  '@dicebear/adventurer@9.4.2(@dicebear/core@9.4.3)':
+  '@dicebear/adventurer@9.4.2(@dicebear/core@10.7.0)':
     dependencies:
-      '@dicebear/core': 9.4.3
+      '@dicebear/core': 10.7.0
 
-  '@dicebear/avataaars-neutral@9.4.2(@dicebear/core@9.4.3)':
+  '@dicebear/avataaars-neutral@9.4.2(@dicebear/core@10.7.0)':
     dependencies:
-      '@dicebear/core': 9.4.3
+      '@dicebear/core': 10.7.0
 
-  '@dicebear/avataaars@9.4.2(@dicebear/core@9.4.3)':
+  '@dicebear/avataaars@9.4.2(@dicebear/core@10.7.0)':
     dependencies:
-      '@dicebear/core': 9.4.3
+      '@dicebear/core': 10.7.0
 
-  '@dicebear/big-ears-neutral@9.4.2(@dicebear/core@9.4.3)':
+  '@dicebear/big-ears-neutral@9.4.2(@dicebear/core@10.7.0)':
     dependencies:
-      '@dicebear/core': 9.4.3
+      '@dicebear/core': 10.7.0
 
-  '@dicebear/big-ears@9.4.2(@dicebear/core@9.4.3)':
+  '@dicebear/big-ears@9.4.2(@dicebear/core@10.7.0)':
     dependencies:
-      '@dicebear/core': 9.4.3
+      '@dicebear/core': 10.7.0
 
-  '@dicebear/big-smile@9.4.2(@dicebear/core@9.4.3)':
+  '@dicebear/big-smile@9.4.2(@dicebear/core@10.7.0)':
     dependencies:
-      '@dicebear/core': 9.4.3
+      '@dicebear/core': 10.7.0
 
-  '@dicebear/bottts-neutral@9.4.2(@dicebear/core@9.4.3)':
+  '@dicebear/bottts-neutral@9.4.2(@dicebear/core@10.7.0)':
     dependencies:
-      '@dicebear/core': 9.4.3
+      '@dicebear/core': 10.7.0
 
-  '@dicebear/bottts@9.4.2(@dicebear/core@9.4.3)':
+  '@dicebear/bottts@9.4.2(@dicebear/core@10.7.0)':
     dependencies:
-      '@dicebear/core': 9.4.3
+      '@dicebear/core': 10.7.0
 
-  '@dicebear/collection@9.4.2(@dicebear/core@9.4.3)':
+  '@dicebear/collection@9.4.2(@dicebear/core@10.7.0)':
     dependencies:
-      '@dicebear/adventurer': 9.4.2(@dicebear/core@9.4.3)
-      '@dicebear/adventurer-neutral': 9.4.2(@dicebear/core@9.4.3)
-      '@dicebear/avataaars': 9.4.2(@dicebear/core@9.4.3)
-      '@dicebear/avataaars-neutral': 9.4.2(@dicebear/core@9.4.3)
-      '@dicebear/big-ears': 9.4.2(@dicebear/core@9.4.3)
-      '@dicebear/big-ears-neutral': 9.4.2(@dicebear/core@9.4.3)
-      '@dicebear/big-smile': 9.4.2(@dicebear/core@9.4.3)
-      '@dicebear/bottts': 9.4.2(@dicebear/core@9.4.3)
-      '@dicebear/bottts-neutral': 9.4.2(@dicebear/core@9.4.3)
-      '@dicebear/core': 9.4.3
-      '@dicebear/croodles': 9.4.2(@dicebear/core@9.4.3)
-      '@dicebear/croodles-neutral': 9.4.2(@dicebear/core@9.4.3)
-      '@dicebear/dylan': 9.4.2(@dicebear/core@9.4.3)
-      '@dicebear/fun-emoji': 9.4.2(@dicebear/core@9.4.3)
-      '@dicebear/glass': 9.4.2(@dicebear/core@9.4.3)
-      '@dicebear/icons': 9.4.2(@dicebear/core@9.4.3)
-      '@dicebear/identicon': 9.4.2(@dicebear/core@9.4.3)
-      '@dicebear/initials': 9.4.2(@dicebear/core@9.4.3)
-      '@dicebear/lorelei': 9.4.2(@dicebear/core@9.4.3)
-      '@dicebear/lorelei-neutral': 9.4.2(@dicebear/core@9.4.3)
-      '@dicebear/micah': 9.4.2(@dicebear/core@9.4.3)
-      '@dicebear/miniavs': 9.4.2(@dicebear/core@9.4.3)
-      '@dicebear/notionists': 9.4.2(@dicebear/core@9.4.3)
-      '@dicebear/notionists-neutral': 9.4.2(@dicebear/core@9.4.3)
-      '@dicebear/open-peeps': 9.4.2(@dicebear/core@9.4.3)
-      '@dicebear/personas': 9.4.2(@dicebear/core@9.4.3)
-      '@dicebear/pixel-art': 9.4.2(@dicebear/core@9.4.3)
-      '@dicebear/pixel-art-neutral': 9.4.2(@dicebear/core@9.4.3)
-      '@dicebear/rings': 9.4.2(@dicebear/core@9.4.3)
-      '@dicebear/shapes': 9.4.2(@dicebear/core@9.4.3)
-      '@dicebear/thumbs': 9.4.2(@dicebear/core@9.4.3)
-      '@dicebear/toon-head': 9.4.2(@dicebear/core@9.4.3)
+      '@dicebear/adventurer': 9.4.2(@dicebear/core@10.7.0)
+      '@dicebear/adventurer-neutral': 9.4.2(@dicebear/core@10.7.0)
+      '@dicebear/avataaars': 9.4.2(@dicebear/core@10.7.0)
+      '@dicebear/avataaars-neutral': 9.4.2(@dicebear/core@10.7.0)
+      '@dicebear/big-ears': 9.4.2(@dicebear/core@10.7.0)
+      '@dicebear/big-ears-neutral': 9.4.2(@dicebear/core@10.7.0)
+      '@dicebear/big-smile': 9.4.2(@dicebear/core@10.7.0)
+      '@dicebear/bottts': 9.4.2(@dicebear/core@10.7.0)
+      '@dicebear/bottts-neutral': 9.4.2(@dicebear/core@10.7.0)
+      '@dicebear/core': 10.7.0
+      '@dicebear/croodles': 9.4.2(@dicebear/core@10.7.0)
+      '@dicebear/croodles-neutral': 9.4.2(@dicebear/core@10.7.0)
+      '@dicebear/dylan': 9.4.2(@dicebear/core@10.7.0)
+      '@dicebear/fun-emoji': 9.4.2(@dicebear/core@10.7.0)
+      '@dicebear/glass': 9.4.2(@dicebear/core@10.7.0)
+      '@dicebear/icons': 9.4.2(@dicebear/core@10.7.0)
+      '@dicebear/identicon': 9.4.2(@dicebear/core@10.7.0)
+      '@dicebear/initials': 9.4.2(@dicebear/core@10.7.0)
+      '@dicebear/lorelei': 9.4.2(@dicebear/core@10.7.0)
+      '@dicebear/lorelei-neutral': 9.4.2(@dicebear/core@10.7.0)
+      '@dicebear/micah': 9.4.2(@dicebear/core@10.7.0)
+      '@dicebear/miniavs': 9.4.2(@dicebear/core@10.7.0)
+      '@dicebear/notionists': 9.4.2(@dicebear/core@10.7.0)
+      '@dicebear/notionists-neutral': 9.4.2(@dicebear/core@10.7.0)
+      '@dicebear/open-peeps': 9.4.2(@dicebear/core@10.7.0)
+      '@dicebear/personas': 9.4.2(@dicebear/core@10.7.0)
+      '@dicebear/pixel-art': 9.4.2(@dicebear/core@10.7.0)
+      '@dicebear/pixel-art-neutral': 9.4.2(@dicebear/core@10.7.0)
+      '@dicebear/rings': 9.4.2(@dicebear/core@10.7.0)
+      '@dicebear/shapes': 9.4.2(@dicebear/core@10.7.0)
+      '@dicebear/thumbs': 9.4.2(@dicebear/core@10.7.0)
+      '@dicebear/toon-head': 9.4.2(@dicebear/core@10.7.0)
 
-  '@dicebear/core@9.4.3':
-    dependencies:
-      '@types/json-schema': 7.0.15
+  '@dicebear/core@10.7.0': {}
 
-  '@dicebear/croodles-neutral@9.4.2(@dicebear/core@9.4.3)':
+  '@dicebear/croodles-neutral@9.4.2(@dicebear/core@10.7.0)':
     dependencies:
-      '@dicebear/core': 9.4.3
+      '@dicebear/core': 10.7.0
 
-  '@dicebear/croodles@9.4.2(@dicebear/core@9.4.3)':
+  '@dicebear/croodles@9.4.2(@dicebear/core@10.7.0)':
     dependencies:
-      '@dicebear/core': 9.4.3
+      '@dicebear/core': 10.7.0
 
-  '@dicebear/dylan@9.4.2(@dicebear/core@9.4.3)':
+  '@dicebear/dylan@9.4.2(@dicebear/core@10.7.0)':
     dependencies:
-      '@dicebear/core': 9.4.3
+      '@dicebear/core': 10.7.0
 
-  '@dicebear/fun-emoji@9.4.2(@dicebear/core@9.4.3)':
+  '@dicebear/fun-emoji@9.4.2(@dicebear/core@10.7.0)':
     dependencies:
-      '@dicebear/core': 9.4.3
+      '@dicebear/core': 10.7.0
 
-  '@dicebear/glass@9.4.2(@dicebear/core@9.4.3)':
+  '@dicebear/glass@9.4.2(@dicebear/core@10.7.0)':
     dependencies:
-      '@dicebear/core': 9.4.3
+      '@dicebear/core': 10.7.0
 
-  '@dicebear/icons@9.4.2(@dicebear/core@9.4.3)':
+  '@dicebear/icons@9.4.2(@dicebear/core@10.7.0)':
     dependencies:
-      '@dicebear/core': 9.4.3
+      '@dicebear/core': 10.7.0
 
-  '@dicebear/identicon@9.4.2(@dicebear/core@9.4.3)':
+  '@dicebear/identicon@9.4.2(@dicebear/core@10.7.0)':
     dependencies:
-      '@dicebear/core': 9.4.3
+      '@dicebear/core': 10.7.0
 
-  '@dicebear/initials@9.4.2(@dicebear/core@9.4.3)':
+  '@dicebear/initials@9.4.2(@dicebear/core@10.7.0)':
     dependencies:
-      '@dicebear/core': 9.4.3
+      '@dicebear/core': 10.7.0
 
-  '@dicebear/lorelei-neutral@9.4.2(@dicebear/core@9.4.3)':
+  '@dicebear/lorelei-neutral@9.4.2(@dicebear/core@10.7.0)':
     dependencies:
-      '@dicebear/core': 9.4.3
+      '@dicebear/core': 10.7.0
 
-  '@dicebear/lorelei@9.4.2(@dicebear/core@9.4.3)':
+  '@dicebear/lorelei@9.4.2(@dicebear/core@10.7.0)':
     dependencies:
-      '@dicebear/core': 9.4.3
+      '@dicebear/core': 10.7.0
 
-  '@dicebear/micah@9.4.2(@dicebear/core@9.4.3)':
+  '@dicebear/micah@9.4.2(@dicebear/core@10.7.0)':
     dependencies:
-      '@dicebear/core': 9.4.3
+      '@dicebear/core': 10.7.0
 
-  '@dicebear/miniavs@9.4.2(@dicebear/core@9.4.3)':
+  '@dicebear/miniavs@9.4.2(@dicebear/core@10.7.0)':
     dependencies:
-      '@dicebear/core': 9.4.3
+      '@dicebear/core': 10.7.0
 
-  '@dicebear/notionists-neutral@9.4.2(@dicebear/core@9.4.3)':
+  '@dicebear/notionists-neutral@9.4.2(@dicebear/core@10.7.0)':
     dependencies:
-      '@dicebear/core': 9.4.3
+      '@dicebear/core': 10.7.0
 
-  '@dicebear/notionists@9.4.2(@dicebear/core@9.4.3)':
+  '@dicebear/notionists@9.4.2(@dicebear/core@10.7.0)':
     dependencies:
-      '@dicebear/core': 9.4.3
+      '@dicebear/core': 10.7.0
 
-  '@dicebear/open-peeps@9.4.2(@dicebear/core@9.4.3)':
+  '@dicebear/open-peeps@9.4.2(@dicebear/core@10.7.0)':
     dependencies:
-      '@dicebear/core': 9.4.3
+      '@dicebear/core': 10.7.0
 
-  '@dicebear/personas@9.4.2(@dicebear/core@9.4.3)':
+  '@dicebear/personas@9.4.2(@dicebear/core@10.7.0)':
     dependencies:
-      '@dicebear/core': 9.4.3
+      '@dicebear/core': 10.7.0
 
-  '@dicebear/pixel-art-neutral@9.4.2(@dicebear/core@9.4.3)':
+  '@dicebear/pixel-art-neutral@9.4.2(@dicebear/core@10.7.0)':
     dependencies:
-      '@dicebear/core': 9.4.3
+      '@dicebear/core': 10.7.0
 
-  '@dicebear/pixel-art@9.4.2(@dicebear/core@9.4.3)':
+  '@dicebear/pixel-art@9.4.2(@dicebear/core@10.7.0)':
     dependencies:
-      '@dicebear/core': 9.4.3
+      '@dicebear/core': 10.7.0
 
-  '@dicebear/rings@9.4.2(@dicebear/core@9.4.3)':
+  '@dicebear/rings@9.4.2(@dicebear/core@10.7.0)':
     dependencies:
-      '@dicebear/core': 9.4.3
+      '@dicebear/core': 10.7.0
 
-  '@dicebear/shapes@9.4.2(@dicebear/core@9.4.3)':
+  '@dicebear/shapes@9.4.2(@dicebear/core@10.7.0)':
     dependencies:
-      '@dicebear/core': 9.4.3
+      '@dicebear/core': 10.7.0
 
-  '@dicebear/thumbs@9.4.2(@dicebear/core@9.4.3)':
+  '@dicebear/thumbs@9.4.2(@dicebear/core@10.7.0)':
     dependencies:
-      '@dicebear/core': 9.4.3
+      '@dicebear/core': 10.7.0
 
-  '@dicebear/toon-head@9.4.2(@dicebear/core@9.4.3)':
+  '@dicebear/toon-head@9.4.2(@dicebear/core@10.7.0)':
     dependencies:
-      '@dicebear/core': 9.4.3
+      '@dicebear/core': 10.7.0
 
   '@dotenvx/dotenvx@1.75.1':
     dependencies:
@@ -8680,11 +8682,11 @@ snapshots:
   '@emnapi/runtime@1.11.1':
     dependencies:
       tslib: 2.8.1
+    optional: true
 
   '@emnapi/runtime@1.11.3':
     dependencies:
       tslib: 2.8.1
-    optional: true
 
   '@emnapi/wasi-threads@1.2.2':
     dependencies:
@@ -9048,7 +9050,7 @@ snapshots:
     dependencies:
       '@hono/node-server': 2.1.4(hono@4.13.13)
       ajv: 8.20.0
-      ajv-formats: 3.0.1(ajv@8.20.0)
+      ajv-formats: 3.0.1
       content-type: 1.0.5
       cors: 2.8.6
       cross-spawn: 7.0.6
@@ -9152,18 +9154,11 @@ snapshots:
       '@tybys/wasm-util': 0.10.4
     optional: true
 
-  '@napi-rs/wasm-runtime@1.2.4(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.1)':
-    dependencies:
-      '@emnapi/core': 1.11.3
-      '@emnapi/runtime': 1.11.1
-      '@tybys/wasm-util': 0.10.4
-
   '@napi-rs/wasm-runtime@1.2.4(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)':
     dependencies:
       '@emnapi/core': 1.11.3
       '@emnapi/runtime': 1.11.3
       '@tybys/wasm-util': 0.10.4
-    optional: true
 
   '@nodable/entities@3.1.0': {}
 
@@ -10333,8 +10328,6 @@ snapshots:
     dependencies:
       '@types/unist': 3.0.3
 
-  '@types/json-schema@7.0.15': {}
-
   '@types/katex@0.16.8': {}
 
   '@types/mdast@4.0.4':
@@ -10662,11 +10655,11 @@ snapshots:
     optionalDependencies:
       ajv: 8.20.0
 
-  ajv-formats@2.1.1(ajv@8.20.0):
+  ajv-formats@2.1.1:
     dependencies:
       ajv: 8.20.0
 
-  ajv-formats@3.0.1(ajv@8.20.0):
+  ajv-formats@3.0.1:
     dependencies:
       ajv: 8.20.0
 
@@ -11135,7 +11128,7 @@ snapshots:
   conf@10.2.0:
     dependencies:
       ajv: 8.20.0
-      ajv-formats: 2.1.1(ajv@8.20.0)
+      ajv-formats: 2.1.1
       atomically: 1.7.0
       debounce-fn: 4.0.0
       dot-prop: 6.0.1
@@ -16036,13 +16029,14 @@ snapshots:
       '@volar/language-service': 2.4.28
       prettier: 3.9.10
 
-  volar-service-typescript-twoslash-queries@0.0.71(@volar/language-service@2.4.28):
+  volar-service-typescript-twoslash-queries@0.0.71(@volar/language-service@2.4.28)(typescript@6.0.3):
     dependencies:
       vscode-uri: 3.2.0
     optionalDependencies:
       '@volar/language-service': 2.4.28
+      typescript: 6.0.3
 
-  volar-service-typescript@0.0.71(@volar/language-service@2.4.28):
+  volar-service-typescript@0.0.71(@volar/language-service@2.4.28)(typescript@6.0.3):
     dependencies:
       path-browserify: 1.0.1
       semver: 7.8.5
@@ -16052,6 +16046,7 @@ snapshots:
       vscode-uri: 3.2.0
     optionalDependencies:
       '@volar/language-service': 2.4.28
+      typescript: 6.0.3
 
   volar-service-yaml@0.0.71(@volar/language-service@2.4.28):
     dependencies:
