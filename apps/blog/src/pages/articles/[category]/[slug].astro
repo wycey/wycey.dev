@@ -4,6 +4,7 @@ import { getEntry, render } from "astro:content";
 import type { GetStaticPaths } from "astro";
 import { link } from "astro-typed-links/link"
 import ArticleNavCard from "@/components/astro/article/ArticleNavCard.astro";
+import MermaidRenderer from "@/components/astro/article/MermaidRenderer.astro";
 import BudouX from "@/components/astro/common/BudouX.astro";
 import IconChip from "@/components/astro/common/IconChip.astro";
 import TagItem from "@/components/astro/common/TagItem.astro";
@@ -220,6 +221,7 @@ const { words, minutesText } = await getReadingTime(article.body);
       </section>
       <section id="article-body" class="prose" data-pagefind-body>
         <Content />
+        <MermaidRenderer />
 
         <script is:inline src="https://platform.twitter.com/widgets.js" charset="utf-8" defer />
       </section>

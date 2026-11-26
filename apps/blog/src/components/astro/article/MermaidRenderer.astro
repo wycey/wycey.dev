@@ -1,0 +1,49 @@
+---
+---
+<script>
+  import type { Mounted } from "pele";
+
+  const MERMAID_SELECTOR = "pre.mermaid:not([data-pele-mounted])";
+
+  const mountedDiagrams = new Set<Mounted>();
+
+  const renderDiagrams = async () => {
+    const targets = document.querySelectorAll<HTMLElement>(MERMAID_SELECTOR);
+
+    if (targets.length === 0) return;
+
+    const { mount } = await import("pele");
+
+    for (const target of targets) {
+      const source = target.textContent ?? "";
+
+      target.dataset.peleMounted = "";
+      target.textContent = "";
+
+      const diagram = mount(target, source, {
+        links: false,
+        images: false,
+      });
+
+      if (diagram.error) {
+        console.warn("Failed to render Mermaid diagram:", diagram.error);
+        diagram.destroy();
+        target.textContent = source;
+        continue;
+      }
+
+      mountedDiagrams.add(diagram);
+    }
+  };
+
+  const destroyDiagrams = () => {
+    for (const diagram of mountedDiagrams) {
+      diagram.destroy();
+    }
+
+    mountedDiagrams.clear();
+  };
+
+  document.addEventListener("astro:page-load", renderDiagrams);
+  document.addEventListener("astro:before-swap", destroyDiagrams);
+</script>

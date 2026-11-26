@@ -114,7 +114,7 @@ export const rehypeTypstMathDisplay: Plugin<[], hast.Root> = () => {
       }
 
       if (index === undefined) return;
-      if (!parent || parent.type !== "element") return;
+      if (parent?.type !== "element") return;
       if (parent.tagName !== "p") return;
       if (parent.children.length !== 1) return;
 
@@ -153,7 +153,7 @@ export const rehypeBudoux: Plugin<[RehypeBudouxOptions], hast.Root> = ({
     visit(tree, "text", (node, index, parent) => {
       if (node.value.trim().length === 0) return;
       if (index === undefined) return;
-      if (!parent || parent.type !== "element") return;
+      if (parent?.type !== "element") return;
       if (!include.includes(parent.tagName)) return;
 
       const parsedNode = budouxParser
@@ -171,4 +171,34 @@ export const rehypeBudoux: Plugin<[RehypeBudouxOptions], hast.Root> = ({
       }
     });
   };
+};
+
+export const rehypeMermaidSource: Plugin<[], hast.Root> = () => (tree) => {
+  visit(tree, "element", (node, index, parent) => {
+    if (node.tagName !== "pre" || index === undefined || !parent) return;
+
+    const [codeNode] = node.children;
+
+    if (
+      codeNode?.type !== "element" ||
+      codeNode.tagName !== "code" ||
+      !(codeNode.properties?.className as string[] | undefined)?.includes(
+        "language-mermaid",
+      )
+    ) {
+      return;
+    }
+
+    parent.children.splice(
+      index,
+      1,
+      h(
+        "pre",
+        { className: ["mermaid"] },
+        codeNode.children
+          .map((child) => (child.type === "text" ? child.value : ""))
+          .join(""),
+      ),
+    );
+  });
 };

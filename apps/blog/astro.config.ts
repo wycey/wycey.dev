@@ -32,7 +32,6 @@ import rehypeCallouts, {
 import rehypeExternalLinks, {
   type Options as RehypeExternalLinksOptions,
 } from "rehype-external-links";
-import rehypeMermaid, { type RehypeMermaidOptions } from "rehype-mermaid";
 import rehypeOGCard, { type RehypeOGCardOptions } from "rehype-og-card";
 import rehypeSlug from "rehype-slug";
 import remarkBreaks from "remark-breaks";
@@ -52,6 +51,7 @@ import {
   type RemarkRevertTextDirectiveOptions,
   rehypeBudoux,
   rehypeFancybox,
+  rehypeMermaidSource,
   rehypeRecordHeadings,
   rehypeTypstMathDisplay,
   remarkHeading1ToTitle,
@@ -396,12 +396,7 @@ export default defineConfig({
             include: ["h1", "h2", "h3", "h4", "h5", "h6", "figcaption"],
           } satisfies RehypeBudouxOptions,
         ],
-        [
-          rehypeMermaid,
-          {
-            strategy: "pre-mermaid",
-          } satisfies RehypeMermaidOptions,
-        ],
+        rehypeMermaidSource,
         rehypeTypst,
         rehypeTypstMathDisplay,
       ],

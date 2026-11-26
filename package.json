@@ -24,7 +24,7 @@
   "dependencies": {
     "@biomejs/biome": "^2.6.9",
     "@cloudflare/workers-types": "^5.20261125.1",
-    "@solid-primitives/event-listener": "^3.0.0",
+    "@solid-primitives/event-listener": "^2.4.6",
     "@types/node": "^26.6.10",
     "@wycey/biome-config": "workspace:*",
     "lefthook": "^2.2.3",
