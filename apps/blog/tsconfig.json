@@ -1,11 +1,17 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "@wycey/tsconfig/jsx",
+  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
     "paths": {
       "@/*": ["./src/*"]
     }
   },
+  "contentMappers": [
+    {
+      "package": "@astrojs/ts-content-mapper",
+      "extensions": [".astro"]
+    }
+  ],
   "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist", "public"]
+  "exclude": ["dist", "worker-configuration.d.ts", "public"]
 }
