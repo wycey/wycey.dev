@@ -221,7 +221,7 @@
   }
 
   kbd {
-    --at-apply: inline-flex items-center gap-1 px-1 0.5 py-0 0.5 rounded-1
+    --at-apply: inline-flex items-center gap-1 px-1.5 py-0.5 rounded-1
       bg-bg-muted text-fg text-sm font-medium border b-border-subtle select-all;
   }
 
