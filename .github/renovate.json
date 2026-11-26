@@ -3,6 +3,12 @@
   "extends": ["github>wycey/renovate-conf"],
   "packageRules": [
     {
+      "description": "Keep Solid.js ecosystem on v1",
+      "matchDatasources": ["npm"],
+      "matchPackageNames": ["solid-js", "@solid-primitives/*"],
+      "allowedVersions": "!/^(2|3|4)\\./"
+    },
+    {
       "description": "Group Expressive Code packages",
       "matchDatasources": ["npm"],
       "matchPackageNames": ["astro-expressive-code", "@expressive-code/*"]
