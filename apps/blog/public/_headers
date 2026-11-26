@@ -9,16 +9,16 @@ https://:version.:subdomain.workers.dev/*
   X-Robots-Tag: noindex
 
 /favicon.ico
-  Cache-Control: public, max-age=31556952, immutable
+  Cache-Control: public, max-age=31536000, immutable
 
 /icon.svg
-  Cache-Control: public, max-age=31556952, immutable
+  Cache-Control: public, max-age=31536000, immutable
 
 /apple-touch-icon.png
-  Cache-Control: public, max-age=31556952, immutable
+  Cache-Control: public, max-age=31536000, immutable
 
 /_assets/*
-  Cache-Control: public, max-age=31556952, immutable
+  Cache-Control: public, max-age=31536000, immutable
 
 /assets/*
   Cross-Origin-Resource-Policy: cross-origin
