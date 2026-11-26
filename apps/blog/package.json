@@ -44,7 +44,7 @@
     "@nanostores/solid": "^1.1.1",
     "@sentry/astro": "^10.63.0",
     "@sentry/cloudflare": "^10.63.0",
-    "@solid-primitives/media": "^2.3.6",
+    "@solid-primitives/media": "^4.0.0",
     "astro": "7.3.8",
     "astro-expressive-code": "^0.44.0",
     "astro-seo": "^1.1.0",
