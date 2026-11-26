@@ -358,7 +358,7 @@
   }
 
   .og-card-title {
-    --at-apply: text-base text-fg leading-5 font-bold line-clamp-2 text-ellipsis;
+    --at-apply: m-0 mt-0.5;
   }
 
   .og-card-description {
