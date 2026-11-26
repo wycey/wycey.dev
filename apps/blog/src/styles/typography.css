@@ -533,7 +533,7 @@
   .callout-title-icon svg,
   .callout-fold-icon svg {
     --at-apply: w-4 h-4;
-  }
+    --at-apply: inline text-lg mx-0.5 overflow-x-auto;
 
   /* rehype-budoux (DIY) */
 
