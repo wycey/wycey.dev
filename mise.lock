@@ -6,44 +6,48 @@ lockfile_version = 3
 version = "2.11.0"
 backend = "packslip:github.com/aubepkg/aube"
 specifiers = ["latest"]
+unsupported_platforms = ["macos-x64"]
 
 [tools.aube."platforms.linux-arm64"]
 checksum = "sha256:6b188df1296f24565f59483583a9238c075aad0aca541f111a582544b97e261b"
 url = "https://github.com/aubepkg/aube/releases/download/v2.11.0/aube-v2.11.0-aarch64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/aubepkg/aube/.github/workflows/release.yml"
+repository_ids = { repository = "1214542327" }
 
 [tools.aube."platforms.linux-arm64-musl"]
 checksum = "sha256:2c68858afe1c382e3067259f7a171c4f4fae8d56bd5731c6b1c5b463a0a0e57a"
 url = "https://github.com/aubepkg/aube/releases/download/v2.11.0/aube-v2.11.0-aarch64-unknown-linux-musl.tar.gz"
 signer = "sigstore-oidc:https://github.com/aubepkg/aube/.github/workflows/release.yml"
+repository_ids = { repository = "1214542327" }
 
 [tools.aube."platforms.linux-x64"]
 checksum = "sha256:c13c0038283e3cf1ea080b520dcd35498cc5b493fae63b2d3b4e3b28da0e5a9e"
 url = "https://github.com/aubepkg/aube/releases/download/v2.11.0/aube-v2.11.0-x86_64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/aubepkg/aube/.github/workflows/release.yml"
+repository_ids = { repository = "1214542327" }
 
 [tools.aube."platforms.linux-x64-musl"]
 checksum = "sha256:d6f5174431ace30275ec76887fe28dbf7c4b295e7b621d9706015ed47636c442"
 url = "https://github.com/aubepkg/aube/releases/download/v2.11.0/aube-v2.11.0-x86_64-unknown-linux-musl.tar.gz"
 signer = "sigstore-oidc:https://github.com/aubepkg/aube/.github/workflows/release.yml"
+repository_ids = { repository = "1214542327" }
 
 [tools.aube."platforms.macos-arm64"]
 checksum = "sha256:30924b4afa4e47e308af74277fa6c318214b12e78583a93b49011118ac8e5ca7"
 url = "https://github.com/aubepkg/aube/releases/download/v2.11.0/aube-v2.11.0-aarch64-apple-darwin.tar.gz"
 signer = "sigstore-oidc:https://github.com/aubepkg/aube/.github/workflows/release.yml"
+repository_ids = { repository = "1214542327" }
 
 [tools.aube."platforms.windows-x64"]
 checksum = "sha256:8c6097cca1461a9730f47c62059082c5e4448692fe6d10cdc56f24aadaa17bc5"
 url = "https://github.com/aubepkg/aube/releases/download/v2.11.0/aube-v2.11.0-x86_64-pc-windows-msvc.zip"
 signer = "sigstore-oidc:https://github.com/aubepkg/aube/.github/workflows/release.yml"
+repository_ids = { repository = "1214542327" }
 
 [[tools.node]]
 version = "24.18.1"
 backend = "core:node"
 specifiers = ["24.18"]
-
-[tools.node.options]
-compile = "false"
 
 [tools.node."platforms.linux-arm64"]
 checksum = "sha256:df224555a083b918e46260cc969838501b9f9a87140c1195e5b9597b56d5dae2"
@@ -72,39 +76,3 @@ url = "https://nodejs.org/dist/v24.18.1/node-v24.18.1-darwin-x64.tar.gz"
 [tools.node."platforms.windows-x64"]
 checksum = "sha256:ec56b84a7551893ab2324ebdfdc4ab974a63b4781162600b68a1293cc3e53765"
 url = "https://nodejs.org/dist/v24.18.1/node-v24.18.1-win-x64.zip"
-
-[[tools.node]]
-version = "24.22.3"
-backend = "core:node"
-specifiers = ["^24.18.0"]
-
-[tools.node.options]
-compile = "false"
-
-[tools.node."platforms.linux-arm64"]
-checksum = "sha256:261af2af250dfd7e9f25cf151d1b2713a0adf8f10a9ad116c4947f68627affe8"
-url = "https://nodejs.org/dist/v24.22.3/node-v24.22.3-linux-arm64.tar.gz"
-
-[tools.node."platforms.linux-arm64-musl"]
-checksum = "sha256:248c96a84f6c8338646b9fd73bf125124678f8fb08db5f23023f462055e0eedc"
-url = "https://unofficial-builds.nodejs.org/download/release/v24.22.3/node-v24.22.3-linux-arm64-musl.tar.gz"
-
-[tools.node."platforms.linux-x64"]
-checksum = "sha256:061ec3e3062115705b56b51fa9cc330ab50d34b6969387d4e4b1a50c6809acc2"
-url = "https://nodejs.org/dist/v24.22.3/node-v24.22.3-linux-x64.tar.gz"
-
-[tools.node."platforms.linux-x64-musl"]
-checksum = "sha256:2db4f8a40abe5f5b5d119964223fedc9c4c7c5e7c632901ae860af522c7844b2"
-url = "https://unofficial-builds.nodejs.org/download/release/v24.22.3/node-v24.22.3-linux-x64-musl.tar.gz"
-
-[tools.node."platforms.macos-arm64"]
-checksum = "sha256:ff6e17d4874b76d272212b908cc020d6e815fba5a6c7eaaa06add725840307fd"
-url = "https://nodejs.org/dist/v24.22.3/node-v24.22.3-darwin-arm64.tar.gz"
-
-[tools.node."platforms.macos-x64"]
-checksum = "sha256:977614af0504c81045e7fd85596dbca0e5f951b96681516dadafedcca8c447f7"
-url = "https://nodejs.org/dist/v24.22.3/node-v24.22.3-darwin-x64.tar.gz"
-
-[tools.node."platforms.windows-x64"]
-checksum = "sha256:e612af99f626ab415ea225af6bce5c971feb448cb5cae250bb1c3fa50c5f7d9f"
-url = "https://nodejs.org/dist/v24.22.3/node-v24.22.3-win-x64.zip"
