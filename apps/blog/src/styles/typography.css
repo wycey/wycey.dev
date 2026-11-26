@@ -299,7 +299,7 @@
     --pele-fg: var(--color-base-12);
     --pele-muted: var(--color-base-11);
     --pele-line: var(--color-base-8);
-    --pele-surface: var(--color-base-3);
+    --at-apply: mr-0.5 scroll-mt-24;
     --pele-surface-alt: var(--color-base-4);
     --pele-border: var(--color-base-7);
     --pele-accent: var(--color-primary-9);
