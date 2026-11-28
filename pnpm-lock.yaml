@@ -180,7 +180,7 @@ importers:
         version: 1.11.0(typescript@7.1.0-dev.20261124.1)
       '@iconify-json/lucide':
         specifier: ^1.2.159
-        version: 1.2.159
+        version: 1.2.160
       '@ljoss/rehype-figure-caption':
         specifier: ^1.0.0
         version: 1.0.0
@@ -1184,8 +1184,8 @@ packages:
   '@floating-ui/utils@0.2.12':
     resolution: {integrity: sha512-HpCo8tmWzLVad5s2d19EhAz5zqrrQ6s69qd6moPMQvkOuSwDT1YgRfWSVuc4ennqrgv3OHppiOGMQ7oC13yIww==}
 
-  '@iconify-json/lucide@1.2.159':
-    resolution: {integrity: sha512-rE8dHb2LRSR2Vl6L6LspAJ83uPNKOIbEE8BLLo/ObQT8xHIEE3zmwIpO9LcZPjTsEnICSxWPFJcJ0Q38nxuZPw==}
+  '@iconify-json/lucide@1.2.160':
+    resolution: {integrity: sha512-811QWUxsgfjFZewGJG45+TG62TNaeGMhsQr6XGiheTJpoe9Dc/vY2RHPLjOE1EuZ6vt70060MBkqz0whJG9I3w==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -7855,7 +7855,7 @@ snapshots:
 
   '@floating-ui/utils@0.2.12': {}
 
-  '@iconify-json/lucide@1.2.159':
+  '@iconify-json/lucide@1.2.160':
     dependencies:
       '@iconify/types': 2.0.0
 
